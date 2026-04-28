@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { CheckCircle2, Circle, Clock, Stethoscope, Carrot, Dumbbell, Brush, Calendar, X, Plus, Paperclip, ExternalLink } from 'lucide-react'
+import { CheckCircle2, Circle, Clock, Stethoscope, Carrot, Dumbbell, Brush, Calendar as CalendarIcon, X, Plus, Paperclip, ExternalLink, ArrowRight, User, Filter } from 'lucide-react'
 import CloudinaryUploader from '@/components/admin/CloudinaryUploader'
 
 type Task = {
@@ -57,26 +57,26 @@ export default function TaskBoard({
   const [showModal, setShowModal] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   
+  // Filters
+  const [staffFilter, setStaffFilter] = useState<string>('all')
+  const [horseFilter, setHorseFilter] = useState<string>('all')
+
   // Form state
   const [formData, setFormData] = useState({
     title: '',
     horse_id: '',
     assigned_user_id: '',
     task_type: 'Training',
-    scheduled_at: new Date().toISOString().slice(0, 16), // current datetime for local input
+    scheduled_at: new Date().toISOString().slice(0, 16),
     notes: '',
     attachment_url: ''
   })
 
   const supabase = createClient()
   
-  const toggleTaskStatus = async (task: Task) => {
-    const newStatus = task.status === 'Klaar' ? 'To-do' : 'Klaar'
-    
-    // Optimistic update
+  const changeTaskStatus = async (task: Task, newStatus: string) => {
     setTasks(tasks.map(t => t.id === task.id ? { ...t, status: newStatus } : t))
     
-    // Update DB
     const { error } = await supabase
       .from('stable_tasks')
       .update({ 
@@ -87,7 +87,8 @@ export default function TaskBoard({
       
     if (error) {
       console.error('Failed to update task:', error)
-      setTasks(tasks) // revert
+      setTasks(tasks) // revert on error
+      alert("Fout bij updaten status")
     }
   }
 
@@ -99,7 +100,8 @@ export default function TaskBoard({
       .from('stable_tasks')
       .insert([{
         ...formData,
-        scheduled_at: new Date(formData.scheduled_at).toISOString()
+        scheduled_at: new Date(formData.scheduled_at).toISOString(),
+        status: 'To-do'
       }])
       .select('*')
       .single()
@@ -110,7 +112,6 @@ export default function TaskBoard({
     } else if (data) {
       setTasks([...tasks, data as Task].sort((a, b) => new Date(a.scheduled_at).getTime() - new Date(b.scheduled_at).getTime()))
       setShowModal(false)
-      // Reset form
       setFormData({
         title: '',
         horse_id: '',
@@ -124,8 +125,15 @@ export default function TaskBoard({
     setIsSubmitting(false)
   }
 
-  const todoTasks = tasks.filter(t => t.status !== 'Klaar')
-  const completedTasks = tasks.filter(t => t.status === 'Klaar')
+  const filteredTasks = tasks.filter(t => {
+    if (staffFilter !== 'all' && t.assigned_user_id !== staffFilter) return false;
+    if (horseFilter !== 'all' && t.horse_id !== horseFilter) return false;
+    return true;
+  });
+
+  const todoTasks = filteredTasks.filter(t => t.status === 'To-do' || !t.status)
+  const inProgressTasks = filteredTasks.filter(t => t.status === 'Bezig')
+  const completedTasks = filteredTasks.filter(t => t.status === 'Klaar')
 
   return (
     <div className="space-y-6">
@@ -155,12 +163,38 @@ export default function TaskBoard({
         </div>
       )}
 
-      {/* When header is hidden (e.g. in EquihubDashboard), we still need the New Task button */}
-      {hideHeader && !isError && (
-        <div className="flex justify-end mb-4">
+      {/* When header is hidden, we still need the filters and New Task button */}
+      {!isError && (
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 bg-white dark:bg-gray-800 p-4 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
+            <div className="flex items-center gap-2 w-full sm:w-auto bg-gray-50 dark:bg-gray-900 p-2 rounded-xl border border-gray-200 dark:border-gray-700">
+              <Filter size={16} className="text-gray-400 ml-2" />
+              <select 
+                value={staffFilter} 
+                onChange={e => setStaffFilter(e.target.value)}
+                className="bg-transparent border-none text-sm font-bold text-gray-700 dark:text-gray-300 focus:ring-0 w-full sm:w-auto"
+              >
+                <option value="all">Alle Personeel</option>
+                {staff?.map(s => <option key={s.id} value={s.id}>{s.email}</option>)}
+              </select>
+            </div>
+            
+            <div className="flex items-center gap-2 w-full sm:w-auto bg-gray-50 dark:bg-gray-900 p-2 rounded-xl border border-gray-200 dark:border-gray-700">
+              <Filter size={16} className="text-gray-400 ml-2" />
+              <select 
+                value={horseFilter} 
+                onChange={e => setHorseFilter(e.target.value)}
+                className="bg-transparent border-none text-sm font-bold text-gray-700 dark:text-gray-300 focus:ring-0 w-full sm:w-auto"
+              >
+                <option value="all">Alle Paarden</option>
+                {horses?.map(h => <option key={h.id} value={h.id}>{h.name}</option>)}
+              </select>
+            </div>
+          </div>
+
           <button 
             onClick={() => setShowModal(true)}
-            className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-bold shadow-md transition-all active:scale-95 flex items-center justify-center gap-2"
+            className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-xl font-bold shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 w-full lg:w-auto"
           >
             <Plus size={20} />
             Nieuwe Taak
@@ -168,42 +202,67 @@ export default function TaskBoard({
         </div>
       )}
 
-      {/* TODO List */}
+      {/* KANBAN BOARD */}
       {!isError && (
-        <div className="space-y-8">
-          <div>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-              <Clock className="text-primary" /> 
-              Te doen ({todoTasks.length})
-            </h2>
-            
-            {todoTasks.length === 0 ? (
-              <div className="bg-gray-50 dark:bg-gray-800/50 p-8 rounded-2xl text-center border-2 border-dashed border-gray-200 dark:border-gray-700 text-gray-500">
-                Alle taken zijn voltooid voor vandaag! 🎉
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                {todoTasks.map(task => (
-                  <TaskCard key={task.id} task={task} onToggle={() => toggleTaskStatus(task)} horses={horses} staff={staff} />
-                ))}
-              </div>
-            )}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+          
+          {/* TO-DO COLUMN */}
+          <div className="bg-gray-50 dark:bg-gray-900/50 rounded-3xl p-4 border border-gray-200 dark:border-gray-800 min-h-[500px]">
+            <div className="flex items-center justify-between mb-4 px-2">
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div> To-Do
+              </h2>
+              <span className="bg-white dark:bg-gray-800 text-gray-500 text-xs font-bold px-3 py-1 rounded-full shadow-sm">{todoTasks.length}</span>
+            </div>
+            <div className="space-y-4">
+              {todoTasks.length === 0 ? (
+                <div className="text-center p-6 border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-2xl text-gray-400 text-sm">Geen taken in to-do.</div>
+              ) : (
+                todoTasks.map(task => (
+                  <TaskCard key={task.id} task={task} onChangeStatus={changeTaskStatus} horses={horses} staff={staff} />
+                ))
+              )}
+            </div>
           </div>
 
-          {/* COMPLETED List */}
-          {completedTasks.length > 0 && (
-            <div>
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2 opacity-70">
-                <CheckCircle2 className="text-green-500" /> 
-                Voltooid ({completedTasks.length})
+          {/* IN PROGRESS COLUMN */}
+          <div className="bg-gray-50 dark:bg-gray-900/50 rounded-3xl p-4 border border-gray-200 dark:border-gray-800 min-h-[500px]">
+            <div className="flex items-center justify-between mb-4 px-2">
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse"></div> Bezig
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 opacity-70">
-                {completedTasks.map(task => (
-                  <TaskCard key={task.id} task={task} onToggle={() => toggleTaskStatus(task)} horses={horses} staff={staff} />
-                ))}
-              </div>
+              <span className="bg-white dark:bg-gray-800 text-gray-500 text-xs font-bold px-3 py-1 rounded-full shadow-sm">{inProgressTasks.length}</span>
             </div>
-          )}
+            <div className="space-y-4">
+              {inProgressTasks.length === 0 ? (
+                <div className="text-center p-6 border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-2xl text-gray-400 text-sm">Geen actieve taken.</div>
+              ) : (
+                inProgressTasks.map(task => (
+                  <TaskCard key={task.id} task={task} onChangeStatus={changeTaskStatus} horses={horses} staff={staff} />
+                ))
+              )}
+            </div>
+          </div>
+
+          {/* COMPLETED COLUMN */}
+          <div className="bg-gray-50 dark:bg-gray-900/50 rounded-3xl p-4 border border-gray-200 dark:border-gray-800 min-h-[500px] opacity-70">
+            <div className="flex items-center justify-between mb-4 px-2">
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-green-500"></div> Klaar
+              </h2>
+              <span className="bg-white dark:bg-gray-800 text-gray-500 text-xs font-bold px-3 py-1 rounded-full shadow-sm">{completedTasks.length}</span>
+            </div>
+            <div className="space-y-4">
+              {completedTasks.length === 0 ? (
+                <div className="text-center p-6 border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-2xl text-gray-400 text-sm">Nog geen taken voltooid.</div>
+              ) : (
+                completedTasks.map(task => (
+                  <TaskCard key={task.id} task={task} onChangeStatus={changeTaskStatus} horses={horses} staff={staff} />
+                ))
+              )}
+            </div>
+          </div>
+
         </div>
       )}
 
@@ -218,7 +277,7 @@ export default function TaskBoard({
               </button>
             </div>
             
-            <form onSubmit={handleCreateTask} className="p-6 space-y-5">
+            <form onSubmit={handleCreateTask} className="p-6 space-y-5 max-h-[75vh] overflow-y-auto">
               <div>
                 <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">Taak Titel</label>
                 <input 
@@ -312,7 +371,7 @@ export default function TaskBoard({
                 )}
               </div>
 
-              <div className="pt-4 flex gap-3">
+              <div className="pt-4 flex gap-3 sticky bottom-0 bg-white dark:bg-gray-800 pb-2">
                 <button 
                   type="button" 
                   onClick={() => setShowModal(false)}
@@ -336,48 +395,50 @@ export default function TaskBoard({
   )
 }
 
-function TaskCard({ task, onToggle, horses, staff }: { task: Task, onToggle: () => void, horses: any[], staff: any[] }) {
+function TaskCard({ task, onChangeStatus, horses, staff }: { task: Task, onChangeStatus: (t: Task, status: string) => void, horses: any[], staff: any[] }) {
   const isCompleted = task.status === 'Klaar'
-  
-  // Manual join since we removed deep PostgREST relations
   const horse = horses?.find(h => h.id === task.horse_id)
   const user = staff?.find(s => s.id === task.assigned_user_id)
   
   return (
-    <div className={`relative p-5 rounded-2xl border bg-white dark:bg-gray-800 shadow-sm transition-all duration-200 ${
+    <div className={`relative p-4 rounded-2xl border bg-white dark:bg-gray-800 shadow-sm transition-all duration-200 ${
       isCompleted 
-        ? 'border-green-200 dark:border-green-900/30' 
+        ? 'border-green-200 dark:border-green-900/30 bg-green-50/30 dark:bg-green-900/10' 
         : 'border-gray-200 dark:border-gray-700 hover:shadow-md hover:border-primary/30'
     }`}>
       {/* Top Meta Bar */}
       <div className="flex justify-between items-center mb-3">
-        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold border ${getTypeColor(task.task_type)}`}>
+        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider border ${getTypeColor(task.task_type)}`}>
           {getTypeIcon(task.task_type)}
           {task.task_type}
         </span>
         <span className="text-xs font-semibold text-gray-400 dark:text-gray-500 flex items-center gap-1">
-          <Calendar size={12} />
+          <CalendarIcon size={12} />
           {task.scheduled_at ? new Date(task.scheduled_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Vandaag'}
         </span>
       </div>
 
       {/* Title & Info */}
-      <h3 className={`text-lg font-bold mb-1 ${isCompleted ? 'text-gray-400 line-through' : 'text-gray-900 dark:text-white'}`}>
+      <h3 className={`text-base font-bold mb-2 ${isCompleted ? 'text-gray-500 line-through' : 'text-gray-900 dark:text-white'}`}>
         {task.title}
       </h3>
+      
       {horse && (
-        <p className="text-primary dark:text-primary/80 font-semibold text-sm mb-1">
-          🐴 {horse.name} {horse.current_box_id && `(Box: ${horse.current_box_id})`}
-        </p>
+        <div className="bg-primary/5 dark:bg-primary/10 rounded-lg p-2 mb-2 border border-primary/10">
+          <p className="text-primary dark:text-primary/80 font-bold text-xs flex items-center gap-1">
+            🐴 {horse.name} {horse.current_box_id && <span className="opacity-60">(Box: {horse.current_box_id})</span>}
+          </p>
+        </div>
       )}
+      
       {user && (
-        <p className="text-gray-500 dark:text-gray-400 text-xs font-medium mb-3">
-          👤 {user.email}
+        <p className="text-gray-500 dark:text-gray-400 text-xs font-medium mb-3 flex items-center gap-1">
+          <User size={12}/> {user.email}
         </p>
       )}
       
       {task.notes && (
-        <div className="bg-gray-50 dark:bg-gray-900/50 p-3 rounded-xl mb-3 text-sm text-gray-600 dark:text-gray-400 italic">
+        <div className="bg-orange-50 dark:bg-orange-900/10 p-2 rounded-lg mb-3 text-xs text-orange-800 dark:text-orange-400 italic border border-orange-100 dark:border-orange-900/30">
           "{task.notes}"
         </div>
       )}
@@ -387,35 +448,42 @@ function TaskCard({ task, onToggle, horses, staff }: { task: Task, onToggle: () 
           href={task.attachment_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 w-full py-2 mb-3 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg text-sm font-bold hover:bg-blue-100 transition-colors border border-blue-100 dark:border-blue-800"
+          className="flex items-center justify-center gap-1.5 w-full py-1.5 mb-3 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg text-xs font-bold hover:bg-blue-100 transition-colors border border-blue-100 dark:border-blue-800/30"
         >
-          <Paperclip size={16} /> Bekijk Bijlage <ExternalLink size={14} />
+          <Paperclip size={12} /> Bijlage <ExternalLink size={10} />
         </a>
       )}
 
-      {!horse && !user && !task.notes && !task.attachment_url && <div className="mb-4"></div>}
-
-      {/* Action Button (Large Touch Area) */}
-      <button 
-        onClick={onToggle}
-        className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold transition-all active:scale-95 mt-2 ${
-          isCompleted 
-            ? 'bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600' 
-            : 'bg-green-50 text-green-600 border border-green-200 hover:bg-green-100 dark:bg-green-900/20 dark:border-green-800/30 dark:hover:bg-green-900/40'
-        }`}
-      >
-        {isCompleted ? (
+      {/* Kanban Actions */}
+      <div className="grid grid-cols-2 gap-2 mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+        {task.status !== 'To-do' && (
+          <button 
+            onClick={() => onChangeStatus(task, 'To-do')}
+            className="col-span-2 text-xs font-bold text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+          >
+            ↺ Terug naar To-Do
+          </button>
+        )}
+        
+        {task.status !== 'Klaar' && (
           <>
-            <CheckCircle2 size={20} />
-            Klaar (Ongedaan maken)
-          </>
-        ) : (
-          <>
-            <Circle size={20} />
-            Markeer als Klaar
+            <button 
+              onClick={() => onChangeStatus(task, task.status === 'Bezig' ? 'Klaar' : 'Bezig')}
+              className={`col-span-2 flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-bold transition-all ${
+                task.status === 'Bezig' 
+                  ? 'bg-green-500 hover:bg-green-600 text-white shadow-md' 
+                  : 'bg-blue-50 text-blue-600 border border-blue-200 hover:bg-blue-100 dark:bg-blue-900/30 dark:border-blue-800/50'
+              }`}
+            >
+              {task.status === 'Bezig' ? (
+                <><CheckCircle2 size={14}/> Afronden</>
+              ) : (
+                <><ArrowRight size={14}/> Start Taak (Bezig)</>
+              )}
+            </button>
           </>
         )}
-      </button>
+      </div>
     </div>
   )
 }
