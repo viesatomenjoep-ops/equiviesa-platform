@@ -32,7 +32,7 @@ export default function EquihubDashboard({
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 uppercase tracking-tight">
-            Viesa Stable <span className="text-primary">Management</span>
+            Viesa Stable <span className="text-primary">Overview</span>
           </h1>
           <p className="text-gray-400 max-w-2xl text-lg font-light">
             Jouw complete, digitale stal-assistent. Beheer je paarden, personeel, fokkerij en gezondheidsdossiers vanuit één gecentraliseerde, luxe omgeving.
@@ -118,12 +118,15 @@ export default function EquihubDashboard({
             <div className="animate-in slide-in-from-right-8 duration-500">
               {/* Back button header for active modules */}
               <div className="mb-6 flex items-center justify-between bg-white dark:bg-gray-900 p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 sticky top-20 z-30">
-                <button 
-                  onClick={() => setActiveTab('hub')}
-                  className="flex items-center gap-2 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-white font-bold transition-colors bg-gray-50 dark:bg-gray-800 px-4 py-2 rounded-xl active:scale-95"
-                >
-                  <ChevronLeft size={20} /> Terug naar Hub
-                </button>
+                <div className="flex items-center gap-4">
+                  <button 
+                    onClick={() => setActiveTab('hub')}
+                    className="flex items-center gap-2 text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-white font-bold transition-colors bg-gray-50 dark:bg-gray-800 px-4 py-2 rounded-xl active:scale-95"
+                  >
+                    <ChevronLeft size={20} /> Terug naar Hub
+                  </button>
+                  <span className="hidden sm:inline text-lg font-serif font-bold text-gray-900 dark:text-white">Viesa Stable Overview</span>
+                </div>
                 <div className="hidden md:flex items-center gap-2">
                   <span className="text-xs font-bold uppercase tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full">Viesa Pro</span>
                 </div>
