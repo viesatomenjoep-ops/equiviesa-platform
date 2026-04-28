@@ -50,7 +50,14 @@ export default function EquihubDashboard({
 
       {isError && (
         <div className="bg-red-50 text-red-600 px-6 py-4 rounded-xl font-bold border border-red-100 w-full text-center">
-          Database niet gesynchroniseerd (voer SQL script uit in Supabase)
+          {typeof isError === 'string' ? (
+            <>
+              Foutmelding vanuit Supabase:<br/>
+              <span className="font-normal font-mono text-sm mt-2 block bg-red-100 p-2 rounded">{isError}</span>
+            </>
+          ) : (
+            'Database niet gesynchroniseerd (voer SQL script uit in Supabase)'
+          )}
         </div>
       )}
 

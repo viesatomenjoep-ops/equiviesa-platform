@@ -45,7 +45,7 @@ export default async function EquihubPage() {
         facilities={facilities || []}
         feedingSchedules={feedingSchedules || []}
         staff={staff || []} 
-        isError={!!tasksError}
+        isError={tasksError ? tasksError.message + " | Details: " + tasksError.details : false}
       />
     </div>
   )
