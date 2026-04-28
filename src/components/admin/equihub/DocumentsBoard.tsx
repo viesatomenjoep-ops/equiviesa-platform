@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { FileText, Plus, File, ExternalLink, Calendar } from 'lucide-react'
+import CloudinaryUploader from '@/components/admin/CloudinaryUploader'
 
 export default function DocumentsBoard({ horses, initialDocuments }: any) {
   const [documents, setDocuments] = useState(initialDocuments || [])
@@ -33,29 +34,46 @@ export default function DocumentsBoard({ horses, initialDocuments }: any) {
     }
   }
 
+  const [searchTerm, setSearchTerm] = useState('')
+
+  const filteredDocuments = documents.filter((doc: any) => {
+    const horse = horses?.find((h: any) => h.id === doc.horse_id)
+    const searchString = `${doc.title} ${doc.file_type} ${horse?.name || ''}`.toLowerCase()
+    return searchString.includes(searchTerm.toLowerCase())
+  })
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-      <div className="p-6 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+      <div className="p-6 border-b border-gray-100 dark:border-gray-700 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
             <FileText className="text-primary" /> Documenten & Dossiers
           </h2>
           <p className="text-sm text-gray-500 mt-1">Paspoorten, Röntgenfoto's, Contracten en Facturen centraal opgeslagen.</p>
         </div>
-        <button 
-          onClick={() => setShowModal(true)}
-          className="bg-primary text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 hover:bg-primary/90 transition-all active:scale-95"
-        >
-          <Plus size={16} /> Nieuw Document
-        </button>
+        <div className="flex items-center gap-3 w-full sm:w-auto">
+          <input 
+            type="text" 
+            placeholder="Zoeken in documenten..." 
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="p-2 border border-gray-200 dark:border-gray-700 rounded-xl text-sm w-full sm:w-48 dark:bg-gray-900"
+          />
+          <button 
+            onClick={() => setShowModal(true)}
+            className="bg-primary text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 hover:bg-primary/90 transition-all active:scale-95 whitespace-nowrap"
+          >
+            <Plus size={16} /> Nieuw Document
+          </button>
+        </div>
       </div>
 
       <div className="p-6">
-        {documents.length === 0 ? (
+        {filteredDocuments.length === 0 ? (
           <div className="text-center text-gray-500 py-10">Geen documenten gevonden.</div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-            {documents.map((doc: any) => {
+            {filteredDocuments.map((doc: any) => {
               const horse = horses?.find((h: any) => h.id === doc.horse_id)
               return (
                 <div key={doc.id} className="p-4 border border-gray-200 dark:border-gray-700 rounded-2xl flex flex-col justify-between hover:shadow-md transition-shadow bg-gray-50 dark:bg-gray-800/50">
@@ -123,9 +141,18 @@ export default function DocumentsBoard({ horses, initialDocuments }: any) {
               </div>
 
               <div>
-                <label className="block text-sm font-bold mb-1">Document Link (URL) *</label>
-                <input type="url" required value={formData.file_url} onChange={e => setFormData({...formData, file_url: e.target.value})} className="w-full p-3 rounded-xl border dark:bg-gray-900" placeholder="https://..."/>
-                <p className="text-xs text-gray-500 mt-1">Plak hier de link van Google Drive, Dropbox, Cloudinary, etc.</p>
+                <label className="block text-sm font-bold mb-1">Upload Document *</label>
+                {formData.file_url ? (
+                  <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl flex items-center justify-between">
+                    <span className="text-green-700 dark:text-green-400 font-bold text-sm">✓ Bestand succesvol geüpload</span>
+                    <button type="button" onClick={() => setFormData({...formData, file_url: ''})} className="text-sm text-red-500 font-bold hover:underline">Wijzig Bestand</button>
+                  </div>
+                ) : (
+                  <CloudinaryUploader 
+                    onUploadSuccess={(url) => setFormData({...formData, file_url: url})} 
+                    label="Klik om PDF, Afbeelding of Video te uploaden" 
+                  />
+                )}
               </div>
 
               <div>
