@@ -62,7 +62,7 @@ export default function AdminSidebar() {
       <div className="md:hidden flex items-center justify-between bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4 sticky top-0 z-40 shadow-sm">
         <div className="flex items-center gap-2">
           <Image src="/logo.png" alt="Equivest Logo" width={32} height={32} className="w-8 h-8 object-contain animate-[spin_20s_linear_infinite]" />
-          <span className="text-lg font-serif font-semibold text-primary dark:text-white">CMS</span>
+          <span className="text-base font-serif font-semibold text-primary dark:text-white">CMS</span>
         </div>
         <div className="flex items-center gap-4">
           <Link href="/" title="Go to Website" className="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-white flex items-center gap-1 text-sm font-bold">
@@ -93,11 +93,11 @@ export default function AdminSidebar() {
         <div className="h-16 flex items-center justify-between px-6 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-3 md:hidden">
             <Image src="/logo.png" alt="Equivest Logo" width={32} height={32} className="w-8 h-8 object-contain animate-[spin_20s_linear_infinite]" />
-            <span className="text-xl font-serif font-semibold text-primary dark:text-white">CMS Menu</span>
+            <span className="text-lg font-serif font-semibold text-primary dark:text-white">CMS Menu</span>
           </div>
           <div className="hidden md:flex items-center gap-3">
             <Image src="/logo.png" alt="Equivest Logo" width={40} height={40} className="w-10 h-10 object-contain animate-[spin_20s_linear_infinite]" />
-            <span className="text-lg font-serif font-semibold text-primary dark:text-white">Equivest Management</span>
+            <span className="text-base font-serif font-semibold text-primary dark:text-white">Equivest Management</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="hidden md:block"><LanguageSwitcher expandDirection="left" /></div>
