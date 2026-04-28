@@ -35,10 +35,7 @@ export default function AdminSidebar() {
     { id: 'references', href: '/admin/references', icon: Camera, label: 'References' },
     { id: 'inventory', href: '/admin/inventory', icon: ClipboardList, label: 'Inventory' },
     { id: 'equihub', href: '/admin/equihub', icon: CheckSquare, label: 'Equihub Management' },
-    { id: 'quotes', href: '/admin/quotes', icon: FileText, label: 'Quotes & Orders' },
-    { id: 'crm', href: '/admin/crm', icon: Users, label: 'Customers (CRM)' },
-    { id: 'linkedin', href: '/admin/linkedin', icon: MessageSquare, label: 'LinkedIn Outreach' },
-    { id: 'magic', href: '/admin/magic-links', icon: Zap, label: 'Magic Links' },
+    { id: 'crm', href: '/admin/crm', icon: Users, label: 'Customer CRM' },
     { id: 'staff', href: '/admin/staff', icon: Users, label: 'Staff & Time' },
     { id: 'team', href: '/admin/team', icon: UserCircle, label: 'Team' },
     { id: 'news', href: '/admin/news', icon: Newspaper, label: 'News' },
@@ -47,8 +44,8 @@ export default function AdminSidebar() {
 
   // Filter items based on permissions
   const navItems = allNavItems.filter(item => {
-    // Overview and LinkedIn are always visible if they have CMS access
-    if (item.id === 'overview' || item.id === 'linkedin' || item.id === 'magic') return true
+    // Overview and CRM are always visible if they have CMS access
+    if (item.id === 'overview' || item.id === 'crm') return true
     
     // Superadmin sees everything
     if (userRole?.role === 'superadmin') return true
