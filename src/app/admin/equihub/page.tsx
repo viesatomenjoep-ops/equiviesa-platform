@@ -31,13 +31,32 @@ export default async function EquihubPage() {
     .from('feeding_schedules')
     .select('*')
 
-  // 5. Fetch Staff
+  // 5. Fetch Staff (Admin Users for assignment)
   const { data: staff } = await supabase
     .from('admin_permissions')
     .select('id, email')
     .order('email')
 
-  const errorMsg = tasksError ? `Tasks Error: ${tasksError.message}` : (horsesError ? `Horses Error: ${horsesError.message}` : false)
+  // --- NEW EXPANSION DATA ---
+  // 6. Fetch Contacts (Vets, Farriers, Teams)
+  const { data: contacts, error: contactsError } = await supabase
+    .from('contacts')
+    .select('*')
+    .order('name')
+
+  // 7. Fetch Health Logs
+  const { data: healthLogs } = await supabase
+    .from('health_logs')
+    .select('*')
+    .order('date', { ascending: false })
+
+  // 8. Fetch Documents
+  const { data: documents } = await supabase
+    .from('stable_documents')
+    .select('*')
+    .order('created_at', { ascending: false })
+
+  const errorMsg = tasksError ? `Tasks Error: ${tasksError.message}` : (horsesError ? `Horses Error: ${horsesError.message}` : (contactsError ? `Contacts Error: ${contactsError.message}` : false))
 
   return (
     <div className="max-w-7xl mx-auto pb-24">
@@ -47,6 +66,9 @@ export default async function EquihubPage() {
         facilities={facilities || []}
         feedingSchedules={feedingSchedules || []}
         staff={staff || []} 
+        contacts={contacts || []}
+        healthLogs={healthLogs || []}
+        documents={documents || []}
         isError={errorMsg}
       />
     </div>
