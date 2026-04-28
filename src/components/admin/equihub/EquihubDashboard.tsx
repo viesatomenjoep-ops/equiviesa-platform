@@ -38,7 +38,7 @@ export default function EquihubDashboard({
               Viesa Stable <span className="text-white">Overview</span>
             </h1>
           </div>
-          <p className="text-gray-400 max-w-2xl text-lg font-light">
+          <p className="text-white max-w-2xl text-lg font-light">
             Jouw complete, digitale stal-assistent. Beheer je paarden, personeel, fokkerij en gezondheidsdossiers vanuit één gecentraliseerde, luxe omgeving.
           </p>
         </div>
