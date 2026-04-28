@@ -34,8 +34,8 @@ export default function EquihubDashboard({
           </div>
           <div className="flex items-center gap-4 mb-4">
             <Image src="/viesa-logo.png" alt="Viesa Logo" width={80} height={80} className="object-contain" />
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-white uppercase tracking-tight">
-              Viesa Stable <span className="text-primary">Overview</span>
+            <h1 className="text-4xl md:text-5xl font-sans font-bold text-white uppercase tracking-tight">
+              Viesa Stable <span className="text-white">Overview</span>
             </h1>
           </div>
           <p className="text-gray-400 max-w-2xl text-lg font-light">
@@ -100,7 +100,7 @@ export default function EquihubDashboard({
   )
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-sans">
       {isError && (
         <div className="bg-red-50 text-red-600 px-6 py-4 rounded-xl font-bold border border-red-100 w-full text-center mb-6">
           {typeof isError === 'string' ? (
@@ -131,7 +131,7 @@ export default function EquihubDashboard({
                   </button>
                   <div className="hidden sm:flex items-center gap-2">
                     <Image src="/viesa-logo.png" alt="Viesa" width={24} height={24} className="object-contain invert dark:invert-0" />
-                    <span className="text-lg font-serif font-bold text-gray-900 dark:text-white">Viesa Stable Overview</span>
+                    <span className="text-lg font-sans font-bold text-gray-900 dark:text-white">Viesa Stable Overview</span>
                   </div>
                 </div>
                 <div className="hidden md:flex items-center gap-2">
@@ -167,7 +167,7 @@ function HubCard({ icon, title, desc, color, onClick }: any) {
         {icon}
       </div>
       
-      <h3 className="text-xl font-serif font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors">
+      <h3 className="text-xl font-sans font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors">
         {title}
       </h3>
       <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
