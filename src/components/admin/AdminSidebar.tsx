@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
-import { LayoutDashboard, Database, Users, UserCircle, Newspaper, Settings, LogOut, Home, Menu, X, Camera, ClipboardList, FileText, Calendar, Globe, MessageSquare, Zap } from 'lucide-react'
+import { LayoutDashboard, Database, Users, UserCircle, Newspaper, Settings, LogOut, Home, Menu, X, Camera, ClipboardList, FileText, Calendar, Globe, MessageSquare, Zap, CheckSquare } from 'lucide-react'
 
 import { usePathname } from 'next/navigation'
 import { logout } from '@/app/actions/auth'
@@ -35,6 +35,7 @@ export default function AdminSidebar() {
     { id: 'appointments', href: '/admin/appointments', icon: Calendar, label: 'Visits (New)' },
     { id: 'references', href: '/admin/references', icon: Camera, label: 'References' },
     { id: 'inventory', href: '/admin/inventory', icon: ClipboardList, label: 'Inventory' },
+    { id: 'equihub', href: '/admin/equihub', icon: CheckSquare, label: 'Equihub (Stable)' },
     { id: 'quotes', href: '/admin/quotes', icon: FileText, label: 'Quotes & Orders' },
     { id: 'crm', href: '/admin/crm', icon: Users, label: 'Customers (CRM)' },
     { id: 'linkedin', href: '/admin/linkedin', icon: MessageSquare, label: 'LinkedIn Outreach' },

@@ -8,6 +8,10 @@ const quicksand = Quicksand({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.equivestworldwide.com'),
+  alternates: {
+    canonical: '/',
+  },
   title: "Equivest | Invest in Premium Sport Horses & Jumpers in Belgium",
   description: "Equivest is the premier platform to invest in elite sport horses, hunters, jumpers, and equitation horses in Belgium. Discover top-tier equestrian investments.",
   keywords: "sport horses Belgium, invest in sport horses, sport horses, jumpers, hunters, equitation horse, elite showjumpers, equestrian investments",
