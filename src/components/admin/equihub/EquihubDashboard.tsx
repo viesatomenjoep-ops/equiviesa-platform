@@ -20,7 +20,7 @@ export default function EquihubDashboard({
             <LayoutDashboard size={28} />
           </div>
           <div>
-            <h1 className="text-3xl font-serif font-bold text-gray-900 dark:text-white">Equihub</h1>
+            <h1 className="text-3xl font-serif font-bold text-gray-900 dark:text-white">Viesa Stable Management</h1>
             <p className="text-gray-500 dark:text-gray-400 mt-1 font-medium">Centraal Stal Management Systeem</p>
           </div>
         </div>
