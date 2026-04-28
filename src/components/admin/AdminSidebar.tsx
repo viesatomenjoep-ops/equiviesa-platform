@@ -35,7 +35,7 @@ export default function AdminSidebar() {
     { id: 'appointments', href: '/admin/appointments', icon: Calendar, label: 'Visits (New)' },
     { id: 'references', href: '/admin/references', icon: Camera, label: 'References' },
     { id: 'inventory', href: '/admin/inventory', icon: ClipboardList, label: 'Inventory' },
-    { id: 'equihub', href: '/admin/equihub', icon: CheckSquare, label: 'Viesa Stable' },
+    { id: 'equihub', href: '/admin/equihub', icon: CheckSquare, label: 'Equihub Management' },
     { id: 'quotes', href: '/admin/quotes', icon: FileText, label: 'Quotes & Orders' },
     { id: 'crm', href: '/admin/crm', icon: Users, label: 'Customers (CRM)' },
     { id: 'linkedin', href: '/admin/linkedin', icon: MessageSquare, label: 'LinkedIn Outreach' },
