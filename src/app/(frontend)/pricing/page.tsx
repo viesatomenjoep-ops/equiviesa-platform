@@ -1,153 +1,197 @@
 'use client'
 
 import { useState } from 'react'
-import { Check, Star, ArrowRight } from 'lucide-react'
+import { Check, Star, CreditCard, ArrowRight, ShieldCheck, Zap } from 'lucide-react'
 
 export default function PricingPage() {
-  const [horseRange, setHorseRange] = useState('0-10')
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('yearly')
 
   return (
     <main className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#0a0a0a]">
       {/* Header */}
-      <div className="max-w-4xl mx-auto text-center mb-20 animate-in fade-in slide-in-from-bottom-8 duration-700">
+      <div className="max-w-4xl mx-auto text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
         <h1 className="text-5xl md:text-6xl font-serif font-bold text-primary dark:text-white mb-6 uppercase tracking-tight">
-          Elevate Your Stable
+          Choose Your Plan
         </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
-          Choose the perfect Equihub membership to digitize your operations, simplify stable management, and unlock your true potential.
+        <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light leading-relaxed mb-10">
+          From private owners to large commercial stables, we have a plan that fits your needs. Digitize your operations today.
         </p>
+
+        {/* Billing Toggle */}
+        <div className="flex items-center justify-center gap-4">
+          <span className={`text-sm font-bold uppercase tracking-wider ${billingCycle === 'monthly' ? 'text-primary dark:text-white' : 'text-gray-400'}`}>Monthly</span>
+          <button 
+            onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
+            className="w-16 h-8 rounded-full bg-primary relative transition-colors focus:outline-none"
+          >
+            <div className={`w-6 h-6 rounded-full bg-white absolute top-1 transition-transform ${billingCycle === 'yearly' ? 'translate-x-9' : 'translate-x-1'}`} />
+          </button>
+          <div className="flex items-center gap-2">
+            <span className={`text-sm font-bold uppercase tracking-wider ${billingCycle === 'yearly' ? 'text-primary dark:text-white' : 'text-gray-400'}`}>Yearly</span>
+            <span className="px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs font-bold rounded-full">Save ~16%</span>
+          </div>
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+      {/* Pricing Cards */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-20">
         
-        {/* PRO MEMBER (Standard) */}
-        <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-3xl p-8 md:p-12 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-8 opacity-5">
-            <Star size={120} />
-          </div>
+        {/* BASIC */}
+        <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col relative">
+          <h2 className="text-2xl font-serif font-bold text-primary dark:text-white uppercase tracking-wider mb-2">Basic</h2>
+          <p className="text-gray-500 dark:text-gray-400 text-sm mb-6 h-10">Essential tools for private owners and small stables.</p>
           
-          <h2 className="text-3xl font-serif font-bold text-primary dark:text-white uppercase tracking-wider mb-2">Pro Member</h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-8 h-12">Best for ambitious stables who want to simplify their daily operations and save time.</p>
-          
-          <div className="mb-8">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-4">Prices that grow with your stable</h3>
-            <div className="flex items-baseline gap-2">
-              <span className="text-5xl font-serif font-bold text-primary dark:text-white">€ 1.900</span>
-              <span className="text-gray-500 font-medium">/ year</span>
+          <div className="mb-8 border-b border-gray-100 dark:border-gray-800 pb-8">
+            <div className="flex items-baseline gap-1">
+              <span className="text-4xl font-serif font-bold text-primary dark:text-white">
+                € {billingCycle === 'yearly' ? '490' : '49'}
+              </span>
+              <span className="text-gray-500 font-medium">/ {billingCycle === 'yearly' ? 'year' : 'month'}</span>
             </div>
-            <p className="text-xs text-gray-400 mt-2">Ex. VAT and taxes</p>
-          </div>
-
-          <div className="mb-8">
-            <p className="text-sm font-bold text-primary dark:text-white mb-3">Number of horses</p>
-            <div className="flex flex-wrap gap-2">
-              {['0-10', '11-20', '21-30', '31-40'].map(range => (
-                <button 
-                  key={range}
-                  onClick={() => setHorseRange(range)}
-                  className={`px-4 py-2 rounded-full text-sm font-bold transition-all outline-none ${
-                    horseRange === range 
-                      ? 'bg-primary text-white shadow-md' 
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
-                  }`}
-                >
-                  {range}
-                </button>
-              ))}
-            </div>
-            <p className="text-xs text-gray-500 italic mt-3">
-              More than 40 horses? The Super Member tier is the perfect solution for you.
-            </p>
-          </div>
-
-          <div className="mb-10 flex-1">
-            <p className="text-sm font-bold text-primary dark:text-white mb-4">Include optional add-ons:</p>
-            <div className="space-y-4">
-              <Addon label="Sales Module" price="€ 400/year" />
-              <Addon label="Breeding Module" price="€ 400/year" />
-              <Addon label="Finance Module" price="€ 600/year" />
-            </div>
-          </div>
-
-          <button className="w-full py-4 rounded-xl bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white dark:bg-transparent dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-primary font-bold tracking-wider uppercase transition-colors flex justify-center items-center gap-2 group">
-            Start Free Trial
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </button>
-          <p className="text-center text-xs text-gray-400 mt-4">No credit card required. Cancel anytime.</p>
-        </div>
-
-        {/* SUPER MEMBER (Pro) */}
-        <div className="bg-primary text-white rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden flex flex-col transform lg:-translate-y-4">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
-          
-          <div className="inline-block px-4 py-1.5 bg-accent/20 text-accent text-xs font-bold uppercase tracking-widest rounded-full w-max mb-6 border border-accent/30">
-            Most Popular
-          </div>
-
-          <h2 className="text-3xl font-serif font-bold text-white uppercase tracking-wider mb-2">Super Member</h2>
-          <p className="text-gray-300 mb-8 h-12">Perfect for professional stables who want to operate at the highest level with zero limitations.</p>
-          
-          <div className="mb-8">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-accent mb-4">Incredible value for money</h3>
-            <div className="flex items-baseline gap-2">
-              <span className="text-5xl font-serif font-bold text-white">€ 4.000</span>
-              <span className="text-gray-300 font-medium">/ year</span>
-              <span className="ml-2 px-2 py-1 bg-green-500/20 text-green-300 text-xs font-bold rounded">Save 20%</span>
-            </div>
-            <p className="text-xs text-gray-400 mt-2">Ex. VAT and taxes</p>
-          </div>
-
-          <div className="mb-8">
-            <p className="text-lg font-bold text-white mb-2">Unlimited Horses</p>
-            <p className="text-sm text-gray-300 italic leading-relaxed">
-              We offer an optional, personalized white-glove onboarding experience. We'll manage your entire transition to Equihub so you don't lose a single minute.
-            </p>
+            <p className="text-xs text-gray-400 mt-1">Excl. VAT</p>
           </div>
 
           <div className="mb-10 flex-1 space-y-4">
-            <p className="text-sm font-bold text-white mb-4">All the features in Pro Member, plus:</p>
-            <Feature label="Sales Module Included" />
-            <Feature label="Breeding Module Included" />
-            <Feature label="Finance Module Included" />
-            <Feature label="Priority 24/7 Support" />
-            <Feature label="Custom Integrations" />
+            <Feature label="Up to 10 horses" />
+            <Feature label="Basic Stable Management" />
+            <Feature label="Digital Task Board" />
+            <Feature label="Basic Feeding Schedules" />
+            <Feature label="1 Admin Account" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-auto">
-            <button className="w-full py-4 rounded-xl bg-accent text-white hover:bg-white hover:text-primary font-bold tracking-wider uppercase transition-colors shadow-lg">
-              Start Free Trial
-            </button>
-            <button className="w-full py-4 rounded-xl bg-primary-light border-2 border-white/20 text-white hover:bg-white/10 font-bold tracking-wider uppercase transition-colors">
-              Talk to Us
-            </button>
-          </div>
-          <p className="text-center text-xs text-gray-400 mt-4">Takes exactly 3 minutes. Cancel anytime.</p>
+          <button className="w-full py-4 rounded-xl bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white dark:bg-transparent dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-primary font-bold tracking-wider uppercase transition-colors">
+            Start Free Trial
+          </button>
         </div>
 
+        {/* PREMIUM (Most Popular) */}
+        <div className="bg-primary text-white rounded-3xl p-8 shadow-2xl relative flex flex-col transform md:-translate-y-4 border border-primary-light/30 overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
+          
+          <div className="absolute top-0 inset-x-0 flex justify-center -mt-0">
+            <div className="bg-accent text-white text-[10px] font-bold uppercase tracking-widest py-1 px-4 rounded-b-xl">
+              Most Popular
+            </div>
+          </div>
+
+          <h2 className="text-2xl font-serif font-bold text-white uppercase tracking-wider mb-2 mt-4 flex items-center gap-2">
+            <Star size={20} className="text-accent" /> Premium
+          </h2>
+          <p className="text-gray-300 text-sm mb-6 h-10">Professional operations aiming to optimize their daily workflow.</p>
+          
+          <div className="mb-8 border-b border-white/10 pb-8">
+            <div className="flex items-baseline gap-1">
+              <span className="text-4xl font-serif font-bold text-white">
+                € {billingCycle === 'yearly' ? '1.490' : '149'}
+              </span>
+              <span className="text-gray-300 font-medium">/ {billingCycle === 'yearly' ? 'year' : 'month'}</span>
+            </div>
+            <p className="text-xs text-gray-400 mt-1">Excl. VAT</p>
+          </div>
+
+          <div className="mb-10 flex-1 space-y-4">
+            <p className="text-xs font-bold text-accent uppercase tracking-widest mb-4">Everything in Basic, plus:</p>
+            <Feature label="Up to 40 horses" dark />
+            <Feature label="Breeding Module (Scans, Cycles)" dark />
+            <Feature label="Health & Medical Log" dark />
+            <Feature label="Advanced Custom Feeding" dark />
+            <Feature label="5 Staff Accounts (Role-based)" dark />
+          </div>
+
+          <button className="w-full py-4 rounded-xl bg-accent text-white hover:bg-white hover:text-primary font-bold tracking-wider uppercase transition-colors shadow-lg">
+            Start Free Trial
+          </button>
+        </div>
+
+        {/* ULTRA */}
+        <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col relative">
+          <h2 className="text-2xl font-serif font-bold text-primary dark:text-white uppercase tracking-wider mb-2 flex items-center gap-2">
+            <Zap size={20} className="text-accent" /> Ultra
+          </h2>
+          <p className="text-gray-500 dark:text-gray-400 text-sm mb-6 h-10">For large commercial stables operating at the highest level.</p>
+          
+          <div className="mb-8 border-b border-gray-100 dark:border-gray-800 pb-8">
+            <div className="flex items-baseline gap-1">
+              <span className="text-4xl font-serif font-bold text-primary dark:text-white">
+                € {billingCycle === 'yearly' ? '3.490' : '349'}
+              </span>
+              <span className="text-gray-500 font-medium">/ {billingCycle === 'yearly' ? 'year' : 'month'}</span>
+            </div>
+            <p className="text-xs text-gray-400 mt-1">Excl. VAT</p>
+          </div>
+
+          <div className="mb-10 flex-1 space-y-4">
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Everything in Premium, plus:</p>
+            <Feature label="Unlimited horses" />
+            <Feature label="Sales & CRM Module" />
+            <Feature label="Financial & Invoicing Module" />
+            <Feature label="Unlimited Staff & Client Portals" />
+            <Feature label="White-glove Onboarding" />
+          </div>
+
+          <button className="w-full py-4 rounded-xl bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white dark:bg-transparent dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-primary font-bold tracking-wider uppercase transition-colors">
+            Contact Sales
+          </button>
+        </div>
+
+      </div>
+
+      {/* Payment Methods & Trust Section */}
+      <div className="max-w-4xl mx-auto border-t border-gray-200 dark:border-gray-800 pt-16 mt-16 text-center">
+        <h3 className="text-lg font-serif font-bold text-primary dark:text-white uppercase tracking-wider mb-8">
+          Secure & Flexible Payments
+        </h3>
+        
+        <div className="flex flex-wrap justify-center items-center gap-8 mb-10 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+          {/* iDeal */}
+          <div className="flex items-center gap-2 font-bold text-xl tracking-tighter">
+            <div className="w-8 h-8 rounded-md bg-[#CC0066] flex items-center justify-center text-white">i</div>
+            DEAL
+          </div>
+          {/* Credit Card */}
+          <div className="flex items-center gap-2 font-bold text-lg">
+            <CreditCard size={24} />
+            Visa / Mastercard
+          </div>
+          {/* SEPA */}
+          <div className="flex items-center gap-2 font-bold text-lg italic">
+            SEPA Direct Debit
+          </div>
+          {/* Apple Pay */}
+          <div className="flex items-center gap-2 font-bold text-lg">
+             Pay
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left mt-12 bg-gray-50 dark:bg-gray-900 rounded-2xl p-8">
+          <div className="flex flex-col gap-2">
+            <ShieldCheck className="text-accent" size={28} />
+            <h4 className="font-bold text-gray-900 dark:text-white">Cancel Anytime</h4>
+            <p className="text-sm text-gray-500">No long-term commitments. You can cancel your monthly subscription at any time with one click.</p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <CreditCard className="text-accent" size={28} />
+            <h4 className="font-bold text-gray-900 dark:text-white">Automated Invoicing</h4>
+            <p className="text-sm text-gray-500">Receive VAT-compliant invoices automatically every month or year for your administration.</p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <Star className="text-accent" size={28} />
+            <h4 className="font-bold text-gray-900 dark:text-white">14-Day Free Trial</h4>
+            <p className="text-sm text-gray-500">Try our Basic or Premium plan for 14 days completely free. No credit card required to start.</p>
+          </div>
+        </div>
       </div>
     </main>
   )
 }
 
-function Addon({ label, price }: { label: string, price: string }) {
+function Feature({ label, dark = false }: { label: string, dark?: boolean }) {
   return (
-    <label className="flex items-center justify-between p-4 rounded-xl border border-gray-200 dark:border-gray-800 hover:border-primary/50 cursor-pointer transition-colors group">
-      <div className="flex items-center gap-3">
-        <input type="checkbox" defaultChecked className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary accent-primary cursor-pointer" />
-        <span className="font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">{label}</span>
+    <div className="flex items-start gap-3">
+      <div className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5 ${dark ? 'bg-accent/20 text-accent' : 'bg-primary/10 text-primary dark:bg-white/10 dark:text-white'}`}>
+        <Check size={12} strokeWidth={3} />
       </div>
-      <span className="text-gray-500 font-medium text-sm">{price}</span>
-    </label>
-  )
-}
-
-function Feature({ label }: { label: string }) {
-  return (
-    <div className="flex items-center gap-3">
-      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center text-accent">
-        <Check size={14} strokeWidth={3} />
-      </div>
-      <span className="font-medium text-gray-100">{label}</span>
+      <span className={`font-medium text-sm ${dark ? 'text-gray-100' : 'text-gray-700 dark:text-gray-300'}`}>{label}</span>
     </div>
   )
 }
