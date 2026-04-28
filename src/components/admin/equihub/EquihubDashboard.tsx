@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import TaskBoard from '@/components/admin/tasks/TaskBoard'
 import HorsesList from '@/components/admin/equihub/HorsesList'
 import FeedingBoard from '@/components/admin/equihub/FeedingBoard'
@@ -31,9 +32,12 @@ export default function EquihubDashboard({
               <ShieldCheck size={12}/> All-in-One
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 uppercase tracking-tight">
-            Viesa Stable <span className="text-primary">Overview</span>
-          </h1>
+          <div className="flex items-center gap-4 mb-4">
+            <Image src="/viesa-logo.png" alt="Viesa Logo" width={80} height={80} className="object-contain" />
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-white uppercase tracking-tight">
+              Viesa Stable <span className="text-primary">Overview</span>
+            </h1>
+          </div>
           <p className="text-gray-400 max-w-2xl text-lg font-light">
             Jouw complete, digitale stal-assistent. Beheer je paarden, personeel, fokkerij en gezondheidsdossiers vanuit één gecentraliseerde, luxe omgeving.
           </p>
@@ -125,7 +129,10 @@ export default function EquihubDashboard({
                   >
                     <ChevronLeft size={20} /> Terug naar Hub
                   </button>
-                  <span className="hidden sm:inline text-lg font-serif font-bold text-gray-900 dark:text-white">Viesa Stable Overview</span>
+                  <div className="hidden sm:flex items-center gap-2">
+                    <Image src="/viesa-logo.png" alt="Viesa" width={24} height={24} className="object-contain invert dark:invert-0" />
+                    <span className="text-lg font-serif font-bold text-gray-900 dark:text-white">Viesa Stable Overview</span>
+                  </div>
                 </div>
                 <div className="hidden md:flex items-center gap-2">
                   <span className="text-xs font-bold uppercase tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full">Viesa Pro</span>
