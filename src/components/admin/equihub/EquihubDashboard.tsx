@@ -7,12 +7,13 @@ import FeedingBoard from '@/components/admin/equihub/FeedingBoard'
 import HealthBoard from '@/components/admin/equihub/HealthBoard'
 import ContactsBoard from '@/components/admin/equihub/ContactsBoard'
 import DocumentsBoard from '@/components/admin/equihub/DocumentsBoard'
-import { CheckSquare, Info, Carrot, LayoutDashboard, Stethoscope, Users, FileText } from 'lucide-react'
+import BreedingBoard from '@/components/admin/equihub/BreedingBoard'
+import { CheckSquare, Info, Carrot, LayoutDashboard, Stethoscope, Users, FileText, HeartPulse } from 'lucide-react'
 
 export default function EquihubDashboard({
-  tasks, horses, facilities, feedingSchedules, staff, contacts, healthLogs, documents, isError
+  tasks, horses, facilities, feedingSchedules, staff, contacts, healthLogs, documents, breedingLogs, isError
 }: any) {
-  const [activeTab, setActiveTab] = useState<'tasks' | 'horses' | 'feeding' | 'health' | 'contacts' | 'documents'>('tasks')
+  const [activeTab, setActiveTab] = useState<'tasks' | 'horses' | 'feeding' | 'health' | 'contacts' | 'documents' | 'breeding'>('tasks')
 
   return (
     <div className="space-y-6">
@@ -47,6 +48,12 @@ export default function EquihubDashboard({
             onClick={() => setActiveTab('feeding')} 
             icon={<Carrot size={18} />} 
             label="Voeding" 
+          />
+          <TabButton 
+            active={activeTab === 'breeding'} 
+            onClick={() => setActiveTab('breeding')} 
+            icon={<HeartPulse size={18} />} 
+            label="Fokkerij" 
           />
           <TabButton 
             active={activeTab === 'health'} 
@@ -88,6 +95,7 @@ export default function EquihubDashboard({
           {activeTab === 'tasks' && <TaskBoard initialTasks={tasks} horses={horses} staff={staff} isError={isError} hideHeader={true} />}
           {activeTab === 'horses' && <HorsesList horses={horses} facilities={facilities} staff={staff} />}
           {activeTab === 'feeding' && <FeedingBoard horses={horses} initialSchedules={feedingSchedules} />}
+          {activeTab === 'breeding' && <BreedingBoard horses={horses} initialLogs={breedingLogs} />}
           {activeTab === 'health' && <HealthBoard horses={horses} initialLogs={healthLogs} contacts={contacts} />}
           {activeTab === 'contacts' && <ContactsBoard initialContacts={contacts} staff={staff} />}
           {activeTab === 'documents' && <DocumentsBoard horses={horses} initialDocuments={documents} />}

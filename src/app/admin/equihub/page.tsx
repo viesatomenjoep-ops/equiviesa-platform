@@ -56,6 +56,12 @@ export default async function EquihubPage() {
     .select('*')
     .order('created_at', { ascending: false })
 
+  // 9. Fetch Breeding Logs
+  const { data: breedingLogs } = await supabase
+    .from('breeding_logs')
+    .select('*')
+    .order('insemination_date', { ascending: false })
+
   const errorMsg = tasksError ? `Tasks Error: ${tasksError.message}` : (horsesError ? `Horses Error: ${horsesError.message}` : (contactsError ? `Contacts Error: ${contactsError.message}` : false))
 
   return (
@@ -69,6 +75,7 @@ export default async function EquihubPage() {
         contacts={contacts || []}
         healthLogs={healthLogs || []}
         documents={documents || []}
+        breedingLogs={breedingLogs || []}
         isError={errorMsg}
       />
     </div>
