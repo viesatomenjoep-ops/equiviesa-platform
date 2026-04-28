@@ -34,7 +34,7 @@ export default function AdminSidebar() {
     { id: 'appointments', href: '/admin/appointments', icon: Calendar, label: 'Visits (New)' },
     { id: 'references', href: '/admin/references', icon: Camera, label: 'References' },
     { id: 'inventory', href: '/admin/inventory', icon: ClipboardList, label: 'Inventory' },
-    { id: 'equihub', href: '/admin/equihub', icon: CheckSquare, label: 'Equihub Management' },
+    { id: 'equihub', href: '/admin/equihub', icon: CheckSquare, label: 'Viesa Stable Management' },
     { id: 'crm', href: '/admin/crm', icon: Users, label: 'Customer CRM' },
     { id: 'staff', href: '/admin/staff', icon: Users, label: 'Staff & Time' },
     { id: 'team', href: '/admin/team', icon: UserCircle, label: 'Team' },
@@ -97,7 +97,7 @@ export default function AdminSidebar() {
           </div>
           <div className="hidden md:flex items-center gap-3">
             <Image src="/logo.png" alt="Equivest Logo" width={40} height={40} className="w-10 h-10 object-contain animate-[spin_20s_linear_infinite]" />
-            <span className="text-xl font-serif font-semibold text-primary dark:text-white">Equivest CMS</span>
+            <span className="text-xl font-serif font-semibold text-primary dark:text-white">Equivest Management</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="hidden md:block"><LanguageSwitcher expandDirection="left" /></div>

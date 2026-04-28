@@ -32,7 +32,7 @@ export default function EquihubDashboard({
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 uppercase tracking-tight">
-            Equihub <span className="text-primary">Management</span>
+            Viesa Stable <span className="text-primary">Management</span>
           </h1>
           <p className="text-gray-400 max-w-2xl text-lg font-light">
             Jouw complete, digitale stal-assistent. Beheer je paarden, personeel, fokkerij en gezondheidsdossiers vanuit één gecentraliseerde, luxe omgeving.
@@ -125,7 +125,7 @@ export default function EquihubDashboard({
                   <ChevronLeft size={20} /> Terug naar Hub
                 </button>
                 <div className="hidden md:flex items-center gap-2">
-                  <span className="text-xs font-bold uppercase tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full">Equihub Pro</span>
+                  <span className="text-xs font-bold uppercase tracking-widest text-primary px-3 py-1 bg-primary/10 rounded-full">Viesa Pro</span>
                 </div>
               </div>
 
