@@ -2,11 +2,13 @@
 
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { HeartPulse, Plus, Calendar, Activity, CheckCircle, Clock } from 'lucide-react'
+import { HeartPulse, Plus, Calendar, Activity, CheckCircle, Clock, ExternalLink, ImageIcon } from 'lucide-react'
+import CloudinaryUploader from '@/components/admin/CloudinaryUploader'
 
 export default function BreedingBoard({ horses, initialLogs }: any) {
   const [logs, setLogs] = useState(initialLogs || [])
   const [showModal, setShowModal] = useState(false)
+  const [editingLog, setEditingLog] = useState<any>(null)
   const supabase = createClient()
 
   const [formData, setFormData] = useState({
@@ -15,10 +17,11 @@ export default function BreedingBoard({ horses, initialLogs }: any) {
     insemination_date: new Date().toISOString().slice(0, 10),
     status: 'Inseminated',
     expected_due_date: '',
-    notes: ''
+    scan_14_days_result: '',
+    notes: '',
+    scan_image_url: ''
   })
 
-  // Calculate expected due date (+ 11 months approx 340 days)
   const handleInseminationDateChange = (e: any) => {
     const date = new Date(e.target.value)
     if (!isNaN(date.getTime())) {
@@ -34,15 +37,58 @@ export default function BreedingBoard({ horses, initialLogs }: any) {
     }
   }
 
+  const openEditModal = (log: any) => {
+    setFormData({
+      horse_id: log.horse_id || '',
+      stallion_name: log.stallion_name || '',
+      insemination_date: log.insemination_date || new Date().toISOString().slice(0, 10),
+      status: log.status || 'Inseminated',
+      expected_due_date: log.expected_due_date || '',
+      scan_14_days_result: log.scan_14_days_result || '',
+      notes: log.notes || '',
+      scan_image_url: log.scan_image_url || ''
+    })
+    setEditingLog(log)
+    setShowModal(true)
+  }
+
+  const handleOpenNew = () => {
+    setFormData({
+      horse_id: '',
+      stallion_name: '',
+      insemination_date: new Date().toISOString().slice(0, 10),
+      status: 'Inseminated',
+      expected_due_date: '',
+      scan_14_days_result: '',
+      notes: '',
+      scan_image_url: ''
+    })
+    setEditingLog(null)
+    setShowModal(true)
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const { data, error } = await supabase.from('breeding_logs').insert([{
-      ...formData,
-      expected_due_date: formData.expected_due_date || null
-    }]).select().single()
+    
+    let res;
+    if (editingLog) {
+      res = await supabase.from('breeding_logs').update({
+        ...formData,
+        expected_due_date: formData.expected_due_date || null
+      }).eq('id', editingLog.id).select().single()
+    } else {
+      res = await supabase.from('breeding_logs').insert([{
+        ...formData,
+        expected_due_date: formData.expected_due_date || null
+      }]).select().single()
+    }
 
-    if (!error && data) {
-      setLogs([data, ...logs].sort((a, b) => new Date(b.insemination_date).getTime() - new Date(a.insemination_date).getTime()))
+    if (!res.error && res.data) {
+      if (editingLog) {
+        setLogs(logs.map((l: any) => l.id === editingLog.id ? res.data : l).sort((a: any, b: any) => new Date(b.insemination_date).getTime() - new Date(a.insemination_date).getTime()))
+      } else {
+        setLogs([res.data, ...logs].sort((a: any, b: any) => new Date(b.insemination_date).getTime() - new Date(a.insemination_date).getTime()))
+      }
       setShowModal(false)
     } else {
       alert("Error saving breeding log")
@@ -69,7 +115,7 @@ export default function BreedingBoard({ horses, initialLogs }: any) {
           <p className="text-sm text-gray-500 mt-1">Beheer inseminaties, scans en verwachte veulens.</p>
         </div>
         <button 
-          onClick={() => setShowModal(true)}
+          onClick={handleOpenNew}
           className="bg-primary text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 hover:bg-primary/90 transition-all active:scale-95"
         >
           <Plus size={16} /> Nieuwe Inseminatie
@@ -84,7 +130,7 @@ export default function BreedingBoard({ horses, initialLogs }: any) {
             {logs.map((log: any) => {
               const mare = horses?.find((h: any) => h.id === log.horse_id)
               return (
-                <div key={log.id} className="p-5 border border-gray-200 dark:border-gray-700 rounded-2xl hover:shadow-md transition-shadow relative">
+                <div key={log.id} onClick={() => openEditModal(log)} className="p-5 border border-gray-200 dark:border-gray-700 rounded-2xl hover:shadow-md transition-shadow cursor-pointer hover:border-primary/30 relative flex flex-col h-full">
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h3 className="font-bold text-lg text-gray-900 dark:text-white">
@@ -99,18 +145,26 @@ export default function BreedingBoard({ horses, initialLogs }: any) {
                     {getStatusBadge(log.status)}
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3 mb-4">
-                    <div className="bg-gray-50 dark:bg-gray-900/50 p-3 rounded-xl border border-gray-100 dark:border-gray-800">
-                      <p className="text-xs font-bold text-gray-500 uppercase">14-Dagen Scan</p>
+                  <div className="grid grid-cols-2 gap-3 mb-4 flex-grow">
+                    <div className={`p-3 rounded-xl border ${log.scan_14_days_result?.toLowerCase().includes('drachtig') ? 'bg-green-50 dark:bg-green-900/20 border-green-100 dark:border-green-800' : 'bg-gray-50 dark:bg-gray-900/50 border-gray-100 dark:border-gray-800'}`}>
+                      <p className="text-xs font-bold text-gray-500 uppercase">14-Dgn Scan</p>
                       <p className="font-medium text-sm mt-1">{log.scan_14_days_result || 'Nog plannen'}</p>
                     </div>
-                    <div className="bg-gray-50 dark:bg-gray-900/50 p-3 rounded-xl border border-gray-100 dark:border-gray-800">
-                      <p className="text-xs font-bold text-gray-500 uppercase">Verwachte Datum</p>
-                      <p className="font-medium text-sm mt-1 text-orange-600 dark:text-orange-400 font-bold">{log.expected_due_date || 'Onbekend'}</p>
+                    <div className="bg-orange-50 dark:bg-orange-900/20 p-3 rounded-xl border border-orange-100 dark:border-orange-800/30">
+                      <p className="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase">Verwacht</p>
+                      <p className="font-medium text-sm mt-1 text-orange-700 dark:text-orange-300 font-bold">{log.expected_due_date || 'Onbekend'}</p>
                     </div>
                   </div>
                   
-                  {log.notes && <p className="text-sm text-gray-600 dark:text-gray-400 italic">"{log.notes}"</p>}
+                  {log.notes && <p className="text-sm text-gray-600 dark:text-gray-400 italic mb-4">"{log.notes}"</p>}
+
+                  {log.scan_image_url && (
+                    <div className="mt-auto">
+                      <a href={log.scan_image_url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg text-sm font-bold hover:bg-blue-100 transition-colors border border-blue-100 dark:border-blue-800" onClick={(e) => e.stopPropagation()}>
+                        <ImageIcon size={16} /> Scan Bekijken <ExternalLink size={14} />
+                      </a>
+                    </div>
+                  )}
                 </div>
               )
             })}
@@ -119,12 +173,12 @@ export default function BreedingBoard({ horses, initialLogs }: any) {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden my-8">
-            <div className="p-6 border-b border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50">
-              <h3 className="text-xl font-bold">Nieuwe Dekking / Inseminatie</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl w-full max-w-xl my-8 relative">
+            <div className="p-6 border-b border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50 sticky top-0 rounded-t-3xl z-10">
+              <h3 className="text-xl font-bold">{editingLog ? 'Fokkerij Log Bewerken' : 'Nieuwe Dekking / Inseminatie'}</h3>
             </div>
-            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+            <form onSubmit={handleSubmit} className="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-bold mb-1">Merrie</label>
@@ -162,13 +216,33 @@ export default function BreedingBoard({ horses, initialLogs }: any) {
               </div>
 
               <div>
+                <label className="block text-sm font-bold mb-1">14-Dagen Scan Resultaat</label>
+                <input value={formData.scan_14_days_result} onChange={e => setFormData({...formData, scan_14_days_result: e.target.value})} className="w-full p-3 rounded-xl border dark:bg-gray-900" placeholder="Bijv. Drachtig 1 of Gust"/>
+              </div>
+
+              <div>
+                <label className="block text-sm font-bold mb-1">Upload Scan Foto / Echo</label>
+                {formData.scan_image_url ? (
+                  <div className="p-4 bg-green-50 border border-green-200 rounded-xl flex items-center justify-between">
+                    <span className="text-green-700 font-bold text-sm">✓ Echo / Scan geüpload</span>
+                    <button type="button" onClick={() => setFormData({...formData, scan_image_url: ''})} className="text-sm text-red-500 font-bold hover:underline">Verwijder</button>
+                  </div>
+                ) : (
+                  <CloudinaryUploader 
+                    onUploadSuccess={(url) => setFormData({...formData, scan_image_url: url})} 
+                    label="Upload echo foto of scan (Optioneel)" 
+                  />
+                )}
+              </div>
+
+              <div>
                 <label className="block text-sm font-bold mb-1">Opmerkingen / Cyclus info</label>
                 <textarea rows={2} value={formData.notes} onChange={e => setFormData({...formData, notes: e.target.value})} className="w-full p-3 rounded-xl border dark:bg-gray-900" placeholder="Bijv. follikel was 45mm..."/>
               </div>
 
-              <div className="pt-4 flex gap-3">
-                <button type="button" onClick={() => setShowModal(false)} className="flex-1 p-3 rounded-xl font-bold border hover:bg-gray-50 dark:hover:bg-gray-800">Annuleren</button>
-                <button type="submit" className="flex-1 p-3 rounded-xl font-bold bg-primary text-white hover:bg-primary/90">Opslaan</button>
+              <div className="pt-6 border-t border-gray-100 dark:border-gray-700 flex gap-3 sticky bottom-0 bg-white dark:bg-gray-800 py-4">
+                <button type="button" onClick={() => setShowModal(false)} className="flex-1 p-3 rounded-xl font-bold border hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">Annuleren</button>
+                <button type="submit" className="flex-1 p-3 rounded-xl font-bold bg-primary text-white hover:bg-primary/90 shadow-md">Opslaan</button>
               </div>
             </form>
           </div>

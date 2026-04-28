@@ -18,11 +18,49 @@ export default function ContactsBoard({ initialContacts, staff }: any) {
     notes: ''
   })
 
+  const [searchTerm, setSearchTerm] = useState('')
+  const [editingContact, setEditingContact] = useState<any>(null)
+
+  const filteredContacts = contacts.filter((contact: any) => {
+    const searchString = `${contact.name} ${contact.role} ${contact.company || ''} ${contact.email || ''}`.toLowerCase()
+    return searchString.includes(searchTerm.toLowerCase())
+  })
+
+  const openEditModal = (contact: any) => {
+    setFormData({
+      name: contact.name || '',
+      role: contact.role || 'Vet',
+      email: contact.email || '',
+      phone: contact.phone || '',
+      company: contact.company || '',
+      notes: contact.notes || ''
+    })
+    setEditingContact(contact)
+    setShowModal(true)
+  }
+
+  const handleOpenNew = () => {
+    setFormData({ name: '', role: 'Vet', email: '', phone: '', company: '', notes: '' })
+    setEditingContact(null)
+    setShowModal(true)
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const { data, error } = await supabase.from('contacts').insert([formData]).select().single()
-    if (!error && data) {
-      setContacts([...contacts, data].sort((a, b) => a.name.localeCompare(b.name)))
+    
+    let res;
+    if (editingContact) {
+      res = await supabase.from('contacts').update(formData).eq('id', editingContact.id).select().single()
+    } else {
+      res = await supabase.from('contacts').insert([formData]).select().single()
+    }
+
+    if (!res.error && res.data) {
+      if (editingContact) {
+        setContacts(contacts.map((c: any) => c.id === editingContact.id ? res.data : c).sort((a, b) => a.name.localeCompare(b.name)))
+      } else {
+        setContacts([...contacts, res.data].sort((a, b) => a.name.localeCompare(b.name)))
+      }
       setShowModal(false)
     } else {
       alert("Error saving contact")
@@ -41,28 +79,37 @@ export default function ContactsBoard({ initialContacts, staff }: any) {
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-      <div className="p-6 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
+      <div className="p-6 border-b border-gray-100 dark:border-gray-700 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
             <Users className="text-primary" /> Relaties & Teams
           </h2>
           <p className="text-sm text-gray-500 mt-1">Dierenartsen, hoefsmeden, eigenaren en personeel.</p>
         </div>
-        <button 
-          onClick={() => setShowModal(true)}
-          className="bg-primary text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 hover:bg-primary/90 transition-all active:scale-95"
-        >
-          <Plus size={16} /> Nieuw Contact
-        </button>
+        <div className="flex items-center gap-3 w-full sm:w-auto">
+          <input 
+            type="text" 
+            placeholder="Zoeken in relaties..." 
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="p-2 border border-gray-200 dark:border-gray-700 rounded-xl text-sm w-full sm:w-48 dark:bg-gray-900"
+          />
+          <button 
+            onClick={handleOpenNew}
+            className="bg-primary text-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 hover:bg-primary/90 transition-all active:scale-95 whitespace-nowrap"
+          >
+            <Plus size={16} /> Nieuw Contact
+          </button>
+        </div>
       </div>
 
       <div className="p-6">
-        {contacts.length === 0 ? (
+        {filteredContacts.length === 0 ? (
           <div className="text-center text-gray-500 py-10">Geen relaties gevonden.</div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {contacts.map((contact: any) => (
-              <div key={contact.id} className="p-5 border border-gray-200 dark:border-gray-700 rounded-2xl hover:shadow-md transition-shadow">
+            {filteredContacts.map((contact: any) => (
+              <div key={contact.id} onClick={() => openEditModal(contact)} className="p-5 border border-gray-200 dark:border-gray-700 rounded-2xl hover:shadow-md transition-shadow cursor-pointer hover:border-primary/30">
                 <div className="flex justify-between items-start mb-3">
                   <h3 className="font-bold text-lg">{contact.name}</h3>
                   <span className={`px-2 py-1 rounded-md text-xs font-bold ${getRoleBadge(contact.role)}`}>
@@ -80,11 +127,11 @@ export default function ContactsBoard({ initialContacts, staff }: any) {
 
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden my-8">
+          <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden my-8 relative">
             <div className="p-6 border-b border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50">
-              <h3 className="text-xl font-bold">Nieuwe Relatie Toevoegen</h3>
+              <h3 className="text-xl font-bold">{editingContact ? 'Relatie Bewerken' : 'Nieuwe Relatie Toevoegen'}</h3>
             </div>
-            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+            <form onSubmit={handleSubmit} className="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-bold mb-1">Naam</label>

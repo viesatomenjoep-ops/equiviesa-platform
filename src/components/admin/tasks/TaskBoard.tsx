@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { CheckCircle2, Circle, Clock, Stethoscope, Carrot, Dumbbell, Brush, Calendar, X, Plus } from 'lucide-react'
+import { CheckCircle2, Circle, Clock, Stethoscope, Carrot, Dumbbell, Brush, Calendar, X, Plus, Paperclip, ExternalLink } from 'lucide-react'
+import CloudinaryUploader from '@/components/admin/CloudinaryUploader'
 
 type Task = {
   id: string
@@ -14,6 +15,7 @@ type Task = {
   scheduled_at: string
   completed_at: string | null
   notes: string
+  attachment_url: string | null
   horses: { name: string; current_box_id: string }
   admin_permissions: { email: string }
 }
@@ -62,7 +64,8 @@ export default function TaskBoard({
     assigned_user_id: '',
     task_type: 'Training',
     scheduled_at: new Date().toISOString().slice(0, 16), // current datetime for local input
-    notes: ''
+    notes: '',
+    attachment_url: ''
   })
 
   const supabase = createClient()
@@ -114,7 +117,8 @@ export default function TaskBoard({
         assigned_user_id: '',
         task_type: 'Training',
         scheduled_at: new Date().toISOString().slice(0, 16),
-        notes: ''
+        notes: '',
+        attachment_url: ''
       })
     }
     setIsSubmitting(false)
@@ -293,6 +297,21 @@ export default function TaskBoard({
                 />
               </div>
 
+              <div>
+                <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">Bijlage / Foto (Optioneel)</label>
+                {formData.attachment_url ? (
+                  <div className="p-4 bg-green-50 border border-green-200 rounded-xl flex items-center justify-between">
+                    <span className="text-green-700 font-bold text-sm">✓ Bijlage toegevoegd</span>
+                    <button type="button" onClick={() => setFormData({...formData, attachment_url: ''})} className="text-sm text-red-500 font-bold hover:underline">Verwijder</button>
+                  </div>
+                ) : (
+                  <CloudinaryUploader 
+                    onUploadSuccess={(url) => setFormData({...formData, attachment_url: url})} 
+                    label="Upload referentiefoto of document" 
+                  />
+                )}
+              </div>
+
               <div className="pt-4 flex gap-3">
                 <button 
                   type="button" 
@@ -356,7 +375,25 @@ function TaskCard({ task, onToggle, horses, staff }: { task: Task, onToggle: () 
           👤 {user.email}
         </p>
       )}
-      {!horse && !user && <div className="mb-4"></div>}
+      
+      {task.notes && (
+        <div className="bg-gray-50 dark:bg-gray-900/50 p-3 rounded-xl mb-3 text-sm text-gray-600 dark:text-gray-400 italic">
+          "{task.notes}"
+        </div>
+      )}
+
+      {task.attachment_url && (
+        <a 
+          href={task.attachment_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 w-full py-2 mb-3 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg text-sm font-bold hover:bg-blue-100 transition-colors border border-blue-100 dark:border-blue-800"
+        >
+          <Paperclip size={16} /> Bekijk Bijlage <ExternalLink size={14} />
+        </a>
+      )}
+
+      {!horse && !user && !task.notes && !task.attachment_url && <div className="mb-4"></div>}
 
       {/* Action Button (Large Touch Area) */}
       <button 
