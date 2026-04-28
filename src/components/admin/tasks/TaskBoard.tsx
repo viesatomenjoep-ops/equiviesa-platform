@@ -98,11 +98,7 @@ export default function TaskBoard({
         ...formData,
         scheduled_at: new Date(formData.scheduled_at).toISOString()
       }])
-      .select(`
-        *,
-        horses ( name, current_box_id ),
-        admin_permissions ( email )
-      `)
+      .select('*')
       .single()
       
     if (error) {
@@ -184,7 +180,7 @@ export default function TaskBoard({
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                 {todoTasks.map(task => (
-                  <TaskCard key={task.id} task={task} onToggle={() => toggleTaskStatus(task)} />
+                  <TaskCard key={task.id} task={task} onToggle={() => toggleTaskStatus(task)} horses={horses} staff={staff} />
                 ))}
               </div>
             )}
@@ -199,7 +195,7 @@ export default function TaskBoard({
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 opacity-70">
                 {completedTasks.map(task => (
-                  <TaskCard key={task.id} task={task} onToggle={() => toggleTaskStatus(task)} />
+                  <TaskCard key={task.id} task={task} onToggle={() => toggleTaskStatus(task)} horses={horses} staff={staff} />
                 ))}
               </div>
             </div>
@@ -321,8 +317,12 @@ export default function TaskBoard({
   )
 }
 
-function TaskCard({ task, onToggle }: { task: Task, onToggle: () => void }) {
+function TaskCard({ task, onToggle, horses, staff }: { task: Task, onToggle: () => void, horses: any[], staff: any[] }) {
   const isCompleted = task.status === 'Klaar'
+  
+  // Manual join since we removed deep PostgREST relations
+  const horse = horses?.find(h => h.id === task.horse_id)
+  const user = staff?.find(s => s.id === task.assigned_user_id)
   
   return (
     <div className={`relative p-5 rounded-2xl border bg-white dark:bg-gray-800 shadow-sm transition-all duration-200 ${
@@ -346,17 +346,17 @@ function TaskCard({ task, onToggle }: { task: Task, onToggle: () => void }) {
       <h3 className={`text-lg font-bold mb-1 ${isCompleted ? 'text-gray-400 line-through' : 'text-gray-900 dark:text-white'}`}>
         {task.title}
       </h3>
-      {task.horses && (
+      {horse && (
         <p className="text-primary dark:text-primary/80 font-semibold text-sm mb-1">
-          🐴 {task.horses.name} {task.horses.current_box_id && `(Box: ${task.horses.current_box_id})`}
+          🐴 {horse.name} {horse.current_box_id && `(Box: ${horse.current_box_id})`}
         </p>
       )}
-      {task.admin_permissions && (
+      {user && (
         <p className="text-gray-500 dark:text-gray-400 text-xs font-medium mb-3">
-          👤 {task.admin_permissions.email}
+          👤 {user.email}
         </p>
       )}
-      {!task.horses && !task.admin_permissions && <div className="mb-4"></div>}
+      {!horse && !user && <div className="mb-4"></div>}
 
       {/* Action Button (Large Touch Area) */}
       <button 

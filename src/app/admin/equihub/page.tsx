@@ -8,16 +8,16 @@ export const metadata = {
 export default async function EquihubPage() {
   const supabase = await createClient()
   
-  // 1. Fetch Tasks
+  // 1. Fetch Tasks (without deep relations to prevent PostgREST cache errors)
   const { data: tasks, error: tasksError } = await supabase
     .from('stable_tasks')
-    .select('*, horses ( name, current_box_id ), admin_permissions ( email )')
+    .select('*')
     .order('scheduled_at', { ascending: true })
 
   // 2. Fetch Horses (with stable info)
-  const { data: horses } = await supabase
+  const { data: horses, error: horsesError } = await supabase
     .from('horses')
-    .select('id, name, current_box_id, owner_id, passport_number, chip_number, management_status, tack_info, cover_image_url')
+    .select('*')
     .order('name')
 
   // 3. Fetch Facilities (Boxes)
@@ -37,6 +37,8 @@ export default async function EquihubPage() {
     .select('id, email')
     .order('email')
 
+  const errorMsg = tasksError ? `Tasks Error: ${tasksError.message}` : (horsesError ? `Horses Error: ${horsesError.message}` : false)
+
   return (
     <div className="max-w-7xl mx-auto pb-24">
       <EquihubDashboard 
@@ -45,7 +47,7 @@ export default async function EquihubPage() {
         facilities={facilities || []}
         feedingSchedules={feedingSchedules || []}
         staff={staff || []} 
-        isError={tasksError ? tasksError.message + " | Details: " + tasksError.details : false}
+        isError={errorMsg}
       />
     </div>
   )
