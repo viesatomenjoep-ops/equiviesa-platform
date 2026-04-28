@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import TaskBoard from '@/components/admin/tasks/TaskBoard'
 import HorsesList from '@/components/admin/equihub/HorsesList'
@@ -15,6 +15,19 @@ export default function EquihubDashboard({
   tasks, horses, facilities, feedingSchedules, staff, contacts, healthLogs, documents, breedingLogs, isError
 }: any) {
   const [activeTab, setActiveTab] = useState<'hub' | 'tasks' | 'horses' | 'feeding' | 'health' | 'contacts' | 'documents' | 'breeding'>('hub')
+  const [scrollY, setScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+
+    // Call once to set initial value
+    handleScroll()
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const renderHub = () => (
     <div className="animate-in fade-in zoom-in-95 duration-500">
@@ -33,7 +46,9 @@ export default function EquihubDashboard({
             </span>
           </div>
           <div className="flex items-center gap-4 mb-4">
-            <Image src="/viesa-logo.png" alt="Viesa Logo" width={80} height={80} className="object-contain" />
+            <div style={{ transform: `rotate(${scrollY * 0.3}deg)`, transition: 'transform 0.1s ease-out' }}>
+              <Image src="/viesa-logo.png" alt="Viesa Logo" width={80} height={80} className="object-contain" />
+            </div>
             <h1 className="text-4xl md:text-5xl font-sans font-bold text-white uppercase tracking-tight">
               Viesa Stable <span className="text-white">Overview</span>
             </h1>
@@ -130,7 +145,9 @@ export default function EquihubDashboard({
                     <ChevronLeft size={20} /> Terug naar Hub
                   </button>
                   <div className="hidden sm:flex items-center gap-2">
-                    <Image src="/viesa-logo.png" alt="Viesa" width={24} height={24} className="object-contain invert dark:invert-0" />
+                    <div style={{ transform: `rotate(${scrollY * 0.3}deg)`, transition: 'transform 0.1s ease-out' }}>
+                      <Image src="/viesa-logo.png" alt="Viesa" width={24} height={24} className="object-contain invert dark:invert-0" />
+                    </div>
                     <span className="text-lg font-sans font-bold text-gray-900 dark:text-white">Viesa Stable Overview</span>
                   </div>
                 </div>
