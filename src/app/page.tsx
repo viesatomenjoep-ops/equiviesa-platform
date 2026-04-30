@@ -325,12 +325,12 @@ function FeatureCard({ icon, title }: { icon: React.ReactNode; title: string }) 
   return (
     <motion.div
       whileHover={{ scale: 1.05, y: -5 }}
-      className="bg-white/[0.02] border-white/[0.05] backdrop-blur-sm border border-white/[0.05] rounded-2xl p-6 text-center hover:shadow-2xl hover:shadow-white/5 transition-all duration-300"
+      className="bg-white/[0.02] border-white/[0.05] backdrop-blur-sm border border-white/[0.05] rounded-2xl p-3 sm:p-4 md:p-6 text-center hover:shadow-2xl hover:shadow-white/5 transition-all duration-300 flex flex-col justify-center items-center"
     >
-      <div className="w-12 h-12 mx-auto mb-4 text-blue-400">
+      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mx-auto mb-2 sm:mb-3 md:mb-4 text-blue-400">
         {icon}
       </div>
-      <h3 className="text-lg">{title}</h3>
+      <h3 className="text-xs sm:text-sm md:text-base lg:text-lg break-words leading-tight w-full">{title}</h3>
     </motion.div>
   );
 }
