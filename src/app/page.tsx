@@ -39,13 +39,13 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white overflow-x-hidden dark">
       {/* Top Navigation / Tool Selector */}
-      <header className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex justify-between items-center bg-slate-950/80 backdrop-blur-md border-b border-white/10">
+      <header className="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:p-6 flex justify-between items-center bg-slate-950/80 backdrop-blur-md border-b border-white/10">
         <div className="flex items-center">
-          <Link href="/" className="group flex items-center gap-4">
+          <Link href="/" className="group flex items-center gap-3 md:gap-4">
             <ScrollLogo>
-              <Image src="/logo.png" alt="Viesa Logo" width={80} height={80} className="w-16 h-16 md:w-20 md:h-20 object-contain" />
+              <Image src="/logo.png" alt="Viesa Logo" width={80} height={80} className="w-10 h-10 md:w-20 md:h-20 object-contain" />
             </ScrollLogo>
-            <span className="text-3xl md:text-5xl font-serif font-bold tracking-tight uppercase leading-none text-white">
+            <span className="text-xl md:text-5xl font-serif font-bold tracking-tight uppercase leading-none text-white">
               VIESA
             </span>
           </Link>
@@ -72,8 +72,8 @@ export default function App() {
         className="relative min-h-screen flex items-center justify-center px-6 py-20"
       >
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse delay-1000" />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-slate-300/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-slate-400/10 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto text-center">
@@ -88,7 +88,7 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
                 VIESA
               </span>
               <br />
@@ -97,7 +97,7 @@ export default function App() {
           </motion.div>
 
           <motion.p
-            className="text-xl md:text-2xl text-blue-200 mb-12 max-w-3xl mx-auto"
+            className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -111,7 +111,7 @@ export default function App() {
             transition={{ delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <button className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 flex items-center gap-2 justify-center">
+            <button className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-white text-slate-950 hover:bg-slate-200 rounded-full hover:shadow-2xl hover:shadow-white/10 transition-all duration-300 flex items-center gap-2 justify-center">
               Start Uw Transformatie
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -145,11 +145,11 @@ export default function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-lg text-blue-100 mb-6 leading-relaxed">
+            <p className="text-lg text-slate-300 mb-6 leading-relaxed">
               In de huidige markt wint niet het bedrijf dat het hardste werkt, maar het bedrijf dat het slimste is ingericht.
               VIESA Automations biedt geen losse tools, maar een integrale <span className="text-blue-400">"Blueprint"</span>.
             </p>
-            <p className="text-lg text-blue-100 leading-relaxed">
+            <p className="text-lg text-slate-300 leading-relaxed">
               Wij automatiseren uw bedrijf van de allereerste klik van een potentiële klant tot de uiteindelijke facturatie en nazorg.
               Met onze systemen bouwt u een schaalbaar model waarbij u niet meer afhankelijk bent van handmatige processen.
             </p>
@@ -194,9 +194,30 @@ export default function App() {
         </div>
       </Section>
 
+      
+      {/* Value Proposition Section */}
+      <Section title="Premium Kwaliteit" subtitle="Een fractie van de marktprijs">
+        <div className="bg-white/[0.02] backdrop-blur-md border border-white/[0.05] rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <h3 className="text-2xl md:text-3xl mb-6 font-serif text-white">
+              Waarom betalen voor losse tools als u een ultiem alles-in-één ecosysteem kunt hebben?
+            </h3>
+            <p className="text-lg text-slate-300 leading-relaxed mb-8">
+              Normaal gesproken betaalt u torenhoge bedragen aan development agencies voor onoverzichtelijke systemen, losse CRM's en trage websites. VIESA Automations levert een naadloos geïntegreerd, state-of-the-art platform dat vele malen luxer is, tegen een absolute fractie van de concurrentie.
+            </p>
+            <div className="flex justify-center">
+              <button className="px-8 py-4 bg-white text-slate-950 rounded-full hover:bg-slate-200 transition-colors font-bold flex items-center gap-2">
+                Ontdek Onze Prijzen
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </Section>
+
       {/* Case Study */}
       <Section title="Case Study" subtitle="Egaliseren.nl - De Potentie van Automatisering">
-        <div className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 backdrop-blur-sm border border-blue-500/20 rounded-3xl p-8 md:p-12">
+        <div className="bg-white/[0.02] border-white/[0.05] backdrop-blur-sm border border-blue-500/20 rounded-3xl p-8 md:p-12">
           <div className="grid md:grid-cols-3 gap-8">
             <CaseStudyItem
               title="Google Ranking"
@@ -216,25 +237,25 @@ export default function App() {
 
       {/* Become a Pro Member */}
       <Section title="Become a Pro Member" subtitle="Sluit je aan bij de elite van digitale koplopers">
-        <div className="bg-gradient-to-br from-purple-900/40 to-blue-900/40 backdrop-blur-sm border border-purple-500/30 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+        <div className="bg-white/[0.02] border-white/[0.05] backdrop-blur-sm border border-white/[0.05] rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl -ml-20 -mb-20 pointer-events-none" />
           
           <div className="relative z-10">
-            <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/20">
+            <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br bg-white/[0.05] border border-white/10 rounded-2xl flex items-center justify-center shadow-lg shadow-white/5">
               <Crown className="w-10 h-10 text-white" />
             </div>
             
-            <h3 className="text-3xl md:text-4xl mb-4 font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+            <h3 className="text-3xl md:text-4xl mb-4 font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
               Viesa Pro Membership
             </h3>
             
-            <p className="text-lg text-blue-100 max-w-2xl mx-auto mb-8 leading-relaxed">
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
               Krijg toegang tot ons exclusieve netwerk, geavanceerde blueprint-strategieën, en premium automatiseringstools. Met Viesa Pro til je jouw digitale ecosysteem en bedrijfsgroei naar het allerhoogste niveau.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/pricing" className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 flex items-center gap-2 justify-center font-semibold text-white">
+              <Link href="/pricing" className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-white text-slate-950 hover:bg-slate-200 rounded-full hover:shadow-2xl hover:shadow-white/10 transition-all duration-300 flex items-center gap-2 justify-center font-semibold text-white">
                 Word Pro Member
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -250,12 +271,12 @@ export default function App() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-12 md:p-16 shadow-2xl"
+            className="bg-white text-slate-950 hover:bg-slate-200 rounded-3xl p-12 md:p-16 shadow-2xl"
           >
             <h2 className="text-4xl md:text-5xl mb-6">
               Klaar voor Digitale Dominantie?
             </h2>
-            <p className="text-xl text-blue-100 mb-8">
+            <p className="text-xl text-slate-300 mb-8">
               Start vandaag nog met de automatisering van uw bouwbedrijf
             </p>
             <button className="w-full sm:w-auto px-8 py-4 md:px-12 md:py-5 bg-white text-blue-600 rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto">
@@ -290,7 +311,7 @@ function Section({ title, subtitle, children }: { title: string; subtitle: strin
           <h2 className="text-4xl md:text-5xl mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             {title}
           </h2>
-          <p className="text-xl text-blue-200">{subtitle}</p>
+          <p className="text-xl text-slate-300">{subtitle}</p>
         </motion.div>
         {children}
       </div>
@@ -302,7 +323,7 @@ function FeatureCard({ icon, title }: { icon: React.ReactNode; title: string }) 
   return (
     <motion.div
       whileHover={{ scale: 1.05, y: -5 }}
-      className="bg-gradient-to-br from-blue-900/40 to-purple-900/40 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-6 text-center hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300"
+      className="bg-white/[0.02] border-white/[0.05] backdrop-blur-sm border border-white/[0.05] rounded-2xl p-6 text-center hover:shadow-2xl hover:shadow-white/5 transition-all duration-300"
     >
       <div className="w-12 h-12 mx-auto mb-4 text-blue-400">
         {icon}
@@ -326,7 +347,7 @@ function SeoFeature({ icon, title, description, delay }: { icon: React.ReactNode
       </div>
       <div>
         <h3 className="text-xl sm:text-2xl mb-2">{title}</h3>
-        <p className="text-blue-200">{description}</p>
+        <p className="text-slate-300">{description}</p>
       </div>
     </motion.div>
   );
@@ -341,11 +362,11 @@ function CaseStudyItem({ title, description }: { title: string; description: str
       whileHover={{ scale: 1.05 }}
       className="text-center"
     >
-      <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+      <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br bg-white/[0.05] border border-white/10 rounded-full flex items-center justify-center">
         <CheckCircle2 className="w-8 h-8" />
       </div>
       <h3 className="text-xl mb-3">{title}</h3>
-      <p className="text-blue-200">{description}</p>
+      <p className="text-slate-300">{description}</p>
     </motion.div>
   );
 }

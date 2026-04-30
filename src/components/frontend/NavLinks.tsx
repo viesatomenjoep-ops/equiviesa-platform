@@ -24,22 +24,22 @@ export default function NavLinks({ user, isMobile = false, setIsOpen, logoutActi
   if (isMobile) {
     return (
       <>
-        <Link onClick={() => setIsOpen?.(false)} href="/" className="text-xl font-serif font-bold text-white hover:text-accent transition-colors uppercase">
+        <Link onClick={() => setIsOpen?.(false)} href="/" className="text-base font-serif font-bold text-white hover:text-accent transition-colors uppercase">
           Return to Homepage
         </Link>
         {user ? (
           <>
-            <Link onClick={() => setIsOpen?.(false)} href="/admin" className="text-xl font-serif font-bold text-accent hover:text-primary transition-colors uppercase">
+            <Link onClick={() => setIsOpen?.(false)} href="/admin" className="text-base font-serif font-bold text-accent hover:text-primary transition-colors uppercase">
               Admin Dashboard
             </Link>
             <form action={logoutAction} className="inline">
-              <button type="submit" onClick={() => setIsOpen?.(false)} className="text-xl font-serif font-bold text-accent hover:text-primary transition-colors uppercase text-left w-full">
+              <button type="submit" onClick={() => setIsOpen?.(false)} className="text-base font-serif font-bold text-accent hover:text-primary transition-colors uppercase text-left w-full">
                 Logout
               </button>
             </form>
           </>
         ) : (
-          <Link onClick={() => setIsOpen?.(false)} href="/login" className="text-xl font-serif font-bold text-accent hover:text-primary transition-colors uppercase">
+          <Link onClick={() => setIsOpen?.(false)} href="/login" className="text-base font-serif font-bold text-accent hover:text-primary transition-colors uppercase">
             Login
           </Link>
         )}
@@ -49,7 +49,7 @@ export default function NavLinks({ user, isMobile = false, setIsOpen, logoutActi
             key={link.href}
             onClick={() => setIsOpen?.(false)} 
             href={link.href} 
-            className={`text-xl font-serif font-bold transition-colors uppercase ${isActive(link.href) ? 'text-accent' : 'text-white hover:text-accent'}`}
+            className={`text-base font-serif font-bold transition-colors uppercase ${isActive(link.href) ? 'text-accent' : 'text-white hover:text-accent'}`}
           >
             {link.label}
           </Link>
