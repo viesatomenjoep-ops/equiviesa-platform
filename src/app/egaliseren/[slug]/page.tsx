@@ -86,15 +86,14 @@ export default function ServiceLandingPage() {
       
       setResult(`Geschatte prijs: €${price.toFixed(2)}.`);
       
-      // Simulate CallMeBot integration
-      if (whatsapp) {
-        const text = `Hallo! Hier is uw Egaliseren.nl offerte voor ${content.title}. Oppervlakte: ${opp}m2. Geschatte prijs: €${price.toFixed(2)}. We nemen snel contact op!`;
-        const encodedText = encodeURIComponent(text);
-        
-        // Fire and forget to CallMeBot API (mocked API call)
-        const url = `https://api.callmebot.com/whatsapp.php?phone=${whatsapp.replace(/\+/g, '')}&text=${encodedText}&apikey=123456`;
-        console.log('CallMeBot triggered for:', whatsapp, url);
-      }
+      // Open direct WhatsApp conversation with the owner (0651641886)
+      // This is much more reliable than CallMeBot for B2C interactions
+      const ownerPhone = '31651641886';
+      const text = `Beste Egaliseren.nl, ik heb zojuist via de site een berekening gemaakt voor een ${content.title} en wil dit graag inplannen.\n\n*Mijn gegevens:*\n- Telefoon: ${whatsapp || 'Niet ingevuld'}\n- Oppervlakte: ${opp}m²\n- Ondervloer: Beton/Zandcement\n\nDe geschatte prijs was €${price.toFixed(2)}. Kunnen we dit bespreken?`;
+      const encodedText = encodeURIComponent(text);
+      
+      window.open(`https://wa.me/${ownerPhone}?text=${encodedText}`, '_blank');
+
     } catch (e) {
       console.error(e);
       setResult('Er ging iets mis bij het berekenen.');
@@ -239,8 +238,8 @@ export default function ServiceLandingPage() {
                   {result ? (
                     <div className="bg-green-500/20 border border-green-500/50 rounded-xl p-4 text-center">
                       <p className="text-green-400 font-bold mb-1">Berekening Geslaagd!</p>
-                      <p className="text-white">{result}</p>
-                      {whatsapp && <p className="text-sm text-green-300 mt-2">Offerte is verzonden naar WhatsApp via CallMeBot!</p>}
+                      <p className="text-white mb-3">{result}</p>
+                      <p className="text-sm text-green-300">WhatsApp is geopend om direct contact op te nemen!</p>
                       <button onClick={() => setResult(null)} className="mt-4 text-sm underline text-slate-400 hover:text-white">Nieuwe berekening</button>
                     </div>
                   ) : (
