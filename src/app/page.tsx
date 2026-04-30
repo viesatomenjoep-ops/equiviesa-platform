@@ -42,8 +42,8 @@ export default function App() {
         <div className="flex items-center">
           <Link href="/" className="group flex items-center gap-4">
             <Image src="/logo.png" alt="Viesa Logo" width={96} height={96} className="w-20 h-20 md:w-24 md:h-24 object-contain animate-[spin_20s_linear_infinite]" />
-            <span className="text-3xl md:text-5xl font-serif font-bold tracking-tight uppercase leading-none">
-              <span className="text-blue-500 group-hover:text-blue-400 transition-colors">V</span><span className="text-white">IESA</span>
+            <span className="text-3xl md:text-5xl font-serif font-bold tracking-tight uppercase leading-none text-white">
+              VIESA
             </span>
           </Link>
         </div>
