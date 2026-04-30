@@ -35,21 +35,20 @@ export default function EgaliserenLandingPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#001C3D] via-[#001C3D]/95 to-slate-900 text-white overflow-x-hidden dark">
+    <div className="min-h-screen bg-gray-50 text-slate-900 overflow-x-hidden">
       {/* Top Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 py-4 px-6 flex justify-center md:justify-start items-center bg-[#001C3D]/80 backdrop-blur-md border-b border-white/10">
+      <header className="fixed top-0 left-0 right-0 z-50 py-4 px-6 flex justify-center md:justify-start items-center bg-white/90 backdrop-blur-md border-b border-gray-200">
         <Link href="/egaliseren" className="group flex items-center gap-3">
-          <span className="font-serif tracking-tight uppercase leading-none text-white flex items-baseline gap-2">
-            <span className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#3A86FF] to-[#70C100] bg-clip-text text-transparent drop-shadow-lg">EGALISEREN.NL</span>
+          <span className="font-serif tracking-tight uppercase leading-none text-slate-900 flex items-baseline gap-2">
+            <span className="text-2xl md:text-3xl font-bold">EGALISEREN.NL</span>
           </span>
         </Link>
       </header>
 
-      {/* Mouse follower gradient */}
       <div
         className="fixed inset-0 pointer-events-none z-0"
         style={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.15), transparent 40%)`
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(0, 0, 0, 0.03), transparent 40%)`
         }}
       />
 
@@ -60,8 +59,7 @@ export default function EgaliserenLandingPage() {
         className="relative min-h-screen pt-40 md:pt-48 flex flex-col items-center justify-start px-6"
       >
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#3A86FF]/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#70C100]/20 rounded-full blur-3xl animate-pulse delay-1000" />
+          {/* Removed glowing orbs for a calmer design */}
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto text-center mt-8">
@@ -76,16 +74,16 @@ export default function EgaliserenLandingPage() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent drop-shadow-lg">
+              <span className="text-slate-900 drop-shadow-sm">
                 DE BASIS VOOR
               </span>
               <br />
-              <span className="text-white drop-shadow-lg">ELKE TOPVLOER</span>
+              <span className="text-slate-900 drop-shadow-sm">ELKE TOPVLOER</span>
             </motion.h1>
           </motion.div>
 
           <motion.p
-            className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto font-light"
+            className="text-xl md:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto font-light"
             initial={{ opacity: 0, y: 20, filter: 'blur(5px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -99,11 +97,11 @@ export default function EgaliserenLandingPage() {
             transition={{ delay: 0.7, duration: 0.8, type: 'spring', stiffness: 100 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <a href="#offerte" className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-[#70C100] text-white hover:bg-[#5E9E00] rounded-full shadow-xl shadow-[#70C100]/20 hover:shadow-2xl transition-all duration-300 flex items-center gap-2 justify-center font-bold">
+            <a href="#offerte" className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-slate-900 text-white hover:bg-slate-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 justify-center font-bold">
               Vrijblijvende Offerte
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="#diensten" className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 border border-[#3A86FF]/50 rounded-full hover:bg-[#3A86FF]/10 transition-all duration-300 flex items-center justify-center font-bold shadow-lg">
+            <a href="#diensten" className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 border border-gray-300 text-slate-900 rounded-full hover:bg-gray-100 transition-all duration-300 flex items-center justify-center font-bold">
               Onze Diensten
             </a>
           </motion.div>
@@ -114,9 +112,9 @@ export default function EgaliserenLandingPage() {
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
-          <div className="w-6 h-10 border-2 border-[#3A86FF]/50 rounded-full flex items-start justify-center p-2">
+          <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex items-start justify-center p-2">
             <motion.div
-              className="w-1.5 h-1.5 bg-[#3A86FF] rounded-full"
+              className="w-1.5 h-1.5 bg-gray-400 rounded-full"
               animate={{ y: [0, 12, 0] }}
               transition={{ repeat: Infinity, duration: 2 }}
             />
@@ -133,10 +131,10 @@ export default function EgaliserenLandingPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-xl md:text-2xl text-slate-300 mb-6 leading-relaxed">
-              Een perfect strakke vloer begint bij de juiste ondergrond. <span className="text-[#3A86FF]">Egaliseren.nl</span> is de absolute specialist in het prepareren van uw vloer.
+            <p className="text-xl md:text-2xl text-slate-600 mb-6 leading-relaxed">
+              Een perfect strakke vloer begint bij de juiste ondergrond. <span className="font-bold text-slate-900">Egaliseren.nl</span> is de absolute specialist in het prepareren van uw vloer.
             </p>
-            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
+            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed">
               Of het nu gaat om anhydriet, zandcement of hout, wij zorgen ervoor dat uw ondervloer spiegelglad is. Perfect voor PVC, laminaat, tegels of gietvloeren.
             </p>
           </motion.div>
@@ -158,16 +156,16 @@ export default function EgaliserenLandingPage() {
 
       {/* Value Proposition Section */}
       <Section title="Waarom Egaliseren.nl?" subtitle="Kwaliteit & Snelheid gecombineerd">
-        <div className="bg-white/[0.02] backdrop-blur-md border border-white/[0.05] rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+        <div className="bg-white border border-gray-200 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-sm">
           <div className="relative z-10 max-w-3xl mx-auto">
-            <h3 className="text-2xl md:text-3xl mb-6 font-serif text-white">
+            <h3 className="text-2xl md:text-3xl mb-6 font-serif text-slate-900">
               Vakkundig, Snel en Betrouwbaar door heel Nederland
             </h3>
-            <p className="text-lg text-slate-300 leading-relaxed mb-8">
+            <p className="text-lg text-slate-600 leading-relaxed mb-8">
               Wij maken gebruik van de beste materialen en modernste technieken. Doordat wij ons gehele proces hebben geautomatiseerd, ontvangt u binnen no-time een scherpe offerte en kunnen wij vaak al op korte termijn schakelen.
             </p>
             <div className="flex justify-center">
-              <a href="#offerte" className="px-8 py-4 bg-[#70C100] text-white rounded-full hover:bg-[#5E9E00] transition-colors font-bold flex items-center gap-2">
+              <a href="#offerte" className="px-8 py-4 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors font-bold flex items-center gap-2 shadow-lg">
                 Bereken uw Prijs
                 <ArrowRight className="w-5 h-5" />
               </a>
@@ -201,15 +199,15 @@ export default function EgaliserenLandingPage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white text-slate-950 rounded-3xl p-8 md:p-10 shadow-2xl"
+            className="bg-white border border-gray-200 rounded-3xl p-8 md:p-10 shadow-lg"
           >
-            <h2 className="text-3xl md:text-4xl mb-4 font-bold">
+            <h2 className="text-3xl md:text-4xl mb-4 font-bold text-slate-900">
               Klaar voor een perfecte vloer?
             </h2>
             <p className="text-lg md:text-xl text-slate-600 mb-6">
               Vraag vandaag nog een vrijblijvende offerte aan
             </p>
-            <button className="w-full sm:w-auto px-6 py-3 md:px-10 md:py-4 bg-[#70C100] text-white rounded-full hover:shadow-2xl hover:bg-[#5E9E00] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto font-bold text-lg inline-flex">
+            <button className="w-full sm:w-auto px-6 py-3 md:px-10 md:py-4 bg-slate-900 text-white rounded-full hover:shadow-xl hover:bg-slate-800 transition-all duration-300 flex items-center justify-center gap-2 mx-auto font-bold text-lg inline-flex">
               Offerte Aanvragen
               <ArrowRight className="w-5 h-5" />
             </button>
@@ -218,7 +216,7 @@ export default function EgaliserenLandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-[#3A86FF]/20 py-8 px-6 text-center text-slate-400">
+      <footer className="border-t border-gray-200 py-8 px-6 text-center text-slate-500">
         <p className="notranslate">© 2026 Egaliseren.nl - De basis voor elke vloer.</p>
       </footer>
     </div>
@@ -238,10 +236,10 @@ function Section({ id, title, subtitle, children }: { id?: string, title: string
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl mb-4 bg-gradient-to-r from-[#3A86FF] to-[#70C100] bg-clip-text text-transparent drop-shadow-lg font-bold">
+          <h2 className="text-4xl md:text-5xl mb-4 text-slate-900 font-bold">
             {title}
           </h2>
-          <p className="text-xl text-slate-300 font-light">{subtitle}</p>
+          <p className="text-xl text-slate-600 font-light">{subtitle}</p>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -259,12 +257,12 @@ function FeatureCard({ icon, title }: { icon: React.ReactNode; title: string }) 
   return (
     <motion.div
       whileHover={{ scale: 1.05, y: -5 }}
-      className="bg-[#001C3D]/30 border-white/[0.05] backdrop-blur-sm border rounded-2xl p-3 sm:p-4 md:p-6 text-center hover:shadow-2xl hover:shadow-white/5 transition-all duration-300 flex flex-col justify-center items-center"
+      className="bg-white border border-gray-200 rounded-2xl p-3 sm:p-4 md:p-6 text-center hover:shadow-lg transition-all duration-300 flex flex-col justify-center items-center shadow-sm"
     >
-      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mx-auto mb-2 sm:mb-3 md:mb-4 text-[#3A86FF]">
+      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mx-auto mb-2 sm:mb-3 md:mb-4 text-slate-700">
         {icon}
       </div>
-      <h3 className="text-xs sm:text-sm md:text-base lg:text-lg break-words leading-tight w-full">{title}</h3>
+      <h3 className="text-xs sm:text-sm md:text-base lg:text-lg break-words leading-tight w-full font-medium text-slate-900">{title}</h3>
     </motion.div>
   );
 }
@@ -276,13 +274,13 @@ function CaseStudyItem({ title, description }: { title: string; description: str
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ scale: 1.05 }}
-      className="text-center bg-white/[0.02] border border-white/[0.05] rounded-2xl p-8 backdrop-blur-sm"
+      className="text-center bg-white border border-gray-200 rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all"
     >
-      <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br bg-[#001C3D]/50 border border-white/10 rounded-full flex items-center justify-center">
-        <CheckCircle2 className="w-8 h-8 text-[#70C100]" />
+      <div className="w-16 h-16 mx-auto mb-4 bg-gray-50 border border-gray-200 rounded-full flex items-center justify-center">
+        <CheckCircle2 className="w-8 h-8 text-slate-700" />
       </div>
-      <h3 className="text-xl font-bold mb-3">{title}</h3>
-      <p className="text-slate-300 leading-relaxed">{description}</p>
+      <h3 className="text-xl font-bold mb-3 text-slate-900">{title}</h3>
+      <p className="text-slate-600 leading-relaxed">{description}</p>
     </motion.div>
   );
 }
