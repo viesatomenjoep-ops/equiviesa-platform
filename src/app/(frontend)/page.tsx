@@ -1,248 +1,409 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Trophy, ArrowRight, Lock } from "lucide-react";
-import ParallaxLogo from "@/components/frontend/ParallaxLogo";
-import PartnerSlider from "@/components/frontend/PartnerSlider";
+'use client';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useInView, useScroll, useTransform } from 'motion/react';
+import {
+  Zap,
+  TrendingUp,
+  Target,
+  MessageCircle,
+  Smartphone,
+  Bot,
+  Star,
+  ArrowRight,
+  CheckCircle2,
+  Globe,
+  Instagram,
+  MessageSquare
+} from 'lucide-react';
 
-export const dynamic = 'force-dynamic'
+export default function App() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll();
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
 
-export default function Home() {
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
-    <main className="flex-1 bg-[#fdfbf7] dark:bg-[#0a0a0a] overflow-x-hidden">
-      {/* Shared Background for Hero and Slider */}
-      <div className="relative w-full">
-        <div className="absolute inset-0 opacity-90 overflow-hidden pointer-events-none">
-          <Image
-            src="/chimi.jpg"
-            alt="Elite Jumper Chimi"
-            fill
-            priority
-            className="object-cover object-top"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-[#fdfbf7] dark:to-[#0a0a0a]"></div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white overflow-x-hidden">
+      {/* Mouse follower gradient */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.15), transparent 40%)`
+        }}
+      />
+
+      {/* Hero Section */}
+      <motion.section
+        ref={heroRef}
+        style={{ opacity, scale }}
+        className="relative min-h-screen flex items-center justify-center px-6 py-20"
+      >
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
 
-        {/* Hero Section */}
-        <section className="relative min-h-[180vh] flex flex-col items-center justify-start text-white pt-24 pb-32">
-          <div className="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-6 md:space-y-8 w-full mt-2 mb-16">
-            <div className="inline-flex items-center space-x-2 px-4 py-2 bg-white/10 border border-white/20 rounded-full mb-4">
-              <span className="w-2 h-2 bg-accent-light rounded-full animate-pulse"></span>
-              <span className="text-accent-light uppercase tracking-[0.3em] text-xs sm:text-sm md:text-base font-bold">
-                Invest in Elite Showjumpers
+        <div className="relative z-10 max-w-6xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.h1
+              className="text-6xl md:text-8xl mb-6 tracking-tight"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                VIESA
               </span>
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl font-serif text-white leading-[1.1] tracking-tight">
-              High-yield returns from world-class <span className="text-accent-light italic">equestrian talent.</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl font-medium text-white/80 max-w-2xl mx-auto leading-relaxed">
-              Securing high-yield returns through the acquisition of world-class equestrian talent.
-            </p>
-            
-            <div className="pt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/horses"
-                className="bg-accent text-white px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-primary transition-all shadow-xl"
-              >
-                View Portfolio
-              </Link>
+              <br />
+              <span className="text-white">AUTOMATIONS</span>
+            </motion.h1>
+          </motion.div>
 
-            </div>
-          </div>
+          <motion.p
+            className="text-xl md:text-2xl text-blue-200 mb-12 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            De Blauwdruk voor Digitale Dominantie in de Bouw
+          </motion.p>
 
-          <ParallaxLogo />
-        </section>
-
-        {/* Supported By Slider */}
-        <div className="relative z-30 -mt-16 md:-mt-24 pb-12 md:pb-20">
-          <PartnerSlider />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <button className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 flex items-center gap-2 justify-center">
+              Start Uw Transformatie
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button className="px-8 py-4 border border-blue-400/50 rounded-full hover:bg-blue-500/10 transition-all duration-300">
+              Bekijk Case Studies
+            </button>
+          </motion.div>
         </div>
 
-        {/* Explore the Sport Portfolio */}
-        <PortfolioSlideshowPreview />
-      </div>
+        <motion.div
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+        >
+          <div className="w-6 h-10 border-2 border-blue-400/50 rounded-full flex items-start justify-center p-2">
+            <motion.div
+              className="w-1.5 h-1.5 bg-blue-400 rounded-full"
+              animate={{ y: [0, 12, 0] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+            />
+          </div>
+        </motion.div>
+      </motion.section>
 
+      {/* Vision Section */}
+      <Section title="De Visie" subtitle="Een Volledig Geautomatiseerd Fundament">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-lg text-blue-100 mb-6 leading-relaxed">
+              In de huidige markt wint niet het bedrijf dat het hardste werkt, maar het bedrijf dat het slimste is ingericht.
+              VIESA Automations biedt geen losse tools, maar een integrale <span className="text-blue-400">"Blueprint"</span>.
+            </p>
+            <p className="text-lg text-blue-100 leading-relaxed">
+              Wij automatiseren uw bedrijf van de allereerste klik van een potentiële klant tot de uiteindelijke facturatie en nazorg.
+              Met onze systemen bouwt u een schaalbaar model waarbij u niet meer afhankelijk bent van handmatige processen.
+            </p>
+          </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-2 gap-4"
+          >
+            <FeatureCard icon={<MessageCircle />} title="CRM" />
+            <FeatureCard icon={<MessageSquare />} title="Communicatie" />
+            <FeatureCard icon={<Target />} title="Order Processing" />
+            <FeatureCard icon={<Zap />} title="Automatisering" />
+          </motion.div>
+        </div>
+      </Section>
 
-      {/* References Section */}
-      <ReferencesPreview />
+      {/* SEO Section */}
+      <Section title="Google Dominantie" subtitle="De Weg naar Nummer 1">
+        <div className="space-y-8">
+          <SeoFeature
+            icon={<Globe className="w-8 h-8" />}
+            title="Lokale SEO"
+            description="Wij zorgen dat u de eerste keuze bent in uw regio."
+            delay={0.1}
+          />
+          <SeoFeature
+            icon={<Star className="w-8 h-8" />}
+            title="Review Automatisering"
+            description="Direct na voltooiing van een klus wordt er automatisch een verzoek gestuurd naar de klant. Positieve reviews worden direct gepusht naar Google."
+            delay={0.2}
+          />
+          <SeoFeature
+            icon={<TrendingUp className="w-8 h-8" />}
+            title="Content & Conversie"
+            description="Wij bouwen landingspagina's die bezoekers direct omzetten in leads via geïntegreerde WhatsApp- en Instagram-bots."
+            delay={0.3}
+          />
+        </div>
+      </Section>
 
-      {/* Latest News Section */}
-      <LatestNewsPreview />
-    </main>
+      {/* Case Study */}
+      <Section title="Case Study" subtitle="Egaliseren.nl - De Potentie van Automatisering">
+        <div className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 backdrop-blur-sm border border-blue-500/20 rounded-3xl p-8 md:p-12">
+          <div className="grid md:grid-cols-3 gap-8">
+            <CaseStudyItem
+              title="Google Ranking"
+              description="Door gerichte SEO-clusters claimen we de top 3 posities op zoekwoorden zoals 'vloer egaliseren'"
+            />
+            <CaseStudyItem
+              title="Interactive Reviews"
+              description="Bezoekers zien direct klikbare, geverifieerde reviews die vertrouwen wekken"
+            />
+            <CaseStudyItem
+              title="Lead-to-Order"
+              description="Zodra iemand op de site komt, start de automatisering. Een offerteaanvraag wordt direct in het CRM geschoten"
+            />
+          </div>
+        </div>
+      </Section>
+
+      {/* Blueprint Table */}
+      <Section title="De Blueprint" subtitle="Techniek in Actie">
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="border-b border-blue-500/30">
+                <th className="text-left p-4 text-blue-300">Onderdeel</th>
+                <th className="text-left p-4 text-blue-300">Functionaliteit</th>
+                <th className="text-left p-4 text-blue-300">Voordeel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <TableRow
+                component="Omnichannel"
+                functionality="WhatsApp, Telegram, Instagram & Messenger"
+                benefit="Altijd bereikbaar, snellere conversie"
+                delay={0.1}
+              />
+              <TableRow
+                component="Live Orders"
+                functionality="Orders doorschieten via smartphone"
+                benefit="Geen papierwerk, direct verwerkt op kantoor"
+                delay={0.2}
+              />
+              <TableRow
+                component="Customer Service"
+                functionality="AI-gedreven bots voor veelgestelde vragen"
+                benefit="Bespaart uren aan telefoonwerk per week"
+                delay={0.3}
+              />
+              <TableRow
+                component="Enter Gravity"
+                functionality="Naadloze integratie van alle systemen"
+                benefit="Eén bron van waarheid voor al uw data"
+                delay={0.4}
+              />
+            </tbody>
+          </table>
+        </div>
+      </Section>
+
+      {/* Pricing */}
+      <Section title="Het Verdienmodel" subtitle="Een Win-Win Constructie">
+        <div className="grid md:grid-cols-2 gap-8">
+          <PricingCard
+            title="Het Groei-Abonnement"
+            description="Voor een vast maandelijks bedrag krijgt u toegang tot de volledige Blueprint, inclusief updates, hosting en technische ondersteuning."
+            features={[
+              "Volledige Blueprint Toegang",
+              "Maandelijkse Updates",
+              "24/7 Technische Support",
+              "Hosting Included"
+            ]}
+          />
+          <PricingCard
+            title="Het Partnership Model"
+            description="Voor specifieke projecten of op maat gemaakte SEO-trajecten delen we de investering en de opbrengst."
+            features={[
+              "1/3 voor de operatie",
+              "1/3 voor de groei",
+              "1/3 voor de winst",
+              "Gedeelde investering"
+            ]}
+            highlight
+          />
+        </div>
+      </Section>
+
+      {/* CTA Section */}
+      <section className="relative py-32 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-12 md:p-16 shadow-2xl"
+          >
+            <h2 className="text-4xl md:text-5xl mb-6">
+              Klaar voor Digitale Dominantie?
+            </h2>
+            <p className="text-xl text-blue-100 mb-8">
+              Start vandaag nog met de automatisering van uw bouwbedrijf
+            </p>
+            <button className="px-12 py-5 bg-white text-blue-600 rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 mx-auto">
+              Neem Contact Op
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-blue-500/20 py-8 px-6 text-center text-blue-300">
+        <p>© 2026 VIESA Automations. De Blauwdruk voor Digitale Dominantie.</p>
+      </footer>
+    </div>
   );
 }
 
-import { getNewsArticles } from '@/app/actions/news'
-import { getPublicHorses } from '@/app/actions/horse'
-import { getReferences } from '@/app/actions/reference'
-import HorseSlideshow from '@/components/frontend/HorseSlideshow'
-
-async function PortfolioSlideshowPreview() {
-  let horses = [];
-  try {
-    horses = await getPublicHorses() || [];
-  } catch (e) {
-    console.error(e);
-  }
-  return <HorseSlideshow horses={horses} />;
-}
-
-async function ReferencesPreview() {
-  let references = [];
-  try {
-    references = await getReferences() || [];
-    references = references.slice(0, 3); // Take top 3
-  } catch (e) {
-    console.error(e);
-  }
-
-  if (references.length === 0) {
-    references = [
-      {
-        id: 'dummy1',
-        horse_name: 'Equiviesa Royal Flush',
-        image_url: '/success1.png',
-        sold_to_country: 'United States'
-      },
-      {
-        id: 'dummy2',
-        horse_name: 'Equiviesa Grand Prix',
-        image_url: '/success2.png',
-        sold_to_country: 'Germany'
-      },
-      {
-        id: 'dummy3',
-        horse_name: 'Equiviesa Platinum',
-        image_url: '/success3.png',
-        sold_to_country: 'United Arab Emirates'
-      }
-    ];
-  }
+function Section({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="pt-10 pb-24 bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <span className="text-accent uppercase tracking-[0.3em] text-xs font-bold block mb-4">Proven Success</span>
-          <h2 className="text-4xl md:text-5xl font-serif text-primary dark:text-white mb-6">
-            Global <span className="italic text-accent">References</span>
+    <section ref={ref} className="relative py-20 px-6">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            {title}
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            From the European heartland to the most prestigious arenas in the world, our elite athletes consistently prove their immense value. Discover some of our proudest alumni who have achieved greatness on the global stage after joining the Equiviesa portfolio.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {references.map((ref: any) => (
-            <Link href="/references" key={ref.id} className="group cursor-pointer">
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden mb-6 shadow-xl">
-                {ref.image_url ? (
-                  <Image 
-                    src={ref.image_url} 
-                    alt={ref.horse_name} 
-                    fill 
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
-                    <Trophy className="text-gray-400 w-12 h-12" />
-                  </div>
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-90"></div>
-                <div className="absolute bottom-0 left-0 w-full p-8 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <div className="flex items-center gap-2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Trophy size={16} className="text-accent" />
-                    <span className="text-xs font-bold uppercase tracking-widest text-accent">Top Performer</span>
-                  </div>
-                  <h3 className="text-3xl font-serif font-bold mb-2 group-hover:text-white transition-colors">{ref.horse_name}</h3>
-                  <div className="w-10 h-1 bg-accent mb-3"></div>
-                  <p className="text-sm text-white/80 uppercase tracking-widest font-medium">Exported to: {ref.sold_to_country}</p>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-        <div className="mt-16 text-center">
-          <Link href="/references" className="inline-flex items-center gap-3 px-8 py-4 border border-gray-300 dark:border-gray-700 rounded-full text-primary dark:text-white font-bold uppercase tracking-widest hover:border-accent hover:text-accent transition-colors group">
-            View All References <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
-          </Link>
-        </div>
+          <p className="text-xl text-blue-200">{subtitle}</p>
+        </motion.div>
+        {children}
       </div>
     </section>
-  )
+  );
 }
 
-// Add a component at the bottom of the file to fetch and show news
-
-async function LatestNewsPreview() {
-  let articles = [];
-  try {
-    articles = await getNewsArticles() || [];
-    articles = articles.slice(0, 3); // Only take latest 3
-  } catch (e) {
-    console.error(e);
-  }
-
-  if (articles.length === 0) return null;
-
+function FeatureCard({ icon, title }: { icon: React.ReactNode; title: string }) {
   return (
-    <section className="py-20 bg-transparent relative z-10">
-      {/* Soft divider */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-gray-300 dark:via-gray-800 to-transparent"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-end mb-12">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary dark:text-white">
-              Latest <span className="italic text-accent">Updates</span>
-            </h2>
-            <p className="mt-3 text-gray-600 dark:text-gray-400">Discover our recent additions, competition results, and general news.</p>
-          </div>
-          <Link href="/news" className="hidden sm:flex items-center text-sm font-bold uppercase tracking-wider text-primary dark:text-white hover:text-accent transition-colors">
-            View All News &rarr;
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {articles.map((article: any) => (
-            <Link href={`/news`} key={article.id} className="group flex flex-col bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700">
-              <div className="h-48 relative overflow-hidden bg-gray-100 dark:bg-gray-700">
-                {article.image_url ? (
-                  <Image 
-                    src={article.image_url} 
-                    alt={article.title} 
-                    fill 
-                    className="object-cover group-hover:scale-105 transition-transform duration-500" 
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-sm uppercase tracking-wider">News</div>
-                )}
-              </div>
-              <div className="p-6 flex flex-col flex-1">
-                <span className="text-xs font-bold text-accent uppercase tracking-wider mb-2">
-                  {new Date(article.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                </span>
-                <h3 className="text-xl font-serif font-bold text-gray-900 dark:text-white mb-3 group-hover:text-accent transition-colors">
-                  {article.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm line-clamp-3 mb-4 flex-1">
-                  {article.excerpt || article.content.substring(0, 150) + '...'}
-                </p>
-                <span className="text-sm font-medium text-primary dark:text-white group-hover:text-accent transition-colors flex items-center">
-                  Read More <span className="ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">&rarr;</span>
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-        
-        <div className="mt-10 sm:hidden text-center">
-          <Link href="/news" className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 w-full">
-            View All News
-          </Link>
-        </div>
+    <motion.div
+      whileHover={{ scale: 1.05, y: -5 }}
+      className="bg-gradient-to-br from-blue-900/40 to-purple-900/40 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-6 text-center hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300"
+    >
+      <div className="w-12 h-12 mx-auto mb-4 text-blue-400">
+        {icon}
       </div>
-    </section>
-  )
+      <h3 className="text-lg">{title}</h3>
+    </motion.div>
+  );
+}
+
+function SeoFeature({ icon, title, description, delay }: { icon: React.ReactNode; title: string; description: string; delay: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay }}
+      className="flex gap-6 items-start bg-gradient-to-r from-blue-900/20 to-transparent border-l-4 border-blue-500 p-6 rounded-r-xl hover:bg-blue-900/30 transition-all duration-300"
+    >
+      <div className="text-blue-400 mt-1 shrink-0">
+        {icon}
+      </div>
+      <div>
+        <h3 className="text-2xl mb-2">{title}</h3>
+        <p className="text-blue-200">{description}</p>
+      </div>
+    </motion.div>
+  );
+}
+
+function CaseStudyItem({ title, description }: { title: string; description: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      whileHover={{ scale: 1.05 }}
+      className="text-center"
+    >
+      <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+        <CheckCircle2 className="w-8 h-8" />
+      </div>
+      <h3 className="text-xl mb-3">{title}</h3>
+      <p className="text-blue-200">{description}</p>
+    </motion.div>
+  );
+}
+
+function TableRow({ component, functionality, benefit, delay }: { component: string; functionality: string; benefit: string; delay: number }) {
+  return (
+    <motion.tr
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      className="border-b border-blue-500/20 hover:bg-blue-900/20 transition-colors"
+    >
+      <td className="p-4">{component}</td>
+      <td className="p-4 text-blue-200">{functionality}</td>
+      <td className="p-4 text-blue-300">{benefit}</td>
+    </motion.tr>
+  );
+}
+
+function PricingCard({ title, description, features, highlight }: { title: string; description: string; features: string[]; highlight?: boolean }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      whileHover={{ scale: 1.03 }}
+      className={`rounded-3xl p-8 ${
+        highlight
+          ? 'bg-gradient-to-br from-blue-600 to-purple-600 shadow-2xl shadow-purple-500/30'
+          : 'bg-gradient-to-br from-blue-900/40 to-purple-900/40 backdrop-blur-sm border border-blue-500/30'
+      }`}
+    >
+      <h3 className="text-2xl mb-4">{title}</h3>
+      <p className="text-blue-100 mb-8">{description}</p>
+      <ul className="space-y-3">
+        {features.map((feature, index) => (
+          <li key={index} className="flex items-center gap-3">
+            <CheckCircle2 className="w-5 h-5 text-blue-300 shrink-0" />
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+    </motion.div>
+  );
 }
