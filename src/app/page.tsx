@@ -255,7 +255,7 @@ export default function App() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/pricing" className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-white text-slate-950 hover:bg-slate-200 rounded-full hover:shadow-2xl hover:shadow-white/10 transition-all duration-300 flex items-center gap-2 justify-center font-semibold text-white">
+              <Link href="/pricing" className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-white text-slate-950 hover:bg-slate-200 rounded-full hover:shadow-2xl hover:shadow-white/10 transition-all duration-300 flex items-center gap-2 justify-center font-bold">
                 Word Pro Member
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -271,15 +271,15 @@ export default function App() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white text-slate-950 hover:bg-slate-200 rounded-3xl p-12 md:p-16 shadow-2xl"
+            className="bg-white text-slate-950 rounded-3xl p-12 md:p-16 shadow-2xl"
           >
-            <h2 className="text-4xl md:text-5xl mb-6">
+            <h2 className="text-4xl md:text-5xl mb-6 font-bold">
               Klaar voor Digitale Dominantie?
             </h2>
-            <p className="text-xl text-slate-300 mb-8">
+            <p className="text-xl text-slate-600 mb-8">
               Start vandaag nog met de automatisering van uw bouwbedrijf
             </p>
-            <button className="w-full sm:w-auto px-8 py-4 md:px-12 md:py-5 bg-white text-blue-600 rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto">
+            <button className="w-full sm:w-auto px-8 py-4 md:px-12 md:py-5 bg-slate-950 text-white rounded-full hover:shadow-2xl hover:bg-slate-800 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto font-bold">
               Neem Contact Op
               <ArrowRight className="w-5 h-5" />
             </button>
