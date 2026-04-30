@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Check, Star, CreditCard, ArrowRight, ShieldCheck, Zap, CheckCircle } from 'lucide-react'
+import { Check, Star, CreditCard, ArrowRight, ShieldCheck, Zap, CheckCircle, Crown } from 'lucide-react'
 
 export default function PricingPage() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('yearly')
@@ -78,7 +78,7 @@ export default function PricingPage() {
         </div>
 
       {/* Pricing Cards */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 max-w-5xl gap-8 items-stretch mb-20">
+      <div className="max-w-[1440px] px-4 md:px-8 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-20">
         
         {/* BASIC */}
         <div className="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 text-white rounded-3xl p-8 shadow-2xl relative flex flex-col overflow-hidden">
@@ -90,7 +90,7 @@ export default function PricingPage() {
           <div className="mb-8 border-b border-white/10 pb-8">
             <div className="flex items-baseline gap-1">
               <span className="text-4xl font-serif font-bold text-white">
-                {symbol} {billingCycle === 'yearly' ? getPrice(4990) : getPrice(499)}
+                {symbol} {billingCycle === 'yearly' ? getPrice(1990) : getPrice(199)}
               </span>
               <span className="text-slate-400 font-medium">/ {billingCycle === 'yearly' ? 'year' : 'month'}</span>
             </div>
@@ -99,14 +99,19 @@ export default function PricingPage() {
 
           <div className="mb-10 flex-1 space-y-4">
             <p className="text-xs font-bold text-accent uppercase tracking-widest mb-4 opacity-0">Placeholder</p>
-            <Feature label="Compleet CRM & CMS Systeem" dark />
-            <Feature label="Leadautomatisering" dark />
-            <Feature label="SEO & Website Optimalisatie" dark />
+            <Feature label="Compleet CMS (Website)" dark />
+            <Feature label="Standaard Leadautomatisering" dark />
+            <Feature label="Basis SEO (On-page)" dark />
+            <Feature label="SSL & Beveiliging" dark />
+            <Feature label="24/7 Uptime Monitoring" dark />
+            <Feature label="Mobiele Optimalisatie" dark />
+            <Feature label="Standaard Formulieren" dark />
             <Feature label="Maandelijks opzegbaar" dark />
             <Feature label="Inclusief hosting & onderhoud" dark />
+            <Feature label="Email Support (48u reactie)" dark />
           </div>
 
-          <Link href="/register" className="w-full py-4 rounded-xl bg-transparent border-2 border-white/20 text-white hover:bg-white hover:text-primary font-bold tracking-wider uppercase transition-colors shadow-lg text-center inline-block">
+          <Link href="/register" className="w-full py-4 rounded-xl bg-transparent border-2 border-white/20 text-white hover:bg-white hover:text-primary font-bold tracking-wider uppercase transition-colors shadow-lg text-center inline-block mt-auto">
             Start Free Trial
           </Link>
         </div>
@@ -124,12 +129,12 @@ export default function PricingPage() {
           <h2 className="text-2xl font-serif font-bold text-white uppercase tracking-wider mb-2 mt-4 flex items-center gap-2 notranslate">
             <Star size={20} className="text-accent" /> Premium
           </h2>
-          <p className="text-gray-300 text-sm mb-6 h-10">Voor bedrijven die de markt volledig willen domineren.</p>
+          <p className="text-gray-300 text-sm mb-6 h-10">Voor bedrijven die de markt lokaal volledig willen domineren.</p>
           
           <div className="mb-8 border-b border-white/10 pb-8">
             <div className="flex items-baseline gap-1">
               <span className="text-4xl font-serif font-bold text-white">
-                {symbol} {billingCycle === 'yearly' ? getPrice(9990) : getPrice(999)}
+                {symbol} {billingCycle === 'yearly' ? getPrice(3990) : getPrice(399)}
               </span>
               <span className="text-gray-300 font-medium">/ {billingCycle === 'yearly' ? 'year' : 'month'}</span>
             </div>
@@ -138,15 +143,58 @@ export default function PricingPage() {
 
           <div className="mb-10 flex-1 space-y-4">
             <p className="text-xs font-bold text-accent uppercase tracking-widest mb-4">Everything in Basic, plus:</p>
-            <Feature label="Volledige ERP Integratie" dark />
-            <Feature label="AI Klantenservice Bots" dark />
-            <Feature label="Custom Workflows & Dashboards" dark />
-            <Feature label="Dedicated Account Manager" dark />
-            <Feature label="Gegarandeerde top 3 Google Ranking" dark />
+            <Feature label="Geavanceerd CRM Systeem" dark />
+            <Feature label="Email Marketing Automatisering" dark />
+            <Feature label="Automatische Facturatie" dark />
+            <Feature label="Klantportaal (Client Portal)" dark />
+            <Feature label="Dynamische Dashboards" dark />
+            <Feature label="Lokale SEO Dominantie" dark />
+            <Feature label="Social Media Koppelingen" dark />
+            <Feature label="Premium Analytics" dark />
+            <Feature label="Geavanceerde ChatWidgets" dark />
+            <Feature label="Priority Support (24u reactie)" dark />
           </div>
 
-          <Link href="/register" className="w-full py-4 rounded-xl bg-accent text-white hover:bg-white hover:text-primary font-bold tracking-wider uppercase transition-colors shadow-lg text-center inline-block">
+          <Link href="/register" className="w-full py-4 rounded-xl bg-accent text-white hover:bg-white hover:text-primary font-bold tracking-wider uppercase transition-colors shadow-lg text-center inline-block mt-auto">
             Start Free Trial
+          </Link>
+        </div>
+
+        {/* ULTRA */}
+        <div className="bg-gradient-to-br from-slate-900 to-black border border-accent/40 text-white rounded-3xl p-8 shadow-2xl relative flex flex-col overflow-hidden">
+          <div className="absolute -top-10 -right-10 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none"></div>
+
+          <h2 className="text-2xl font-serif font-bold text-white uppercase tracking-wider mb-2 mt-4 flex items-center gap-2 notranslate">
+            <Crown size={20} className="text-accent" /> Ultra
+          </h2>
+          <p className="text-gray-300 text-sm mb-6 h-10">De absolute blauwdruk voor onbeperkte, internationale schaalbaarheid.</p>
+          
+          <div className="mb-8 border-b border-white/10 pb-8">
+            <div className="flex items-baseline gap-1">
+              <span className="text-4xl font-serif font-bold text-white">
+                {symbol} {billingCycle === 'yearly' ? getPrice(7990) : getPrice(799)}
+              </span>
+              <span className="text-gray-300 font-medium">/ {billingCycle === 'yearly' ? 'year' : 'month'}</span>
+            </div>
+            <p className="text-xs text-gray-400 mt-1">Excl. VAT</p>
+          </div>
+
+          <div className="mb-10 flex-1 space-y-4">
+            <p className="text-xs font-bold text-accent uppercase tracking-widest mb-4">Everything in Premium, plus:</p>
+            <Feature label="Volledige ERP Integratie" dark />
+            <Feature label="AI Klantenservice Bots (24/7)" dark />
+            <Feature label="Custom Workflows & API's" dark />
+            <Feature label="Gegarandeerde Top 3 Google" dark />
+            <Feature label="Multi-Language Support" dark />
+            <Feature label="Dedicated Account Manager" dark />
+            <Feature label="Ondersteuning voor meerdere vestigingen" dark />
+            <Feature label="Personeel Management Portal" dark />
+            <Feature label="Custom App Development Opties" dark />
+            <Feature label="24/7 VIP Telefoon Support" dark />
+          </div>
+
+          <Link href="/register" className="w-full py-4 rounded-xl bg-transparent border-2 border-accent text-accent hover:bg-accent hover:text-white font-bold tracking-wider uppercase transition-colors shadow-lg text-center inline-block mt-auto">
+            Contact Sales
           </Link>
         </div>
       </div>

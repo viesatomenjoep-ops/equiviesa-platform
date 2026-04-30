@@ -209,10 +209,10 @@ export default function App() {
               Typically, you pay exorbitant amounts to development agencies for disjointed systems, standalone CRMs, and slow websites. VIESA Automations delivers a seamlessly integrated, state-of-the-art platform that is vastly superior, for an absolute fraction of the cost.
             </p>
             <div className="flex justify-center">
-              <button className="px-8 py-4 bg-white text-slate-950 rounded-full hover:bg-slate-200 transition-colors font-bold flex items-center gap-2">
+              <Link href="/pricing" className="px-8 py-4 bg-white text-slate-950 rounded-full hover:bg-slate-200 transition-colors font-bold flex items-center gap-2">
                 Discover Our Pricing
                 <ArrowRight className="w-5 h-5" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -282,10 +282,10 @@ export default function App() {
             <p className="text-lg md:text-xl text-slate-600 mb-6">
               Start automating your business today
             </p>
-            <button className="w-full sm:w-auto px-6 py-3 md:px-10 md:py-4 bg-slate-950 text-white rounded-full hover:shadow-2xl hover:bg-slate-800 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto font-bold text-lg">
+            <Link href="/contact" className="w-full sm:w-auto px-6 py-3 md:px-10 md:py-4 bg-slate-950 text-white rounded-full hover:shadow-2xl hover:bg-slate-800 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto font-bold text-lg inline-flex">
               Get in Touch
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
           </motion.div>
         </div>
       </section>
