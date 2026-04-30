@@ -59,7 +59,7 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
             <motion.h1
-              className="text-6xl md:text-8xl mb-6 tracking-tight"
+              className="text-5xl sm:text-6xl md:text-8xl mb-6 tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -87,11 +87,11 @@ export default function App() {
             transition={{ delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <button className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 flex items-center gap-2 justify-center">
+            <button className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 flex items-center gap-2 justify-center">
               Start Uw Transformatie
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="px-8 py-4 border border-blue-400/50 rounded-full hover:bg-blue-500/10 transition-all duration-300">
+            <button className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 border border-blue-400/50 rounded-full hover:bg-blue-500/10 transition-all duration-300">
               Bekijk Case Studies
             </button>
           </motion.div>
@@ -192,8 +192,8 @@ export default function App() {
 
       {/* Blueprint Table */}
       <Section title="De Blueprint" subtitle="Techniek in Actie">
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
+        <div className="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0">
+          <table className="w-full min-w-[600px] border-collapse">
             <thead>
               <tr className="border-b border-blue-500/30">
                 <th className="text-left p-4 text-blue-300">Onderdeel</th>
@@ -278,7 +278,7 @@ export default function App() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="group px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 flex items-center gap-2 justify-center font-semibold text-white">
+              <button className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 flex items-center gap-2 justify-center font-semibold text-white">
                 Word Pro Member
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -302,7 +302,7 @@ export default function App() {
             <p className="text-xl text-blue-100 mb-8">
               Start vandaag nog met de automatisering van uw bouwbedrijf
             </p>
-            <button className="px-12 py-5 bg-white text-blue-600 rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 mx-auto">
+            <button className="w-full sm:w-auto px-8 py-4 md:px-12 md:py-5 bg-white text-blue-600 rounded-full hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto">
               Neem Contact Op
               <ArrowRight className="w-5 h-5" />
             </button>
@@ -363,13 +363,13 @@ function SeoFeature({ icon, title, description, delay }: { icon: React.ReactNode
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      className="flex gap-6 items-start bg-gradient-to-r from-blue-900/20 to-transparent border-l-4 border-blue-500 p-6 rounded-r-xl hover:bg-blue-900/30 transition-all duration-300"
+      className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start bg-gradient-to-r from-blue-900/20 to-transparent border-l-4 border-blue-500 p-6 rounded-r-xl hover:bg-blue-900/30 transition-all duration-300"
     >
       <div className="text-blue-400 mt-1 shrink-0">
         {icon}
       </div>
       <div>
-        <h3 className="text-2xl mb-2">{title}</h3>
+        <h3 className="text-xl sm:text-2xl mb-2">{title}</h3>
         <p className="text-blue-200">{description}</p>
       </div>
     </motion.div>
