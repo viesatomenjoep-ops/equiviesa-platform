@@ -15,21 +15,25 @@ export default async function AboutPage() {
     const rawTeam = await getTeamMembers() || [];
     team = [...rawTeam];
     
-    // Hardcode overrides for Tom van Biene and Tyler Petrie
+    // Filter out Tyler if he exists in DB
+    team = team.filter((m: any) => !m.name.toLowerCase().includes('tyler'));
+
+    // Hardcode overrides for Tom van Biene and Joep Hellemons (Founders)
     let tom = team.find((m: any) => m.name.toLowerCase().includes('tom'));
-    let tyler = team.find((m: any) => m.name.toLowerCase().includes('tyler'));
+    let joep = team.find((m: any) => m.name.toLowerCase().includes('joep'));
     
-    const tomBio = "As the Head of IT and Lead Developer at VIESA Automations, Tom brings over 5 years of specialized experience in designing, hosting, and managing high-end CMS and website infrastructures. His architectural vision ensures that our platforms are robust, incredibly fast, and secure.";
+    const tomBio = "As Co-Founder & Lead Developer at VIESA Automations, Tom brings specialized experience in designing, hosting, and managing high-end CMS and website infrastructures. His architectural vision ensures that our platforms are robust, incredibly fast, and secure.";
+    const joepBio = "As Co-Founder & Director of Strategy, Joep leads the vision for scaling operations. He focuses on high-end digital transformations, process automation, and establishing powerful strategic partnerships for our enterprise clients.";
     
     if (tom) {
-      tom.role = 'Head of IT & Lead Developer';
+      tom.role = 'Co-Founder & Lead Developer';
       tom.bio = tomBio;
       tom.sort_order = -10;
     } else {
       tom = {
         id: 'tom-override',
         name: 'Tom van Biene',
-        role: 'Head of IT & Lead Developer',
+        role: 'Co-Founder & Lead Developer',
         bio: tomBio,
         image_url: null,
         sort_order: -10
@@ -37,20 +41,20 @@ export default async function AboutPage() {
       team.push(tom);
     }
     
-    if (tyler) {
-      tyler.sort_order = -9;
-      tyler.role = 'Director of Strategy';
-      tyler.bio = 'Managing global operations and high-end digital transformations for enterprise clients.';
+    if (joep) {
+      joep.sort_order = -9;
+      joep.role = 'Co-Founder & Director of Strategy';
+      joep.bio = joepBio;
     } else {
-      tyler = {
-        id: 'tyler-override',
-        name: 'Tyler Petrie',
-        role: 'Director of Strategy',
-        bio: 'Managing global operations and high-end digital transformations for enterprise clients.',
+      joep = {
+        id: 'joep-override',
+        name: 'Joep Hellemons',
+        role: 'Co-Founder & Director of Strategy',
+        bio: joepBio,
         image_url: null,
         sort_order: -9
       };
-      team.push(tyler);
+      team.push(joep);
     }
     
     team.sort((a: any, b: any) => (a.sort_order || 0) - (b.sort_order || 0));
@@ -59,9 +63,9 @@ export default async function AboutPage() {
   }
 
   return (
-    <div className="pt-32 pb-16 min-h-screen bg-gradient-to-br from-slate-900 via-blue-900/80 to-slate-800 text-white font-sans">
+    <div className="pt-24 md:pt-32 pb-16 min-h-screen bg-gradient-to-br from-slate-900 via-blue-900/80 to-slate-800 text-white font-sans">
       <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mb-24 relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
           <h1 className="text-5xl md:text-7xl font-serif font-bold text-white tracking-tight">
             About Us
           </h1>

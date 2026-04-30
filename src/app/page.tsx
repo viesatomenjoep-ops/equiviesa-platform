@@ -49,8 +49,8 @@ export default function App() {
               </motion.div>
             </ScrollLogo>
             <span className="font-serif tracking-tight uppercase leading-none text-white flex items-baseline gap-2 notranslate">
-              <span className="text-lg md:text-4xl font-bold">VIESA</span>
-              <span className="text-sm md:text-2xl font-medium text-slate-300">Automations</span>
+              <span className="text-xl md:text-4xl font-bold">VIESA</span>
+              <span className="text-base md:text-2xl font-medium text-slate-300">Automations</span>
             </span>
           </Link>
         </div>
