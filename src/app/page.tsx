@@ -12,7 +12,8 @@ import {
   ArrowRight,
   CheckCircle2,
   Globe,
-  MessageSquare
+  MessageSquare,
+  Crown
 } from 'lucide-react';
 
 export default function App() {
@@ -254,6 +255,35 @@ export default function App() {
             ]}
             highlight
           />
+        </div>
+      </Section>
+
+      {/* Become a Pro Member */}
+      <Section title="Become a Pro Member" subtitle="Sluit je aan bij de elite van de paardensport">
+        <div className="bg-gradient-to-br from-purple-900/40 to-blue-900/40 backdrop-blur-sm border border-purple-500/30 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl -ml-20 -mb-20 pointer-events-none" />
+          
+          <div className="relative z-10">
+            <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/20">
+              <Crown className="w-10 h-10 text-white" />
+            </div>
+            
+            <h3 className="text-3xl md:text-4xl mb-4 font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              Viesa Pro Membership
+            </h3>
+            
+            <p className="text-lg text-blue-100 max-w-2xl mx-auto mb-8 leading-relaxed">
+              Krijg toegang tot ons exclusieve investeerdersnetwerk, premium portfolio's, en geavanceerde stalmanagement tools. Met Viesa Pro til je jouw investering en management naar het allerhoogste niveau.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button className="group px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 flex items-center gap-2 justify-center font-semibold text-white">
+                Word Pro Member
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </div>
         </div>
       </Section>
 
