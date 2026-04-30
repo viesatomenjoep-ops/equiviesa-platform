@@ -39,11 +39,11 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white overflow-x-hidden dark">
       {/* Top Navigation / Tool Selector */}
-      <header className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex justify-between items-center">
+      <header className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex justify-between items-center bg-slate-950/80 backdrop-blur-md border-b border-white/10">
         <div className="flex items-center">
           <Link href="/" className="group flex items-center gap-4">
             <ScrollLogo>
-              <Image src="/logo.png" alt="Viesa Logo" width={96} height={96} className="w-20 h-20 md:w-24 md:h-24 object-contain" />
+              <Image src="/logo.png" alt="Viesa Logo" width={80} height={80} className="w-16 h-16 md:w-20 md:h-20 object-contain" />
             </ScrollLogo>
             <span className="text-3xl md:text-5xl font-serif font-bold tracking-tight uppercase leading-none text-white">
               VIESA
@@ -163,9 +163,9 @@ export default function App() {
             className="grid grid-cols-2 gap-4"
           >
             <FeatureCard icon={<MessageCircle />} title="CRM" />
-            <FeatureCard icon={<MessageSquare />} title="Communicatie" />
-            <FeatureCard icon={<Target />} title="Order Processing" />
-            <FeatureCard icon={<Zap />} title="Automatisering" />
+            <FeatureCard icon={<Globe />} title="CMS" />
+            <FeatureCard icon={<Target />} title="ERP" />
+            <FeatureCard icon={<Bot />} title="AI Automations" />
           </motion.div>
         </div>
       </Section>
