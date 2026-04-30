@@ -67,12 +67,68 @@ export default function PricingPage() {
       </div>
 
       
-        <div className="mb-8 bg-gradient-to-r from-blue-900/20 to-slate-800/40 border border-blue-500/30 rounded-2xl p-4 md:p-6 text-center max-w-3xl mx-auto shadow-xl">
+        <div className="mb-20 bg-gradient-to-r from-blue-900/20 to-slate-800/40 border border-blue-500/30 rounded-2xl p-4 md:p-6 text-center max-w-3xl mx-auto shadow-xl">
           <h3 className="text-xl md:text-2xl font-bold text-white mb-2">💎 Exclusieve Loyaliteitsbonus</h3>
           <p className="text-sm md:text-base text-blue-200">
             Blijft u het eerste jaar onafgebroken lid? Dan belonen wij uw vertrouwen met <span className="font-bold text-white text-lg">30% korting</span> op uw abonnement in het gehele tweede jaar!
           </p>
         </div>
+
+      {/* Build Your Own Plan Section */}
+      <div className="max-w-4xl mx-auto mb-24 px-4 sm:px-0">
+        <div className="bg-slate-800/40 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20"></div>
+          
+          <div className="relative z-10 text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">
+              Build Your Own Plan
+            </h2>
+            <p className="text-slate-400 text-lg">
+              Select only the modules you need and build a custom package tailored to your business.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10 mb-10">
+            {[
+              { name: 'CRM Systeem', price: 49 },
+              { name: 'CMS (Website Manager)', price: 49 },
+              { name: 'ERP (Facturatie & Offertes)', price: 79 },
+              { name: 'AI Automations', price: 99 },
+              { name: 'Review Automatisering', price: 29 },
+              { name: 'Lead Generator Bots', price: 69 },
+              { name: 'Social Media Planning', price: 39 },
+              { name: 'Personeelsportaal', price: 49 },
+            ].map((module, idx) => (
+              <div key={idx} className="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer group shadow-sm hover:shadow-md">
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 rounded-full border border-slate-500 group-hover:border-accent flex items-center justify-center transition-colors bg-slate-800/50">
+                    <Check className="w-4 h-4 text-transparent group-hover:text-accent transition-colors" />
+                  </div>
+                  <span className="font-medium text-slate-200 group-hover:text-white transition-colors">{module.name}</span>
+                </div>
+                <div className="flex flex-col items-end">
+                  <span className="font-bold text-white">{symbol}{getPrice(billingCycle === 'yearly' ? Math.round(module.price * 0.83) : module.price)}</span>
+                  <span className="text-[10px] text-slate-400 font-normal">/ mo</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center relative z-10 border-t border-white/10 pt-10">
+            <Link href="/register?plan=custom" className="px-10 py-4 bg-white text-slate-900 font-bold rounded-full hover:bg-slate-200 transition-colors shadow-xl hover:scale-105 duration-300 flex items-center gap-2">
+              Start Custom Plan <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-4xl mx-auto text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 tracking-tight drop-shadow-lg">
+          Or Choose A <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-accent">Bundle</span>
+        </h2>
+        <p className="text-xl text-slate-400 font-light">Get everything you need in one powerful package.</p>
+      </div>
 
       {/* Pricing Cards */}
       <div className="max-w-[1440px] px-4 md:px-8 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-20">
