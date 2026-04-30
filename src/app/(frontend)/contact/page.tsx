@@ -212,27 +212,8 @@ export default function ContactPage() {
                   <p className="text-gray-600 dark:text-gray-400">Follow Us</p>
                 </div>
               </a>
-              <div className="flex items-start">
-                <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center mr-4 text-accent shrink-0">
-                   <MapPin size={20} />
-                </div>
-                <div>
-                  <p className="font-medium text-gray-900 dark:text-white">Location</p>
-                  <p className="text-gray-600 dark:text-gray-400">Huikvenweg 8<br/>2990 Wuustwezel<br/><span className="italic text-sm">(on the premises of APG Stables)</span></p>
-                </div>
-              </div>
+              </a>
             </div>
-          </div>
-          
-          <div className="h-64 w-full bg-gray-200 dark:bg-gray-800 rounded-xl overflow-hidden relative shadow-inner">
-            <iframe 
-               src="https://maps.google.com/maps?q=Huikvenweg%208,%202990%20Wuustwezel&t=&z=14&ie=UTF8&iwloc=&output=embed" 
-               style={{ border: 0 }} 
-               allowFullScreen={false} 
-               loading="lazy" 
-               referrerPolicy="no-referrer-when-downgrade"
-               className="absolute inset-0 w-full h-full grayscale-[20%] contrast-[1.1] opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
-            ></iframe>
           </div>
         </div>
 

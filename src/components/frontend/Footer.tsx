@@ -75,37 +75,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row bg-white/5 border border-white/10 shadow-xl overflow-hidden group">
-              <a href="https://maps.google.com/?q=Huikvenweg+8,+2990+Wuustwezel" target="_blank" rel="noopener noreferrer" className="md:w-1/3 p-6 md:p-8 text-left flex flex-col justify-center border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/10 transition-all duration-500 cursor-pointer">
-                <div className="w-12 h-12 bg-accent-light/20 rounded-full flex items-center justify-center mb-3 md:mb-4 transition-all duration-500">
-                  <svg className="w-6 h-6 text-accent-light transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-serif text-white mb-2">Location</h3>
-                <div className="space-y-1 text-white/90 font-medium leading-relaxed">
-                  <p className="text-white font-medium">Huikvenweg 8</p>
-                  <p>2990 Wuustwezel</p>
-                </div>
-                <div className="mt-4 pt-4 border-t border-white/10">
-                  <p className="text-accent-light text-sm md:text-base italic">(on the premises of APG Stables)</p>
-                </div>
-              </a>
 
-              <div className="w-full md:w-2/3 min-h-[300px] flex-grow self-stretch relative bg-[#e5e3df]">
-                <iframe 
-                   src="https://maps.google.com/maps?q=Huikvenweg%208,%202990%20Wuustwezel&t=&z=14&ie=UTF8&iwloc=&output=embed" 
-                   style={{ border: 0 }} 
-                   allowFullScreen={false} 
-                   loading="lazy" 
-                   referrerPolicy="no-referrer-when-downgrade"
-                   className="absolute inset-0 w-full h-full grayscale-[40%] contrast-[1.1] opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
-                ></iframe>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
