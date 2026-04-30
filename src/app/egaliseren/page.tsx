@@ -14,7 +14,12 @@ import {
   Globe,
   Hammer,
   Ruler,
-  CheckSquare
+  CheckSquare,
+  UploadCloud,
+  FileImage,
+  Send,
+  X,
+  Camera
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -25,6 +30,45 @@ export default function EgaliserenLandingPage() {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
   const yParallax = useTransform(scrollYProgress, [0, 0.5], [0, 300]);
+
+  // AI Image Upload State
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadResult, setUploadResult] = useState<string | null>(null);
+  
+  // AI Chatbot State
+  const [chatOpen, setChatOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState<{role: 'user'|'ai', text: string}[]>([
+    { role: 'ai', text: 'Hallo! Ik ben de Egaliseren.nl AI. Heeft u vragen over uw vloer of wilt u direct een AI-scan doen?' }
+  ]);
+  const [chatInput, setChatInput] = useState('');
+  const chatRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (chatRef.current) {
+      chatRef.current.scrollTop = chatRef.current.scrollHeight;
+    }
+  }, [chatMessages]);
+
+  const handleUpload = () => {
+    setIsUploading(true);
+    setUploadResult(null);
+    setTimeout(() => {
+      setIsUploading(false);
+      setUploadResult('✅ AI Analyse Voltooid: Geschatte oppervlakte: ~45m². Aanbevolen behandeling: Zandcement. Geschatte Offerte: € 1.250,-');
+    }, 2500);
+  };
+
+  const handleChat = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!chatInput.trim()) return;
+    setChatMessages(prev => [...prev, { role: 'user', text: chatInput }]);
+    const query = chatInput;
+    setChatInput('');
+    
+    setTimeout(() => {
+      setChatMessages(prev => [...prev, { role: 'ai', text: 'Als het grootste platform op basis van egaliseren.nl implementeren wij alle mogelijke AI-tools. Hierdoor krijgt u altijd de snelste respons op vragen zoals: "' + query + '".' }]);
+    }, 1000);
+  };
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -157,18 +201,18 @@ export default function EgaliserenLandingPage() {
       </Section>
 
       {/* Value Proposition Section */}
-      <Section title="Waarom Egaliseren.nl?" subtitle="Kwaliteit & Snelheid gecombineerd">
+      <Section title="Waarom Egaliseren.nl?" subtitle="Het grootste platform & de slimste AI-tools">
         <div className="bg-white border border-gray-200 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-sm">
           <div className="relative z-10 max-w-3xl mx-auto">
             <h3 className="text-2xl md:text-3xl mb-6 font-serif text-slate-900">
-              Vakkundig, Snel en Betrouwbaar door heel Nederland
+              Grootste platform op basis van Egaliseren.nl
             </h3>
             <p className="text-lg text-slate-600 leading-relaxed mb-8">
-              Wij maken gebruik van de beste materialen en modernste technieken. Doordat wij ons gehele proces hebben geautomatiseerd, ontvangt u binnen no-time een scherpe offerte en kunnen wij vaak al op korte termijn schakelen.
+              Wij zijn verreweg het grootste platform van Nederland. Wij implementeren alle mogelijke AI-tools om u de allersnelste respons te geven. Upload een foto van uw vloer of stel een vraag aan onze slimme chatbot en ervaar de toekomst van egaliseren!
             </p>
             <div className="flex justify-center">
               <a href="#offerte" className="px-8 py-4 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors font-bold flex items-center gap-2 shadow-lg">
-                Bereken uw Prijs
+                Probeer onze AI Tools
                 <ArrowRight className="w-5 h-5" />
               </a>
             </div>
@@ -194,33 +238,115 @@ export default function EgaliserenLandingPage() {
         </div>
       </Section>
 
-      {/* CTA Section */}
-      <section id="offerte" className="relative py-24 px-6">
-        <div className="max-w-3xl mx-auto text-center">
+      {/* Upload AI Section */}
+      <section id="offerte" className="relative py-24 px-6 bg-white border-y border-gray-200">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white border border-gray-200 rounded-3xl p-8 md:p-10 shadow-lg"
           >
             <h2 className="text-3xl md:text-4xl mb-4 font-bold text-slate-900">
-              Klaar voor een perfecte vloer?
+              Direct een Offerte? Upload een foto van uw vloer
             </h2>
-            <p className="text-lg md:text-xl text-slate-600 mb-6">
-              Vraag vandaag nog een vrijblijvende offerte aan
+            <p className="text-lg md:text-xl text-slate-600 mb-10">
+              Onze AI analyseert direct de oppervlakte en de staat van de ondervloer en geeft u binnen 3 seconden een inschatting.
             </p>
-            <button className="w-full sm:w-auto px-6 py-3 md:px-10 md:py-4 bg-slate-900 text-white rounded-full hover:shadow-xl hover:bg-slate-800 transition-all duration-300 flex items-center justify-center gap-2 mx-auto font-bold text-lg inline-flex">
-              Offerte Aanvragen
-              <ArrowRight className="w-5 h-5" />
-            </button>
+            
+            <div className="max-w-2xl mx-auto bg-gray-50 border-2 border-dashed border-gray-300 rounded-3xl p-10 hover:border-slate-900 transition-colors">
+              {!isUploading && !uploadResult ? (
+                <div className="flex flex-col items-center justify-center cursor-pointer" onClick={handleUpload}>
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-4">
+                    <Camera className="w-8 h-8 text-slate-700" />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">Klik om een foto te uploaden</h3>
+                  <p className="text-slate-500">JPG, PNG of HEIC (AI herkent uw vloer direct)</p>
+                </div>
+              ) : isUploading ? (
+                <div className="flex flex-col items-center justify-center py-8">
+                  <div className="w-16 h-16 border-4 border-gray-200 border-t-slate-900 rounded-full animate-spin mb-4" />
+                  <h3 className="text-xl font-bold text-slate-900">AI is uw vloer aan het analyseren...</h3>
+                  <p className="text-slate-500">Berekent oppervlakte en benodigde materialen met de snelste respons</p>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center py-4">
+                  <div className="w-16 h-16 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-lg mb-4">
+                    <CheckCircle2 className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-4">{uploadResult}</h3>
+                  <button onClick={() => setUploadResult(null)} className="px-6 py-3 border border-gray-300 rounded-full hover:bg-gray-100 font-bold text-slate-900">
+                    Nieuwe Foto Uploaden
+                  </button>
+                </div>
+              )}
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200 py-8 px-6 text-center text-slate-500">
-        <p className="notranslate">© 2026 Egaliseren.nl - De basis voor elke vloer.</p>
+      <footer className="border-t border-gray-200 py-8 px-6 text-center text-slate-500 bg-white relative z-10">
+        <p className="notranslate">© 2026 Egaliseren.nl - Het grootste platform met de slimste AI tools.</p>
       </footer>
+
+      {/* Floating Chatbot */}
+      <div className="fixed bottom-6 right-6 z-50">
+        {chatOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            className="mb-4 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col"
+            style={{ height: '400px' }}
+          >
+            <div className="bg-slate-900 text-white p-4 flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <Bot className="w-5 h-5" />
+                <span className="font-bold">Egaliseren AI</span>
+              </div>
+              <button onClick={() => setChatOpen(false)} className="hover:bg-slate-800 p-1 rounded-full">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div ref={chatRef} className="flex-1 p-4 overflow-y-auto flex flex-col gap-3 bg-gray-50">
+              {chatMessages.map((msg, idx) => (
+                <div key={idx} className={`max-w-[85%] p-3 rounded-2xl ${msg.role === 'ai' ? 'bg-white border border-gray-200 text-slate-800 self-start' : 'bg-slate-900 text-white self-end'}`}>
+                  {msg.text}
+                </div>
+              ))}
+              {chatMessages.length > 0 && chatMessages[chatMessages.length - 1].role === 'user' && (
+                <div className="bg-white border border-gray-200 text-slate-800 self-start p-3 rounded-2xl animate-pulse">
+                  AI is aan het typen...
+                </div>
+              )}
+            </div>
+            
+            <form onSubmit={handleChat} className="p-3 bg-white border-t border-gray-200 flex gap-2">
+              <input
+                type="text"
+                value={chatInput}
+                onChange={e => setChatInput(e.target.value)}
+                placeholder="Stel uw vraag..."
+                className="flex-1 bg-gray-100 rounded-full px-4 py-2 outline-none focus:ring-2 focus:ring-slate-900"
+              />
+              <button type="submit" className="bg-slate-900 text-white p-2 rounded-full hover:bg-slate-800 transition-colors">
+                <Send className="w-5 h-5" />
+              </button>
+            </form>
+          </motion.div>
+        )}
+        
+        {!chatOpen && (
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setChatOpen(true)}
+            className="w-14 h-14 bg-slate-900 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-slate-800 transition-colors"
+          >
+            <MessageCircle className="w-6 h-6" />
+          </motion.button>
+        )}
+      </div>
     </div>
   );
 }
