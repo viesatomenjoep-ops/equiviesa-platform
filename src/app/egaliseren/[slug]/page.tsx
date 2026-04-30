@@ -2,6 +2,7 @@
 import { ArrowRight, Bot, Camera, CheckCircle2, Droplets, Ruler, ShieldCheck, Star, Phone } from 'lucide-react';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
 
 // Basic mock content for the dynamic pages
 const PAGE_CONTENT: Record<string, any> = {
@@ -53,13 +54,32 @@ export default function ServiceLandingPage({ params }: { params: { slug: string 
   const [whatsapp, setWhatsapp] = useState('');
   const [isCalculating, setIsCalculating] = useState(false);
   const [result, setResult] = useState<string | null>(null);
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+  );
 
-  const handleCalculate = () => {
+  const handleCalculate = async () => {
     setIsCalculating(true);
     
-    setTimeout(() => {
+    try {
       const opp = parseInt(oppervlakte) || 50;
       const price = opp * 18.50; // just a dummy calculation
+      
+      // Save lead to Supabase
+      const { error } = await supabase.from('egaliseren_leads').insert([
+        {
+          customer_phone: whatsapp || 'Geen nummer',
+          customer_name: 'Website Bezoeker',
+          customer_email: '',
+          surface_area_m2: opp,
+          floor_type: content.title,
+          estimated_price: price,
+          source: 'ai_calculator'
+        }
+      ]);
+      
+      if (error) console.error("Fout bij opslaan lead:", error);
       
       setResult(`Geschatte prijs: €${price.toFixed(2)}.`);
       
@@ -68,17 +88,16 @@ export default function ServiceLandingPage({ params }: { params: { slug: string 
         const text = `Hallo! Hier is uw Egaliseren.nl offerte voor ${content.title}. Oppervlakte: ${opp}m2. Geschatte prijs: €${price.toFixed(2)}. We nemen snel contact op!`;
         const encodedText = encodeURIComponent(text);
         
-        try {
-          // Fire and forget to CallMeBot API (mocked API call)
-          const url = `https://api.callmebot.com/whatsapp.php?phone=${whatsapp.replace(/\+/g, '')}&text=${encodedText}&apikey=123456`;
-          console.log('CallMeBot triggered for:', whatsapp, url);
-        } catch (e) {
-          console.error(e);
-        }
+        // Fire and forget to CallMeBot API (mocked API call)
+        const url = `https://api.callmebot.com/whatsapp.php?phone=${whatsapp.replace(/\+/g, '')}&text=${encodedText}&apikey=123456`;
+        console.log('CallMeBot triggered for:', whatsapp, url);
       }
-
+    } catch (e) {
+      console.error(e);
+      setResult('Er ging iets mis bij het berekenen.');
+    } finally {
       setIsCalculating(false);
-    }, 1500);
+    }
   };
 
   return (

@@ -22,6 +22,7 @@ import {
   Camera
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function EgaliserenLandingPage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -119,7 +120,14 @@ export default function EgaliserenLandingPage() {
         className="relative min-h-screen pt-40 md:pt-48 flex flex-col items-center justify-start px-6"
       >
         <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-          <div className="absolute inset-0 bg-[url('/hero-egaliseren.png')] bg-cover bg-center" />
+          <Image 
+            src="/hero-egaliseren.png" 
+            alt="Egaliseren hero background" 
+            fill 
+            priority
+            quality={90}
+            className="object-cover object-center" 
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-transparent" />
         </div>
 
