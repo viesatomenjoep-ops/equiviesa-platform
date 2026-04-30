@@ -12,12 +12,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  title: "VIESA Automations | De Blauwdruk voor Digitale Dominantie",
-  description: "VIESA Automations is de blauwdruk voor digitale dominantie in de bouw en daarbuiten. Volledig geautomatiseerde processen van lead tot factuur.",
+  title: "VIESA Automations | The Blueprint for Digital Dominance",
+  description: "VIESA Automations is de blauwdruk voor digitale dominantie in de bouw en daarbuiten. Fully automated processes from lead to invoice.",
   keywords: "automations, crm, viesa automations, seo, digitale dominantie",
   openGraph: {
-    title: "VIESA Automations | De Blauwdruk voor Digitale Dominantie",
-    description: "Volledig geautomatiseerde processen van lead tot factuur.",
+    title: "VIESA Automations | The Blueprint for Digital Dominance",
+    description: "Fully automated processes from lead to invoice.",
     url: "https://www.equiviesaworldwide.com",
     siteName: "VIESA Automations",
     type: "website",
@@ -42,7 +42,7 @@ export default function RootLayout({
         <Script id="google-translate-init" strategy="afterInteractive">
           {`
             function googleTranslateElementInit() {
-              new window.google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,nl,de,es', autoDisplay: false}, 'google_translate_element');
+              new window.google.translate.TranslateElement({pageLanguage: 'nl', includedLanguages: 'en,nl,de,es', autoDisplay: false}, 'google_translate_element');
             }
           `}
         </Script>
