@@ -39,7 +39,11 @@ export default function App() {
       {/* Top Navigation / Tool Selector */}
       <header className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex justify-between items-center">
         <div className="flex items-center">
-          {/* We keep the left side empty or add a small logo if needed */}
+          <Link href="/" className="group flex flex-col justify-center">
+            <span className="text-2xl md:text-3xl font-serif font-bold tracking-tight uppercase leading-none">
+              <span className="text-blue-500 group-hover:text-blue-400 transition-colors">V</span><span className="text-white">IESA</span>
+            </span>
+          </Link>
         </div>
         <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-2 py-1 shadow-xl relative">
           <div className="absolute inset-0 backdrop-blur-md rounded-full -z-10 pointer-events-none"></div>
@@ -74,14 +78,13 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
             <motion.h1
-              className="text-5xl sm:text-6xl md:text-8xl mb-6 tracking-tight"
+              className="text-5xl sm:text-6xl md:text-8xl mb-6 tracking-tight font-serif font-bold"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                VIESA
-              </span>
+              <span className="text-blue-500">V</span>
+              <span className="text-white">IESA</span>
               <br />
               <span className="text-white">AUTOMATIONS</span>
             </motion.h1>
