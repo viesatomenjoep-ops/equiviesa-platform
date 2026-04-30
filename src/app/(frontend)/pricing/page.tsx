@@ -7,7 +7,7 @@ export default function PricingPage() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('yearly')
 
   return (
-    <main className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-slate-950 text-white">
+    <main className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-blue-900/80 to-slate-800 text-white">
       {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
         <h1 className="text-5xl md:text-6xl font-serif font-bold text-white mb-6 uppercase tracking-tight">
@@ -110,8 +110,9 @@ export default function PricingPage() {
             Start Free Trial
           </button>
         </div>
+      </div>
 
-        {/* Payment Methods & Trust Section */}
+      {/* Payment Methods & Trust Section */}
       <div className="max-w-4xl mx-auto border-t border-white/10 pt-16 mt-16 text-center">
         <h3 className="text-lg font-serif font-bold text-white uppercase tracking-wider mb-8">
           Secure & Flexible Payments

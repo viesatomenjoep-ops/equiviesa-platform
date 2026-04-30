@@ -6,7 +6,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher'
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/10 transition-colors duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/60 backdrop-blur-md border-b border-white/10 transition-colors duration-300">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24 relative w-full">
           
@@ -24,7 +24,10 @@ export default function Navbar() {
               </ScrollLogo>
             </Link>
             <Link href="/" className="flex flex-col text-left justify-center shrink-0">
-              <span className="text-lg md:text-3xl font-serif font-bold tracking-tight text-white uppercase leading-none">Viesa Automations</span>
+              <span className="font-serif tracking-tight uppercase leading-none text-white flex items-baseline gap-2 notranslate">
+                <span className="text-lg md:text-2xl font-bold">VIESA</span>
+                <span className="text-xs md:text-sm font-medium text-slate-300">Automations</span>
+              </span>
               {/* Removed Since 1995 text */}
             </Link>
           </div>
