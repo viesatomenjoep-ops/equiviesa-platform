@@ -1,10 +1,20 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { Check, Star, CreditCard, ArrowRight, ShieldCheck, Zap, CheckCircle } from 'lucide-react'
 
 export default function PricingPage() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('yearly')
+  const [currency, setCurrency] = useState<'EUR' | 'GBP' | 'USD'>('EUR')
+
+  const getPrice = (euroPrice: number) => {
+    if (currency === 'GBP') return Math.round(euroPrice * 0.85).toLocaleString('en-GB')
+    if (currency === 'USD') return Math.round(euroPrice * 1.08).toLocaleString('en-US')
+    return euroPrice.toLocaleString('nl-NL')
+  }
+
+  const symbol = currency === 'GBP' ? '£' : currency === 'USD' ? '$' : '€'
 
   return (
     <main className="min-h-screen pt-24 pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-blue-900/80 to-slate-800 text-white">
@@ -17,27 +27,53 @@ export default function PricingPage() {
           From private owners to large commercial stables, we have a plan that fits your needs. Digitize your operations today.
         </p>
 
+        {/* Currency Toggle */}
+        <div className="flex items-center justify-center gap-2 mb-6">
+          {(['EUR', 'GBP', 'USD'] as const).map((cur) => (
+            <button
+              key={cur}
+              onClick={() => setCurrency(cur)}
+              className={`px-4 py-1.5 rounded-full text-xs font-bold tracking-wider transition-colors ${
+                currency === cur ? 'bg-accent text-white' : 'bg-white/10 text-slate-300 hover:bg-white/20'
+              }`}
+            >
+              {cur}
+            </button>
+          ))}
+        </div>
+
         {/* Billing Toggle */}
         <div className="flex items-center justify-center gap-4">
-          <span className={`text-sm font-bold uppercase tracking-wider ${billingCycle === 'monthly' ? 'text-white' : 'text-gray-400'}`}>Monthly</span>
+          <span 
+            onClick={() => setBillingCycle('monthly')}
+            className={`text-sm font-bold uppercase tracking-wider cursor-pointer transition-colors ${billingCycle === 'monthly' ? 'text-white' : 'text-gray-400 hover:text-white'}`}
+          >
+            Monthly
+          </span>
           <button 
+            type="button"
             onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
             className="w-16 h-8 rounded-full bg-primary relative transition-colors focus:outline-none"
           >
             <div className={`w-6 h-6 rounded-full bg-white absolute top-1 transition-transform ${billingCycle === 'yearly' ? 'translate-x-9' : 'translate-x-1'}`} />
           </button>
           <div className="flex items-center gap-2">
-            <span className={`text-sm font-bold uppercase tracking-wider ${billingCycle === 'yearly' ? 'text-white' : 'text-gray-400'}`}>Yearly</span>
+            <span 
+              onClick={() => setBillingCycle('yearly')}
+              className={`text-sm font-bold uppercase tracking-wider cursor-pointer transition-colors ${billingCycle === 'yearly' ? 'text-white' : 'text-gray-400 hover:text-white'}`}
+            >
+              Yearly
+            </span>
             <span className="px-2 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs font-bold rounded-full">Save ~16%</span>
           </div>
         </div>
       </div>
 
       
-        <div className="mb-12 bg-gradient-to-r from-blue-900/20 to-slate-800/40 border border-blue-500/30 rounded-2xl p-6 md:p-8 text-center max-w-4xl mx-auto shadow-2xl">
-          <h3 className="text-2xl font-bold text-white mb-2">💎 Exclusieve Loyaliteitsbonus</h3>
-          <p className="text-lg text-blue-200">
-            Blijft u het eerste jaar onafgebroken lid? Dan belonen wij uw vertrouwen met <span className="font-bold text-white text-xl">30% korting</span> op uw abonnement in het gehele tweede jaar!
+        <div className="mb-8 bg-gradient-to-r from-blue-900/20 to-slate-800/40 border border-blue-500/30 rounded-2xl p-4 md:p-6 text-center max-w-3xl mx-auto shadow-xl">
+          <h3 className="text-xl md:text-2xl font-bold text-white mb-2">💎 Exclusieve Loyaliteitsbonus</h3>
+          <p className="text-sm md:text-base text-blue-200">
+            Blijft u het eerste jaar onafgebroken lid? Dan belonen wij uw vertrouwen met <span className="font-bold text-white text-lg">30% korting</span> op uw abonnement in het gehele tweede jaar!
           </p>
         </div>
 
@@ -54,7 +90,7 @@ export default function PricingPage() {
           <div className="mb-8 border-b border-white/10 pb-8">
             <div className="flex items-baseline gap-1">
               <span className="text-4xl font-serif font-bold text-white">
-                € {billingCycle === 'yearly' ? '4.990' : '499'}
+                {symbol} {billingCycle === 'yearly' ? getPrice(4990) : getPrice(499)}
               </span>
               <span className="text-slate-400 font-medium">/ {billingCycle === 'yearly' ? 'year' : 'month'}</span>
             </div>
@@ -70,9 +106,9 @@ export default function PricingPage() {
             <Feature label="Inclusief hosting & onderhoud" dark />
           </div>
 
-          <button className="w-full py-4 rounded-xl bg-transparent border-2 border-white/20 text-white hover:bg-white hover:text-primary font-bold tracking-wider uppercase transition-colors shadow-lg">
+          <Link href="/register" className="w-full py-4 rounded-xl bg-transparent border-2 border-white/20 text-white hover:bg-white hover:text-primary font-bold tracking-wider uppercase transition-colors shadow-lg text-center inline-block">
             Start Free Trial
-          </button>
+          </Link>
         </div>
 
         {/* PREMIUM (Most Popular) */}
@@ -93,7 +129,7 @@ export default function PricingPage() {
           <div className="mb-8 border-b border-white/10 pb-8">
             <div className="flex items-baseline gap-1">
               <span className="text-4xl font-serif font-bold text-white">
-                € {billingCycle === 'yearly' ? '9.990' : '999'}
+                {symbol} {billingCycle === 'yearly' ? getPrice(9990) : getPrice(999)}
               </span>
               <span className="text-gray-300 font-medium">/ {billingCycle === 'yearly' ? 'year' : 'month'}</span>
             </div>
@@ -109,9 +145,9 @@ export default function PricingPage() {
             <Feature label="Gegarandeerde top 3 Google Ranking" dark />
           </div>
 
-          <button className="w-full py-4 rounded-xl bg-accent text-white hover:bg-white hover:text-primary font-bold tracking-wider uppercase transition-colors shadow-lg">
+          <Link href="/register" className="w-full py-4 rounded-xl bg-accent text-white hover:bg-white hover:text-primary font-bold tracking-wider uppercase transition-colors shadow-lg text-center inline-block">
             Start Free Trial
-          </button>
+          </Link>
         </div>
       </div>
 

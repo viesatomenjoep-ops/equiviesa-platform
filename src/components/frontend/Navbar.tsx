@@ -26,7 +26,7 @@ export default function Navbar() {
             <Link href="/" className="flex flex-col text-left justify-center shrink-0">
               <span className="font-serif tracking-tight uppercase leading-none text-white flex items-baseline gap-2 notranslate">
                 <span className="text-lg md:text-2xl font-bold">VIESA</span>
-                <span className="text-xs md:text-sm font-medium text-slate-300">Automations</span>
+                <span className="text-sm md:text-base font-medium text-slate-300">Automations</span>
               </span>
               {/* Removed Since 1995 text */}
             </Link>

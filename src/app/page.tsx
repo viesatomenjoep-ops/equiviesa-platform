@@ -49,7 +49,7 @@ export default function App() {
             </ScrollLogo>
             <span className="font-serif tracking-tight uppercase leading-none text-white flex items-baseline gap-2 notranslate">
               <span className="text-lg md:text-4xl font-bold">VIESA</span>
-              <span className="text-xs md:text-xl font-medium text-slate-300">Automations</span>
+              <span className="text-sm md:text-2xl font-medium text-slate-300">Automations</span>
             </span>
           </Link>
         </div>
@@ -148,11 +148,11 @@ export default function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-lg text-slate-300 mb-6 leading-relaxed">
+            <p className="text-xl md:text-2xl text-slate-300 mb-6 leading-relaxed">
               In today's market, it is not the company that works the hardest that wins, but the company that operates the smartest.
               VIESA Automations does not just offer standalone tools, but a complete <span className="text-blue-400">"Blueprint"</span>.
             </p>
-            <p className="text-lg text-slate-300 leading-relaxed">
+            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
               We automate your business from the very first click of a potential client to the final invoicing and aftercare.
               With our systems, you build a scalable model where you are no longer dependent on manual processes.
             </p>
@@ -253,7 +253,7 @@ export default function App() {
               Viesa Pro Membership
             </h3>
             
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
               Gain access to our exclusive network, advanced blueprint strategies, and premium automation tools. With Viesa Pro, you elevate your digital ecosystem and business growth to the highest possible level.
             </p>
             
@@ -268,21 +268,21 @@ export default function App() {
       </Section>
 
       {/* CTA Section */}
-      <section className="relative py-32 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative py-24 px-6">
+        <div className="max-w-3xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white text-slate-950 rounded-3xl p-12 md:p-16 shadow-2xl"
+            className="bg-white text-slate-950 rounded-3xl p-8 md:p-10 shadow-2xl"
           >
-            <h2 className="text-4xl md:text-5xl mb-6 font-bold">
+            <h2 className="text-3xl md:text-4xl mb-4 font-bold">
               Ready for Digital Dominance?
             </h2>
-            <p className="text-xl text-slate-600 mb-8">
+            <p className="text-lg md:text-xl text-slate-600 mb-6">
               Start automating your business today
             </p>
-            <button className="w-full sm:w-auto px-8 py-4 md:px-12 md:py-5 bg-slate-950 text-white rounded-full hover:shadow-2xl hover:bg-slate-800 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto font-bold">
+            <button className="w-full sm:w-auto px-6 py-3 md:px-10 md:py-4 bg-slate-950 text-white rounded-full hover:shadow-2xl hover:bg-slate-800 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto font-bold text-lg">
               Get in Touch
               <ArrowRight className="w-5 h-5" />
             </button>
@@ -292,7 +292,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="border-t border-blue-500/20 py-8 px-6 text-center text-blue-300">
-        <p>© 2026 VIESA Automations. De Blauwdruk voor Digitale Dominantie.</p>
+        <p className="notranslate">© 2026 VIESA Automations. The Blueprint for Digital Dominance.</p>
       </footer>
     </div>
   );
