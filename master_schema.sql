@@ -920,3 +920,24 @@ GRANT ALL ON TABLE facilities TO anon, authenticated, service_role;
 GRANT ALL ON TABLE feeding_schedules TO anon, authenticated, service_role;
 
 
+-- ==========================================
+-- EGALISEREN.NL LEADS & OFFERS SCHEMA
+-- ==========================================
+CREATE TABLE IF NOT EXISTS egaliseren_leads (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
+    customer_name TEXT NOT NULL,
+    customer_email TEXT,
+    customer_phone TEXT,
+    floor_type TEXT,
+    surface_area_m2 NUMERIC,
+    estimated_price NUMERIC,
+    status TEXT DEFAULT 'new' CHECK (status IN ('new', 'contacted', 'quote_sent', 'closed_won', 'closed_lost')),
+    source TEXT DEFAULT 'ai_calculator',
+    notes TEXT
+);
+
+ALTER TABLE egaliseren_leads ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Allow anon insert egaliseren_leads" ON egaliseren_leads FOR INSERT TO anon WITH CHECK (true);
+CREATE POLICY "Allow all operations egaliseren_leads" ON egaliseren_leads FOR ALL USING (true);
+GRANT ALL ON TABLE egaliseren_leads TO anon, authenticated, service_role;

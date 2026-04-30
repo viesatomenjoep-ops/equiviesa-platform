@@ -34,40 +34,14 @@ export default function EgaliserenLandingPage() {
   // AI Image Upload State
   const [isUploading, setIsUploading] = useState(false);
   const [uploadResult, setUploadResult] = useState<string | null>(null);
-  
+
   // AI Chatbot State
   const [chatOpen, setChatOpen] = useState(false);
-  const [chatMessages, setChatMessages] = useState<{role: 'user'|'ai', text: string}[]>([
+  const [chatMessages, setChatMessages] = useState<{ role: 'user' | 'ai', text: string }[]>([
     { role: 'ai', text: 'Hallo! Ik ben de Egaliseren.nl AI. Heeft u vragen over uw vloer of wilt u direct een AI-scan doen?' }
   ]);
   const [chatInput, setChatInput] = useState('');
   const chatRef = useRef<HTMLDivElement>(null);
-  
-  // Modal State
-  const [activeModal, setActiveModal] = useState<string | null>(null);
-
-  const MODAL_DATA: Record<string, { title: string; description: string; content: string }> = {
-    zandcement: {
-      title: "Zandcement Vloeren",
-      description: "Een zandcement dekvloer is de perfecte sterke en duurzame basis voor uw woning of bedrijfspand.",
-      content: "Bij Egaliseren.nl werken we met machinaal gevlinderde zandcement dekvloeren. We gebruiken speciale toevoegingen om de vloer sneller te laten drogen en te versterken. Dit is essentieel voor badkamers, afschotvloeren of als u snel door wilt met de verbouwing."
-    },
-    anhydriet: {
-      title: "Anhydriet Vloeivloeren",
-      description: "De ideale keuze voor grote oppervlaktes en perfect in combinatie met vloerverwarming.",
-      content: "Anhydriet wordt vloeibaar aangebracht en is zelfnivellerend. Het omsluit vloerverwarmingsbuizen naadloos, wat zorgt voor een optimaal rendement van uw verwarming. Ideaal voor grotere ruimtes waarbij snelheid en een spiegelglad resultaat gewenst zijn."
-    },
-    vloerverwarming: {
-      title: "Vloerverwarming Integratie",
-      description: "Energiezuinig, comfortabel en onzichtbaar verwerkt in uw nieuwe dekvloer.",
-      content: "Wij frezen de vloerverwarming direct in uw bestaande dekvloer, of we leggen deze aan in combinatie met een nieuwe zandcement of anhydriet vloer. Onze AI-tools berekenen exact de benodigde capaciteit en buisafstand voor een perfect binnenklimaat."
-    },
-    afwerking: {
-      title: "Luxe Vloerafwerking",
-      description: "De kers op de taart: van PVC visgraat tot naadloze gietvloeren.",
-      content: "Nadat de vloer perfect is geëgaliseerd, verzorgen wij desgewenst ook de eindafwerking. Wij zijn gespecialiseerd in het leggen van hoogwaardige PVC vloeren (zoals visgraat en hongaarse punt) en het aanbrengen van moderne, krasvaste gietvloeren en beton ciré."
-    }
-  };
 
   useEffect(() => {
     if (chatRef.current) {
@@ -90,7 +64,7 @@ export default function EgaliserenLandingPage() {
     setChatMessages(prev => [...prev, { role: 'user', text: chatInput }]);
     const query = chatInput;
     setChatInput('');
-    
+
     setTimeout(() => {
       setChatMessages(prev => [...prev, { role: 'ai', text: 'Als het grootste platform op basis van egaliseren.nl implementeren wij alle mogelijke AI-tools. Hierdoor krijgt u altijd de snelste respons op vragen zoals: "' + query + '".' }]);
     }, 1000);
@@ -109,13 +83,13 @@ export default function EgaliserenLandingPage() {
       {/* Top Navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 py-4 px-4 sm:px-6 flex justify-between items-center bg-white/90 backdrop-blur-md border-b border-gray-200">
         <Link href="/egaliseren" className="group flex items-center gap-3">
-          <img 
-            src="https://www.egaliseren.nl/wp-content/uploads/2023/11/egaliseren-logo-dark-cropped.png" 
-            alt="Egaliseren.nl Logo" 
+          <img
+            src="https://www.egaliseren.nl/wp-content/uploads/2023/11/egaliseren-logo-dark-cropped.png"
+            alt="Egaliseren.nl Logo"
             className="h-7 sm:h-8 md:h-10 w-auto object-contain"
           />
         </Link>
-        
+
         <div className="flex items-center gap-2 sm:gap-4">
           <select className="bg-gray-50 border border-gray-300 text-slate-900 text-xs sm:text-sm md:text-base rounded-full focus:ring-slate-900 focus:border-slate-900 block p-2 sm:p-2.5 px-3 sm:px-4 outline-none font-medium cursor-pointer hover:bg-gray-100 transition-colors">
             <option value="">Direct regelen...</option>
@@ -146,7 +120,7 @@ export default function EgaliserenLandingPage() {
       >
         <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
           <div className="absolute inset-0 bg-[url('/hero-egaliseren.png')] bg-cover bg-center" />
-          <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto text-center mt-8">
@@ -156,21 +130,19 @@ export default function EgaliserenLandingPage() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tight font-bold notranslate"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tight font-bold notranslate text-white drop-shadow-lg"
               initial={{ opacity: 0, y: 40, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="text-slate-900 drop-shadow-sm">
-                DE BASIS VOOR
-              </span>
+              DE BASIS VOOR
               <br />
-              <span className="text-slate-900 drop-shadow-sm">ELKE TOPVLOER</span>
+              ELKE TOPVLOER
             </motion.h1>
           </motion.div>
 
           <motion.p
-            className="text-xl md:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto font-light"
+            className="text-xl md:text-2xl text-slate-200 mb-12 max-w-3xl mx-auto font-light drop-shadow-md"
             initial={{ opacity: 0, y: 20, filter: 'blur(5px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -184,11 +156,11 @@ export default function EgaliserenLandingPage() {
             transition={{ delay: 0.7, duration: 0.8, type: 'spring', stiffness: 100 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <a href="#offerte" className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-slate-900 text-white hover:bg-slate-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 justify-center font-bold">
+            <a href="#offerte" className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-white text-slate-900 hover:bg-gray-100 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 justify-center font-bold">
               Vrijblijvende Offerte
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="#diensten" className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 border border-gray-300 text-slate-900 rounded-full hover:bg-gray-100 transition-all duration-300 flex items-center justify-center font-bold">
+            <a href="#diensten" className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-slate-900/40 backdrop-blur-md border border-white/20 text-white rounded-full hover:bg-slate-900/60 transition-all duration-300 flex items-center justify-center font-bold">
               Onze Diensten
             </a>
           </motion.div>
@@ -214,23 +186,23 @@ export default function EgaliserenLandingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
-              { icon: <Bot className="w-6 h-6" />, title: "AI Droogtijd Calculator" },
-              { icon: <Ruler className="w-6 h-6" />, title: "Materiaal Calculator" },
-              { icon: <Globe className="w-6 h-6" />, title: "Vloerverwarming Planner" },
-              { icon: <CheckSquare className="w-6 h-6" />, title: "Vloer Inspectie Scan" },
-              { icon: <Smartphone className="w-6 h-6" />, title: "Live Offerte Generator" },
+              { icon: <Bot className="w-6 h-6" />, title: "AI Droogtijd Calculator", link: "/egaliseren/calculator" },
+              { icon: <Ruler className="w-6 h-6" />, title: "Materiaal Calculator", link: "/egaliseren/calculator" },
+              { icon: <Globe className="w-6 h-6" />, title: "Vloerverwarming Planner", link: "/egaliseren/calculator" },
+              { icon: <CheckSquare className="w-6 h-6" />, title: "Vloer Inspectie Scan", link: "#offerte" },
+              { icon: <Smartphone className="w-6 h-6" />, title: "Live Offerte Generator", link: "/egaliseren/calculator" },
             ].map((link, idx) => (
-              <motion.a
-                href="#offerte"
-                key={idx}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="bg-gray-50 border border-gray-200 rounded-2xl p-6 text-center hover:shadow-lg transition-all flex flex-col items-center gap-4 group cursor-pointer"
-              >
-                <div className="w-12 h-12 bg-white shadow-sm border border-gray-100 rounded-full flex items-center justify-center text-slate-700 group-hover:bg-slate-900 group-hover:text-white transition-colors">
-                  {link.icon}
-                </div>
-                <h4 className="font-bold text-slate-900 text-sm leading-tight">{link.title}</h4>
-              </motion.a>
+              <Link href={link.link} key={idx}>
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="bg-gray-50 border border-gray-200 rounded-2xl p-6 text-center hover:shadow-lg transition-all flex flex-col items-center gap-4 group cursor-pointer h-full"
+                >
+                  <div className="w-12 h-12 bg-white shadow-sm border border-gray-100 rounded-full flex items-center justify-center text-slate-700 group-hover:bg-slate-900 group-hover:text-white transition-colors">
+                    {link.icon}
+                  </div>
+                  <h4 className="font-bold text-slate-900 text-sm leading-tight">{link.title}</h4>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
@@ -260,10 +232,10 @@ export default function EgaliserenLandingPage() {
             transition={{ duration: 0.6 }}
             className="grid grid-cols-2 gap-4"
           >
-            <FeatureCard icon={<Hammer />} title="Zandcement" onClick={() => setActiveModal('zandcement')} />
-            <FeatureCard icon={<Ruler />} title="Anhydriet" onClick={() => setActiveModal('anhydriet')} />
-            <FeatureCard icon={<CheckSquare />} title="Vloerverwarming" onClick={() => setActiveModal('vloerverwarming')} />
-            <FeatureCard icon={<Star />} title="Afwerking" onClick={() => setActiveModal('afwerking')} />
+            <FeatureCard icon={<Hammer />} title="Zandcement" />
+            <FeatureCard icon={<Ruler />} title="Anhydriet" />
+            <FeatureCard icon={<CheckSquare />} title="Vloerverwarming" />
+            <FeatureCard icon={<Star />} title="Afwerking" />
           </motion.div>
         </div>
       </Section>
@@ -287,6 +259,42 @@ export default function EgaliserenLandingPage() {
           </div>
         </div>
       </Section>
+
+      {/* Reviews Section */}
+      <section className="relative py-24 px-6 bg-slate-50 border-y border-gray-200 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl mb-4 font-bold text-slate-900">Wat Onze Klanten Zeggen</h2>
+            <div className="flex items-center justify-center gap-2 text-xl text-slate-600">
+              <span className="font-bold text-slate-900">4.9/5</span>
+              <div className="flex text-yellow-400">
+                <Star className="w-6 h-6 fill-current" />
+                <Star className="w-6 h-6 fill-current" />
+                <Star className="w-6 h-6 fill-current" />
+                <Star className="w-6 h-6 fill-current" />
+                <Star className="w-6 h-6 fill-current" />
+              </div>
+              <span>op basis van 400+ reviews</span>
+            </div>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { name: "Sander V.", rating: 5, text: "Echt vakwerk! Mijn PVC visgraat vloer kon er direct overheen. De communicatie via de AI tool in het begin was enorm soepel en snel." },
+              { name: "Marieke de J.", rating: 5, text: "Zandcement dekvloer laten storten voor onze hele benedenverdieping (90m2). De mannen werkten super netjes en de vloer is spiegelglad. Aanrader!" },
+              { name: "Pieter K.", rating: 5, text: "Vloerverwarming ingefreesd en daarna geëgaliseerd. Perfecte integratie, het team van Egaliseren.nl weet precies waar ze het over hebben." },
+            ].map((review, i) => (
+              <div key={i} className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
+                <div className="flex text-yellow-400 mb-4">
+                  {[...Array(review.rating)].map((_, j) => <Star key={j} className="w-5 h-5 fill-current" />)}
+                </div>
+                <p className="text-slate-600 mb-6 italic leading-relaxed">"{review.text}"</p>
+                <p className="font-bold text-slate-900">— {review.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Process Section */}
       <Section title="Onze Werkwijze" subtitle="In 3 simpele stappen een strakke vloer">
@@ -322,7 +330,7 @@ export default function EgaliserenLandingPage() {
               Bekijk een selectie van onze mooiste, strakst opgeleverde vloeren door heel Nederland. Swipe om meer te zien.
             </p>
           </motion.div>
-          
+
           <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory px-4 md:px-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
@@ -357,6 +365,50 @@ export default function EgaliserenLandingPage() {
                 </div>
               </div>
             </div>
+            <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+                <img src="/portfolio-4.png" alt="Hongaarse Punt" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                  <div>
+                    <h3 className="text-white font-bold text-xl mb-1">Eiken Hongaarse Punt</h3>
+                    <p className="text-slate-300 text-sm">Prachtige klassieke vloerafwerking in woonkamer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+                <img src="/portfolio-5.png" alt="Natuursteen Tegels" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                  <div>
+                    <h3 className="text-white font-bold text-xl mb-1">Natuursteen Ceramiek</h3>
+                    <p className="text-slate-300 text-sm">Grootformaat tegels perfect uitgevlakt</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+                <img src="/portfolio-6.png" alt="Walnoot Visgraat" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                  <div>
+                    <h3 className="text-white font-bold text-xl mb-1">Walnoot Visgraat</h3>
+                    <p className="text-slate-300 text-sm">Donkere en warme sfeer voor kantoorruimte</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+                <img src="/portfolio-7.png" alt="PU Gietvloer" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                  <div>
+                    <h3 className="text-white font-bold text-xl mb-1">Naadloze PU Gietvloer</h3>
+                    <p className="text-slate-300 text-sm">Waterdicht en strak design in luxe badkamer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -375,7 +427,7 @@ export default function EgaliserenLandingPage() {
             <p className="text-lg md:text-xl text-slate-600 mb-10">
               Onze AI analyseert direct de oppervlakte en de staat van de ondervloer en geeft u binnen 3 seconden een inschatting.
             </p>
-            
+
             <div className="max-w-2xl mx-auto bg-gray-50 border-2 border-dashed border-gray-300 rounded-3xl p-10 hover:border-slate-900 transition-colors">
               {!isUploading && !uploadResult ? (
                 <div className="flex flex-col items-center justify-center cursor-pointer" onClick={handleUpload}>
@@ -430,7 +482,7 @@ export default function EgaliserenLandingPage() {
                 <X className="w-5 h-5" />
               </button>
             </div>
-            
+
             <div ref={chatRef} className="flex-1 p-4 overflow-y-auto flex flex-col gap-3 bg-gray-50">
               {chatMessages.map((msg, idx) => (
                 <div key={idx} className={`max-w-[85%] p-3 rounded-2xl ${msg.role === 'ai' ? 'bg-white border border-gray-200 text-slate-800 self-start' : 'bg-slate-900 text-white self-end'}`}>
@@ -443,7 +495,7 @@ export default function EgaliserenLandingPage() {
                 </div>
               )}
             </div>
-            
+
             <form onSubmit={handleChat} className="p-3 bg-white border-t border-gray-200 flex gap-2">
               <input
                 type="text"
@@ -458,7 +510,7 @@ export default function EgaliserenLandingPage() {
             </form>
           </motion.div>
         )}
-        
+
         {!chatOpen && (
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -470,40 +522,6 @@ export default function EgaliserenLandingPage() {
           </motion.button>
         )}
       </div>
-
-      {/* Feature Detail Modal */}
-      {activeModal && MODAL_DATA[activeModal] && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm cursor-pointer"
-            onClick={() => setActiveModal(null)}
-          />
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            className="bg-white rounded-3xl p-8 max-w-lg w-full relative z-10 shadow-2xl border border-gray-200"
-          >
-            <button 
-              onClick={() => setActiveModal(null)}
-              className="absolute top-6 right-6 p-2 bg-gray-100 rounded-full hover:bg-gray-200 text-slate-700 transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            <h3 className="text-3xl font-bold text-slate-900 mb-2">{MODAL_DATA[activeModal].title}</h3>
-            <p className="text-lg font-medium text-slate-600 mb-6">{MODAL_DATA[activeModal].description}</p>
-            <div className="h-px w-full bg-gray-200 mb-6" />
-            <p className="text-slate-700 leading-relaxed mb-8">{MODAL_DATA[activeModal].content}</p>
-            <button 
-              onClick={() => setActiveModal(null)}
-              className="w-full py-4 bg-slate-900 text-white rounded-full font-bold hover:bg-slate-800 transition-colors"
-            >
-              Begrepen
-            </button>
-          </motion.div>
-        </div>
-      )}
     </div>
   );
 }
@@ -538,18 +556,16 @@ function Section({ id, title, subtitle, children }: { id?: string, title: string
   );
 }
 
-function FeatureCard({ icon, title, onClick }: { icon: React.ReactNode; title: string, onClick?: () => void }) {
+function FeatureCard({ icon, title }: { icon: React.ReactNode; title: string }) {
   return (
     <motion.div
-      onClick={onClick}
       whileHover={{ scale: 1.05, y: -5 }}
-      className="bg-white border border-gray-200 rounded-2xl p-3 sm:p-4 md:p-6 text-center hover:shadow-lg transition-all duration-300 flex flex-col justify-center items-center shadow-sm cursor-pointer"
+      className="bg-white border border-gray-200 rounded-2xl p-3 sm:p-4 md:p-6 text-center hover:shadow-lg transition-all duration-300 flex flex-col justify-center items-center shadow-sm"
     >
       <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mx-auto mb-2 sm:mb-3 md:mb-4 text-slate-700">
         {icon}
       </div>
       <h3 className="text-xs sm:text-sm md:text-base lg:text-lg break-words leading-tight w-full font-medium text-slate-900">{title}</h3>
-      <span className="mt-2 text-xs text-slate-500 font-medium opacity-0 group-hover:opacity-100 transition-opacity md:block hidden">Lees meer</span>
     </motion.div>
   );
 }
