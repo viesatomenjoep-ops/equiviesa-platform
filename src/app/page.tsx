@@ -37,9 +37,9 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white overflow-x-hidden dark">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900/80 to-slate-800 text-white overflow-x-hidden dark">
       {/* Top Navigation / Tool Selector */}
-      <header className="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:p-6 flex justify-between items-center bg-slate-950/80 backdrop-blur-md border-b border-white/10">
+      <header className="fixed top-0 left-0 right-0 z-50 py-3 px-4 md:p-6 flex justify-between items-center bg-slate-900/60 backdrop-blur-md border-b border-white/10">
         <div className="flex items-center">
           <Link href="/" className="group flex items-center gap-3 md:gap-4">
             <ScrollLogo>
@@ -47,8 +47,9 @@ export default function App() {
                 <Image src="/logo.png" alt="Viesa Logo" width={80} height={80} className="w-10 h-10 md:w-20 md:h-20 object-contain" />
               </motion.div>
             </ScrollLogo>
-            <span className="text-lg md:text-4xl font-serif font-bold tracking-tight uppercase leading-none text-white">
-              VIESA
+            <span className="font-serif tracking-tight uppercase leading-none text-white flex items-baseline gap-2 notranslate">
+              <span className="text-lg md:text-4xl font-bold">VIESA</span>
+              <span className="text-xs md:text-xl font-medium text-slate-300">Automations</span>
             </span>
           </Link>
         </div>
@@ -73,9 +74,9 @@ export default function App() {
         style={{ opacity, scale }}
         className="relative min-h-screen flex items-center justify-center px-6 py-20"
       >
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-slate-300/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-slate-400/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-sky-400/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto text-center">
@@ -85,7 +86,7 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
             <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tight font-bold"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tight font-bold notranslate"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -113,13 +114,13 @@ export default function App() {
             transition={{ delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <button className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-white text-slate-950 hover:bg-slate-200 rounded-full hover:shadow-2xl hover:shadow-white/10 transition-all duration-300 flex items-center gap-2 justify-center">
+            <Link href="/transformation" className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-white text-slate-950 hover:bg-slate-200 rounded-full hover:shadow-2xl hover:shadow-white/10 transition-all duration-300 flex items-center gap-2 justify-center font-bold">
               Start Your Transformation
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 border border-blue-400/50 rounded-full hover:bg-blue-500/10 transition-all duration-300">
+            </Link>
+            <Link href="/case-studies" className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 border border-blue-400/50 rounded-full hover:bg-blue-500/10 transition-all duration-300 flex items-center justify-center font-bold">
               View Case Studies
-            </button>
+            </Link>
           </motion.div>
         </div>
 
