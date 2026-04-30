@@ -86,11 +86,10 @@ export default function MaartenDriessenLandingPage() {
       {/* Top Navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 py-4 px-4 sm:px-6 flex justify-between items-center bg-white/90 backdrop-blur-md border-b border-gray-200">
         <Link href="/maarten-driessen" className="group flex items-center gap-3">
-          <img
-            src="https://www.egaliseren.nl/wp-content/uploads/2023/11/maarten-driessen-logo-dark-cropped.png"
-            alt="Maarten Driessen Logo"
-            className="h-7 sm:h-8 md:h-10 w-auto object-contain"
-          />
+          <div className="flex items-center gap-2">
+            <span className="text-amber-600 bg-amber-50 p-2 rounded-lg font-serif italic text-xl font-bold">MD</span>
+            <span className="font-serif font-bold text-xl text-slate-900 tracking-tight hidden sm:block">Maarten Driessen</span>
+          </div>
         </Link>
 
         <div className="flex items-center gap-2 sm:gap-4">
