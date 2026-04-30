@@ -402,33 +402,66 @@ export default function EgaliserenLandingPage() {
             </div>
             <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-                <img src="/portfolio-5.png" alt="Natuursteen Tegels" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src="/portfolio-5.png" alt="Machinaal Egaliseren" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                   <div>
-                    <h3 className="text-white font-bold text-xl mb-1">Natuursteen Ceramiek</h3>
-                    <p className="text-slate-300 text-sm">Grootformaat tegels perfect uitgevlakt</p>
+                    <h3 className="text-white font-bold text-xl mb-1">Machinaal Egaliseren</h3>
+                    <p className="text-slate-300 text-sm">Vloeivloer perfect waterpas aangebracht</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-                <img src="/portfolio-6.png" alt="Walnoot Visgraat" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src="/portfolio-6.png" alt="Spiegelgladde Afwerking" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                   <div>
-                    <h3 className="text-white font-bold text-xl mb-1">Walnoot Visgraat</h3>
-                    <p className="text-slate-300 text-sm">Donkere en warme sfeer voor kantoorruimte</p>
+                    <h3 className="text-white font-bold text-xl mb-1">Spiegelgladde Afwerking</h3>
+                    <p className="text-slate-300 text-sm">Onze garantie voor de perfecte basis</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-                <img src="/portfolio-7.png" alt="PU Gietvloer" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src="/portfolio-7.png" alt="Vloerverwarming Frezen" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                   <div>
-                    <h3 className="text-white font-bold text-xl mb-1">Naadloze PU Gietvloer</h3>
-                    <p className="text-slate-300 text-sm">Waterdicht en strak design in luxe badkamer</p>
+                    <h3 className="text-white font-bold text-xl mb-1">Vloerverwarming Integratie</h3>
+                    <p className="text-slate-300 text-sm">Frezen met uiterste precisie en perfect patroon</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+                <img src="/portfolio-8.png" alt="Sleuven Dichtzetten" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                  <div>
+                    <h3 className="text-white font-bold text-xl mb-1">Sleuven Dichtzetten</h3>
+                    <p className="text-slate-300 text-sm">Naadloze voorbereiding voor de eindvloer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+                <img src="/portfolio-9.png" alt="Eiken Visgraat" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                  <div>
+                    <h3 className="text-white font-bold text-xl mb-1">Eiken Visgraat PVC</h3>
+                    <p className="text-slate-300 text-sm">High-end residentiële afwerking met veel licht</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+                <img src="/portfolio-10.png" alt="Beton Cire Badkamer" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                  <div>
+                    <h3 className="text-white font-bold text-xl mb-1">Naadloze Beton Ciré</h3>
+                    <p className="text-slate-300 text-sm">Exclusieve spa-beleving in moderne badkamer</p>
                   </div>
                 </div>
               </div>

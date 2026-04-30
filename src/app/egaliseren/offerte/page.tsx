@@ -22,28 +22,28 @@ export default function OfferteHubPage() {
       title: "AI Droogtijd Calculator",
       description: "Bereken de exacte droogtijd van uw vloer o.b.v. luchtvochtigheid en dikte.",
       icon: <Bot className="w-8 h-8 text-blue-500" />,
-      link: "/egaliseren/calculator",
+      link: "/egaliseren/droogtijd",
       color: "bg-blue-50 border-blue-200"
     },
     {
       title: "Materiaal Calculator",
       description: "Weet direct hoeveel zakken egaline en primer u exact nodig heeft.",
       icon: <Ruler className="w-8 h-8 text-emerald-500" />,
-      link: "/egaliseren/calculator",
+      link: "/egaliseren/materiaal",
       color: "bg-emerald-50 border-emerald-200"
     },
     {
       title: "Vloerverwarming Planner",
       description: "Bereken het legplan en de warmteopbrengst voor uw vierkante meters.",
       icon: <Globe className="w-8 h-8 text-orange-500" />,
-      link: "/egaliseren/calculator",
+      link: "/egaliseren/vloerverwarming-planner",
       color: "bg-orange-50 border-orange-200"
     },
     {
       title: "Live Offerte Generator",
       description: "Directe prijsberekening via WhatsApp met onze CallMeBot flow.",
       icon: <Smartphone className="w-8 h-8 text-purple-500" />,
-      link: "/egaliseren/calculator",
+      link: "/egaliseren/generator",
       color: "bg-purple-50 border-purple-200"
     }
   ];

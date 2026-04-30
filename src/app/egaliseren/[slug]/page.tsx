@@ -41,6 +41,34 @@ const PAGE_CONTENT: Record<string, any> = {
     description: "Gebruik onze AI calculator om direct de droogtijd, het materiaalverbruik en een indicatieve prijs voor uw project te berekenen.",
     features: ["Direct resultaat", "Real-time prijzen", "Inclusief materiaal", "AI Gestuurd"],
     image: "/portfolio-4.png"
+  },
+  droogtijd: {
+    title: "AI Droogtijd Calculator",
+    subtitle: "Weet exact wanneer u verder kunt",
+    description: "Voorkom schade door vocht. Onze AI berekent op basis van de dikte van de egalinelaag exact hoelang de vloer moet drogen voordat deze legklaar is.",
+    features: ["Laagdikte berekening", "Vochtpercentage voorspelling", "Veiligheidsmarges", "Direct in uw WhatsApp"],
+    image: "/hero-egaliseren.png"
+  },
+  materiaal: {
+    title: "Materiaal Calculator",
+    subtitle: "Nooit meer te veel of te weinig materiaal",
+    description: "Bereken exact hoeveel zakken egaline (25kg) en primer u nodig heeft. Inclusief een nauwkeurige prijsinschatting.",
+    features: ["Exact aantal zakken", "Primer berekening", "Inclusief afvalmarge", "Actuele prijzen"],
+    image: "/portfolio-3.png"
+  },
+  "vloerverwarming-planner": {
+    title: "Vloerverwarming Planner",
+    subtitle: "Kosten voor frezen en egaliseren",
+    description: "Bereken direct de kosten voor het frezen van vloerverwarming en het dichtzetten/egaliseren van de vloer.",
+    features: ["Freeskosten", "Dichtzetten sleuven", "Totale egalisatie", "Warmteopbrengst indicatie"],
+    image: "/portfolio-1.png"
+  },
+  generator: {
+    title: "Live Offerte Generator",
+    subtitle: "Binnen 3 seconden uw offerte op WhatsApp",
+    description: "Vul uw gegevens in en onze Live Offerte Generator stuurt direct een complete en overzichtelijke prijsopgave naar uw WhatsApp.",
+    features: ["Onmiddellijke reactie", "Gespecificeerde offerte", "Vrijblijvend", "Direct via WhatsApp"],
+    image: "/portfolio-2.png"
   }
 };
 
@@ -84,13 +112,35 @@ export default function ServiceLandingPage() {
       
       if (error) console.error("Fout bij opslaan lead:", error);
       
-      setResult(`Geschatte prijs: €${price.toFixed(2)}.`);
+      let calcResult = '';
+      let waText = '';
+      const dikte = parseInt(laagdikte) || 3;
+
+      if (slug === 'droogtijd') {
+        const droogDagen = dikte * 1.2; // roughly 1.2 days per mm
+        calcResult = `Geschatte droogtijd: ${droogDagen.toFixed(1)} dagen (bij ${dikte}mm dikte).`;
+        waText = `Beste Egaliseren.nl, ik heb de AI Droogtijd Calculator gebruikt.\n\n*Mijn project:*\n- Oppervlakte: ${opp}m²\n- Laagdikte: ${dikte}mm\n- Berekende droogtijd: ${droogDagen.toFixed(1)} dagen.\n\nTelefoon: ${whatsapp || 'Niet ingevuld'}\nIk ontvang graag advies over de planning.`;
+      } else if (slug === 'materiaal') {
+        const kgNodig = opp * dikte * 1.6; // 1.6kg per m2 per mm
+        const zakken = Math.ceil(kgNodig / 25);
+        calcResult = `U heeft ca. ${kgNodig.toFixed(0)}kg egaline nodig (${zakken} zakken van 25kg) voor ${opp}m² op ${dikte}mm.`;
+        waText = `Beste Egaliseren.nl, ik heb de Materiaal Calculator gebruikt.\n\n*Mijn project:*\n- Oppervlakte: ${opp}m²\n- Laagdikte: ${dikte}mm\n- Benodigd: ${zakken} zakken (ca. ${kgNodig.toFixed(0)}kg).\n\nTelefoon: ${whatsapp || 'Niet ingevuld'}\nKunnen jullie hiervoor een materiaal/leg offerte sturen?`;
+      } else if (slug === 'vloerverwarming-planner') {
+        const vloerverwarmingPrijs = opp * 35; // e.g. 35 eur/m2 for frezen + dichtzetten
+        const totaalPrijs = price + vloerverwarmingPrijs;
+        calcResult = `Kosten frezen + dichtzetten: €${vloerverwarmingPrijs.toFixed(2)}. Totale projectprijs incl. egaliseren: €${totaalPrijs.toFixed(2)}.`;
+        waText = `Beste Egaliseren.nl, ik heb de Vloerverwarming Planner gebruikt.\n\n*Mijn project:*\n- Oppervlakte: ${opp}m²\n- Totale indicatie (frezen + egaliseren): €${totaalPrijs.toFixed(2)}.\n\nTelefoon: ${whatsapp || 'Niet ingevuld'}\nKan ik dit bij jullie inplannen?`;
+      } else {
+        // Default Generator / Calculator
+        calcResult = `Geschatte projectprijs: €${price.toFixed(2)}.`;
+        waText = `Beste Egaliseren.nl, ik heb zojuist via de site een berekening gemaakt voor een ${content.title} en wil dit graag inplannen.\n\n*Mijn gegevens:*\n- Telefoon: ${whatsapp || 'Niet ingevuld'}\n- Oppervlakte: ${opp}m²\n- Ondervloer: Beton/Zandcement\n\nDe geschatte prijs was €${price.toFixed(2)}. Kunnen we dit bespreken?`;
+      }
+
+      setResult(calcResult);
       
       // Open direct WhatsApp conversation with the owner (0651641886)
-      // This is much more reliable than CallMeBot for B2C interactions
       const ownerPhone = '31651641886';
-      const text = `Beste Egaliseren.nl, ik heb zojuist via de site een berekening gemaakt voor een ${content.title} en wil dit graag inplannen.\n\n*Mijn gegevens:*\n- Telefoon: ${whatsapp || 'Niet ingevuld'}\n- Oppervlakte: ${opp}m²\n- Ondervloer: Beton/Zandcement\n\nDe geschatte prijs was €${price.toFixed(2)}. Kunnen we dit bespreken?`;
-      const encodedText = encodeURIComponent(text);
+      const encodedText = encodeURIComponent(waText);
       
       window.open(`https://wa.me/${ownerPhone}?text=${encodedText}`, '_blank');
 
