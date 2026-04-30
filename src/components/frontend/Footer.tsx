@@ -38,7 +38,7 @@ export default function Footer() {
                  </svg>
               </div>
               <span className="text-white text-lg md:text-xl font-serif mb-1">Chat via WhatsApp</span>
-              <span className="text-accent-light text-xs md:text-sm font-bold uppercase tracking-widest">+31 6 83 05 28 75</span>
+              <span className="text-accent-light text-xs md:text-sm font-bold uppercase tracking-widest">0031 68305 2875</span>
             </a>
 
             <a 

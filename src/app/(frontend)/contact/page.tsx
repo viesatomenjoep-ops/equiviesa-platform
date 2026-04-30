@@ -131,7 +131,7 @@ export default function ContactPage() {
                     <label className="flex items-center text-sm font-bold text-gray-700 dark:text-gray-300">
                       <Phone size={16} className="mr-2 text-accent" /> Phone
                     </label>
-                    <input name="clientPhone" type="tel" placeholder="+31 6 83 05 28 75" className="w-full p-3.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-accent outline-none transition-all" />
+                    <input name="clientPhone" type="tel" placeholder="0031 68305 2875" className="w-full p-3.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-accent outline-none transition-all" />
                   </div>
                 </div>
 
@@ -191,7 +191,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="font-medium text-gray-900 dark:text-white group-hover:text-accent transition-colors">Chat via WhatsApp</p>
-                  <p className="text-gray-600 dark:text-gray-400">+31 6 83 05 28 75</p>
+                  <p className="text-gray-600 dark:text-gray-400">0031 68305 2875</p>
                 </div>
               </a>
               <a href="mailto:info@equiviesa.com" className="flex items-start group">
