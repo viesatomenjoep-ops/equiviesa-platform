@@ -72,7 +72,7 @@ export default function BookingPage() {
                     <MapPin size={20} className="text-accent" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-900 dark:text-gray-100">Equiviesa Stables</h4>
+                    <h4 className="font-bold text-gray-900 dark:text-gray-100">Viesa Automations Stables</h4>
                     <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">
                       Bezoek is uitsluitend op afspraak om de rust voor onze paarden te garanderen.
                     </p>

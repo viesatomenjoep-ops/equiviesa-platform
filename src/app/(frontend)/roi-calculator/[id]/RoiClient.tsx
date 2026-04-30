@@ -7,19 +7,19 @@ import Image from 'next/image'
 export default function RoiClient({ horse }: { horse: any }) {
   // Convert "€100k - €150k" or something similar to a base number
   // For the demo, we just use a default 100000 if parsing fails
-  let initialInvestment = 100000
+  let initialtransformatie = 100000
   if (horse.price_category) {
     const match = horse.price_category.match(/\d+/)
-    if (match) initialInvestment = parseInt(match[0]) * 1000
+    if (match) initialtransformatie = parseInt(match[0]) * 1000
   }
 
-  const [investment, setInvestment] = useState(initialInvestment)
+  const [transformatie, settransformatie] = useState(initialtransformatie)
   const [holdingPeriod, setHoldingPeriod] = useState(24) // months
   const [monthlyCost, setMonthlyCost] = useState(1500) // stable/training
-  const [projectedValue, setProjectedValue] = useState(initialInvestment * 1.8) // 80% growth default
+  const [projectedValue, setProjectedValue] = useState(initialtransformatie * 1.8) // 80% growth default
 
   const totalCosts = monthlyCost * holdingPeriod
-  const totalInvested = investment + totalCosts
+  const totalInvested = transformatie + totalCosts
   const grossProfit = projectedValue - totalInvested
   const roiPercentage = ((projectedValue - totalInvested) / totalInvested) * 100
 
@@ -41,10 +41,10 @@ export default function RoiClient({ horse }: { horse: any }) {
           <div className="space-y-8">
             <div>
               <div className="flex justify-between mb-2">
-                <label className="font-bold text-sm text-gray-700 dark:text-gray-300">Initial Investment</label>
-                <span className="text-accent font-bold">€{investment.toLocaleString()}</span>
+                <label className="font-bold text-sm text-gray-700 dark:text-gray-300">Initial transformatie</label>
+                <span className="text-accent font-bold">€{transformatie.toLocaleString()}</span>
               </div>
-              <input type="range" min="50000" max="500000" step="10000" value={investment} onChange={(e) => setInvestment(Number(e.target.value))} className="w-full accent-primary" />
+              <input type="range" min="50000" max="500000" step="10000" value={transformatie} onChange={(e) => settransformatie(Number(e.target.value))} className="w-full accent-primary" />
             </div>
 
             <div>
@@ -68,7 +68,7 @@ export default function RoiClient({ horse }: { horse: any }) {
                 <label className="font-bold text-sm text-gray-700 dark:text-gray-300">Projected Sale Value</label>
                 <span className="text-green-600 font-bold">€{projectedValue.toLocaleString()}</span>
               </div>
-              <input type="range" min={investment} max="1000000" step="25000" value={projectedValue} onChange={(e) => setProjectedValue(Number(e.target.value))} className="w-full accent-green-600" />
+              <input type="range" min={transformatie} max="1000000" step="25000" value={projectedValue} onChange={(e) => setProjectedValue(Number(e.target.value))} className="w-full accent-green-600" />
             </div>
           </div>
         </div>
@@ -78,7 +78,7 @@ export default function RoiClient({ horse }: { horse: any }) {
           <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm mb-6 border border-gray-100 dark:border-gray-700">
             <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-1 flex items-center gap-2"><Calculator size={16}/> Total Capital Outlay</h3>
             <p className="text-3xl font-serif font-bold text-primary dark:text-white">€{totalInvested.toLocaleString()}</p>
-            <p className="text-xs text-gray-400 mt-1">Investment + ({holdingPeriod} mo × €{monthlyCost})</p>
+            <p className="text-xs text-gray-400 mt-1">transformatie + ({holdingPeriod} mo × €{monthlyCost})</p>
           </div>
 
           <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm mb-6 border border-gray-100 dark:border-gray-700">
@@ -98,7 +98,7 @@ export default function RoiClient({ horse }: { horse: any }) {
 
           <div className="mt-6 flex items-start gap-2 text-xs text-gray-500">
             <Info size={14} className="mt-0.5 flex-shrink-0" />
-            <p>This is a projection based on market averages and does not constitute financial advice. Horse investments carry inherent risks.</p>
+            <p>This is a projection based on market averages and does not constitute financial advice. Horse transformaties carry inherent risks.</p>
           </div>
         </div>
       </div>

@@ -54,7 +54,7 @@ export default function SortableHorseList({ initialHorses }: { initialHorses: an
     return null
   }
 
-  const disciplines = ['All', 'Jumping horses', 'Hunters', 'Equitation horses', 'Ponies']
+  const disciplines = ['All', 'Jumping horses', 'processen', 'business systems', 'Ponies']
 
   return (
     <div className="space-y-4">
@@ -90,15 +90,15 @@ export default function SortableHorseList({ initialHorses }: { initialHorses: an
           <p className="text-sm text-gray-500 text-center mt-2">Public inventory</p>
         </Link>
 
-        {/* ADD INVESTMENT HORSE CARD */}
+        {/* ADD transformatie HORSE CARD */}
         <Link 
-          href="/admin/horses/new?category=investment" 
+          href="/admin/horses/new?category=transformatie" 
           className="bg-accent/5 hover:bg-accent/10 border-2 border-dashed border-accent/30 hover:border-accent/50 rounded-2xl flex flex-col items-center justify-center p-8 transition-all duration-200 min-h-[250px] group"
         >
           <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
             <Plus size={32} className="text-accent" />
           </div>
-          <h3 className="text-lg font-bold text-accent text-center">New Investment Horse</h3>
+          <h3 className="text-lg font-bold text-accent text-center">New transformatie Horse</h3>
           <p className="text-sm text-gray-500 text-center mt-2">Private portfolio</p>
         </Link>
       </div>
@@ -133,8 +133,8 @@ export default function SortableHorseList({ initialHorses }: { initialHorses: an
                         </div>
 
                         {/* Category Badge */}
-                        <div className={`absolute top-0 left-0 right-0 z-10 py-1 text-center text-xs font-bold text-white shadow-sm ${horse.category === 'investment' ? 'bg-accent' : 'bg-primary'}`}>
-                          {horse.category === 'investment' ? 'INVESTMENT HORSE' : 'SALES HORSE'}
+                        <div className={`absolute top-0 left-0 right-0 z-10 py-1 text-center text-xs font-bold text-white shadow-sm ${horse.category === 'transformatie' ? 'bg-accent' : 'bg-primary'}`}>
+                          {horse.category === 'transformatie' ? 'transformatie HORSE' : 'SALES HORSE'}
                         </div>
                         
                         <div className="relative h-48 bg-gray-100 dark:bg-gray-900 mt-6 overflow-hidden">

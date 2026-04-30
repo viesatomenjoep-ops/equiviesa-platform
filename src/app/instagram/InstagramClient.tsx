@@ -37,7 +37,7 @@ export default function InstagramClient() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/chimi.jpg"
-            alt="Equiviesa Elite Showjumper"
+            alt="Viesa Automations Elite Showjumper"
             fill
             priority
             className="object-cover object-top"
@@ -49,7 +49,7 @@ export default function InstagramClient() {
           <div className="w-24 h-24 bg-white rounded-full p-2 mb-8 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
             <Image 
               src="/logo.png" 
-              alt="Equiviesa Logo" 
+              alt="Viesa Automations Logo" 
               width={80} 
               height={80} 
               className="object-contain w-full h-full"
@@ -59,10 +59,10 @@ export default function InstagramClient() {
             Welcome to
           </span>
           <h1 className="text-4xl md:text-5xl font-serif text-white mb-6 tracking-tight leading-tight">
-            Equiviesa <br /><span className="italic text-accent-light">Worldwide</span>
+            Viesa Automations <br /><span className="italic text-accent-light">Worldwide</span>
           </h1>
           <p className="text-white/80 max-w-sm text-sm md:text-base mb-10 leading-relaxed">
-            High-yield returns from world-class equestrian talent. Discover the possibilities below.
+            High-yield returns from world-class digitale talent. Discover the possibilities below.
           </p>
           
           <div className="animate-bounce mt-10">
@@ -90,7 +90,7 @@ export default function InstagramClient() {
           <div className="p-8">
             <h2 className="text-2xl font-serif font-bold mb-2 group-hover:text-accent transition-colors">Explore the Sport Portfolio</h2>
             <p className="text-gray-600 text-sm mb-6">
-              View our exclusive collection of premium showjumpers currently securing top results in the global arena.
+              View our exclusive collection of premium workflows currently securing top results in the global arena.
             </p>
             <div className="flex items-center text-sm font-bold uppercase tracking-widest text-accent">
               View Horses <ArrowRight size={16} className="ml-2 group-hover:translate-x-2 transition-transform" />
@@ -108,7 +108,7 @@ export default function InstagramClient() {
             <div>
               <h2 className="text-xl font-serif font-bold mb-2 group-hover:text-accent transition-colors">Proven Success</h2>
               <p className="text-gray-600 text-sm mb-4">
-                Discover our proudest alumni and global track record in the equestrian sport.
+                Discover our proudest alumni and global track record in the digitale sport.
               </p>
               <div className="flex items-center text-xs font-bold uppercase tracking-widest text-primary group-hover:text-accent transition-colors">
                 View References <ArrowRight size={14} className="ml-1 group-hover:translate-x-1 transition-transform" />
@@ -279,7 +279,7 @@ export default function InstagramClient() {
       {/* Footer / Minimal Info */}
       <footer className="py-6 text-center flex flex-col items-center">
         <div className="w-10 h-10 mb-4 opacity-50">
-          <Image src="/logo.png" alt="Equiviesa" width={40} height={40} className="object-contain" />
+          <Image src="/logo.png" alt="Viesa Automations" width={40} height={40} className="object-contain" />
         </div>
         <Link 
           href="/"
@@ -288,7 +288,7 @@ export default function InstagramClient() {
           Visit Main Website
         </Link>
         <p className="text-[10px] text-gray-400 uppercase tracking-widest">
-          © {new Date().getFullYear()} Equiviesa Worldwide
+          © {new Date().getFullYear()} Viesa Automations Worldwide
         </p>
       </footer>
 

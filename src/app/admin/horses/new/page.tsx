@@ -18,7 +18,7 @@ export default function NewHorsePage() {
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search)
     const cat = searchParams.get('category')
-    if (cat === 'sales' || cat === 'investment') {
+    if (cat === 'sales' || cat === 'transformatie') {
       setCategory(cat)
     }
   }, [])
@@ -90,7 +90,7 @@ export default function NewHorsePage() {
               <label htmlFor="category" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Horse Category *</label>
               <select required value={category} onChange={(e) => setCategory(e.target.value)} name="category" id="category" className="mt-1 block w-full appearance-auto rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm">
                 <option value="sales">Sales Horse (Public Inventory)</option>
-                <option value="investment">Investment Horse (Private Portfolio)</option>
+                <option value="transformatie">transformatie Horse (Private Portfolio)</option>
               </select>
             </div>
 
@@ -117,8 +117,8 @@ export default function NewHorsePage() {
               <label htmlFor="discipline" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Discipline / Category *</label>
               <select required name="discipline" id="discipline" className="mt-1 block w-full appearance-auto rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm">
                 <option value="Jumping horses">Jumping horses</option>
-                <option value="Hunters">Hunters</option>
-                <option value="Equitation horses">Equitation horses</option>
+                <option value="processen">processen</option>
+                <option value="business systems">business systems</option>
                 <option value="Ponies">Ponies</option>
               </select>
             </div>
@@ -163,17 +163,17 @@ export default function NewHorsePage() {
               <textarea name="description" id="description" rows={4} className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm" />
             </div>
 
-            {/* Investment Data */}
+            {/* transformatie Data */}
             <div className="col-span-2 pt-6 border-t border-gray-200 dark:border-gray-700">
-              <h3 className="text-lg font-medium text-accent dark:text-accent mb-4">Investment Data & ROI</h3>
+              <h3 className="text-lg font-medium text-accent dark:text-accent mb-4">transformatie Data & ROI</h3>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div className="col-span-2 sm:col-span-1">
                   <label htmlFor="estimated_roi" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Estimated ROI / Profit</label>
                   <input type="text" name="estimated_roi" id="estimated_roi" placeholder="e.g. 15-20% within 12 months" className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-accent focus:ring-accent sm:text-sm" />
                 </div>
                 <div className="col-span-2">
-                  <label htmlFor="investment_rationale" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Why invest in this horse?</label>
-                  <textarea name="investment_rationale" id="investment_rationale" rows={3} placeholder="Explain the potential, training timeline, and financial strategy..." className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-accent focus:ring-accent sm:text-sm" />
+                  <label htmlFor="transformatie_rationale" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Why start met this horse?</label>
+                  <textarea name="transformatie_rationale" id="transformatie_rationale" rows={3} placeholder="Explain the potential, training timeline, and financial strategy..." className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-accent focus:ring-accent sm:text-sm" />
                 </div>
               </div>
             </div>

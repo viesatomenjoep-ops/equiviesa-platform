@@ -60,12 +60,12 @@ export default function ExploreToolsPage() {
             contracts: 'Ownership Syndication Agreement',
             biometrics: 'AI Biometric Jump Analysis Data'
           };
-          const text = `EQUIVIESA WORLDWIDE - SECURE DOCUMENT VAULT\n==========================================\n\nDocument: ${titles[type] || 'Secure Document'}\nDate Generated: ${new Date().toLocaleString()}\nSecurity Token: EQV-${Math.random().toString(36).substring(2, 10).toUpperCase()}\n\nThis is a securely generated document demonstrating the Equiviesa Magic Link capabilities. All data is encrypted and watermarked.\n\n© 2026 Equiviesa Portfolio Management`;
+          const text = `Viesa Automations WORLDWIDE - SECURE DOCUMENT VAULT\n==========================================\n\nDocument: ${titles[type] || 'Secure Document'}\nDate Generated: ${new Date().toLocaleString()}\nSecurity Token: EQV-${Math.random().toString(36).substring(2, 10).toUpperCase()}\n\nThis is a securely generated document demonstrating the Viesa Automations Magic Link capabilities. All data is encrypted and watermarked.\n\n© 2026 Viesa Automations Portfolio Management`;
           const blob = new Blob([text], { type: 'text/plain' });
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
           a.href = url;
-          a.download = `Equiviesa_${type.toUpperCase()}_Document.txt`;
+          a.download = `Viesa Automations_${type.toUpperCase()}_Document.txt`;
           document.body.appendChild(a);
           a.click();
           document.body.removeChild(a);
@@ -76,7 +76,7 @@ export default function ExploreToolsPage() {
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
           a.href = url;
-          a.download = `Equiviesa_FEI_History.csv`;
+          a.download = `Viesa Automations_FEI_History.csv`;
           document.body.appendChild(a);
           a.click();
           document.body.removeChild(a);
@@ -249,7 +249,7 @@ export default function ExploreToolsPage() {
         {activeMagicLink && (
           <div className="fixed inset-0 z-[100] flex flex-col bg-gray-900/95 backdrop-blur-md animate-fade-in">
             <div className="flex justify-center items-center p-6 border-b border-white/10">
-              <h3 className="text-white font-serif font-bold text-2xl tracking-wider">Equiviesa Secure Vault</h3>
+              <h3 className="text-white font-serif font-bold text-2xl tracking-wider">Viesa Automations Secure Vault</h3>
             </div>
             
             <div className="flex-1 flex items-center justify-center p-4 relative overflow-y-auto">
@@ -341,7 +341,7 @@ export default function ExploreToolsPage() {
                     <Dna size={40} className="text-orange-400" />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-3">Genetics Verified</h3>
-                  <p className="text-gray-300 mb-8 leading-relaxed">Complete bloodline tracking from sire line and dam line with DNA authenticity guaranteed by Equiviesa.</p>
+                  <p className="text-gray-300 mb-8 leading-relaxed">Complete bloodline tracking from sire line and dam line with DNA authenticity guaranteed by Viesa Automations.</p>
                   <button 
                     onClick={() => handleActionClick('pedigree', 'Interactive Tree Opened ✅')}
                     disabled={!!actionState['pedigree']}
@@ -485,7 +485,7 @@ export default function ExploreToolsPage() {
             <div className="md:w-1/2 p-8 md:p-16 text-white flex flex-col justify-center">
               <h2 className="text-4xl font-serif font-bold mb-6">Passport Authenticity Scanner</h2>
               <p className="text-primary-foreground/80 mb-10 text-lg leading-relaxed">
-                Equiviesa uses advanced blockchain and AI scanning to verify horse passports. Enter an Equiviesa Certificate Number below to verify its authenticity instantly.
+                Viesa Automations uses advanced blockchain and AI scanning to verify horse passports. Enter an Viesa Automations Certificate Number below to verify its authenticity instantly.
               </p>
               
               <form onSubmit={handleScan} className="flex flex-col sm:flex-row gap-4">
@@ -533,7 +533,7 @@ export default function ExploreToolsPage() {
                   </div>
                   <h3 className="text-3xl font-bold text-white mb-3">Verified Authentic</h3>
                   <p className="text-green-400 font-bold mb-6 text-lg">{passportNum}</p>
-                  <p className="text-gray-300 leading-relaxed">This document matches the official Equiviesa registry and has not been tampered with.</p>
+                  <p className="text-gray-300 leading-relaxed">This document matches the official Viesa Automations registry and has not been tampered with.</p>
                 </div>
               )}
 

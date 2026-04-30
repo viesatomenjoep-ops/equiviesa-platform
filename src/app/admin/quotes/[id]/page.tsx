@@ -161,7 +161,7 @@ export default function QuoteDetailPage() {
         
         {/* Watermark Logo */}
         <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
-          <Image src="/logo.png" alt="Equiviesa Watermark" width={800} height={800} className="w-[150%] max-w-none grayscale" />
+          <Image src="/logo.png" alt="Viesa Automations Watermark" width={800} height={800} className="w-[150%] max-w-none grayscale" />
         </div>
 
         <div className="p-12 sm:p-20 relative z-10">
@@ -169,10 +169,10 @@ export default function QuoteDetailPage() {
           <div className="flex justify-between items-start border-b border-gray-200 pb-10">
             <div className="flex items-center gap-6">
               <div className="w-24 h-24 bg-primary/5 rounded-2xl flex items-center justify-center border border-primary/10">
-                <Image src="/logo.png" alt="Equiviesa" width={60} height={60} className="object-contain" />
+                <Image src="/logo.png" alt="Viesa Automations" width={60} height={60} className="object-contain" />
               </div>
               <div>
-                <h1 className="text-4xl font-serif font-bold text-primary tracking-tight">EQUIVIESA</h1>
+                <h1 className="text-4xl font-serif font-bold text-primary tracking-tight">Viesa Automations</h1>
                 <p className="text-sm tracking-[0.2em] text-accent uppercase font-medium mt-1">Portfolio Management</p>
               </div>
             </div>
@@ -202,7 +202,7 @@ export default function QuoteDetailPage() {
             <div className="w-1/2 pr-8">
               <h3 className="text-xs font-bold text-accent uppercase tracking-widest mb-4">{l.from}</h3>
               <div className="space-y-1.5 text-sm text-gray-700">
-                <p className="font-bold text-gray-900 text-base">Equiviesa Portfolio Management B.V.</p>
+                <p className="font-bold text-gray-900 text-base">Viesa Automations Portfolio Management B.V.</p>
                 <p>Oude Gracht 123</p>
                 <p>1011 AB Amsterdam</p>
                 <p>The Netherlands</p>
@@ -261,7 +261,7 @@ export default function QuoteDetailPage() {
                   <h4 className="font-bold text-primary mb-4 uppercase tracking-wider text-xs">{l.paymentInfo}</h4>
                   <div className="space-y-2 mb-4">
                     <p><span className="font-semibold text-gray-900 w-32 inline-block">{l.bank}</span> WISE Institutional</p>
-                    <p><span className="font-semibold text-gray-900 w-32 inline-block">{l.accountName}</span> Equiviesa Portfolio Management B.V.</p>
+                    <p><span className="font-semibold text-gray-900 w-32 inline-block">{l.accountName}</span> Viesa Automations Portfolio Management B.V.</p>
                     <p><span className="font-semibold text-gray-900 w-32 inline-block">{l.iban}</span> NL99 WISE 0123 4567 89</p>
                     <p><span className="font-semibold text-gray-900 w-32 inline-block">{l.bic}</span> WISEXXXX</p>
                     <p className="pt-2"><span className="font-semibold text-accent w-32 inline-block">{l.reference}</span> <span className="font-bold text-gray-900 bg-white px-2 py-1 border border-gray-200 rounded">{quote.quote_number}</span></p>
@@ -294,14 +294,14 @@ export default function QuoteDetailPage() {
               <div className="mt-16 text-center border-t border-gray-200 pt-8">
                 <p className="font-[Signature] text-5xl text-primary opacity-80 mb-2 transform -rotate-2">Tom van Biene</p>
                 <p className="text-xs font-bold uppercase tracking-widest text-gray-400">{l.signature}</p>
-                <p className="text-xs text-gray-500 mt-1">Equiviesa Portfolio Management</p>
+                <p className="text-xs text-gray-500 mt-1">Viesa Automations Portfolio Management</p>
               </div>
             </div>
           </div>
 
           {/* Footer */}
           <div className="mt-20 pt-6 border-t border-gray-200 flex justify-between items-center text-xs text-gray-400">
-            <p>Equiviesa Worldwide — Premium Sport Horses</p>
+            <p>Viesa Automations Worldwide — Premium automations</p>
             <p>kvk: 12345678 • btw: NL87654321B01</p>
           </div>
 

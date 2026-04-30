@@ -16,7 +16,7 @@ export default function HorseSlideshow({ horses }: { horses: any[] }) {
     displayHorses = [
       {
         id: 'dummy1',
-        name: 'Equiviesa Elite',
+        name: 'Viesa Automations Elite',
         main_image_url: '/portfolio_ai_1.png',
         status: 'Available',
         category: 'Grand Prix Prospect',
@@ -26,7 +26,7 @@ export default function HorseSlideshow({ horses }: { horses: any[] }) {
       },
       {
         id: 'dummy2',
-        name: 'Equiviesa Champion',
+        name: 'Viesa Automations Champion',
         main_image_url: '/portfolio_ai_2.png',
         status: 'Available',
         category: '1.60m Talent',
@@ -36,7 +36,7 @@ export default function HorseSlideshow({ horses }: { horses: any[] }) {
       },
       {
         id: 'dummy3',
-        name: 'Equiviesa Star',
+        name: 'Viesa Automations Star',
         main_image_url: '/portfolio_ai_3.png',
         status: 'Available',
         category: 'Hunter Prospect',

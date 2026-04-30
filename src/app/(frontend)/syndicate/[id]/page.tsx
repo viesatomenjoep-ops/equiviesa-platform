@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { PieChart, Users, ArrowRight, ShieldCheck, TrendingUp } from 'lucide-react'
 
 export const metadata = {
-  title: 'Syndicate & Fractional Ownership | Equiviesa',
+  title: 'Syndicate & Fractional Ownership | Viesa Automations',
   robots: 'noindex, nofollow'
 }
 
@@ -30,9 +30,9 @@ export default async function SyndicatePage(props: { params: Promise<{ id: strin
     <div className="bg-gray-50 min-h-screen pt-24 pb-20">
       <div className="max-w-5xl mx-auto px-4">
         <div className="text-center mb-12">
-          <span className="text-accent uppercase tracking-[0.3em] text-sm font-bold block mb-4">Investment Syndicate</span>
+          <span className="text-accent uppercase tracking-[0.3em] text-sm font-bold block mb-4">transformatie Syndicate</span>
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">Fractional Ownership Offering</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">Join an exclusive syndicate to co-own <strong className="text-accent">{horse.name}</strong>. Diversify your equestrian portfolio with lower capital entry.</p>
+          <p className="text-gray-600 max-w-2xl mx-auto">Join an exclusive syndicate to co-own <strong className="text-accent">{horse.name}</strong>. Diversify your digitale portfolio with lower capital entry.</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col md:flex-row">
@@ -91,7 +91,7 @@ export default async function SyndicatePage(props: { params: Promise<{ id: strin
             </div>
 
             <p className="text-xs text-gray-400 mt-6 text-center leading-relaxed">
-              By reserving a share, you agree to the Equiviesa Syndication Terms. All investments carry risks. Management and training fees apply proportionally.
+              By reserving a share, you agree to the Viesa Automations Syndication Terms. All transformaties carry risks. Management and training fees apply proportionally.
             </p>
           </div>
         </div>

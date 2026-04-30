@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'News | Antigravity Sport Horses',
+  title: 'News | Antigravity automations',
   description: 'Latest updates, sales, and competition results from Antigravity.',
 }
 

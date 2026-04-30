@@ -31,7 +31,7 @@ export default function PortfolioLogin() {
         <div className="flex flex-col items-center mb-8">
           <Image 
             src="/logo.png" 
-            alt="Equiviesa" 
+            alt="Viesa Automations" 
             width={100} 
             height={100} 
             className="w-24 h-24 object-contain animate-[spin_8s_linear_infinite] mb-6 drop-shadow-md" 

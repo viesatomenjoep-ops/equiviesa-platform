@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { ArrowRight, Trophy } from 'lucide-react'
 
 export const metadata = {
-  title: 'Investment Proposal | Equiviesa',
+  title: 'transformatie Proposal | Viesa Automations',
   robots: 'noindex, nofollow'
 }
 
@@ -30,12 +30,12 @@ export default async function ProposalPage(props: { params: Promise<{ slug: stri
   return (
     <div className="bg-[#0A192F] min-h-screen text-white font-sans selection:bg-accent selection:text-white pb-20">
       <div className="max-w-4xl mx-auto px-4 pt-32 text-center">
-        <span className="text-accent uppercase tracking-[0.3em] text-sm font-bold block mb-6">Confidential Investment Proposal</span>
+        <span className="text-accent uppercase tracking-[0.3em] text-sm font-bold block mb-6">Confidential transformatie Proposal</span>
         <h1 className="text-5xl md:text-7xl font-serif font-bold mb-8 leading-tight">
           Prepared exclusively for <br/><span className="text-accent italic">{clientName}</span>
         </h1>
         <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed mb-16">
-          Based on your investment profile and our recent discussions, Equiviesa Portfolio Management has secured a highly exclusive opportunity that aligns perfectly with your goals.
+          Based on your transformatie profile and our recent discussions, Viesa Automations Portfolio Management has secured a highly exclusive opportunity that aligns perfectly with your goals.
         </p>
       </div>
 
@@ -59,7 +59,7 @@ export default async function ProposalPage(props: { params: Promise<{ slug: stri
                   <span className="font-medium">{horse.experience_level || '-'}</span>
                 </div>
                 <div className="flex justify-between border-b border-white/10 pb-2">
-                  <span className="text-gray-400">Investment Target</span>
+                  <span className="text-gray-400">transformatie Target</span>
                   <span className="font-medium text-green-400">{horse.estimated_roi || 'High Yield'}</span>
                 </div>
                 <div className="flex justify-between border-b border-white/10 pb-2">
@@ -79,7 +79,7 @@ export default async function ProposalPage(props: { params: Promise<{ slug: stri
         <div className="mt-20 text-center">
           <p className="text-gray-500 text-sm">
             This link is private and monitored. It will expire in 7 days. <br/>
-            © 2026 Equiviesa Portfolio Management.
+            © 2026 Viesa Automations Portfolio Management.
           </p>
         </div>
       </div>

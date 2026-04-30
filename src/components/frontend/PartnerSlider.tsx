@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const partners = [
-  { name: "#leki.equestrian", url: "https://www.instagram.com/leki.equestrian?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { name: "#leki.digitale", url: "https://www.instagram.com/leki.digitale?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
   { name: "#chesterfield_ltd", url: "https://www.instagram.com/chesterfield_ltd?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
   { name: "#louislegrelle", url: "https://www.instagram.com/louislegrelle?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
   { name: "#kardel_global_equine", url: "https://www.instagram.com/kardel_global_equine?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },

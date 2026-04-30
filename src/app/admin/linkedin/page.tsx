@@ -10,7 +10,7 @@ export default async function LinkedInPage() {
     redirect('/cms-login')
   }
 
-  // Get active investment horses for the campaign
+  // Get active transformatie horses for the campaign
   const { data: horses } = await supabase
     .from('horses')
     .select('id, name, description, estimated_roi, category')

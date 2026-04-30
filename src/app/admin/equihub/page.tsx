@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import EquihubDashboard from '@/components/admin/equihub/EquihubDashboard'
 
 export const metadata = {
-  title: 'Viesa Stable Management - Equiviesa',
+  title: 'Viesa Stable Management - Viesa Automations',
 }
 
 export default async function EquihubPage() {

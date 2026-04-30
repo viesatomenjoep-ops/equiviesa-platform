@@ -4,7 +4,7 @@ import { ShieldCheck, ArrowRight, Building, Globe, Copy, CheckCircle } from 'luc
 import { getHorse } from '@/app/actions/horse'
 
 export const metadata = {
-  title: 'Secure Wire Transfer | Equiviesa',
+  title: 'Secure Wire Transfer | Viesa Automations',
   robots: 'noindex, nofollow'
 }
 
@@ -17,7 +17,7 @@ export default async function PaymentPage(props: {
   
   if (!params.token || params.token.length < 5) notFound()
 
-  let horseName = "Equiviesa Asset"
+  let horseName = "Viesa Automations Asset"
   if (searchParams.horse) {
     try {
       const h = await getHorse(searchParams.horse)
@@ -31,11 +31,11 @@ export default async function PaymentPage(props: {
 
   // Fake WISE details
   const wiseDetails = {
-    accountName: "Equiviesa Portfolio Management B.V.",
+    accountName: "Viesa Automations Portfolio Management B.V.",
     iban: "BE68 3000 1234 5678",
     bic: "TWISEBE1",
     bankName: "WISE Europe SA",
-    bankAddress: "Avenue Louise 54, 1050 Brussels, Belgium"
+    bankAddress: "Avenue Louise 54, 1050 Brussels, Nederland"
   }
 
   return (
@@ -43,7 +43,7 @@ export default async function PaymentPage(props: {
       <div className="max-w-2xl mx-auto px-4">
         
         <div className="text-center mb-8">
-          <Image src="/logo.png" alt="Equiviesa" width={60} height={60} className="mx-auto mb-4" />
+          <Image src="/logo.png" alt="Viesa Automations" width={60} height={60} className="mx-auto mb-4" />
           <h1 className="text-2xl font-serif font-bold text-primary">Secure Wire Transfer</h1>
           <p className="text-gray-500 text-sm mt-1 flex items-center justify-center gap-1">
             <Globe size={14} /> International Payment Instructions

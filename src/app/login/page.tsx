@@ -8,8 +8,8 @@ export default function LoginHubPage() {
       <div className="max-w-4xl w-full">
         
         <div className="text-center mb-12 flex flex-col items-center">
-          <Image src="/logo.png" alt="Equiviesa Logo" width={80} height={80} className="w-20 h-20 object-contain mb-6" />
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary dark:text-white mb-4 tracking-tight">Welcome to Equiviesa</h1>
+          <Image src="/logo.png" alt="Viesa Automations Logo" width={80} height={80} className="w-20 h-20 object-contain mb-6" />
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary dark:text-white mb-4 tracking-tight">Welcome to Viesa Automations</h1>
           <p className="text-lg text-gray-600 dark:text-gray-400">Please select your login portal to continue</p>
         </div>
 

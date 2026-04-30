@@ -61,7 +61,7 @@ export default function AdminSidebar() {
       {/* Mobile Top Bar */}
       <div className="md:hidden flex items-center justify-between bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4 sticky top-0 z-40 shadow-sm">
         <div className="flex items-center gap-2">
-          <Image src="/logo.png" alt="Equiviesa Logo" width={32} height={32} className="w-8 h-8 object-contain animate-[spin_20s_linear_infinite]" />
+          <Image src="/logo.png" alt="Viesa Automations Logo" width={32} height={32} className="w-8 h-8 object-contain animate-[spin_20s_linear_infinite]" />
           <span className="text-base font-serif font-semibold text-primary dark:text-white">CMS</span>
         </div>
         <div className="flex items-center gap-4">
@@ -92,12 +92,12 @@ export default function AdminSidebar() {
       `}>
         <div className="h-16 flex items-center justify-between px-6 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-3 md:hidden">
-            <Image src="/logo.png" alt="Equiviesa Logo" width={32} height={32} className="w-8 h-8 object-contain animate-[spin_20s_linear_infinite]" />
+            <Image src="/logo.png" alt="Viesa Automations Logo" width={32} height={32} className="w-8 h-8 object-contain animate-[spin_20s_linear_infinite]" />
             <span className="text-lg font-serif font-semibold text-primary dark:text-white">CMS Menu</span>
           </div>
           <div className="hidden md:flex items-center gap-3">
-            <Image src="/logo.png" alt="Equiviesa Logo" width={40} height={40} className="w-10 h-10 object-contain animate-[spin_20s_linear_infinite]" />
-            <span className="text-base font-serif font-semibold text-primary dark:text-white">Equiviesa Management</span>
+            <Image src="/logo.png" alt="Viesa Automations Logo" width={40} height={40} className="w-10 h-10 object-contain animate-[spin_20s_linear_infinite]" />
+            <span className="text-base font-serif font-semibold text-primary dark:text-white">Viesa Automations Management</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="hidden md:block"><LanguageSwitcher expandDirection="left" /></div>

@@ -12,11 +12,11 @@ export async function generateMetadata(props: { params: Promise<{ id: string }> 
   const params = await props.params
   try {
     const horse = await getHorse(params.id)
-    if (!horse) return { title: 'Horse Not Found | Equiviesa' }
+    if (!horse) return { title: 'Horse Not Found | Viesa Automations' }
     
-    const desc = horse.description ? horse.description.substring(0, 150) + '...' : `Elite ${horse.discipline} available at Equiviesa. View pedigree, videos, and investment details.`
+    const desc = horse.description ? horse.description.substring(0, 150) + '...' : `Elite ${horse.discipline} available at Viesa Automations. View pedigree, videos, and transformatie details.`
     return {
-      title: `${horse.name} | Premium ${horse.discipline} | Equiviesa`,
+      title: `${horse.name} | Premium ${horse.discipline} | Viesa Automations`,
       description: desc,
       openGraph: {
         title: `${horse.name} | Premium ${horse.discipline}`,
@@ -25,7 +25,7 @@ export async function generateMetadata(props: { params: Promise<{ id: string }> 
       }
     }
   } catch (e) {
-    return { title: 'Equiviesa | Premium Sport Horses' }
+    return { title: 'Viesa Automations | Premium automations' }
   }
 }
 
@@ -60,17 +60,17 @@ export default async function HorseDetailPage(props: {
     '@type': 'Product',
     name: horse.name,
     image: horse.cover_image_url ? [horse.cover_image_url] : [],
-    description: horse.description || `Elite ${horse.discipline} available at Equiviesa.`,
+    description: horse.description || `Elite ${horse.discipline} available at Viesa Automations.`,
     brand: {
       '@type': 'Brand',
-      name: 'Equiviesa'
+      name: 'Viesa Automations'
     },
     offers: {
       '@type': 'Offer',
       priceCurrency: 'EUR',
       price: (horse.price_category && horse.price_category !== 'Price on Request') ? horse.price_category.replace(/[^0-9]/g, '000') : '0',
       availability: horse.status === 'Available' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-      url: `https://www.equiviesaworldwide.com/horses/${horse.id}`
+      url: `https://www.Viesa Automationsworldwide.com/horses/${horse.id}`
     }
   }
 
@@ -154,11 +154,11 @@ export default async function HorseDetailPage(props: {
             </div>
 
             {/* ROI Section */}
-            {canSeeROI && (horse?.estimated_roi || horse?.investment_rationale) && (
+            {canSeeROI && (horse?.estimated_roi || horse?.transformatie_rationale) && (
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/10 border-2 border-green-500/30 rounded-2xl p-8 shadow-sm relative overflow-hidden">
                 <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-green-500/10 rounded-full blur-3xl"></div>
                 <h2 className="text-2xl font-serif font-bold text-green-800 dark:text-green-400 mb-6 flex items-center">
-                  <TrendingUp className="mr-3 text-green-600 dark:text-green-500" /> Investment Prospect
+                  <TrendingUp className="mr-3 text-green-600 dark:text-green-500" /> transformatie Prospect
                 </h2>
                 
                 <div className="space-y-6">
@@ -169,11 +169,11 @@ export default async function HorseDetailPage(props: {
                     </div>
                   )}
                   
-                  {horse.investment_rationale && (
+                  {horse.transformatie_rationale && (
                     <div>
                       <span className="text-sm font-bold text-green-700 dark:text-green-500 uppercase tracking-widest block mb-2">Why this horse?</span>
                       <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
-                        {horse.investment_rationale}
+                        {horse.transformatie_rationale}
                       </p>
                     </div>
                   )}

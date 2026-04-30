@@ -66,7 +66,7 @@ export default function ContactPage() {
             Plan a Visit
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
-            Would you like to visit us to view our horses or discuss investment opportunities? Fill out the form below and we will schedule an appointment.
+            Would you like to visit us to view our horses or discuss transformatie opportunities? Fill out the form below and we will schedule an appointment.
           </p>
         </div>
 
@@ -163,7 +163,7 @@ export default function ContactPage() {
                   <label className="block text-sm font-bold text-gray-700 dark:text-gray-300">
                     What would you like to visit us for? (Optional)
                   </label>
-                  <textarea name="notes" rows={4} placeholder="e.g., viewing a specific horse, discussing an investment..." className="w-full p-3.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-accent outline-none transition-all resize-none"></textarea>
+                  <textarea name="notes" rows={4} placeholder="e.g., viewing a specific horse, discussing an transformatie..." className="w-full p-3.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-accent outline-none transition-all resize-none"></textarea>
                 </div>
 
                 <button 
@@ -194,13 +194,13 @@ export default function ContactPage() {
                   <p className="text-gray-600 dark:text-gray-400">0031 68305 2875</p>
                 </div>
               </a>
-              <a href="mailto:info@equiviesa.com" className="flex items-start group">
+              <a href="mailto:info@Viesa Automations.com" className="flex items-start group">
                 <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-accent group-hover:text-white transition-colors text-accent">
                    <Mail size={20} />
                 </div>
                 <div>
                   <p className="font-medium text-gray-900 dark:text-white group-hover:text-accent transition-colors">Send an Email</p>
-                  <p className="text-gray-600 dark:text-gray-400">info@equiviesa.com</p>
+                  <p className="text-gray-600 dark:text-gray-400">info@Viesa Automations.com</p>
                 </div>
               </a>
               <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-start group">

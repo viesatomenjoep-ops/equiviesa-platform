@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Users, FileText, MessageSquare, Zap, Flame, ExternalLink } from 'lucide-react'
 
 export const metadata = {
-  title: 'Customer CRM - Equiviesa',
+  title: 'Customer CRM - Viesa Automations',
 }
 
 export default function CRMHubPage() {

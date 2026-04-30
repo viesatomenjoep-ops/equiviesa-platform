@@ -110,7 +110,7 @@ export default function RoleManager() {
             type="email" 
             value={newEmail}
             onChange={(e) => setNewEmail(e.target.value)}
-            placeholder="medewerker@equiviesa.com" 
+            placeholder="medewerker@Viesa Automations.com" 
             className="flex-1 p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-accent outline-none"
             required
           />

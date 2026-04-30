@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 import MagicLinksClient from './MagicLinksClient'
 
 export const metadata = {
-  title: 'Magic Links & Tools | Equiviesa CMS',
+  title: 'Magic Links & Tools | Viesa Automations CMS',
 }
 
 export default async function MagicLinksPage() {

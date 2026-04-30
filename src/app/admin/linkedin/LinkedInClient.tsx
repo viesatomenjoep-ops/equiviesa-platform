@@ -18,22 +18,22 @@ export default function LinkedInClient({ horses }: { horses: any[] }) {
     let message = ''
 
     if (language === 'nl') {
-      message = `Beste ${leadName.split(' ')[0]},\n\nIk zag je profiel en was onder de indruk van je achtergrond. Als partner bij Equiviesa ben ik dagelijks bezig met high-yield investeringen in topsportpaarden.\n\n`
+      message = `Beste ${leadName.split(' ')[0]},\n\nIk zag je profiel en was onder de indruk van je achtergrond. Als partner bij Viesa Automations ben ik dagelijks bezig met high-yield investeringen in topsportpaarden.\n\n`
       if (horse) {
         message += `Op dit moment hebben we een exceptionele kans in onze portefeuille: ${horse.name}. `
         if (horse.estimated_roi) message += `Dit profiel toont een verwacht rendement van ${horse.estimated_roi}. `
-        message += `\n\nZou je open staan voor een korte, vrijblijvende kennismaking om te kijken of deze vorm van tastbare investeringen in topsport interessant voor je is?\n\nMet vriendelijke groet,\nTom van Biene\nEquiviesa Portfolio Management`
+        message += `\n\nZou je open staan voor een korte, vrijblijvende kennismaking om te kijken of deze vorm van tastbare investeringen in topsport interessant voor je is?\n\nMet vriendelijke groet,\nTom van Biene\nViesa Automations Portfolio Management`
       } else {
-        message += `Zou je open staan voor een korte virtuele kennismaking om te sparren over de voordelen van investeren in tastbare topsport-assets als alternatief rendement?\n\nMet vriendelijke groet,\nTom van Biene\nEquiviesa Portfolio Management`
+        message += `Zou je open staan voor een korte virtuele kennismaking om te sparren over de voordelen van investeren in tastbare topsport-assets als alternatief rendement?\n\nMet vriendelijke groet,\nTom van Biene\nViesa Automations Portfolio Management`
       }
     } else {
-      message = `Hi ${leadName.split(' ')[0]},\n\nI came across your profile and was impressed by your background. As a partner at Equiviesa, I specialize in high-yield alternative investments in elite showjumpers.\n\n`
+      message = `Hi ${leadName.split(' ')[0]},\n\nI came across your profile and was impressed by your background. As a partner at Viesa Automations, I specialize in high-yield alternative transformaties in elite workflows.\n\n`
       if (horse) {
         message += `We currently have an exceptional opportunity in our portfolio: ${horse.name}. `
         if (horse.estimated_roi) message += `This prospect has an estimated ROI of ${horse.estimated_roi}. `
-        message += `\n\nWould you be open to a brief, no-obligation introduction to explore if tangible investments in elite sports align with your strategy?\n\nBest regards,\nTom van Biene\nEquiviesa Portfolio Management`
+        message += `\n\nWould you be open to a brief, no-obligation introduction to explore if tangible transformaties in elite sports align with your strategy?\n\nBest regards,\nTom van Biene\nViesa Automations Portfolio Management`
       } else {
-        message += `Would you be open to a brief virtual introduction to discuss the benefits of investing in tangible elite sports assets as an alternative yield strategy?\n\nBest regards,\nTom van Biene\nEquiviesa Portfolio Management`
+        message += `Would you be open to a brief virtual introduction to discuss the benefits of investing in tangible elite sports assets as an alternative yield strategy?\n\nBest regards,\nTom van Biene\nViesa Automations Portfolio Management`
       }
     }
 
@@ -107,7 +107,7 @@ export default function LinkedInClient({ horses }: { horses: any[] }) {
             >
               <option value="">-- General Introduction (No specific horse) --</option>
               {horses.map(h => (
-                <option key={h.id} value={h.id}>{h.name} {h.category === 'investment' ? '(Investment)' : ''}</option>
+                <option key={h.id} value={h.id}>{h.name} {h.category === 'transformatie' ? '(transformatie)' : ''}</option>
               ))}
             </select>
           </div>

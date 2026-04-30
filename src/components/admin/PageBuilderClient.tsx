@@ -232,7 +232,7 @@ export default function PageBuilderClient({
                     type="text" 
                     value={block.content} 
                     onChange={(e) => updateBlock(index, 'content', e.target.value)} 
-                    placeholder="Bv: Request Investment Deck"
+                    placeholder="Bv: Request transformatie Deck"
                     className="w-full p-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md outline-none focus:border-accent"
                   />
                 </div>

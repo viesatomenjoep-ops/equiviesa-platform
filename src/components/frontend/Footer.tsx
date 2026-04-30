@@ -3,7 +3,7 @@ import ScrollLogo from './ScrollLogo';
 
 export default function Footer() {
   const whatsappNumber = "31683052875";
-  const email = "info@equiviesa.com";
+  const email = "info@Viesa Automations.com";
 
   return (
     <>
@@ -14,12 +14,12 @@ export default function Footer() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <div className="space-y-2 md:space-y-4 max-w-3xl mx-auto mb-6 md:mb-10">
-            <span className="text-accent-light text-sm md:text-base font-bold uppercase tracking-[0.4em]">Investment Inquiry</span>
+            <span className="text-accent-light text-sm md:text-base font-bold uppercase tracking-[0.4em]">transformatie Inquiry</span>
             <h2 className="text-2xl md:text-4xl font-serif leading-tight">
               Connect with our <span className="italic text-accent-light">Elite</span> network
             </h2>
             <p className="text-white/90 text-base md:text-lg font-medium leading-relaxed">
-              Ready to explore high-end investment opportunities in the world of showjumping? Our team is available for private consultations and personalized investment plans.
+              Ready to explore high-end transformatie opportunities in the world of automations? Our team is available for private consultations and personalized transformatie plans.
             </p>
           </div>
 
@@ -86,18 +86,18 @@ export default function Footer() {
               <ScrollLogo>
                 <Image 
                   src="/logo.png" 
-                  alt="Equiviesa Logo" 
+                  alt="Viesa Automations Logo" 
                   width={48}
                   height={48}
                   className="w-10 h-10 md:w-12 md:h-12 object-contain brightness-0 invert" 
                 />
               </ScrollLogo>
               <div className="flex flex-col text-left">
-                <span className="text-lg md:text-xl font-serif font-bold tracking-tight text-white uppercase leading-none">Equiviesa</span>
-                <span className="text-xs md:text-sm font-bold tracking-[0.2em] text-accent-light uppercase mt-1">Elite Investments</span>
+                <span className="text-lg md:text-xl font-serif font-bold tracking-tight text-white uppercase leading-none">Viesa Automations</span>
+                <span className="text-xs md:text-sm font-bold tracking-[0.2em] text-accent-light uppercase mt-1">Elite transformaties</span>
               </div>
             </div>
-            <p className="text-white/60 text-xs md:text-sm uppercase tracking-widest text-center md:text-right">© 2026 Equiviesa Portfolio Management. All Rights Reserved.</p>
+            <p className="text-white/60 text-xs md:text-sm uppercase tracking-widest text-center md:text-right">© 2026 Viesa Automations Portfolio Management. All Rights Reserved.</p>
           </div>
         </div>
       </footer>

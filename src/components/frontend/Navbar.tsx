@@ -16,7 +16,7 @@ export default function Navbar() {
               <ScrollLogo>
                 <Image 
                   src="/logo.png" 
-                  alt="Equiviesa Logo" 
+                  alt="Viesa Automations Logo" 
                   width={56} 
                   height={56} 
                   className="w-14 h-14 object-contain transition-transform duration-500 group-hover:scale-110" 
@@ -24,7 +24,7 @@ export default function Navbar() {
               </ScrollLogo>
             </Link>
             <Link href="/" className="flex flex-col text-left justify-center shrink-0">
-              <span className="text-2xl font-serif font-bold tracking-tight text-primary uppercase leading-none">Equiviesa</span>
+              <span className="text-2xl font-serif font-bold tracking-tight text-primary uppercase leading-none">Viesa Automations</span>
               {/* Removed Since 1995 text */}
             </Link>
           </div>

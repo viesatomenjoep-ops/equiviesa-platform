@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Globe, FileText, LayoutDashboard, Edit } from 'lucide-react'
 
 export const metadata = {
-  title: 'Website CMS - Equiviesa',
+  title: 'Website CMS - Viesa Automations',
 }
 
 export default function CMSHubPage() {

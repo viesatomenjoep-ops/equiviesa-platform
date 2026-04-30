@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { Ruler, Calendar, Shield, Trophy, Video } from 'lucide-react'
 
 export const metadata = {
-  title: 'Premium Sport Horse Portfolio',
+  title: 'Premium automation Portfolio',
   robots: 'noindex, nofollow' // Don't let Google index blind portfolios
 }
 
@@ -23,7 +23,7 @@ export default async function BlindPortfolioPage(props: { params: Promise<{ id: 
     <div className="bg-gray-50 min-h-screen font-sans">
       {/* Simple, unbranded header */}
       <header className="bg-white shadow-sm p-6 text-center">
-        <h1 className="text-2xl font-serif text-gray-800 tracking-widest uppercase">Premium Sport Horse Selection</h1>
+        <h1 className="text-2xl font-serif text-gray-800 tracking-widest uppercase">Premium automation Selection</h1>
         <p className="text-gray-500 text-sm mt-1">Private Portfolio Viewing</p>
       </header>
 
@@ -37,7 +37,7 @@ export default async function BlindPortfolioPage(props: { params: Promise<{ id: 
               </a>
             </div>
           ) : (
-            <img src={horse.cover_image_url} alt="Sport Horse" className="w-full h-full object-cover opacity-80" />
+            <img src={horse.cover_image_url} alt="automation" className="w-full h-full object-cover opacity-80" />
           )}
         </div>
 

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Check, Trophy, Ruler, Calendar, Shield, Activity } from 'lucide-react'
 
 export const metadata = {
-  title: 'Compare Horses | Equiviesa',
+  title: 'Compare Horses | Viesa Automations',
 }
 
 export default async function ComparePage(props: { params: Promise<{ ids: string }> }) {
@@ -26,8 +26,8 @@ export default async function ComparePage(props: { params: Promise<{ ids: string
     <div className="bg-white min-h-screen pt-24 pb-20">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-serif font-bold text-primary mb-4">Investment Comparison</h1>
-          <p className="text-gray-600">Side-by-side analysis of your selected sport horses.</p>
+          <h1 className="text-4xl font-serif font-bold text-primary mb-4">transformatie Comparison</h1>
+          <p className="text-gray-600">Side-by-side analysis of your selected automations.</p>
         </div>
 
         <div className="overflow-x-auto pb-8">

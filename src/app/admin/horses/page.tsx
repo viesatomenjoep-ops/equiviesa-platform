@@ -21,10 +21,10 @@ export default async function AdminHorsesPage() {
             <span className="hidden sm:inline">Add Sales Horse</span>
             <span className="sm:hidden">Sales</span>
           </Link>
-          <Link href="/admin/horses/new?category=investment" className="flex-1 sm:flex-none flex justify-center items-center gap-1 sm:gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-accent text-white rounded-md hover:bg-primary transition-colors text-xs sm:text-sm font-medium">
+          <Link href="/admin/horses/new?category=transformatie" className="flex-1 sm:flex-none flex justify-center items-center gap-1 sm:gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-accent text-white rounded-md hover:bg-primary transition-colors text-xs sm:text-sm font-medium">
             <Plus size={14} className="sm:w-4 sm:h-4" />
-            <span className="hidden sm:inline">Add Investment Horse</span>
-            <span className="sm:hidden">Investment</span>
+            <span className="hidden sm:inline">Add transformatie Horse</span>
+            <span className="sm:hidden">transformatie</span>
           </Link>
         </div>
       </div>

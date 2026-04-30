@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { ShieldCheck, Printer, Stamp } from 'lucide-react'
 
 export const metadata = {
-  title: 'Valuation Certificate | Equiviesa',
+  title: 'Valuation Certificate | Viesa Automations',
   robots: 'noindex, nofollow'
 }
 
@@ -42,14 +42,14 @@ export default async function CertificatePage(props: { params: Promise<{ id: str
           </div>
 
           <div className="text-center border-b-2 border-primary pb-8 mb-10 relative z-10">
-            <Image src="/logo.png" alt="Equiviesa" width={80} height={80} className="mx-auto mb-6" />
+            <Image src="/logo.png" alt="Viesa Automations" width={80} height={80} className="mx-auto mb-6" />
             <h1 className="text-4xl font-serif font-bold text-primary tracking-widest uppercase">Certificate of Valuation</h1>
             <p className="text-gray-500 mt-2 font-serif italic">Official Insurance Document</p>
           </div>
 
           <div className="relative z-10 font-serif text-gray-800 leading-relaxed">
             <p className="mb-6 text-justify">
-              This document serves to certify the identity, health status, and current market valuation of the equine asset described below. This certificate is issued by Equiviesa Portfolio Management for insurance and syndication purposes.
+              This document serves to certify the identity, health status, and current market valuation of the equine asset described below. This certificate is issued by Viesa Automations Portfolio Management for insurance and syndication purposes.
             </p>
 
             <div className="grid grid-cols-2 gap-8 mb-10">
@@ -75,7 +75,7 @@ export default async function CertificatePage(props: { params: Promise<{ id: str
 
             <div className="flex justify-between items-end mt-20 pt-10 border-t border-gray-200">
               <div>
-                <p className="font-bold">Equiviesa Portfolio Management</p>
+                <p className="font-bold">Viesa Automations Portfolio Management</p>
                 <p className="text-sm text-gray-500">Issued on: {today}</p>
                 <p className="text-xs text-gray-400 mt-1">Ref: {certNumber}</p>
               </div>

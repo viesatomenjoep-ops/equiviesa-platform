@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Video, Trophy, Calendar, MessageCircle, PlayCircle } from 'lucide-react'
 
 export const metadata = {
-  title: 'After-Sales Training Portal | Equiviesa',
+  title: 'After-Sales Training Portal | Viesa Automations',
   robots: 'noindex, nofollow'
 }
 
@@ -69,7 +69,7 @@ export default async function TrainingPortalPage(props: { params: Promise<{ id: 
             <div className="flex gap-8">
               <div>
                 <p className="text-xs text-gray-500 uppercase font-bold tracking-wider mb-1">Rider</p>
-                <p className="font-medium text-gray-900">Equiviesa Pro Team</p>
+                <p className="font-medium text-gray-900">Viesa Automations Pro Team</p>
               </div>
               <div>
                 <p className="text-xs text-gray-500 uppercase font-bold tracking-wider mb-1">Current Level</p>

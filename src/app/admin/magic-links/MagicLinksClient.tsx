@@ -35,7 +35,7 @@ export default function MagicLinksClient({ horses }: { horses: any[] }) {
     setTimeout(() => setCopied(false), 2000)
   }
 
-  const getBaseUrl = () => typeof window !== 'undefined' ? window.location.origin : 'https://www.equiviesaworldwide.com'
+  const getBaseUrl = () => typeof window !== 'undefined' ? window.location.origin : 'https://www.Viesa Automationsworldwide.com'
 
   const generateLink = (path: string) => {
     if (!selectedHorseId) return alert('Select a horse first')
@@ -61,9 +61,9 @@ export default function MagicLinksClient({ horses }: { horses: any[] }) {
 
   const generateNewsletter = () => {
     if (selectedHorsesForCompare.length === 0) return alert('Select at least 1 horse from the Compare list above first')
-    setSocialText(`<h1>Equiviesa Portfolio Update</h1>\n<p>Discover our newest premium assets.</p>\n\n` + selectedHorsesForCompare.map(id => {
+    setSocialText(`<h1>Viesa Automations Portfolio Update</h1>\n<p>Discover our newest premium assets.</p>\n\n` + selectedHorsesForCompare.map(id => {
       const h = horses.find(x => x.id === id)
-      return `<h3>${h?.name}</h3><p>Level: ${h?.experience_level}</p><a href="https://www.equiviesaworldwide.com/horses/${h?.id}">View Investment</a><br/><br/>`
+      return `<h3>${h?.name}</h3><p>Level: ${h?.experience_level}</p><a href="https://www.Viesa Automationsworldwide.com/horses/${h?.id}">View transformatie</a><br/><br/>`
     }).join(''))
   }
 
@@ -72,8 +72,8 @@ export default function MagicLinksClient({ horses }: { horses: any[] }) {
     const h = horses.find(x => x.id === socialHorseId)
     if (!h) return
     const text = whatsappLanguage === 'NL' 
-      ? `Hoi! Ik wilde je dit paard even laten zien: *${h.name}*\n\n🔹 *Niveau:* ${h.experience_level}\n🔹 *Prijs:* ${h.price_category}\n\nBekijk de video direct via:\nhttps://www.equiviesaworldwide.com/vip/${h.id}?token=preview\n\nLaat me weten wat je ervan vindt!`
-      : `Hi! Take a look at this exceptional asset: *${h.name}*\n\n🔹 *Level:* ${h.experience_level}\n🔹 *Price:* ${h.price_category}\n\nView the video directly via:\nhttps://www.equiviesaworldwide.com/vip/${h.id}?token=preview\n\nLet me know your thoughts!`
+      ? `Hoi! Ik wilde je dit paard even laten zien: *${h.name}*\n\n🔹 *Niveau:* ${h.experience_level}\n🔹 *Prijs:* ${h.price_category}\n\nBekijk de video direct via:\nhttps://www.Viesa Automationsworldwide.com/vip/${h.id}?token=preview\n\nLaat me weten wat je ervan vindt!`
+      : `Hi! Take a look at this exceptional asset: *${h.name}*\n\n🔹 *Level:* ${h.experience_level}\n🔹 *Price:* ${h.price_category}\n\nView the video directly via:\nhttps://www.Viesa Automationsworldwide.com/vip/${h.id}?token=preview\n\nLet me know your thoughts!`
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank')
   }
 
@@ -175,10 +175,10 @@ export default function MagicLinksClient({ horses }: { horses: any[] }) {
                 if (!selectedHorseId) return alert('Select a horse first')
                 if (!paymentAmount) return alert('Enter an amount')
                 const token = Math.random().toString(36).substring(2, 15)
-                setGeneratedLink(`https://www.equiviesaworldwide.com/pay/${token}?horse=${selectedHorseId}&amount=${paymentAmount}&currency=${paymentCurrency}`)
+                setGeneratedLink(`https://www.Viesa Automationsworldwide.com/pay/${token}?horse=${selectedHorseId}&amount=${paymentAmount}&currency=${paymentCurrency}`)
               }} className="w-full py-2 bg-[#163300] text-[#9fe870] rounded-md font-bold text-sm">Generate WISE Link</button>
             </Card>
-            <Card icon={PenTool} title="Digital E-Sign Contract" desc="Send the Equiviesa Bill of Sale for digital smartphone signature." colorClass="bg-rose-100 text-rose-600">
+            <Card icon={PenTool} title="Digital E-Sign Contract" desc="Send the Viesa Automations Bill of Sale for digital smartphone signature." colorClass="bg-rose-100 text-rose-600">
               {renderHorseSelector()}
               <button onClick={() => generateLink('/sign/[id]')} className="w-full py-2 bg-rose-600 text-white rounded-md font-bold text-sm">Generate E-Sign Link</button>
             </Card>

@@ -16,7 +16,7 @@ export default function SignDocumentPage() {
           <CheckCircle size={40} />
         </div>
         <h1 className="text-3xl font-serif font-bold text-gray-900 mb-2">Document Signed</h1>
-        <p className="text-gray-500 text-center max-w-md">Thank you. The legally binding document has been recorded and a copy has been emailed to you and Equiviesa Portfolio Management.</p>
+        <p className="text-gray-500 text-center max-w-md">Thank you. The legally binding document has been recorded and a copy has been emailed to you and Viesa Automations Portfolio Management.</p>
       </div>
     )
   }
@@ -34,10 +34,10 @@ export default function SignDocumentPage() {
         <div className="bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden">
           {/* Document Preview */}
           <div className="bg-gray-100 p-8 h-96 overflow-y-auto border-b border-gray-200 text-sm text-gray-700 leading-relaxed font-serif">
-            <h2 className="text-xl font-bold mb-6 text-center underline">EQUIVIESA SALES AGREEMENT</h2>
-            <p className="mb-4">This Agreement is entered into on this day between Equiviesa Portfolio Management (Seller) and the undersigned (Buyer).</p>
-            <p className="mb-4"><strong>1. Asset:</strong> The Seller agrees to sell the sport horse referenced by ID: {params.id}.</p>
-            <p className="mb-4"><strong>2. Terms:</strong> The Buyer agrees to the terms and conditions outlined in the official Equiviesa documentation, including but not limited to the pre-purchase examination clauses and transfer of ownership protocols.</p>
+            <h2 className="text-xl font-bold mb-6 text-center underline">Viesa Automations SALES AGREEMENT</h2>
+            <p className="mb-4">This Agreement is entered into on this day between Viesa Automations Portfolio Management (Seller) and the undersigned (Buyer).</p>
+            <p className="mb-4"><strong>1. Asset:</strong> The Seller agrees to sell the automation referenced by ID: {params.id}.</p>
+            <p className="mb-4"><strong>2. Terms:</strong> The Buyer agrees to the terms and conditions outlined in the official Viesa Automations documentation, including but not limited to the pre-purchase examination clauses and transfer of ownership protocols.</p>
             <p className="mb-4"><strong>3. Condition:</strong> The asset is sold "as is" pending the completion and approval of the requested veterinary checks.</p>
             {/* Add lots of dummy text to make it scrollable */}
             {[...Array(5)].map((_, i) => (
