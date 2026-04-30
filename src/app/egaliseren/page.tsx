@@ -116,9 +116,9 @@ export default function EgaliserenLandingPage() {
             <option value="pvc">PVC / Afwerking</option>
             <option value="ai-scan">AI Vloer Scan</option>
           </select>
-          <a href="#offerte" className="hidden md:inline-flex px-5 py-2.5 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors font-bold text-sm">
+          <Link href="/egaliseren/offerte" className="hidden md:inline-flex px-5 py-2.5 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors font-bold text-sm">
             Offerte
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -180,10 +180,10 @@ export default function EgaliserenLandingPage() {
             transition={{ delay: 0.7, duration: 0.8, type: 'spring', stiffness: 100 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <a href="#offerte" className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-white text-slate-900 hover:bg-gray-100 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 justify-center font-bold">
+            <Link href="/egaliseren/offerte" className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-white text-slate-900 hover:bg-gray-100 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 justify-center font-bold">
               Vrijblijvende Offerte
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
             <a href="#diensten" className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-slate-900/40 backdrop-blur-md border border-white/20 text-white rounded-full hover:bg-slate-900/60 transition-all duration-300 flex items-center justify-center font-bold">
               Onze Diensten
             </a>
@@ -275,10 +275,10 @@ export default function EgaliserenLandingPage() {
               Wij zijn verreweg het grootste platform van Nederland. Wij implementeren alle mogelijke AI-tools om u de allersnelste respons te geven. Upload een foto van uw vloer of stel een vraag aan onze slimme chatbot en ervaar de toekomst van egaliseren!
             </p>
             <div className="flex justify-center">
-              <a href="#offerte" className="px-8 py-4 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors font-bold flex items-center gap-2 shadow-lg">
+              <Link href="/egaliseren/offerte" className="px-8 py-4 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors font-bold flex items-center gap-2 shadow-lg">
                 Probeer onze AI Tools
                 <ArrowRight className="w-5 h-5" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -437,48 +437,25 @@ export default function EgaliserenLandingPage() {
         </div>
       </section>
 
-      {/* Upload AI Section */}
-      <section id="offerte" className="relative py-24 px-6 bg-white border-y border-gray-200">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Offerte CTA Section */}
+      <section className="relative py-32 px-6 bg-slate-900 text-white border-y border-gray-200 text-center">
+        <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl mb-4 font-bold text-slate-900">
-              Direct een Offerte? Upload een foto van uw vloer
+            <h2 className="text-4xl md:text-5xl mb-6 font-bold text-white">
+              Klaar om de toekomst van vloeren te ervaren?
             </h2>
-            <p className="text-lg md:text-xl text-slate-600 mb-10">
-              Onze AI analyseert direct de oppervlakte en de staat van de ondervloer en geeft u binnen 3 seconden een inschatting.
+            <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto font-light">
+              Probeer onze AI Foto Scanner of bereken direct uw kosten via WhatsApp met de slimste calculators van Nederland.
             </p>
 
-            <div className="max-w-2xl mx-auto bg-gray-50 border-2 border-dashed border-gray-300 rounded-3xl p-10 hover:border-slate-900 transition-colors">
-              {!isUploading && !uploadResult ? (
-                <div className="flex flex-col items-center justify-center cursor-pointer" onClick={handleUpload}>
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-4">
-                    <Camera className="w-8 h-8 text-slate-700" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">Klik om een foto te uploaden</h3>
-                  <p className="text-slate-500">JPG, PNG of HEIC (AI herkent uw vloer direct)</p>
-                </div>
-              ) : isUploading ? (
-                <div className="flex flex-col items-center justify-center py-8">
-                  <div className="w-16 h-16 border-4 border-gray-200 border-t-slate-900 rounded-full animate-spin mb-4" />
-                  <h3 className="text-xl font-bold text-slate-900">AI is uw vloer aan het analyseren...</h3>
-                  <p className="text-slate-500">Berekent oppervlakte en benodigde materialen met de snelste respons</p>
-                </div>
-              ) : (
-                <div className="flex flex-col items-center justify-center py-4">
-                  <div className="w-16 h-16 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-lg mb-4">
-                    <CheckCircle2 className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-4">{uploadResult}</h3>
-                  <button onClick={() => setUploadResult(null)} className="px-6 py-3 border border-gray-300 rounded-full hover:bg-gray-100 font-bold text-slate-900">
-                    Nieuwe Foto Uploaden
-                  </button>
-                </div>
-              )}
-            </div>
+            <Link href="/egaliseren/offerte" className="inline-flex items-center gap-3 px-8 py-4 bg-white text-slate-900 rounded-full hover:bg-gray-100 transition-colors font-bold text-lg shadow-xl hover:shadow-2xl">
+              Bekijk Alle Offerte Tools
+              <ArrowRight className="w-6 h-6" />
+            </Link>
           </motion.div>
         </div>
       </section>
