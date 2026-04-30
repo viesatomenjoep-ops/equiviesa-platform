@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Check, Star, CreditCard, ArrowRight, ShieldCheck, Zap } from 'lucide-react'
+import { Check, Star, CreditCard, ArrowRight, ShieldCheck, Zap, CheckCircle } from 'lucide-react'
 
 export default function PricingPage() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('yearly')
@@ -45,8 +45,10 @@ export default function PricingPage() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 max-w-5xl gap-8 items-stretch mb-20">
         
         {/* BASIC */}
-        <div className="bg-slate-900 border border-white/10 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col relative">
-          <h2 className="text-2xl font-serif font-bold text-white uppercase tracking-wider mb-2 notranslate">Basic</h2>
+        <div className="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 text-white rounded-3xl p-8 shadow-2xl relative flex flex-col overflow-hidden">
+          <h2 className="text-2xl font-serif font-bold text-white uppercase tracking-wider mb-2 mt-4 flex items-center gap-2 notranslate">
+            <CheckCircle size={20} className="text-accent" /> Basic
+          </h2>
           <p className="text-slate-400 dark:text-gray-400 text-sm mb-6 h-10">Het alles-in-één fundament voor uw digitale groei.</p>
           
           <div className="mb-8 border-b border-white/10 pb-8">
@@ -60,14 +62,15 @@ export default function PricingPage() {
           </div>
 
           <div className="mb-10 flex-1 space-y-4">
-            <Feature label="Compleet CRM & CMS Systeem" />
-            <Feature label="Lead Automatisering" />
-            <Feature label="SEO & Website Optimalisatie" />
-            <Feature label="Maandelijks opzegbaar" />
-            <Feature label="Inclusief hosting & onderhoud" />
+            <p className="text-xs font-bold text-accent uppercase tracking-widest mb-4 opacity-0">Placeholder</p>
+            <Feature label="Compleet CRM & CMS Systeem" dark />
+            <Feature label="Leadautomatisering" dark />
+            <Feature label="SEO & Website Optimalisatie" dark />
+            <Feature label="Maandelijks opzegbaar" dark />
+            <Feature label="Inclusief hosting & onderhoud" dark />
           </div>
 
-          <button className="w-full py-4 rounded-xl bg-transparent border-2 border-white/20 text-white hover:bg-white hover:text-slate-950 hover:bg-primary hover:text-white dark:bg-transparent dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-primary font-bold tracking-wider uppercase transition-colors">
+          <button className="w-full py-4 rounded-xl bg-transparent border-2 border-white/20 text-white hover:bg-white hover:text-primary font-bold tracking-wider uppercase transition-colors shadow-lg">
             Start Free Trial
           </button>
         </div>
