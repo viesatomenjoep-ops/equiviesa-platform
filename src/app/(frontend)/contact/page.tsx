@@ -212,7 +212,6 @@ export default function ContactPage() {
                   <p className="text-gray-600 dark:text-gray-400">Follow Us</p>
                 </div>
               </a>
-              </a>
             </div>
           </div>
         </div>

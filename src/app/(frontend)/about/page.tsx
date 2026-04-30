@@ -11,7 +11,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default async function AboutPage() {
-  let team = [];
+  let team: any[] = [];
   try {
     const rawTeam = await getTeamMembers() || [];
     team = [...rawTeam];

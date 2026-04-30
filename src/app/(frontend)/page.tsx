@@ -12,7 +12,6 @@ import {
   ArrowRight,
   CheckCircle2,
   Globe,
-  Instagram,
   MessageSquare
 } from 'lucide-react';
 

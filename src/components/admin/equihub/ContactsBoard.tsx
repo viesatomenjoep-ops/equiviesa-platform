@@ -57,9 +57,9 @@ export default function ContactsBoard({ initialContacts, staff }: any) {
 
     if (!res.error && res.data) {
       if (editingContact) {
-        setContacts(contacts.map((c: any) => c.id === editingContact.id ? res.data : c).sort((a, b) => a.name.localeCompare(b.name)))
+        setContacts(contacts.map((c: any) => c.id === editingContact.id ? res.data : c).sort((a: any, b: any) => a.name.localeCompare(b.name)))
       } else {
-        setContacts([...contacts, res.data].sort((a, b) => a.name.localeCompare(b.name)))
+        setContacts([...contacts, res.data].sort((a: any, b: any) => a.name.localeCompare(b.name)))
       }
       setShowModal(false)
     } else {
