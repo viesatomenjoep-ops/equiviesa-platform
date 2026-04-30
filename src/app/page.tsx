@@ -27,6 +27,7 @@ export default function App() {
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+  const yParallax = useTransform(scrollYProgress, [0, 0.5], [0, 300]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -71,15 +72,15 @@ export default function App() {
       {/* Hero Section */}
       <motion.section
         ref={heroRef}
-        style={{ opacity, scale }}
-        className="relative min-h-screen flex items-center justify-center px-6 py-20"
+        style={{ opacity, scale, y: yParallax }}
+        className="relative min-h-screen pt-40 md:pt-48 flex flex-col items-center justify-start px-6"
       >
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-sky-400/20 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-400/20 rounded-full blur-3xl animate-pulse delay-1000" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto text-center">
+        <div className="relative z-10 max-w-6xl mx-auto text-center mt-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
