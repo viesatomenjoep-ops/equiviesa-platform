@@ -24,7 +24,7 @@ export default function NavLinks({ user, isMobile = false, setIsOpen, logoutActi
   if (isMobile) {
     return (
       <>
-        <Link onClick={() => setIsOpen?.(false)} href="/" className="text-xl font-serif font-bold text-primary hover:text-accent transition-colors uppercase">
+        <Link onClick={() => setIsOpen?.(false)} href="/" className="text-xl font-serif font-bold text-white hover:text-accent transition-colors uppercase">
           Return to Homepage
         </Link>
         {user ? (
@@ -49,7 +49,7 @@ export default function NavLinks({ user, isMobile = false, setIsOpen, logoutActi
             key={link.href}
             onClick={() => setIsOpen?.(false)} 
             href={link.href} 
-            className={`text-xl font-serif font-bold transition-colors uppercase ${isActive(link.href) ? 'text-accent' : 'text-primary hover:text-accent'}`}
+            className={`text-xl font-serif font-bold transition-colors uppercase ${isActive(link.href) ? 'text-accent' : 'text-white hover:text-accent'}`}
           >
             {link.label}
           </Link>

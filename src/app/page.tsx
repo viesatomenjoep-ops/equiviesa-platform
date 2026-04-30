@@ -40,7 +40,8 @@ export default function App() {
         <div className="flex items-center">
           {/* We keep the left side empty or add a small logo if needed */}
         </div>
-        <div className="flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-2 py-1 shadow-xl">
+        <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-2 py-1 shadow-xl relative">
+          <div className="absolute inset-0 backdrop-blur-md rounded-full -z-10 pointer-events-none"></div>
           <LanguageSwitcher expandDirection="down" />
           <MobileMenu />
         </div>

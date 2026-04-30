@@ -46,7 +46,7 @@ export default function MobileMenu() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-white/95 backdrop-blur-md z-[120] transform transition-transform duration-500 ease-in-out flex flex-col pt-32 px-8 pb-32 overflow-y-auto h-screen w-full ${
+        className={`fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-[120] transform transition-transform duration-500 ease-in-out flex flex-col pt-32 px-8 pb-32 overflow-y-auto h-screen w-full ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{ top: 0, left: 0 }}
