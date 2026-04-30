@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import MobileMenu from '@/components/frontend/MobileMenu';
+import ScrollLogo from '@/components/frontend/ScrollLogo';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -41,7 +42,9 @@ export default function App() {
       <header className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/" className="group flex items-center gap-4">
-            <Image src="/logo.png" alt="Viesa Logo" width={96} height={96} className="w-20 h-20 md:w-24 md:h-24 object-contain animate-[spin_20s_linear_infinite]" />
+            <ScrollLogo>
+              <Image src="/logo.png" alt="Viesa Logo" width={96} height={96} className="w-20 h-20 md:w-24 md:h-24 object-contain" />
+            </ScrollLogo>
             <span className="text-3xl md:text-5xl font-serif font-bold tracking-tight uppercase leading-none text-white">
               VIESA
             </span>
