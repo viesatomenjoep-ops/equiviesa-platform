@@ -7,57 +7,57 @@ import { createClient } from '@supabase/supabase-js';
 
 // Basic mock content for the dynamic pages
 const PAGE_CONTENT: Record<string, any> = {
-  zandcement: {
-    title: "Zandcement Vloer",
-    subtitle: "De ijzersterke basis voor elke topvloer",
-    description: "Een zandcement dekvloer is de traditionele, ijzersterke oplossing voor uw woning of bedrijfspand. Wij brengen deze machinaal aan en vlinderen hem perfect glad af.",
-    features: ["Machinaal gevlinderd", "Hoge druksterkte", "Sneldrogend mogelijk", "Perfect voor natte ruimtes"],
+  hunters: {
+    title: "Premium Hunters",
+    subtitle: "Rhythm, style, and perfection",
+    description: "Our hunters are carefully selected and trained for their beautiful movement, jumping style, and incredible temperament in the ring.",
+    features: ["Perfect rhythm", "Beautiful bascule", "Auto lead changes", "Amateur friendly"],
     image: "/portfolio-3.png"
   },
-  anhydriet: {
-    title: "Anhydriet Vloeivloer",
-    subtitle: "Naadloos en perfect voor grote oppervlaktes",
-    description: "Anhydriet is een gipsgebonden vloeivloer die zichzelf nivelleert. Door de vloeibare eigenschap is het de absolute nummer 1 keuze in combinatie met vloerverwarming.",
-    features: ["Hoogste warmte-rendement", "Krimpvrij", "Grote oppervlaktes in 1 dag", "Zelfnivellerend"],
+  equitation: {
+    title: "Elite Equitation Horses",
+    subtitle: "The ultimate partner for the equitation ring",
+    description: "Equitation demands a horse that is brave, adjustable, and visually stunning. We offer horses that excel in both the Big Eq and local medals.",
+    features: ["Brave to the jumps", "Highly adjustable", "Stunning presence", "Extensive show mileage"],
     image: "/hero-egaliseren.png"
   },
-  vloerverwarming: {
-    title: "Vloerverwarming Integratie",
-    subtitle: "Comfortabel, onzichtbaar en energiezuinig",
-    description: "Wij frezen de vloerverwarming in uw bestaande vloer, of leggen deze compleet nieuw aan voordat we gaan egaliseren. Onze AI berekent het ideale legplan.",
-    features: ["Stofvrij frezen", "Optimale warmteverdeling", "Direct meegenomen in offerte", "Verlaagt energiekosten"],
+  showjumpers: {
+    title: "High-Level Showjumpers",
+    subtitle: "Scope, speed, and carefulness",
+    description: "From promising youngsters to established Grand Prix campaigners, our showjumpers are sourced from the best bloodlines in Europe.",
+    features: ["Elite bloodlines", "Incredible scope", "Careful over fences", "Ready to compete"],
     image: "/portfolio-1.png"
   },
-  afwerking: {
-    title: "Luxe Vloerafwerking",
-    subtitle: "De kers op de taart voor uw woning",
-    description: "Van hoogwaardige PVC visgraat vloeren tot strakke naadloze PU gietvloeren. Als de basis perfect is, leggen wij uw droomvloer er strak bovenop.",
-    features: ["Eiken Visgraat PVC", "PU Gietvloeren", "Beton Ciré", "Inclusief plinten & kitwerk"],
+  sales: {
+    title: "Sales & Training",
+    subtitle: "Comprehensive training programs",
+    description: "Beyond sales, we offer tailored training programs for both horse and rider to ensure maximum success in the competition arena.",
+    features: ["Rider coaching", "Horse development", "Show planning", "Full care boarding"],
     image: "/portfolio-2.png"
   },
   calculator: {
-    title: "AI Droogtijd & Materiaal Calculator",
+    title: "AI Droogtijd & Boarding Calculator",
     subtitle: "Bereken direct wat uw vloer nodig heeft",
     description: "Gebruik onze AI calculator om direct de droogtijd, het materiaalverbruik en een indicatieve prijs voor uw project te berekenen.",
     features: ["Direct resultaat", "Real-time prijzen", "Inclusief materiaal", "AI Gestuurd"],
     image: "/portfolio-4.png"
   },
   droogtijd: {
-    title: "AI Droogtijd Calculator",
+    title: "AI Training Planner",
     subtitle: "Weet exact wanneer u verder kunt",
     description: "Voorkom schade door vocht. Onze AI berekent op basis van de dikte van de egalinelaag exact hoelang de vloer moet drogen voordat deze legklaar is.",
     features: ["Laagdikte berekening", "Vochtpercentage voorspelling", "Veiligheidsmarges", "Direct in uw WhatsApp"],
     image: "/hero-egaliseren.png"
   },
   materiaal: {
-    title: "Materiaal Calculator",
+    title: "Boarding Calculator",
     subtitle: "Nooit meer te veel of te weinig materiaal",
     description: "Bereken exact hoeveel zakken egaline (25kg) en primer u nodig heeft. Inclusief een nauwkeurige prijsinschatting.",
     features: ["Exact aantal zakken", "Primer berekening", "Inclusief afvalmarge", "Actuele prijzen"],
     image: "/portfolio-3.png"
   },
   "vloerverwarming-planner": {
-    title: "Vloerverwarming Planner",
+    title: "Show Schedule Planner",
     subtitle: "Kosten voor frezen en egaliseren",
     description: "Bereken direct de kosten voor het frezen van vloerverwarming en het dichtzetten/maarten-driessen van de vloer.",
     features: ["Freeskosten", "Dichtzetten sleuven", "Totale egalisatie", "Warmteopbrengst indicatie"],
@@ -119,17 +119,17 @@ export default function ServiceLandingPage() {
       if (slug === 'droogtijd') {
         const droogDagen = dikte * 1.2; // roughly 1.2 days per mm
         calcResult = `Geschatte droogtijd: ${droogDagen.toFixed(1)} dagen (bij ${dikte}mm dikte).`;
-        waText = `Beste Maarten Driessen, ik heb de AI Droogtijd Calculator gebruikt.\n\n*Mijn project:*\n- Oppervlakte: ${opp}m²\n- Laagdikte: ${dikte}mm\n- Berekende droogtijd: ${droogDagen.toFixed(1)} dagen.\n\nTelefoon: ${whatsapp || 'Niet ingevuld'}\nIk ontvang graag advies over de planning.`;
+        waText = `Beste Maarten Driessen, ik heb de AI Training Planner gebruikt.\n\n*Mijn project:*\n- Oppervlakte: ${opp}m²\n- Laagdikte: ${dikte}mm\n- Berekende droogtijd: ${droogDagen.toFixed(1)} dagen.\n\nTelefoon: ${whatsapp || 'Niet ingevuld'}\nIk ontvang graag advies over de planning.`;
       } else if (slug === 'materiaal') {
         const kgNodig = opp * dikte * 1.6; // 1.6kg per m2 per mm
         const zakken = Math.ceil(kgNodig / 25);
         calcResult = `U heeft ca. ${kgNodig.toFixed(0)}kg egaline nodig (${zakken} zakken van 25kg) voor ${opp}m² op ${dikte}mm.`;
-        waText = `Beste Maarten Driessen, ik heb de Materiaal Calculator gebruikt.\n\n*Mijn project:*\n- Oppervlakte: ${opp}m²\n- Laagdikte: ${dikte}mm\n- Benodigd: ${zakken} zakken (ca. ${kgNodig.toFixed(0)}kg).\n\nTelefoon: ${whatsapp || 'Niet ingevuld'}\nKunnen jullie hiervoor een materiaal/leg offerte sturen?`;
+        waText = `Beste Maarten Driessen, ik heb de Boarding Calculator gebruikt.\n\n*Mijn project:*\n- Oppervlakte: ${opp}m²\n- Laagdikte: ${dikte}mm\n- Benodigd: ${zakken} zakken (ca. ${kgNodig.toFixed(0)}kg).\n\nTelefoon: ${whatsapp || 'Niet ingevuld'}\nKunnen jullie hiervoor een materiaal/leg offerte sturen?`;
       } else if (slug === 'vloerverwarming-planner') {
         const vloerverwarmingPrijs = opp * 35; // e.g. 35 eur/m2 for frezen + dichtzetten
         const totaalPrijs = price + vloerverwarmingPrijs;
         calcResult = `Kosten frezen + dichtzetten: €${vloerverwarmingPrijs.toFixed(2)}. Totale projectprijs incl. egaliseren: €${totaalPrijs.toFixed(2)}.`;
-        waText = `Beste Maarten Driessen, ik heb de Vloerverwarming Planner gebruikt.\n\n*Mijn project:*\n- Oppervlakte: ${opp}m²\n- Totale indicatie (frezen + egaliseren): €${totaalPrijs.toFixed(2)}.\n\nTelefoon: ${whatsapp || 'Niet ingevuld'}\nKan ik dit bij jullie inplannen?`;
+        waText = `Beste Maarten Driessen, ik heb de Show Schedule Planner gebruikt.\n\n*Mijn project:*\n- Oppervlakte: ${opp}m²\n- Totale indicatie (frezen + egaliseren): €${totaalPrijs.toFixed(2)}.\n\nTelefoon: ${whatsapp || 'Niet ingevuld'}\nKan ik dit bij jullie inplannen?`;
       } else {
         // Default Generator / Calculator
         calcResult = `Geschatte projectprijs: €${price.toFixed(2)}.`;
@@ -255,17 +255,17 @@ export default function ServiceLandingPage() {
 
               <form className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Oppervlakte (m²)</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Budget (€)</label>
                   <input value={oppervlakte} onChange={(e) => setOppervlakte(e.target.value)} type="number" placeholder="Bv. 65" className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all" />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Gemiddelde Laagdikte (mm)</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Desired Level (1.10m - 1.60m)</label>
                   <input value={laagdikte} onChange={(e) => setLaagdikte(e.target.value)} type="number" placeholder="Bv. 3" className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all" />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Type Ondervloer</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">Preferred Discipline</label>
                   <select className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all appearance-none">
                     <option>Beton / Zandcement</option>
                     <option>Hout</option>

@@ -13,28 +13,28 @@ export default function OfferteHubPage() {
     setUploadResult(null);
     setTimeout(() => {
       setIsUploading(false);
-      setUploadResult('✅ AI Analyse Voltooid: Geschatte oppervlakte: ~45m². Aanbevolen behandeling: Zandcement. Geschatte Offerte: € 1.250,-');
+      setUploadResult('✅ AI Match Complete: Aggressive riding style detected. Recommended Match: 8yo Zangersheide. Value: € 65,000,-');
     }, 2500);
   };
 
   const tools = [
     {
-      title: "AI Droogtijd Calculator",
-      description: "Bereken de exacte droogtijd van uw vloer o.b.v. luchtvochtigheid en dikte.",
+      title: "AI Training Planner",
+      description: "Calculate the optimal training schedule based on fitness and goals.",
       icon: <Bot className="w-8 h-8 text-blue-500" />,
       link: "/maarten-driessen/droogtijd",
       color: "bg-blue-50 border-blue-200"
     },
     {
-      title: "Materiaal Calculator",
-      description: "Weet direct hoeveel zakken egaline en primer u exact nodig heeft.",
+      title: "Boarding Cost Calculator",
+      description: "Calculate exact monthly boarding and training costs.",
       icon: <Ruler className="w-8 h-8 text-emerald-500" />,
       link: "/maarten-driessen/materiaal",
       color: "bg-emerald-50 border-emerald-200"
     },
     {
-      title: "Vloerverwarming Planner",
-      description: "Bereken het legplan en de warmteopbrengst voor uw vierkante meters.",
+      title: "Show Schedule Planner",
+      description: "Plan your competition season and estimate associated show fees.",
       icon: <Globe className="w-8 h-8 text-orange-500" />,
       link: "/maarten-driessen/vloerverwarming-planner",
       color: "bg-orange-50 border-orange-200"
@@ -87,8 +87,8 @@ export default function OfferteHubPage() {
           {/* AI Photo Scan Section */}
           <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100">
             <div className="text-center max-w-2xl mx-auto mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-amber-900 mb-4">Directe Vloer Inspectie Scan</h2>
-              <p className="text-slate-600">Upload een foto van uw huidige vloer. Onze AI analyseert de ruimte direct op oneffenheden, oppervlakte en berekent realtime een offerte.</p>
+              <h2 className="text-2xl md:text-3xl font-bold text-amber-900 mb-4">Direct Video Style Scan</h2>
+              <p className="text-slate-600">Upload a short video of your riding. Our AI analyzes your style and instantly matches you with horses in our portfolio.</p>
             </div>
             
             <div className="max-w-2xl mx-auto bg-gray-50 border-2 border-dashed border-slate-300 rounded-3xl p-10 hover:border-slate-900 transition-colors">
@@ -97,14 +97,14 @@ export default function OfferteHubPage() {
                   <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-sm mb-6">
                     <Camera className="w-10 h-10 text-slate-700" />
                   </div>
-                  <h3 className="text-xl font-bold text-amber-900 mb-2">Klik hier om uw foto te uploaden</h3>
+                  <h3 className="text-xl font-bold text-amber-900 mb-2">Click here to upload your riding video</h3>
                   <p className="text-slate-500 font-medium">Ondersteunt JPG, PNG en HEIC bestanden</p>
                 </div>
               ) : isUploading ? (
                 <div className="flex flex-col items-center justify-center py-8">
                   <div className="w-16 h-16 border-4 border-gray-200 border-t-slate-900 rounded-full animate-spin mb-6" />
-                  <h3 className="text-xl font-bold text-amber-900 mb-2">AI analyseert de vloer...</h3>
-                  <p className="text-slate-500">Oppervlakte en staat van de vloer worden berekend</p>
+                  <h3 className="text-xl font-bold text-amber-900 mb-2">AI is analyzing your riding style...</h3>
+                  <p className="text-slate-500">Posture, rhythm and balance are being evaluated</p>
                 </div>
               ) : (
                 <div className="flex flex-col items-center justify-center py-6">

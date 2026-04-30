@@ -41,7 +41,7 @@ export default function MaartenDriessenLandingPage() {
   // AI Chatbot State
   const [chatOpen, setChatOpen] = useState(false);
   const [chatMessages, setChatMessages] = useState<{ role: 'user' | 'ai', text: string }[]>([
-    { role: 'ai', text: 'Hallo! Ik ben de Maarten Driessen AI. Heeft u vragen over uw vloer of wilt u direct een AI-scan doen?' }
+    { role: 'ai', text: 'Hallo! Ik ben de Maarten Driessen AI. Do you have questions about our horses or want to use the AI Horse Matcher?' }
   ]);
   const [chatInput, setChatInput] = useState('');
   const chatRef = useRef<HTMLDivElement>(null);
@@ -57,7 +57,7 @@ export default function MaartenDriessenLandingPage() {
     setUploadResult(null);
     setTimeout(() => {
       setIsUploading(false);
-      setUploadResult('✅ AI Analyse Voltooid: Geschatte oppervlakte: ~45m². Aanbevolen behandeling: Zandcement. Geschatte Offerte: € 1.250,-');
+      setUploadResult('✅ AI Analyse Voltooid: Geschatte oppervlakte: ~45m². Aanbevolen behandeling: Hunters. Geschatte Offerte: € 1.250,-');
     }, 2500);
   };
 
@@ -101,7 +101,7 @@ export default function MaartenDriessenLandingPage() {
                 if (val === 'ai-scan') {
                   router.push('/maarten-driessen/calculator');
                 } else if (val === 'pvc') {
-                  router.push('/maarten-driessen/afwerking');
+                  router.push('/maarten-driessen/sales');
                 } else {
                   router.push(`/maarten-driessen/${val}`);
                 }
@@ -110,11 +110,11 @@ export default function MaartenDriessenLandingPage() {
             className="bg-gray-50 border border-gray-300 text-amber-900 text-xs sm:text-sm md:text-base rounded-full focus:ring-amber-600 focus:border-amber-600 block p-2 sm:p-2.5 px-3 sm:px-4 outline-none font-medium cursor-pointer hover:bg-gray-100 transition-colors"
           >
             <option value="">Direct regelen...</option>
-            <option value="zandcement">Zandcement</option>
-            <option value="anhydriet">Anhydriet</option>
-            <option value="vloerverwarming">Vloerverwarming</option>
-            <option value="pvc">PVC / Afwerking</option>
-            <option value="ai-scan">AI Vloer Scan</option>
+            <option value="zandcement">Hunters</option>
+            <option value="anhydriet">Equitation</option>
+            <option value="vloerverwarming">Showjumpers</option>
+            <option value="pvc">Sales & Training</option>
+            <option value="ai-scan">AI Horse Matcher</option>
           </select>
           <Link href="/maarten-driessen/offerte" className="hidden md:inline-flex px-5 py-2.5 bg-amber-600 text-white rounded-full hover:bg-amber-700 transition-colors font-bold text-sm">
             Offerte
@@ -137,7 +137,7 @@ export default function MaartenDriessenLandingPage() {
       >
         <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
           <Image 
-            src="/hero-egaliseren.png" 
+            src="/horse-1.png" 
             alt="Maarten Driessen hero background" 
             fill 
             priority
@@ -171,7 +171,7 @@ export default function MaartenDriessenLandingPage() {
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            Specialisten in Vloeregalisatie & Vloerverwarming door heel Nederland
+            Finding the perfect equine partner for your showjumping ambitions.
           </motion.p>
 
           <motion.div
@@ -210,10 +210,10 @@ export default function MaartenDriessenLandingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
-              { icon: <Bot className="w-6 h-6" />, title: "AI Droogtijd Calculator", link: "/maarten-driessen/droogtijd" },
-              { icon: <Ruler className="w-6 h-6" />, title: "Materiaal Calculator", link: "/maarten-driessen/materiaal" },
-              { icon: <Globe className="w-6 h-6" />, title: "Vloerverwarming Planner", link: "/maarten-driessen/vloerverwarming-planner" },
-              { icon: <CheckSquare className="w-6 h-6" />, title: "Vloer Inspectie Scan", link: "/maarten-driessen/offerte" },
+              { icon: <Bot className="w-6 h-6" />, title: "AI Training Planner", link: "/maarten-driessen/droogtijd" },
+              { icon: <Ruler className="w-6 h-6" />, title: "Boarding Cost Calculator", link: "/maarten-driessen/materiaal" },
+              { icon: <Globe className="w-6 h-6" />, title: "Showjumpers Planner", link: "/maarten-driessen/showjumpers-planner" },
+              { icon: <CheckSquare className="w-6 h-6" />, title: "AI Equine Valuation", link: "/maarten-driessen/offerte" },
               { icon: <Smartphone className="w-6 h-6" />, title: "Live Offerte Generator", link: "/maarten-driessen/generator" },
             ].map((link, idx) => (
               <Link href={link.link} key={idx}>
@@ -242,10 +242,10 @@ export default function MaartenDriessenLandingPage() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-xl md:text-2xl text-slate-600 mb-6 leading-relaxed">
-              Een perfect strakke vloer begint bij de juiste ondergrond. <span className="font-bold text-amber-900">Maarten Driessen</span> is de absolute specialist in het prepareren van uw vloer.
+              A successful partnership begins with the right match. <span className="font-bold text-amber-900">Maarten Driessen</span> is the absolute specialist in sourcing and training elite sport horses.
             </p>
             <p className="text-xl md:text-2xl text-slate-600 leading-relaxed">
-              Of het nu gaat om anhydriet, zandcement of hout, wij zorgen ervoor dat uw ondervloer spiegelglad is. Perfect voor PVC, laminaat, tegels of gietvloeren.
+              Whether you are looking for a top-level Grand Prix horse or a reliable amateur jumper, we ensure you find the perfect match. Perfect for international competition, equitation, or amateur sport.
             </p>
           </motion.div>
 
@@ -256,10 +256,10 @@ export default function MaartenDriessenLandingPage() {
             transition={{ duration: 0.6 }}
             className="grid grid-cols-2 gap-4"
           >
-            <FeatureCard href="/maarten-driessen/zandcement" icon={<Hammer />} title="Zandcement" />
-            <FeatureCard href="/maarten-driessen/anhydriet" icon={<Ruler />} title="Anhydriet" />
-            <FeatureCard href="/maarten-driessen/vloerverwarming" icon={<CheckSquare />} title="Vloerverwarming" />
-            <FeatureCard href="/maarten-driessen/afwerking" icon={<Star />} title="Afwerking" />
+            <FeatureCard href="/maarten-driessen/hunters" icon={<Hammer />} title="Hunters" />
+            <FeatureCard href="/maarten-driessen/equitation" icon={<Ruler />} title="Equitation" />
+            <FeatureCard href="/maarten-driessen/showjumpers" icon={<CheckSquare />} title="Showjumpers" />
+            <FeatureCard href="/maarten-driessen/sales" icon={<Star />} title="Sales & Training" />
           </motion.div>
         </div>
       </Section>
@@ -269,10 +269,10 @@ export default function MaartenDriessenLandingPage() {
         <div className="bg-white border border-gray-200 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden shadow-sm">
           <div className="relative z-10 max-w-3xl mx-auto">
             <h3 className="text-2xl md:text-3xl mb-6 font-serif text-amber-900">
-              Grootste platform op basis van Maarten Driessen
+              The Ultimate Hub for Premium Sport Horses
             </h3>
             <p className="text-lg text-slate-600 leading-relaxed mb-8">
-              Wij zijn verreweg het grootste platform van Nederland. Wij implementeren alle mogelijke AI-tools om u de allersnelste respons te geven. Upload een foto van uw vloer of stel een vraag aan onze slimme chatbot en ervaar de toekomst van egaliseren!
+              We are the leading platform for premium showjumping horses. We implement cutting-edge AI tools to give you the fastest response. Upload a video of your riding style or ask our smart chatbot to find your perfect equine partner!
             </p>
             <div className="flex justify-center">
               <Link href="/maarten-driessen/offerte" className="px-8 py-4 bg-amber-600 text-white rounded-full hover:bg-amber-700 transition-colors font-bold flex items-center gap-2 shadow-lg">
@@ -304,9 +304,9 @@ export default function MaartenDriessenLandingPage() {
           
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: "Sander V.", rating: 5, text: "Echt vakwerk! Mijn PVC visgraat vloer kon er direct overheen. De communicatie via de AI tool in het begin was enorm soepel en snel." },
-              { name: "Marieke de J.", rating: 5, text: "Zandcement dekvloer laten storten voor onze hele benedenverdieping (90m2). De mannen werkten super netjes en de vloer is spiegelglad. Aanrader!" },
-              { name: "Pieter K.", rating: 5, text: "Vloerverwarming ingefreesd en daarna geëgaliseerd. Perfecte integratie, het team van Maarten Driessen weet precies waar ze het over hebben." },
+              { name: "Lauren K.", rating: 5, text: "Incredible service! I found my dream Grand Prix horse. The communication via the AI matching tool was incredibly smooth and accurate." },
+              { name: "Sarah W.", rating: 5, text: "Hunters dekvloer laten storten voor onze hele benedenverdieping (90m2). De mannen werkten super netjes en de vloer is spiegelglad. Aanrader!" },
+              { name: "James M.", rating: 5, text: "Showjumpers ingefreesd en daarna geëgaliseerd. Perfecte integratie, het team van Maarten Driessen weet precies waar ze het over hebben." },
             ].map((review, i) => (
               <div key={i} className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
                 <div className="flex text-yellow-400 mb-4">
@@ -324,16 +324,16 @@ export default function MaartenDriessenLandingPage() {
       <Section title="Onze Werkwijze" subtitle="In 3 simpele stappen een strakke vloer">
         <div className="grid md:grid-cols-3 gap-8">
           <CaseStudyItem
-            title="1. Aanvraag & Advies"
-            description="Binnen 24 uur ontvangt u van ons een scherpe, transparante offerte op maat voor uw specifieke vloer."
+            title="1. Consultation & Matching"
+            description="Within 24 hours, you receive a curated selection of horses tailored to your goals and budget."
           />
           <CaseStudyItem
-            title="2. Vakkundige Uitvoering"
-            description="Onze specialisten komen op de afgesproken datum langs en egaliseren de vloer met laser-precisie."
+            title="2. Trials & Vetting"
+            description="We arrange comprehensive trials and coordinate full veterinary examinations with top professionals."
           />
           <CaseStudyItem
-            title="3. Perfect Resultaat"
-            description="Na de droogtijd is de vloer spiegelglad en klaar voor de eindafwerking (PVC, laminaat of tegels)."
+            title="3. Partnership & Training"
+            description="After the acquisition, we offer continued training and support to ensure a seamless transition into the show ring."
           />
         </div>
       </Section>
@@ -358,51 +358,51 @@ export default function MaartenDriessenLandingPage() {
           <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory px-4 md:px-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-                <img src="/portfolio-1.png" alt="Gietvloer" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src="/horse-1.png" alt="Gietvloer" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                   <div>
-                    <h3 className="text-white font-bold text-xl mb-1">Minimalistische Gietvloer</h3>
-                    <p className="text-slate-300 text-sm">Naadloze afwerking in luxe woonkamer</p>
+                    <h3 className="text-white font-bold text-xl mb-1">Elite Showjumper</h3>
+                    <p className="text-slate-300 text-sm">Clearing 1.50m effortlessly</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-                <img src="/portfolio-2.png" alt="PVC Visgraat" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src="/horse-2.png" alt="PVC Visgraat" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                   <div>
-                    <h3 className="text-white font-bold text-xl mb-1">Luxe PVC Visgraat</h3>
-                    <p className="text-slate-300 text-sm">Strak geëgaliseerd voor eiken PVC</p>
+                    <h3 className="text-white font-bold text-xl mb-1">Premium Equitation</h3>
+                    <p className="text-slate-300 text-sm">Perfect rhythm and style</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-                <img src="/portfolio-3.png" alt="Zandcement" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src="/horse-3.png" alt="Hunters" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                   <div>
-                    <h3 className="text-white font-bold text-xl mb-1">Industriële Betonlook</h3>
-                    <p className="text-slate-300 text-sm">Zandcement en coating in industriële loft</p>
+                    <h3 className="text-white font-bold text-xl mb-1">Grand Prix Prospect</h3>
+                    <p className="text-slate-300 text-sm">Hunters en coating in industriële loft</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-                <img src="/portfolio-4.png" alt="Hongaarse Punt" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src="/horse-4.png" alt="Hongaarse Punt" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                   <div>
-                    <h3 className="text-white font-bold text-xl mb-1">Eiken Hongaarse Punt</h3>
-                    <p className="text-slate-300 text-sm">Prachtige klassieke vloerafwerking in woonkamer</p>
+                    <h3 className="text-white font-bold text-xl mb-1">Amateur Friendly Jumper</h3>
+                    <p className="text-slate-300 text-sm">Brave, honest, and reliable in the ring</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-                <img src="/portfolio-5.png" alt="Machinaal Maarten Driessen" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src="/horse-5.png" alt="Machinaal Maarten Driessen" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                   <div>
                     <h3 className="text-white font-bold text-xl mb-1">Machinaal Maarten Driessen</h3>
@@ -413,10 +413,10 @@ export default function MaartenDriessenLandingPage() {
             </div>
             <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-                <img src="/portfolio-6.png" alt="Spiegelgladde Afwerking" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src="/horse-1.png" alt="Spiegelgladde Sales & Training" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                   <div>
-                    <h3 className="text-white font-bold text-xl mb-1">Spiegelgladde Afwerking</h3>
+                    <h3 className="text-white font-bold text-xl mb-1">Spiegelgladde Sales & Training</h3>
                     <p className="text-slate-300 text-sm">Onze garantie voor de perfecte basis</p>
                   </div>
                 </div>
@@ -424,10 +424,10 @@ export default function MaartenDriessenLandingPage() {
             </div>
             <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-                <img src="/portfolio-7.png" alt="Vloerverwarming Frezen" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src="/horse-2.png" alt="Showjumpers Frezen" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                   <div>
-                    <h3 className="text-white font-bold text-xl mb-1">Vloerverwarming Integratie</h3>
+                    <h3 className="text-white font-bold text-xl mb-1">Showjumpers Integratie</h3>
                     <p className="text-slate-300 text-sm">Frezen met uiterste precisie en perfect patroon</p>
                   </div>
                 </div>
@@ -435,7 +435,7 @@ export default function MaartenDriessenLandingPage() {
             </div>
             <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-                <img src="/portfolio-8.png" alt="Sleuven Dichtzetten" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src="/horse-3.png" alt="Sleuven Dichtzetten" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                   <div>
                     <h3 className="text-white font-bold text-xl mb-1">Sleuven Dichtzetten</h3>
@@ -446,7 +446,7 @@ export default function MaartenDriessenLandingPage() {
             </div>
             <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-                <img src="/portfolio-9.png" alt="Eiken Visgraat" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src="/horse-4.png" alt="Eiken Visgraat" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                   <div>
                     <h3 className="text-white font-bold text-xl mb-1">Eiken Visgraat PVC</h3>
@@ -457,7 +457,7 @@ export default function MaartenDriessenLandingPage() {
             </div>
             <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
-                <img src="/portfolio-10.png" alt="Beton Cire Badkamer" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src="/horse-5.png" alt="Beton Cire Badkamer" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                   <div>
                     <h3 className="text-white font-bold text-xl mb-1">Naadloze Beton Ciré</h3>
