@@ -7,10 +7,10 @@ export default function PricingPage() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('yearly')
 
   return (
-    <main className="min-h-screen pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-blue-900/80 to-slate-800 text-white">
+    <main className="min-h-screen pt-24 pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-blue-900/80 to-slate-800 text-white">
       {/* Header */}
-      <div className="max-w-4xl mx-auto text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
-        <h1 className="text-5xl md:text-6xl font-serif font-bold text-white mb-6 uppercase tracking-tight">
+      <div className="max-w-4xl mx-auto text-center mb-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
+        <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 uppercase tracking-tight">
           Choose Your Plan
         </h1>
         <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed mb-10">
@@ -46,7 +46,7 @@ export default function PricingPage() {
         
         {/* BASIC */}
         <div className="bg-slate-900 border border-white/10 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col relative">
-          <h2 className="text-2xl font-serif font-bold text-white uppercase tracking-wider mb-2">Viesa Pro</h2>
+          <h2 className="text-2xl font-serif font-bold text-white uppercase tracking-wider mb-2 notranslate">Basic</h2>
           <p className="text-slate-400 dark:text-gray-400 text-sm mb-6 h-10">Het alles-in-één fundament voor uw digitale groei.</p>
           
           <div className="mb-8 border-b border-white/10 pb-8">
@@ -82,8 +82,8 @@ export default function PricingPage() {
             </div>
           </div>
 
-          <h2 className="text-2xl font-serif font-bold text-white uppercase tracking-wider mb-2 mt-4 flex items-center gap-2">
-            <Star size={20} className="text-accent" /> Enterprise Blueprint
+          <h2 className="text-2xl font-serif font-bold text-white uppercase tracking-wider mb-2 mt-4 flex items-center gap-2 notranslate">
+            <Star size={20} className="text-accent" /> Premium
           </h2>
           <p className="text-gray-300 text-sm mb-6 h-10">Voor bedrijven die de markt volledig willen domineren.</p>
           
