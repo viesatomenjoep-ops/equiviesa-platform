@@ -42,6 +42,32 @@ export default function EgaliserenLandingPage() {
   ]);
   const [chatInput, setChatInput] = useState('');
   const chatRef = useRef<HTMLDivElement>(null);
+  
+  // Modal State
+  const [activeModal, setActiveModal] = useState<string | null>(null);
+
+  const MODAL_DATA: Record<string, { title: string; description: string; content: string }> = {
+    zandcement: {
+      title: "Zandcement Vloeren",
+      description: "Een zandcement dekvloer is de perfecte sterke en duurzame basis voor uw woning of bedrijfspand.",
+      content: "Bij Egaliseren.nl werken we met machinaal gevlinderde zandcement dekvloeren. We gebruiken speciale toevoegingen om de vloer sneller te laten drogen en te versterken. Dit is essentieel voor badkamers, afschotvloeren of als u snel door wilt met de verbouwing."
+    },
+    anhydriet: {
+      title: "Anhydriet Vloeivloeren",
+      description: "De ideale keuze voor grote oppervlaktes en perfect in combinatie met vloerverwarming.",
+      content: "Anhydriet wordt vloeibaar aangebracht en is zelfnivellerend. Het omsluit vloerverwarmingsbuizen naadloos, wat zorgt voor een optimaal rendement van uw verwarming. Ideaal voor grotere ruimtes waarbij snelheid en een spiegelglad resultaat gewenst zijn."
+    },
+    vloerverwarming: {
+      title: "Vloerverwarming Integratie",
+      description: "Energiezuinig, comfortabel en onzichtbaar verwerkt in uw nieuwe dekvloer.",
+      content: "Wij frezen de vloerverwarming direct in uw bestaande dekvloer, of we leggen deze aan in combinatie met een nieuwe zandcement of anhydriet vloer. Onze AI-tools berekenen exact de benodigde capaciteit en buisafstand voor een perfect binnenklimaat."
+    },
+    afwerking: {
+      title: "Luxe Vloerafwerking",
+      description: "De kers op de taart: van PVC visgraat tot naadloze gietvloeren.",
+      content: "Nadat de vloer perfect is geëgaliseerd, verzorgen wij desgewenst ook de eindafwerking. Wij zijn gespecialiseerd in het leggen van hoogwaardige PVC vloeren (zoals visgraat en hongaarse punt) en het aanbrengen van moderne, krasvaste gietvloeren en beton ciré."
+    }
+  };
 
   useEffect(() => {
     if (chatRef.current) {
@@ -234,10 +260,10 @@ export default function EgaliserenLandingPage() {
             transition={{ duration: 0.6 }}
             className="grid grid-cols-2 gap-4"
           >
-            <FeatureCard icon={<Hammer />} title="Zandcement" />
-            <FeatureCard icon={<Ruler />} title="Anhydriet" />
-            <FeatureCard icon={<CheckSquare />} title="Vloerverwarming" />
-            <FeatureCard icon={<Star />} title="Afwerking" />
+            <FeatureCard icon={<Hammer />} title="Zandcement" onClick={() => setActiveModal('zandcement')} />
+            <FeatureCard icon={<Ruler />} title="Anhydriet" onClick={() => setActiveModal('anhydriet')} />
+            <FeatureCard icon={<CheckSquare />} title="Vloerverwarming" onClick={() => setActiveModal('vloerverwarming')} />
+            <FeatureCard icon={<Star />} title="Afwerking" onClick={() => setActiveModal('afwerking')} />
           </motion.div>
         </div>
       </Section>
@@ -444,6 +470,40 @@ export default function EgaliserenLandingPage() {
           </motion.button>
         )}
       </div>
+
+      {/* Feature Detail Modal */}
+      {activeModal && MODAL_DATA[activeModal] && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm cursor-pointer"
+            onClick={() => setActiveModal(null)}
+          />
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            className="bg-white rounded-3xl p-8 max-w-lg w-full relative z-10 shadow-2xl border border-gray-200"
+          >
+            <button 
+              onClick={() => setActiveModal(null)}
+              className="absolute top-6 right-6 p-2 bg-gray-100 rounded-full hover:bg-gray-200 text-slate-700 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <h3 className="text-3xl font-bold text-slate-900 mb-2">{MODAL_DATA[activeModal].title}</h3>
+            <p className="text-lg font-medium text-slate-600 mb-6">{MODAL_DATA[activeModal].description}</p>
+            <div className="h-px w-full bg-gray-200 mb-6" />
+            <p className="text-slate-700 leading-relaxed mb-8">{MODAL_DATA[activeModal].content}</p>
+            <button 
+              onClick={() => setActiveModal(null)}
+              className="w-full py-4 bg-slate-900 text-white rounded-full font-bold hover:bg-slate-800 transition-colors"
+            >
+              Begrepen
+            </button>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }
@@ -478,16 +538,18 @@ function Section({ id, title, subtitle, children }: { id?: string, title: string
   );
 }
 
-function FeatureCard({ icon, title }: { icon: React.ReactNode; title: string }) {
+function FeatureCard({ icon, title, onClick }: { icon: React.ReactNode; title: string, onClick?: () => void }) {
   return (
     <motion.div
+      onClick={onClick}
       whileHover={{ scale: 1.05, y: -5 }}
-      className="bg-white border border-gray-200 rounded-2xl p-3 sm:p-4 md:p-6 text-center hover:shadow-lg transition-all duration-300 flex flex-col justify-center items-center shadow-sm"
+      className="bg-white border border-gray-200 rounded-2xl p-3 sm:p-4 md:p-6 text-center hover:shadow-lg transition-all duration-300 flex flex-col justify-center items-center shadow-sm cursor-pointer"
     >
       <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mx-auto mb-2 sm:mb-3 md:mb-4 text-slate-700">
         {icon}
       </div>
       <h3 className="text-xs sm:text-sm md:text-base lg:text-lg break-words leading-tight w-full font-medium text-slate-900">{title}</h3>
+      <span className="mt-2 text-xs text-slate-500 font-medium opacity-0 group-hover:opacity-100 transition-opacity md:block hidden">Lees meer</span>
     </motion.div>
   );
 }
