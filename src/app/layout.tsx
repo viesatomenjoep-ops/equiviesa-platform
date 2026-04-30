@@ -8,21 +8,24 @@ const quicksand = Quicksand({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.equiviesaworldwide.com'),
+  metadataBase: new URL('https://www.equiviesa.com'),
   alternates: {
     canonical: '/',
   },
-  title: "VIESA Automations | The Blueprint for Digital Dominance",
-  description: "VIESA Automations is de blauwdruk voor digitale dominantie in de bouw en daarbuiten. Fully automated processes from lead to invoice.",
-  keywords: "automations, crm, viesa automations, seo, digitale dominantie",
+  title: "Equiviesa Worldwide | Premium Sport Horses & Elite Equestrian Platform",
+  description: "Discover the world's most exclusive showjumping horses, elite equestrian facilities, and advanced AI-driven stable management at Equiviesa.",
+  keywords: "equiviesa, maarten driessen, showjumping horses, elite sport horses, equestrian platform, horse sales, stable management, zandcement, egaliseren",
   openGraph: {
-    title: "VIESA Automations | The Blueprint for Digital Dominance",
-    description: "Fully automated processes from lead to invoice.",
-    url: "https://www.equiviesaworldwide.com",
-    siteName: "VIESA Automations",
+    title: "Equiviesa Worldwide | Premium Sport Horses",
+    description: "Discover the world's most exclusive showjumping horses and advanced AI-driven stable management.",
+    url: "https://www.equiviesa.com",
+    siteName: "Equiviesa",
     type: "website",
   },
-  robots: "index, follow",
+  robots: "index, follow, max-image-preview:large, max-snippet:-1",
+  verification: {
+    google: "google-site-verification-code" // Placeholder for real verification
+  }
 };
 
 import Script from "next/script";

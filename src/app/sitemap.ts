@@ -1,76 +1,42 @@
-import { MetadataRoute } from 'next'
-import { createClient } from '@supabase/supabase-js'
+import { MetadataRoute } from 'next';
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.equiviesaworldwide.com'
-  
-  // Base static routes
-  const routes: MetadataRoute.Sitemap = [
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
     {
-      url: `${baseUrl}`,
+      url: 'https://www.equiviesa.com',
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1.0,
+      changeFrequency: 'daily',
+      priority: 1,
     },
     {
-      url: `${baseUrl}/horses`,
+      url: 'https://www.equiviesa.com/maarten-driessen',
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9,
     },
-
     {
-      url: `${baseUrl}/about`,
+      url: 'https://www.equiviesa.com/egaliseren',
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/references`,
+      url: 'https://www.equiviesa.com/maarten-driessen/horses',
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: 'always',
+      priority: 0.8,
+    },
+    {
+      url: 'https://www.equiviesa.com/maarten-driessen/stable',
+      lastModified: new Date(),
+      changeFrequency: 'always',
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/news`,
+      url: 'https://www.equiviesa.com/maarten-driessen/offerte',
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.7,
+      priority: 0.8,
     },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.6,
-    },
-  ]
-
-  // Dynamic Horse pages
-  try {
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-    
-    if (supabaseUrl && supabaseKey) {
-      const supabase = createClient(supabaseUrl, supabaseKey)
-      const { data: horses } = await supabase
-        .from('horses')
-        .select('id, updated_at')
-        .eq('status', 'Available')
-
-      if (horses) {
-        const horseRoutes: MetadataRoute.Sitemap = horses.map((horse) => ({
-          url: `${baseUrl}/horses/${horse.id}`,
-          lastModified: horse.updated_at ? new Date(horse.updated_at) : new Date(),
-          changeFrequency: 'weekly',
-          priority: 0.8,
-        }))
-        
-        return [...routes, ...horseRoutes]
-      }
-    }
-  } catch (err) {
-    console.error("Failed to generate dynamic sitemap routes:", err)
-  }
-
-  return routes
+  ];
 }

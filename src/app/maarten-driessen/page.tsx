@@ -97,23 +97,17 @@ export default function MaartenDriessenLandingPage() {
             onChange={(e) => {
               const val = e.target.value;
               if (val) {
-                if (val === 'ai-scan') {
-                  router.push('/maarten-driessen/calculator');
-                } else if (val === 'pvc') {
-                  router.push('/maarten-driessen/sales');
-                } else {
-                  router.push(`/maarten-driessen/${val}`);
-                }
+                router.push(`/maarten-driessen/${val}`);
               }
             }}
             className="bg-gray-50 border border-gray-300 text-amber-900 text-xs sm:text-sm md:text-base rounded-full focus:ring-amber-600 focus:border-amber-600 block p-2 sm:p-2.5 px-3 sm:px-4 outline-none font-medium cursor-pointer hover:bg-gray-100 transition-colors"
           >
-            <option value="">Direct regelen...</option>
-            <option value="zandcement">Hunters</option>
-            <option value="anhydriet">Equitation</option>
-            <option value="vloerverwarming">Showjumpers</option>
-            <option value="pvc">Sales & Training</option>
-            <option value="ai-scan">AI Horse Matcher</option>
+            <option value="">Selecteer Module...</option>
+            <option value="horses">Paarden Database</option>
+            <option value="stable">Stable Management</option>
+            <option value="facilities">Faciliteiten</option>
+            <option value="breeding">Fokkerij & Veulens</option>
+            <option value="health">Medisch Dossier</option>
           </select>
           <Link href="/maarten-driessen/offerte" className="hidden md:inline-flex px-5 py-2.5 bg-amber-600 text-white rounded-full hover:bg-amber-700 transition-colors font-bold text-sm">
             Offerte
@@ -209,11 +203,11 @@ export default function MaartenDriessenLandingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
-              { icon: <Bot className="w-6 h-6" />, title: "AI Training Planner", link: "/maarten-driessen/droogtijd" },
-              { icon: <Ruler className="w-6 h-6" />, title: "Boarding Cost Calculator", link: "/maarten-driessen/materiaal" },
-              { icon: <Globe className="w-6 h-6" />, title: "Showjumpers Planner", link: "/maarten-driessen/showjumpers-planner" },
-              { icon: <CheckSquare className="w-6 h-6" />, title: "AI Equine Valuation", link: "/maarten-driessen/offerte" },
-              { icon: <Smartphone className="w-6 h-6" />, title: "Live Offerte Generator", link: "/maarten-driessen/generator" },
+              { icon: <Bot className="w-6 h-6" />, title: "Paarden Database", link: "/maarten-driessen/horses" },
+              { icon: <CheckSquare className="w-6 h-6" />, title: "Stable Management", link: "/maarten-driessen/stable" },
+              { icon: <Globe className="w-6 h-6" />, title: "Faciliteiten", link: "/maarten-driessen/facilities" },
+              { icon: <Star className="w-6 h-6" />, title: "Fokkerij", link: "/maarten-driessen/breeding" },
+              { icon: <Target className="w-6 h-6" />, title: "Medisch Dossier", link: "/maarten-driessen/health" },
             ].map((link, idx) => (
               <Link href={link.link} key={idx}>
                 <motion.div
@@ -255,10 +249,10 @@ export default function MaartenDriessenLandingPage() {
             transition={{ duration: 0.6 }}
             className="grid grid-cols-2 gap-4"
           >
-            <FeatureCard href="/maarten-driessen/hunters" icon={<Hammer />} title="Hunters" />
-            <FeatureCard href="/maarten-driessen/equitation" icon={<Ruler />} title="Equitation" />
-            <FeatureCard href="/maarten-driessen/showjumpers" icon={<CheckSquare />} title="Showjumpers" />
-            <FeatureCard href="/maarten-driessen/sales" icon={<Star />} title="Sales & Training" />
+            <FeatureCard href="/maarten-driessen/horses" icon={<Hammer />} title="Paarden" />
+            <FeatureCard href="/maarten-driessen/stable" icon={<CheckSquare />} title="Takenbord" />
+            <FeatureCard href="/maarten-driessen/health" icon={<Target />} title="Medisch" />
+            <FeatureCard href="/maarten-driessen/breeding" icon={<Star />} title="Fokkerij" />
           </motion.div>
         </div>
       </Section>
