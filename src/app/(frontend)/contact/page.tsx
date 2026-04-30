@@ -131,7 +131,7 @@ export default function ContactPage() {
                     <label className="flex items-center text-sm font-bold text-gray-700 dark:text-gray-300">
                       <Phone size={16} className="mr-2 text-accent" /> Phone
                     </label>
-                    <input name="clientPhone" type="tel" placeholder="+32 470 76 06 59" className="w-full p-3.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-accent outline-none transition-all" />
+                    <input name="clientPhone" type="tel" placeholder="+31 6 83 05 28 75" className="w-full p-3.5 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-accent outline-none transition-all" />
                   </div>
                 </div>
 
@@ -185,13 +185,13 @@ export default function ContactPage() {
           <div>
             <h3 className="text-2xl font-serif font-semibold text-primary dark:text-white mb-6">Contact Information</h3>
             <div className="space-y-6">
-              <a href="https://wa.me/32470760659" target="_blank" rel="noopener noreferrer" className="flex items-start group">
+              <a href="https://wa.me/31683052875" target="_blank" rel="noopener noreferrer" className="flex items-start group">
                 <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-accent group-hover:text-white transition-colors text-accent">
                    <Phone size={20} />
                 </div>
                 <div>
                   <p className="font-medium text-gray-900 dark:text-white group-hover:text-accent transition-colors">Chat via WhatsApp</p>
-                  <p className="text-gray-600 dark:text-gray-400">0032 470 76 06 59</p>
+                  <p className="text-gray-600 dark:text-gray-400">+31 6 83 05 28 75</p>
                 </div>
               </a>
               <a href="mailto:info@equiviesa.com" className="flex items-start group">
