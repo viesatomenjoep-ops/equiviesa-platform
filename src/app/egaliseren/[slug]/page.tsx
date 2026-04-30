@@ -1,6 +1,7 @@
 'use client';
 import { ArrowRight, Bot, Camera, CheckCircle2, Droplets, Ruler, ShieldCheck, Star, Phone } from 'lucide-react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import React, { useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
@@ -43,8 +44,10 @@ const PAGE_CONTENT: Record<string, any> = {
   }
 };
 
-export default function ServiceLandingPage({ params }: { params: { slug: string } }) {
-  const slug = params.slug.toLowerCase();
+export default function ServiceLandingPage() {
+  const params = useParams();
+  const rawSlug = params?.slug;
+  const slug = typeof rawSlug === 'string' ? rawSlug.toLowerCase() : Array.isArray(rawSlug) ? rawSlug[0].toLowerCase() : 'calculator';
   
   // Fallback content if slug doesn't perfectly match
   const content = PAGE_CONTENT[slug] || PAGE_CONTENT.calculator;
