@@ -81,14 +81,28 @@ export default function EgaliserenLandingPage() {
   return (
     <div className="min-h-screen bg-gray-50 text-slate-900 overflow-x-hidden">
       {/* Top Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 py-4 px-6 flex justify-center md:justify-start items-center bg-white/90 backdrop-blur-md border-b border-gray-200">
+      <header className="fixed top-0 left-0 right-0 z-50 py-4 px-4 sm:px-6 flex justify-between items-center bg-white/90 backdrop-blur-md border-b border-gray-200">
         <Link href="/egaliseren" className="group flex items-center gap-3">
           <img 
             src="https://www.egaliseren.nl/wp-content/uploads/2023/11/egaliseren-logo-dark-cropped.png" 
             alt="Egaliseren.nl Logo" 
-            className="h-8 md:h-10 w-auto object-contain"
+            className="h-7 sm:h-8 md:h-10 w-auto object-contain"
           />
         </Link>
+        
+        <div className="flex items-center gap-2 sm:gap-4">
+          <select className="bg-gray-50 border border-gray-300 text-slate-900 text-xs sm:text-sm md:text-base rounded-full focus:ring-slate-900 focus:border-slate-900 block p-2 sm:p-2.5 px-3 sm:px-4 outline-none font-medium cursor-pointer hover:bg-gray-100 transition-colors">
+            <option value="">Direct regelen...</option>
+            <option value="zandcement">Zandcement</option>
+            <option value="anhydriet">Anhydriet</option>
+            <option value="vloerverwarming">Vloerverwarming</option>
+            <option value="pvc">PVC / Afwerking</option>
+            <option value="ai-scan">AI Vloer Scan</option>
+          </select>
+          <a href="#offerte" className="hidden md:inline-flex px-5 py-2.5 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors font-bold text-sm">
+            Offerte
+          </a>
+        </div>
       </header>
 
       <div
@@ -104,8 +118,9 @@ export default function EgaliserenLandingPage() {
         style={{ opacity, scale, y: yParallax }}
         className="relative min-h-screen pt-40 md:pt-48 flex flex-col items-center justify-start px-6"
       >
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Removed glowing orbs for a calmer design */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+          <div className="absolute inset-0 bg-[url('/hero-egaliseren.png')] bg-cover bg-center" />
+          <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px]" />
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto text-center mt-8">
@@ -167,6 +182,33 @@ export default function EgaliserenLandingPage() {
           </div>
         </motion.div>
       </motion.section>
+
+      {/* Magic Links Section */}
+      <section className="relative py-12 px-6 bg-white border-y border-gray-200">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {[
+              { icon: <Bot className="w-6 h-6" />, title: "AI Droogtijd Calculator" },
+              { icon: <Ruler className="w-6 h-6" />, title: "Materiaal Calculator" },
+              { icon: <Globe className="w-6 h-6" />, title: "Vloerverwarming Planner" },
+              { icon: <CheckSquare className="w-6 h-6" />, title: "Vloer Inspectie Scan" },
+              { icon: <Smartphone className="w-6 h-6" />, title: "Live Offerte Generator" },
+            ].map((link, idx) => (
+              <motion.a
+                href="#offerte"
+                key={idx}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="bg-gray-50 border border-gray-200 rounded-2xl p-6 text-center hover:shadow-lg transition-all flex flex-col items-center gap-4 group cursor-pointer"
+              >
+                <div className="w-12 h-12 bg-white shadow-sm border border-gray-100 rounded-full flex items-center justify-center text-slate-700 group-hover:bg-slate-900 group-hover:text-white transition-colors">
+                  {link.icon}
+                </div>
+                <h4 className="font-bold text-slate-900 text-sm leading-tight">{link.title}</h4>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Vision Section */}
       <Section id="diensten" title="Onze Expertise" subtitle="Perfect glad, klaar voor elke afwerking">
@@ -237,6 +279,61 @@ export default function EgaliserenLandingPage() {
           />
         </div>
       </Section>
+
+      {/* Portfolio Section */}
+      <section className="relative py-24 px-6 bg-slate-100 border-y border-gray-200 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl mb-4 font-bold text-slate-900">
+              Ons Recente Werk
+            </h2>
+            <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
+              Bekijk een selectie van onze mooiste, strakst opgeleverde vloeren door heel Nederland. Swipe om meer te zien.
+            </p>
+          </motion.div>
+          
+          <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory px-4 md:px-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+                <img src="/portfolio-1.png" alt="Gietvloer" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                  <div>
+                    <h3 className="text-white font-bold text-xl mb-1">Minimalistische Gietvloer</h3>
+                    <p className="text-slate-300 text-sm">Naadloze afwerking in luxe woonkamer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+                <img src="/portfolio-2.png" alt="PVC Visgraat" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                  <div>
+                    <h3 className="text-white font-bold text-xl mb-1">Luxe PVC Visgraat</h3>
+                    <p className="text-slate-300 text-sm">Strak geëgaliseerd voor eiken PVC</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="min-w-[85vw] sm:min-w-[60vw] md:min-w-[40vw] lg:min-w-[30vw] snap-center shrink-0">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group cursor-pointer">
+                <img src="/portfolio-3.png" alt="Zandcement" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                  <div>
+                    <h3 className="text-white font-bold text-xl mb-1">Industriële Betonlook</h3>
+                    <p className="text-slate-300 text-sm">Zandcement en coating in industriële loft</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Upload AI Section */}
       <section id="offerte" className="relative py-24 px-6 bg-white border-y border-gray-200">
