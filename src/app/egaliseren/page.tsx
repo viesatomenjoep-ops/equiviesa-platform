@@ -256,10 +256,10 @@ export default function EgaliserenLandingPage() {
             transition={{ duration: 0.6 }}
             className="grid grid-cols-2 gap-4"
           >
-            <FeatureCard icon={<Hammer />} title="Zandcement" />
-            <FeatureCard icon={<Ruler />} title="Anhydriet" />
-            <FeatureCard icon={<CheckSquare />} title="Vloerverwarming" />
-            <FeatureCard icon={<Star />} title="Afwerking" />
+            <FeatureCard href="/egaliseren/zandcement" icon={<Hammer />} title="Zandcement" />
+            <FeatureCard href="/egaliseren/anhydriet" icon={<Ruler />} title="Anhydriet" />
+            <FeatureCard href="/egaliseren/vloerverwarming" icon={<CheckSquare />} title="Vloerverwarming" />
+            <FeatureCard href="/egaliseren/afwerking" icon={<Star />} title="Afwerking" />
           </motion.div>
         </div>
       </Section>
@@ -590,18 +590,24 @@ function Section({ id, title, subtitle, children }: { id?: string, title: string
   );
 }
 
-function FeatureCard({ icon, title }: { icon: React.ReactNode; title: string }) {
-  return (
+function FeatureCard({ icon, title, href }: { icon: React.ReactNode; title: string, href?: string }) {
+  const CardContent = (
     <motion.div
       whileHover={{ scale: 1.05, y: -5 }}
-      className="bg-white border border-gray-200 rounded-2xl p-3 sm:p-4 md:p-6 text-center hover:shadow-lg transition-all duration-300 flex flex-col justify-center items-center shadow-sm"
+      className={`bg-white border border-gray-200 rounded-2xl p-3 sm:p-4 md:p-6 text-center hover:shadow-lg transition-all duration-300 flex flex-col justify-center items-center shadow-sm ${href ? 'cursor-pointer group' : ''}`}
     >
-      <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mx-auto mb-2 sm:mb-3 md:mb-4 text-slate-700">
+      <div className={`w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mx-auto mb-2 sm:mb-3 md:mb-4 text-slate-700 ${href ? 'group-hover:text-slate-900 transition-colors' : ''}`}>
         {icon}
       </div>
-      <h3 className="text-xs sm:text-sm md:text-base lg:text-lg break-words leading-tight w-full font-medium text-slate-900">{title}</h3>
+      <h3 className={`text-xs sm:text-sm md:text-base lg:text-lg break-words leading-tight w-full font-medium text-slate-900 ${href ? 'group-hover:underline' : ''}`}>{title}</h3>
     </motion.div>
   );
+
+  if (href) {
+    return <Link href={href}>{CardContent}</Link>;
+  }
+
+  return CardContent;
 }
 
 function CaseStudyItem({ title, description }: { title: string; description: string }) {
