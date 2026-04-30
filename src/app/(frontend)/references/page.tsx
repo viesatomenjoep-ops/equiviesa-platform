@@ -3,8 +3,8 @@ import { getNewsArticles } from '@/app/actions/news'
 import Image from 'next/image'
 
 export const metadata = {
-  title: 'References & News | Equivest Sport Horses',
-  description: 'See the success stories of horses sourced and sold by Equivest and stay updated with our latest news.',
+  title: 'References & News | Equiviesa Sport Horses',
+  description: 'See the success stories of horses sourced and sold by Equiviesa and stay updated with our latest news.',
 }
 
 export const dynamic = 'force-dynamic'

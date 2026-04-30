@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Globe, FileText, LayoutDashboard, Edit } from 'lucide-react'
 
 export const metadata = {
-  title: 'Website CMS - Equivest',
+  title: 'Website CMS - Equiviesa',
 }
 
 export default function CMSHubPage() {
@@ -21,24 +21,7 @@ export default function CMSHubPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Investors Content */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="bg-blue-100 text-blue-600 p-2 rounded-lg">
-              <LayoutDashboard size={24} />
-            </div>
-            <h2 className="text-xl font-bold">Investors Pagina</h2>
-          </div>
-          <p className="text-gray-500 dark:text-gray-400 text-sm mb-6 h-10">
-            Beheer de teksten, banners en instellingen van de besloten Investors sectie op de website.
-          </p>
-          <Link 
-            href="/admin/pages/investors"
-            className="flex items-center justify-center gap-2 w-full py-3 bg-gray-50 dark:bg-gray-700 hover:bg-primary hover:text-white text-primary font-bold rounded-xl transition-colors"
-          >
-            <Edit size={16} /> Bewerk Investors Content
-          </Link>
-        </div>
+
 
         {/* About Text */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-shadow">

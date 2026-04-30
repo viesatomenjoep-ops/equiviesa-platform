@@ -17,7 +17,7 @@ export default function LanguageSwitcher({ expandDirection = 'down' }: { expandD
 
   useEffect(() => {
     // Read from localStorage first for maximum reliability
-    const savedLang = localStorage.getItem('equivest_lang');
+    const savedLang = localStorage.getItem('equiviesa_lang');
     if (savedLang) {
       setCurrentLang(savedLang);
     } else {
@@ -57,7 +57,7 @@ export default function LanguageSwitcher({ expandDirection = 'down' }: { expandD
     const baseHost = host.replace(/^www\./, '');
 
     // Save reliably
-    localStorage.setItem('equivest_lang', code);
+    localStorage.setItem('equiviesa_lang', code);
     setCurrentLang(code);
     setIsOpen(false);
 

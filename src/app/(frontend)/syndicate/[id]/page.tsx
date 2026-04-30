@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { PieChart, Users, ArrowRight, ShieldCheck, TrendingUp } from 'lucide-react'
 
 export const metadata = {
-  title: 'Syndicate & Fractional Ownership | Equivest',
+  title: 'Syndicate & Fractional Ownership | Equiviesa',
   robots: 'noindex, nofollow'
 }
 
@@ -91,7 +91,7 @@ export default async function SyndicatePage(props: { params: Promise<{ id: strin
             </div>
 
             <p className="text-xs text-gray-400 mt-6 text-center leading-relaxed">
-              By reserving a share, you agree to the Equivest Syndication Terms. All investments carry risks. Management and training fees apply proportionally.
+              By reserving a share, you agree to the Equiviesa Syndication Terms. All investments carry risks. Management and training fees apply proportionally.
             </p>
           </div>
         </div>

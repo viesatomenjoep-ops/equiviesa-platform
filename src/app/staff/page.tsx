@@ -25,7 +25,7 @@ export default function StaffPortal() {
 
   // Load basic data
   useEffect(() => {
-    const saved = localStorage.getItem('equivest_staff_session')
+    const saved = localStorage.getItem('equiviesa_staff_session')
     if (saved) {
       const emp = JSON.parse(saved)
       setLoggedInEmp(emp)
@@ -83,7 +83,7 @@ export default function StaffPortal() {
       setPin('') 
     } else if (res.success && res.employee) {
       setLoggedInEmp(res.employee)
-      localStorage.setItem('equivest_staff_session', JSON.stringify(res.employee))
+      localStorage.setItem('equiviesa_staff_session', JSON.stringify(res.employee))
       setPin('')
       fetchDashboardData(res.employee.id)
     }
@@ -93,7 +93,7 @@ export default function StaffPortal() {
     setLoggedInEmp(null)
     setLastAction(null)
     setActiveTab('dashboard')
-    localStorage.removeItem('equivest_staff_session')
+    localStorage.removeItem('equiviesa_staff_session')
   }
 
   const handleClockIn = async () => {
@@ -166,7 +166,7 @@ export default function StaffPortal() {
         </div>
         <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-700">
           <div className="bg-primary p-8 text-center relative flex flex-col items-center">
-            <Image src="/logo.png" alt="Equivest Logo" width={64} height={64} className="w-16 h-16 object-contain mb-4" />
+            <Image src="/logo.png" alt="Equiviesa Logo" width={64} height={64} className="w-16 h-16 object-contain mb-4" />
             <h1 className="text-3xl font-serif font-bold text-white uppercase tracking-widest">Staff Terminal</h1>
             <p className="text-primary-light mt-2 font-medium">Enter your 4-digit PIN</p>
           </div>
@@ -644,7 +644,7 @@ export default function StaffPortal() {
                   date_of_birth: formData.get('date_of_birth')
                 }
                 setLoggedInEmp(updatedEmp)
-                localStorage.setItem('equivest_staff_session', JSON.stringify(updatedEmp))
+                localStorage.setItem('equiviesa_staff_session', JSON.stringify(updatedEmp))
               }
             }} className="space-y-6">
               

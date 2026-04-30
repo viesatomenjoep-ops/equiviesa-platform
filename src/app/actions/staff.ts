@@ -65,7 +65,7 @@ export async function clockIn(employeeId: string) {
   // Send Email notification
   fetch('https://formsubmit.co/ajax/tomvanbiene@gmail.com', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'Origin': 'https://www.equivestworldwide.com', 'Referer': 'https://www.equivestworldwide.com/' },
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'Origin': 'https://www.equiviesaworldwide.com', 'Referer': 'https://www.equiviesaworldwide.com/' },
     body: JSON.stringify({ _subject: `🟢 ${name} is ingeklokt`, _template: 'basic', message: `${name} is zojuist ingeklokt op de stalkiosk.\nTijd: ${new Date().toLocaleString('nl-NL')}` })
   }).catch(console.error);
 
@@ -90,7 +90,7 @@ export async function clockOut(employeeId: string) {
   // Send Email notification
   fetch('https://formsubmit.co/ajax/tomvanbiene@gmail.com', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'Origin': 'https://www.equivestworldwide.com', 'Referer': 'https://www.equivestworldwide.com/' },
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'Origin': 'https://www.equiviesaworldwide.com', 'Referer': 'https://www.equiviesaworldwide.com/' },
     body: JSON.stringify({ _subject: `🔴 ${name} is uitgeklokt`, _template: 'basic', message: `${name} is zojuist uitgeklokt en naar huis gegaan.\nTijd: ${new Date().toLocaleString('nl-NL')}` })
   }).catch(console.error);
 

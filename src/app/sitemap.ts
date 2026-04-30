@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { createClient } from '@supabase/supabase-js'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.equivestworldwide.com'
+  const baseUrl = 'https://www.equiviesaworldwide.com'
   
   // Base static routes
   const routes: MetadataRoute.Sitemap = [
@@ -18,12 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 0.9,
     },
-    {
-      url: `${baseUrl}/investors`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
+
     {
       url: `${baseUrl}/about`,
       lastModified: new Date(),

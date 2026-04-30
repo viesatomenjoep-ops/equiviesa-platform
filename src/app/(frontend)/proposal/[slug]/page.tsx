@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { ArrowRight, Trophy } from 'lucide-react'
 
 export const metadata = {
-  title: 'Investment Proposal | Equivest',
+  title: 'Investment Proposal | Equiviesa',
   robots: 'noindex, nofollow'
 }
 
@@ -35,7 +35,7 @@ export default async function ProposalPage(props: { params: Promise<{ slug: stri
           Prepared exclusively for <br/><span className="text-accent italic">{clientName}</span>
         </h1>
         <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed mb-16">
-          Based on your investment profile and our recent discussions, Equivest Portfolio Management has secured a highly exclusive opportunity that aligns perfectly with your goals.
+          Based on your investment profile and our recent discussions, Equiviesa Portfolio Management has secured a highly exclusive opportunity that aligns perfectly with your goals.
         </p>
       </div>
 
@@ -79,7 +79,7 @@ export default async function ProposalPage(props: { params: Promise<{ slug: stri
         <div className="mt-20 text-center">
           <p className="text-gray-500 text-sm">
             This link is private and monitored. It will expire in 7 days. <br/>
-            © 2026 Equivest Portfolio Management.
+            © 2026 Equiviesa Portfolio Management.
           </p>
         </div>
       </div>

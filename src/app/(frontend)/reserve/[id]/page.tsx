@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { ShieldCheck, Clock, FileCheck } from 'lucide-react'
 
 export const metadata = {
-  title: 'Secure Reservation | Equivest',
+  title: 'Secure Reservation | Equiviesa',
   robots: 'noindex, nofollow'
 }
 
@@ -79,7 +79,7 @@ export default async function ReservePage(props: { params: Promise<{ id: string 
                 <div className="pt-4">
                   <label className="flex items-start gap-3 cursor-pointer">
                     <input type="checkbox" className="mt-1 rounded text-accent focus:ring-accent" required />
-                    <span className="text-xs text-gray-500 leading-relaxed">I understand that this request is subject to approval by Equivest Portfolio Management and does not constitute a legally binding purchase agreement until the PPE is approved.</span>
+                    <span className="text-xs text-gray-500 leading-relaxed">I understand that this request is subject to approval by Equiviesa Portfolio Management and does not constitute a legally binding purchase agreement until the PPE is approved.</span>
                   </label>
                 </div>
                 <button type="button" onClick={() => alert('This is a demo. In production, this would open a Stripe checkout or send a confirmation email.')} className="w-full py-4 bg-primary text-white rounded-lg font-bold hover:bg-secondary transition-colors mt-4 flex items-center justify-center gap-2">

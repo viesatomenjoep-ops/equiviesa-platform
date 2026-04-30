@@ -1,5 +1,5 @@
 # De Ultieme Blueprint: Next.js + Supabase All-In-One Website & CMS
-*Project: Equivest Platform (Horse Template 1)*
+*Project: Equiviesa Platform (Horse Template 1)*
 
 Dit document dient als de perfecte blauwdruk voor het opzetten van een hoogwaardige, dynamische website inclusief een op maat gemaakt Content Management Systeem (CMS). We hebben moderne technologieën gecombineerd voor snelheid, veiligheid en een luxe uitstraling.
 
@@ -21,7 +21,7 @@ src/
  ┃ ┣ (frontend)/       <-- Alle publieke pagina's (Home, Portfolio, Contact, ROI)
  ┃ ┣ admin/            <-- Het CMS (beveiligd achter login)
  ┃ ┣ actions/          <-- Server Actions (communicatie met Supabase)
- ┃ ┣ globals.css       <-- Tailwind configuratie & Equivest kleuren/animaties
+ ┃ ┣ globals.css       <-- Tailwind configuratie & Equiviesa kleuren/animaties
  ┃ ┗ layout.tsx        <-- De hoofd layout met de Quicksand fonts
  ┣ components/         <-- Herbruikbare UI blokken (Navbar, Footer, Calculators)
  ┗ lib/
@@ -77,7 +77,7 @@ Het CMS is de controlekamer. Wat we specifiek hebben gebouwd:
 ## 6. Frontend: Luxe Design & Functionaliteiten
 De publieke website is ontworpen om direct vertrouwen en luxe (High-End Investments) uit te stralen.
 
-- **Branding**: `Quicksand` font voor een zachte, luxe uitstraling, en een specifiek "Equivest" kleurenpalet (`#111111` primary, `#08704D` accent).
+- **Branding**: `Quicksand` font voor een zachte, luxe uitstraling, en een specifiek "Equiviesa" kleurenpalet (`#111111` primary, `#08704D` accent).
 - **Interactieve Scroll Logo's (`ScrollLogo.tsx`)**: In de Navbar en Footer luistert een *Client Component* (`useEffect`) naar de `window.scrollY`. Tijdens het scrollen wordt de rotatie berekend, waardoor de logo's vloeiend meedraaien op het tempo van de bezoeker.
 - **Complexe Calculators (`SimpleRoiCalculator` & `AdvancedRoiCalculator`)**: Dit zijn zware rekenmodules. Door `"use client"` bovenaan de componenten te zetten, berekenen deze live in de browser van de gebruiker (zonder de server te belasten) de exacte Return on Investment, gebaseerd op de interactieve sliders.
 - **Contact & Footer Module**: Dynamische integratie van Google Maps en directe "click-to-chat" WhatsApp linkjes (met een specifiek Amerikaans nummer `+15613010984`) voor directe lead-generatie.

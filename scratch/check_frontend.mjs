@@ -1,7 +1,7 @@
 import fs from 'fs'
 
 async function check() {
-  const res = await fetch('https://equivest-platform.vercel.app/horses', {
+  const res = await fetch('https://equiviesa-platform.vercel.app/horses', {
     headers: { Cookie: 'investor_auth=true' }
   })
   const text = await res.text()

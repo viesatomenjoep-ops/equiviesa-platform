@@ -16,7 +16,7 @@ export default function HorseSlideshow({ horses }: { horses: any[] }) {
     displayHorses = [
       {
         id: 'dummy1',
-        name: 'Equivest Elite',
+        name: 'Equiviesa Elite',
         main_image_url: '/portfolio_ai_1.png',
         status: 'Available',
         category: 'Grand Prix Prospect',
@@ -26,7 +26,7 @@ export default function HorseSlideshow({ horses }: { horses: any[] }) {
       },
       {
         id: 'dummy2',
-        name: 'Equivest Champion',
+        name: 'Equiviesa Champion',
         main_image_url: '/portfolio_ai_2.png',
         status: 'Available',
         category: '1.60m Talent',
@@ -36,7 +36,7 @@ export default function HorseSlideshow({ horses }: { horses: any[] }) {
       },
       {
         id: 'dummy3',
-        name: 'Equivest Star',
+        name: 'Equiviesa Star',
         main_image_url: '/portfolio_ai_3.png',
         status: 'Available',
         category: 'Hunter Prospect',

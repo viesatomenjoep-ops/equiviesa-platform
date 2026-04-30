@@ -103,7 +103,7 @@ export async function sendQuoteEmail(quoteId: string, emailPass: string) {
   // Create simple HTML email invoice
   const htmlContent = `
     <div style="font-family: sans-serif; max-w: 600px; margin: 0 auto; color: #111;">
-      <h1 style="color: #08704D; text-align: center;">Equivest</h1>
+      <h1 style="color: #08704D; text-align: center;">Equiviesa</h1>
       <h2 style="text-align: center;">${typeLabel}: ${quote.quote_number}</h2>
       
       <p>Beste ${quote.client_name},</p>
@@ -135,15 +135,15 @@ export async function sendQuoteEmail(quoteId: string, emailPass: string) {
       ${quote.notes ? `<p style="margin-top: 30px; font-style: italic;">Opmerkingen: ${quote.notes}</p>` : ''}
 
       <p style="margin-top: 40px; font-size: 12px; color: #666; text-align: center;">
-        Equivest Worldwide - Since 1995
+        Equiviesa Worldwide - Since 1995
       </p>
     </div>
   `
 
   await transporter.sendMail({
-    from: '"Equivest Worldwide" <tomjo118735@gmail.com>',
+    from: '"Equiviesa Worldwide" <tomjo118735@gmail.com>',
     to: quote.client_email,
-    subject: `Equivest ${typeLabel} - ${quote.quote_number}`,
+    subject: `Equiviesa ${typeLabel} - ${quote.quote_number}`,
     html: htmlContent
   })
 

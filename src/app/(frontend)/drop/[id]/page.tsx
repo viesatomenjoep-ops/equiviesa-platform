@@ -24,8 +24,8 @@ export default function DocumentDropPage() {
         
         <div className="text-center mb-10">
           <Shield className="w-12 h-12 text-primary mx-auto mb-4" />
-          <h1 className="text-3xl font-serif font-bold text-gray-900 mb-2">Equivest Secure Drop</h1>
-          <p className="text-gray-500">Upload Vet Checks, X-Rays, or 4K Videos directly to the Equivest Vault.</p>
+          <h1 className="text-3xl font-serif font-bold text-gray-900 mb-2">Equiviesa Secure Drop</h1>
+          <p className="text-gray-500">Upload Vet Checks, X-Rays, or 4K Videos directly to the Equiviesa Vault.</p>
           <p className="text-xs text-gray-400 mt-2">Asset Ref: {params.id}</p>
         </div>
 
@@ -35,7 +35,7 @@ export default function DocumentDropPage() {
               <FileCheck size={40} />
             </div>
             <h2 className="text-2xl font-bold text-gray-900 mb-2">Upload Complete</h2>
-            <p className="text-gray-500">Files have been securely encrypted and transferred to Equivest Portfolio Management.</p>
+            <p className="text-gray-500">Files have been securely encrypted and transferred to Equiviesa Portfolio Management.</p>
             <button onClick={() => setSuccess(false)} className="mt-8 text-accent font-bold hover:underline">Upload more files</button>
           </div>
         ) : (

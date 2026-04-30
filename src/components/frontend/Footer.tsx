@@ -3,7 +3,7 @@ import ScrollLogo from './ScrollLogo';
 
 export default function Footer() {
   const whatsappNumber = "0032470760659";
-  const email = "info@equivest.com";
+  const email = "info@equiviesa.com";
 
   return (
     <>
@@ -116,18 +116,18 @@ export default function Footer() {
               <ScrollLogo>
                 <Image 
                   src="/logo.png" 
-                  alt="Equivest Logo" 
+                  alt="Equiviesa Logo" 
                   width={48}
                   height={48}
                   className="w-10 h-10 md:w-12 md:h-12 object-contain brightness-0 invert" 
                 />
               </ScrollLogo>
               <div className="flex flex-col text-left">
-                <span className="text-lg md:text-xl font-serif font-bold tracking-tight text-white uppercase leading-none">Equivest</span>
+                <span className="text-lg md:text-xl font-serif font-bold tracking-tight text-white uppercase leading-none">Equiviesa</span>
                 <span className="text-xs md:text-sm font-bold tracking-[0.2em] text-accent-light uppercase mt-1">Elite Investments</span>
               </div>
             </div>
-            <p className="text-white/60 text-xs md:text-sm uppercase tracking-widest text-center md:text-right">© 2026 Equivest Portfolio Management. All Rights Reserved.</p>
+            <p className="text-white/60 text-xs md:text-sm uppercase tracking-widest text-center md:text-right">© 2026 Equiviesa Portfolio Management. All Rights Reserved.</p>
           </div>
         </div>
       </footer>

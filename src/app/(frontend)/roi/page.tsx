@@ -1,7 +1,7 @@
 import RoiCalculatorTabs from '@/components/roi/RoiCalculatorTabs';
 
 export const metadata = {
-  title: 'Return on Investment | Equivest',
+  title: 'Return on Investment | Equiviesa',
   description: 'Discover the financial advantages of investing in premium sport horses.',
 }
 

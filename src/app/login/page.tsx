@@ -8,8 +8,8 @@ export default function LoginHubPage() {
       <div className="max-w-4xl w-full">
         
         <div className="text-center mb-12 flex flex-col items-center">
-          <Image src="/logo.png" alt="Equivest Logo" width={80} height={80} className="w-20 h-20 object-contain mb-6" />
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary dark:text-white mb-4 tracking-tight">Welcome to Equivest</h1>
+          <Image src="/logo.png" alt="Equiviesa Logo" width={80} height={80} className="w-20 h-20 object-contain mb-6" />
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary dark:text-white mb-4 tracking-tight">Welcome to Equiviesa</h1>
           <p className="text-lg text-gray-600 dark:text-gray-400">Please select your login portal to continue</p>
         </div>
 
@@ -33,23 +33,7 @@ export default function LoginHubPage() {
             </span>
           </Link>
 
-          {/* Investor Login Card */}
-          <Link href="/investor-login" className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden flex flex-col items-center text-center">
-            <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            
-            <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mb-6 text-green-600 group-hover:scale-110 transition-transform duration-300">
-              <ShieldAlert size={32} />
-            </div>
-            
-            <h2 className="text-xl font-serif font-bold text-gray-900 dark:text-white mb-2">Investors Portal</h2>
-            <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-xs text-sm">
-              Log in to access the private investment collection.
-            </p>
-            
-            <span className="mt-auto px-4 py-2 bg-green-600 text-white text-xs font-bold uppercase tracking-widest rounded-full group-hover:bg-green-700 transition-colors">
-              Login as Investor
-            </span>
-          </Link>
+
 
           {/* Staff Login Card */}
           <Link href="/staff" className="group relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden flex flex-col items-center text-center">

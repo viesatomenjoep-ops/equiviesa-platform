@@ -12,11 +12,11 @@ export async function generateMetadata(props: { params: Promise<{ id: string }> 
   const params = await props.params
   try {
     const horse = await getHorse(params.id)
-    if (!horse) return { title: 'Horse Not Found | Equivest' }
+    if (!horse) return { title: 'Horse Not Found | Equiviesa' }
     
-    const desc = horse.description ? horse.description.substring(0, 150) + '...' : `Elite ${horse.discipline} available at Equivest. View pedigree, videos, and investment details.`
+    const desc = horse.description ? horse.description.substring(0, 150) + '...' : `Elite ${horse.discipline} available at Equiviesa. View pedigree, videos, and investment details.`
     return {
-      title: `${horse.name} | Premium ${horse.discipline} | Equivest`,
+      title: `${horse.name} | Premium ${horse.discipline} | Equiviesa`,
       description: desc,
       openGraph: {
         title: `${horse.name} | Premium ${horse.discipline}`,
@@ -25,7 +25,7 @@ export async function generateMetadata(props: { params: Promise<{ id: string }> 
       }
     }
   } catch (e) {
-    return { title: 'Equivest | Premium Sport Horses' }
+    return { title: 'Equiviesa | Premium Sport Horses' }
   }
 }
 
@@ -49,8 +49,7 @@ export default async function HorseDetailPage(props: {
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
     const cookieStore = await cookies()
-    const isInvestor = cookieStore.get('investor_auth')?.value === 'true'
-    canSeeROI = !!user || isInvestor
+    canSeeROI = !!user
   } catch (err) {
     console.error("Auth check failed on horse detail:", err)
     // Fallback safely to false
@@ -61,17 +60,17 @@ export default async function HorseDetailPage(props: {
     '@type': 'Product',
     name: horse.name,
     image: horse.cover_image_url ? [horse.cover_image_url] : [],
-    description: horse.description || `Elite ${horse.discipline} available at Equivest.`,
+    description: horse.description || `Elite ${horse.discipline} available at Equiviesa.`,
     brand: {
       '@type': 'Brand',
-      name: 'Equivest'
+      name: 'Equiviesa'
     },
     offers: {
       '@type': 'Offer',
       priceCurrency: 'EUR',
       price: (horse.price_category && horse.price_category !== 'Price on Request') ? horse.price_category.replace(/[^0-9]/g, '000') : '0',
       availability: horse.status === 'Available' ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-      url: `https://www.equivestworldwide.com/horses/${horse.id}`
+      url: `https://www.equiviesaworldwide.com/horses/${horse.id}`
     }
   }
 
@@ -154,7 +153,7 @@ export default async function HorseDetailPage(props: {
               </div>
             </div>
 
-            {/* Investor ROI Section */}
+            {/* ROI Section */}
             {canSeeROI && (horse?.estimated_roi || horse?.investment_rationale) && (
               <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/10 border-2 border-green-500/30 rounded-2xl p-8 shadow-sm relative overflow-hidden">
                 <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-green-500/10 rounded-full blur-3xl"></div>

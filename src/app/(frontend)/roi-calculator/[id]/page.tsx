@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import RoiClient from './RoiClient'
 
 export const metadata = {
-  title: 'ROI Calculator | Equivest',
+  title: 'ROI Calculator | Equiviesa',
   robots: 'noindex, nofollow'
 }
 

@@ -21,7 +21,7 @@ export async function POST(request: Request) {
     // COMMAND: HELP
     // ---------------------------------------------------------------------------
     if (command === 'HELP' || command === 'INFO') {
-      responseText = `📱 *Equivest CMS Commando's*\n\n` +
+      responseText = `📱 *Equiviesa CMS Commando's*\n\n` +
         `🐴 *PAARD [Naam], [Jaar], [Geslacht], [Discipline], [Prijs]*\n` +
         `❌ *VERWIJDER PAARD [Naam]*\n` +
         `📅 *AFSPRAAK [Klant], [Datum], [Tijd], [Notitie]*\n` +
@@ -92,7 +92,7 @@ export async function POST(request: Request) {
         const notes = notesParts.join(', ') || 'Ingepland via Twilio'
         
         const { error } = await supabase.from('appointments').insert({
-          client_name, client_email: 'twilio@equivest.nl', appointment_date, appointment_time, notes, status: 'confirmed'
+          client_name, client_email: 'twilio@equiviesa.nl', appointment_date, appointment_time, notes, status: 'confirmed'
         })
 
         if (error) responseText = `❌ Fout bij inplannen: ${error.message}`

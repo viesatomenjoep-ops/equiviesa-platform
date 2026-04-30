@@ -20,7 +20,7 @@ export default async function AboutPage() {
     let tom = team.find((m: any) => m.name.toLowerCase().includes('tom'));
     let tyler = team.find((m: any) => m.name.toLowerCase().includes('tyler'));
     
-    const tomBio = "As the Head of IT and Lead Developer at Equivest, Tom van Biene brings over 5 years of specialized experience in designing, hosting, and managing high-end CMS and website infrastructures. He has successfully automated the entire digital ecosystem—ranging from intricate inventory management to dynamic scheduling systems. His architectural vision ensures that the platform is robust, extremely fast, and secure.";
+    const tomBio = "As the Head of IT and Lead Developer at Equiviesa, Tom van Biene brings over 5 years of specialized experience in designing, hosting, and managing high-end CMS and website infrastructures. He has successfully automated the entire digital ecosystem—ranging from intricate inventory management to dynamic scheduling systems. His architectural vision ensures that the platform is robust, extremely fast, and secure.";
     
     if (tom) {
       tom.role = 'Head of IT & Lead Developer';
@@ -64,7 +64,7 @@ export default async function AboutPage() {
       title: 'Legacy of Excellence',
       hero_image: '/wellington_showjumper.png',
       content_blocks: [
-        { id: '1', type: 'text', content: 'Equivest is a leading player with over 25 years of experience and a proven track record in the equestrian world. We facilitate high-end investments in world-class showjumpers from the Netherlands, Germany, and Belgium, offering our investors unique opportunities for significant returns through precision selection and expert management.', size: 'text-xl' },
+        { id: '1', type: 'text', content: 'Equiviesa is a leading player with over 25 years of experience and a proven track record in the equestrian world. We facilitate high-end investments in world-class showjumpers from the Netherlands, Germany, and Belgium, offering our clients unique opportunities for significant returns through precision selection and expert management.', size: 'text-xl' },
         { id: '2', type: 'text', content: 'Show jumping has evolved into a highly professional global sport. Investing in genetically superior youngsters and producing them into 5-Star Grand Prix athletes offers a unique, high-yield asset class.', size: 'text-xl' },
         { id: '3', type: 'text', content: 'Our syndicate model ensures that you co-own elite prospects alongside industry professionals. From world-class training in Europe to targeted global competition, we manage the entire lifecycle to maximize both sport success and financial return.', size: 'text-xl' }
       ]
@@ -80,7 +80,7 @@ export default async function AboutPage() {
           <h1 className="text-4xl sm:text-5xl font-serif font-light text-primary dark:text-white">
             {title}
           </h1>
-          <h2 className="text-2xl font-serif text-secondary dark:text-gray-300">About Equivest</h2>
+          <h2 className="text-2xl font-serif text-secondary dark:text-gray-300">About Equiviesa</h2>
           <div className="space-y-6 text-xl md:text-2xl text-gray-800 dark:text-gray-300 font-medium leading-relaxed text-center sm:text-left">
             {content_blocks.map((block: any, index: number) => {
               const isFinancialReturn = block.type === 'text' && block.content.toLowerCase().includes('financial return');

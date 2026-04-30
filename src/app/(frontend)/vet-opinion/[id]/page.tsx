@@ -15,7 +15,7 @@ export default function VetOpinionPage() {
           <CheckCircle size={40} />
         </div>
         <h1 className="text-3xl font-serif font-bold text-gray-900 mb-2">Report Submitted</h1>
-        <p className="text-gray-500 text-center max-w-md">Thank you. Your second opinion report has been securely uploaded to Equivest Portfolio Management.</p>
+        <p className="text-gray-500 text-center max-w-md">Thank you. Your second opinion report has been securely uploaded to Equiviesa Portfolio Management.</p>
       </div>
     )
   }
@@ -70,7 +70,7 @@ export default function VetOpinionPage() {
               </div>
 
               <p className="text-xs text-gray-400 mt-6 leading-relaxed">
-                By downloading these files, you agree to maintain strict confidentiality. These documents are the intellectual property of Equivest.
+                By downloading these files, you agree to maintain strict confidentiality. These documents are the intellectual property of Equiviesa.
               </p>
             </div>
 

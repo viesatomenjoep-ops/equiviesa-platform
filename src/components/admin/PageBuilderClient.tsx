@@ -242,7 +242,7 @@ export default function PageBuilderClient({
                     type="text" 
                     value={block.image_url || ''} 
                     onChange={(e) => updateBlock(index, 'image_url', e.target.value)} 
-                    placeholder="Bv: /contact of /investors/portfolio"
+                    placeholder="Bv: /contact"
                     className="w-full p-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-md outline-none focus:border-accent"
                   />
                 </div>
@@ -350,9 +350,7 @@ export default function PageBuilderClient({
           </button>
         </div>
       </div>
-      {pageSlug === 'investors' && (
-        <p className="text-center text-sm text-gray-500">Let op: De ROI Calculator staat standaard vast onderaan de "Want to invest" pagina.</p>
-      )}
+
     </div>
   )
 }

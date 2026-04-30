@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic'
 
 export default function AdminPagesOverview() {
   const pages = [
-    { name: 'Investors (Want to invest)', path: '/admin/pages/investors', description: 'Manage text and content for the investment page.' },
+
     { name: 'About & Team (Legacy of Excellence)', path: '/admin/pages/about', description: 'Manage the text above the team members list.' }
   ]
 

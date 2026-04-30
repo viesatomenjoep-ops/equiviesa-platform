@@ -16,11 +16,8 @@ export async function getPublicHorses() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   
-  const cookieStore = await cookies()
-  const isInvestor = cookieStore.get('investor_auth')?.value === 'true'
-
-  if (user || isInvestor) {
-    // If logged in (investor/admin), show ALL horses on the public page too
+  if (user) {
+    // If logged in (admin), show ALL horses on the public page too
     const { data, error } = await supabase.from('horses').select('*').order('created_at', { ascending: false })
     if (error) throw new Error(error.message)
     return data
@@ -36,9 +33,9 @@ export async function getInvestmentHorses() {
   // Requires user auth to view investment horses
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-  if (!user) throw new Error("Unauthorized: Only for private investors")
+  if (!user) throw new Error("Unauthorized: Only for private clients")
 
-  // Investors can see ALL horses (both sales and investment)
+  // Admins can see ALL horses (both sales and investment)
   const { data, error } = await supabase.from('horses').select('*').order('created_at', { ascending: false })
   if (error) throw new Error(error.message)
   return data

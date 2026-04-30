@@ -12,7 +12,7 @@ async function run() {
   if (data && data.length > 0) {
     const id = data[0].id
     console.log("Fetching detail for:", id)
-    const detail = await fetch(`https://equivest-platform.vercel.app/horses/${id}`)
+    const detail = await fetch(`https://equiviesa-platform.vercel.app/horses/${id}`)
     console.log("Status:", detail.status)
     const text = await detail.text()
     if (detail.status === 500) {

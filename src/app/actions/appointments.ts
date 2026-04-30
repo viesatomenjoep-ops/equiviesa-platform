@@ -70,7 +70,7 @@ export async function createAppointment(formData: FormData) {
       `
 
       await transporter.sendMail({
-        from: '"Equivest Website" <tomjo118735@gmail.com>',
+        from: '"Equiviesa Website" <tomjo118735@gmail.com>',
         to: 'tomjo118735@gmail.com', // Sending to yourself
         subject: `Nieuw Bezoek Ingepland: ${appointmentData.client_name}`,
         html: htmlContent

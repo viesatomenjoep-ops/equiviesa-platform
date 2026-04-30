@@ -8,18 +8,18 @@ const quicksand = Quicksand({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.equivestworldwide.com'),
+  metadataBase: new URL('https://www.equiviesaworldwide.com'),
   alternates: {
     canonical: '/',
   },
-  title: "Equivest | Invest in Premium Sport Horses & Jumpers in Belgium",
-  description: "Equivest is the premier platform to invest in elite sport horses, hunters, jumpers, and equitation horses in Belgium. Discover top-tier equestrian investments.",
+  title: "Equiviesa | Invest in Premium Sport Horses & Jumpers in Belgium",
+  description: "Equiviesa is the premier platform to invest in elite sport horses, hunters, jumpers, and equitation horses in Belgium. Discover top-tier equestrian investments.",
   keywords: "sport horses Belgium, invest in sport horses, sport horses, jumpers, hunters, equitation horse, elite showjumpers, equestrian investments",
   openGraph: {
-    title: "Equivest | Premium Sport Horses & Equestrian Investments",
+    title: "Equiviesa | Premium Sport Horses & Equestrian Investments",
     description: "Invest in elite sport horses, hunters, and jumpers in Belgium.",
-    url: "https://www.equivestworldwide.com",
-    siteName: "Equivest Worldwide",
+    url: "https://www.equiviesaworldwide.com",
+    siteName: "Equiviesa Worldwide",
     type: "website",
   },
   robots: "index, follow",

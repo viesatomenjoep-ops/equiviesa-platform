@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Check, Trophy, Ruler, Calendar, Shield, Activity } from 'lucide-react'
 
 export const metadata = {
-  title: 'Compare Horses | Equivest',
+  title: 'Compare Horses | Equiviesa',
 }
 
 export default async function ComparePage(props: { params: Promise<{ ids: string }> }) {

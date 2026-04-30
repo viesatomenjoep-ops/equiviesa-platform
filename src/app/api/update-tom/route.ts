@@ -28,7 +28,7 @@ export async function GET() {
 
     // 2. Update Tom van Biene
     if (tomId) {
-      const tomBio = "As the Head of IT and Lead Developer at Equivest, Tom van Biene brings over 5 years of specialized experience in designing, hosting, and managing high-end CMS and website infrastructures. He has successfully automated the entire digital ecosystem—ranging from intricate inventory management to dynamic scheduling systems. His architectural vision ensures that the platform is robust, extremely fast, and secure.";
+      const tomBio = "As the Head of IT and Lead Developer at Equiviesa, Tom van Biene brings over 5 years of specialized experience in designing, hosting, and managing high-end CMS and website infrastructures. He has successfully automated the entire digital ecosystem—ranging from intricate inventory management to dynamic scheduling systems. His architectural vision ensures that the platform is robust, extremely fast, and secure.";
       
       const { error: tomError } = await supabase.from('team_members').update({
         role: 'Head of IT & Lead Developer',

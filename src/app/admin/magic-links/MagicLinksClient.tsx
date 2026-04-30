@@ -35,7 +35,7 @@ export default function MagicLinksClient({ horses }: { horses: any[] }) {
     setTimeout(() => setCopied(false), 2000)
   }
 
-  const getBaseUrl = () => typeof window !== 'undefined' ? window.location.origin : 'https://www.equivestworldwide.com'
+  const getBaseUrl = () => typeof window !== 'undefined' ? window.location.origin : 'https://www.equiviesaworldwide.com'
 
   const generateLink = (path: string) => {
     if (!selectedHorseId) return alert('Select a horse first')
@@ -61,9 +61,9 @@ export default function MagicLinksClient({ horses }: { horses: any[] }) {
 
   const generateNewsletter = () => {
     if (selectedHorsesForCompare.length === 0) return alert('Select at least 1 horse from the Compare list above first')
-    setSocialText(`<h1>Equivest Portfolio Update</h1>\n<p>Discover our newest premium assets.</p>\n\n` + selectedHorsesForCompare.map(id => {
+    setSocialText(`<h1>Equiviesa Portfolio Update</h1>\n<p>Discover our newest premium assets.</p>\n\n` + selectedHorsesForCompare.map(id => {
       const h = horses.find(x => x.id === id)
-      return `<h3>${h?.name}</h3><p>Level: ${h?.experience_level}</p><a href="https://www.equivestworldwide.com/horses/${h?.id}">View Investment</a><br/><br/>`
+      return `<h3>${h?.name}</h3><p>Level: ${h?.experience_level}</p><a href="https://www.equiviesaworldwide.com/horses/${h?.id}">View Investment</a><br/><br/>`
     }).join(''))
   }
 
@@ -72,8 +72,8 @@ export default function MagicLinksClient({ horses }: { horses: any[] }) {
     const h = horses.find(x => x.id === socialHorseId)
     if (!h) return
     const text = whatsappLanguage === 'NL' 
-      ? `Hoi! Ik wilde je dit paard even laten zien: *${h.name}*\n\n🔹 *Niveau:* ${h.experience_level}\n🔹 *Prijs:* ${h.price_category}\n\nBekijk de video direct via:\nhttps://www.equivestworldwide.com/vip/${h.id}?token=preview\n\nLaat me weten wat je ervan vindt!`
-      : `Hi! Take a look at this exceptional asset: *${h.name}*\n\n🔹 *Level:* ${h.experience_level}\n🔹 *Price:* ${h.price_category}\n\nView the video directly via:\nhttps://www.equivestworldwide.com/vip/${h.id}?token=preview\n\nLet me know your thoughts!`
+      ? `Hoi! Ik wilde je dit paard even laten zien: *${h.name}*\n\n🔹 *Niveau:* ${h.experience_level}\n🔹 *Prijs:* ${h.price_category}\n\nBekijk de video direct via:\nhttps://www.equiviesaworldwide.com/vip/${h.id}?token=preview\n\nLaat me weten wat je ervan vindt!`
+      : `Hi! Take a look at this exceptional asset: *${h.name}*\n\n🔹 *Level:* ${h.experience_level}\n🔹 *Price:* ${h.price_category}\n\nView the video directly via:\nhttps://www.equiviesaworldwide.com/vip/${h.id}?token=preview\n\nLet me know your thoughts!`
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank')
   }
 
@@ -115,7 +115,7 @@ export default function MagicLinksClient({ horses }: { horses: any[] }) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {activeTab === 'sales' && (
           <>
-            <Card icon={Clock} title="24H VIP Access" desc="Bypass the login wall for exactly 24 hours. Perfect for quick investor previews." colorClass="bg-purple-100 text-purple-600">
+            <Card icon={Clock} title="24H VIP Access" desc="Bypass the login wall for exactly 24 hours. Perfect for quick client previews." colorClass="bg-purple-100 text-purple-600">
               {renderHorseSelector()}
               <button onClick={() => generateLink('/vip/[id]?token=[token]')} className="w-full py-2 bg-purple-600 text-white rounded-md font-bold text-sm">Generate VIP Link</button>
             </Card>
@@ -144,7 +144,7 @@ export default function MagicLinksClient({ horses }: { horses: any[] }) {
               {renderHorseSelector()}
               <button onClick={() => generateLink('/roi-calculator/[id]')} className="w-full py-2 bg-emerald-600 text-white rounded-md font-bold text-sm">Generate ROI Link</button>
             </Card>
-            <Card icon={BarChart3} title="Investor Analytics" desc="Private dashboard for current owners to view live traffic & interest." colorClass="bg-teal-100 text-teal-600">
+            <Card icon={BarChart3} title="Analytics" desc="Private dashboard for current owners to view live traffic & interest." colorClass="bg-teal-100 text-teal-600">
               {renderHorseSelector()}
               <button onClick={() => generateLink('/analytics/[id]?token=[token]')} className="w-full py-2 bg-teal-600 text-white rounded-md font-bold text-sm">Generate Stats Link</button>
             </Card>
@@ -157,7 +157,7 @@ export default function MagicLinksClient({ horses }: { horses: any[] }) {
 
         {activeTab === 'finance' && (
           <>
-            <Card icon={PieChart} title="Syndicate Offering" desc="Fractional ownership page to raise capital from multiple investors." colorClass="bg-indigo-100 text-indigo-600">
+            <Card icon={PieChart} title="Syndicate Offering" desc="Fractional ownership page to raise capital from multiple clients." colorClass="bg-indigo-100 text-indigo-600">
               {renderHorseSelector()}
               <button onClick={() => generateLink('/syndicate/[id]')} className="w-full py-2 bg-indigo-600 text-white rounded-md font-bold text-sm">Generate Syndicate Link</button>
             </Card>
@@ -175,10 +175,10 @@ export default function MagicLinksClient({ horses }: { horses: any[] }) {
                 if (!selectedHorseId) return alert('Select a horse first')
                 if (!paymentAmount) return alert('Enter an amount')
                 const token = Math.random().toString(36).substring(2, 15)
-                setGeneratedLink(`https://www.equivestworldwide.com/pay/${token}?horse=${selectedHorseId}&amount=${paymentAmount}&currency=${paymentCurrency}`)
+                setGeneratedLink(`https://www.equiviesaworldwide.com/pay/${token}?horse=${selectedHorseId}&amount=${paymentAmount}&currency=${paymentCurrency}`)
               }} className="w-full py-2 bg-[#163300] text-[#9fe870] rounded-md font-bold text-sm">Generate WISE Link</button>
             </Card>
-            <Card icon={PenTool} title="Digital E-Sign Contract" desc="Send the Equivest Bill of Sale for digital smartphone signature." colorClass="bg-rose-100 text-rose-600">
+            <Card icon={PenTool} title="Digital E-Sign Contract" desc="Send the Equiviesa Bill of Sale for digital smartphone signature." colorClass="bg-rose-100 text-rose-600">
               {renderHorseSelector()}
               <button onClick={() => generateLink('/sign/[id]')} className="w-full py-2 bg-rose-600 text-white rounded-md font-bold text-sm">Generate E-Sign Link</button>
             </Card>

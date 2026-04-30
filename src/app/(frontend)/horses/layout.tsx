@@ -5,8 +5,7 @@ import { createClient } from '@/lib/supabase/server'
 export default async function HorsesLayout({ children }: { children: React.ReactNode }) {
   const cookieStore = await cookies()
   const access = cookieStore.get('portfolio_access')
-  const isInvestor = cookieStore.get('investor_auth')?.value === 'true'
-  
+
   let isAdmin = false
   try {
     const supabase = await createClient()
@@ -16,8 +15,8 @@ export default async function HorsesLayout({ children }: { children: React.React
     console.error("Auth check failed in horses layout", err)
   }
 
-  // Allow access if they have the portfolio password, or if they are an investor, or if they are an admin
-  if (access?.value !== 'granted' && !isInvestor && !isAdmin) {
+  // Allow access if they have the portfolio password, or if they are an admin
+  if (access?.value !== 'granted' && !isAdmin) {
     return <PortfolioLogin />
   }
 

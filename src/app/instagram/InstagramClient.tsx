@@ -37,7 +37,7 @@ export default function InstagramClient() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/chimi.jpg"
-            alt="Equivest Elite Showjumper"
+            alt="Equiviesa Elite Showjumper"
             fill
             priority
             className="object-cover object-top"
@@ -49,7 +49,7 @@ export default function InstagramClient() {
           <div className="w-24 h-24 bg-white rounded-full p-2 mb-8 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
             <Image 
               src="/logo.png" 
-              alt="Equivest Logo" 
+              alt="Equiviesa Logo" 
               width={80} 
               height={80} 
               className="object-contain w-full h-full"
@@ -59,7 +59,7 @@ export default function InstagramClient() {
             Welcome to
           </span>
           <h1 className="text-4xl md:text-5xl font-serif text-white mb-6 tracking-tight leading-tight">
-            Equivest <br /><span className="italic text-accent-light">Worldwide</span>
+            Equiviesa <br /><span className="italic text-accent-light">Worldwide</span>
           </h1>
           <p className="text-white/80 max-w-sm text-sm md:text-base mb-10 leading-relaxed">
             High-yield returns from world-class equestrian talent. Discover the possibilities below.
@@ -98,21 +98,7 @@ export default function InstagramClient() {
           </div>
         </Link>
 
-        <Link href="/investors" className="group block relative overflow-hidden rounded-[2rem] bg-primary text-white shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-          <div className="absolute inset-0 bg-[url('/chimi.jpg')] opacity-10 bg-cover bg-center mix-blend-overlay group-hover:opacity-20 transition-opacity duration-500"></div>
-          <div className="relative p-8 md:p-10">
-            <div className="mb-6 inline-flex items-center justify-center w-12 h-12 bg-white/10 rounded-full border border-white/20">
-              <Briefcase className="text-accent-light" size={20} />
-            </div>
-            <h2 className="text-2xl font-serif font-bold mb-2">Want to <span className="text-accent italic">Invest?</span></h2>
-            <p className="text-white/70 text-sm mb-8 leading-relaxed">
-              Join an exclusive network of investors acquiring elite equestrian talent. Our proven track record maximizes both sport success and financial returns.
-            </p>
-            <div className="flex items-center text-sm font-bold uppercase tracking-widest text-white">
-              Request Access <ArrowRight size={16} className="ml-2 group-hover:translate-x-2 transition-transform" />
-            </div>
-          </div>
-        </Link>
+
 
         <Link href="/references" className="group block relative overflow-hidden rounded-[2rem] bg-white shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-gray-100">
           <div className="p-8 flex items-start gap-6">
@@ -141,7 +127,7 @@ export default function InstagramClient() {
             </div>
             <h2 className="text-2xl font-serif font-bold text-gray-900 mb-2">Magic Link Vault</h2>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Investors receive secure, password-less links to access confidential files. Tap a module below to try the demo!
+              Clients receive secure, password-less links to access confidential files. Tap a module below to try the demo!
             </p>
           </div>
 
@@ -293,7 +279,7 @@ export default function InstagramClient() {
       {/* Footer / Minimal Info */}
       <footer className="py-6 text-center flex flex-col items-center">
         <div className="w-10 h-10 mb-4 opacity-50">
-          <Image src="/logo.png" alt="Equivest" width={40} height={40} className="object-contain" />
+          <Image src="/logo.png" alt="Equiviesa" width={40} height={40} className="object-contain" />
         </div>
         <Link 
           href="/"
@@ -302,7 +288,7 @@ export default function InstagramClient() {
           Visit Main Website
         </Link>
         <p className="text-[10px] text-gray-400 uppercase tracking-widest">
-          © {new Date().getFullYear()} Equivest Worldwide
+          © {new Date().getFullYear()} Equiviesa Worldwide
         </p>
       </footer>
 

@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/admin/', '/api/', '/cms-login', '/investor-login'],
+      disallow: ['/admin/', '/api/', '/cms-login'],
     },
-    sitemap: 'https://www.equivestworldwide.com/sitemap.xml',
+    sitemap: 'https://www.equiviesaworldwide.com/sitemap.xml',
   }
 }

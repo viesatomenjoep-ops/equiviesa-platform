@@ -47,7 +47,7 @@ export default function BookVisitPage() {
                 <MapPin className="text-accent flex-shrink-0" />
                 <div>
                   <p className="font-bold">Location</p>
-                  <p className="text-sm text-white/70">Equivest Main Stables<br/>Belgium</p>
+                  <p className="text-sm text-white/70">Equiviesa Main Stables<br/>Belgium</p>
                 </div>
               </div>
               <div className="flex gap-4">
