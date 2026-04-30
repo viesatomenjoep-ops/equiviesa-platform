@@ -194,7 +194,7 @@ export default function ServiceLandingPage() {
           
           {/* Left Column: A-Z Explanation */}
           <div>
-            <h2 className="text-3xl font-bold text-amber-900 mb-8">Van A tot Z geregeld</h2>
+            <h2 className="text-3xl font-bold text-amber-900 mb-8">From A to Z arranged</h2>
             
             <div className="space-y-8">
               <div className="flex gap-4">
@@ -202,8 +202,8 @@ export default function ServiceLandingPage() {
                   <span className="font-bold text-amber-900">A</span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Inspectie & Meting</h3>
-                  <p className="text-slate-600">Voordat we beginnen voeren we een laser-precieze hoogtemeting uit en controleren we de draagkracht en vochtwaarde van uw ondervloer.</p>
+                  <h3 className="text-xl font-bold mb-2">Matching & Selection</h3>
+                  <p className="text-slate-600">Before we begin, we carefully analyze your riding style, goals, and budget to select the perfect horse from our exclusive database.</p>
                 </div>
               </div>
               
@@ -212,8 +212,8 @@ export default function ServiceLandingPage() {
                   <span className="font-bold text-amber-900">M</span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Materiaal & Preparatie</h3>
-                  <p className="text-slate-600">We primeren de vloer voor optimale hechting en zetten randisolatie uit. Ons AI-systeem heeft het exacte materiaalverbruik al berekend.</p>
+                  <h3 className="text-xl font-bold mb-2">Vetting & Trials</h3>
+                  <p className="text-slate-600">We arrange comprehensive veterinary examinations (X-rays and clinical) and coordinate trial rides to ensure a perfect partnership.</p>
                 </div>
               </div>
 
@@ -222,8 +222,8 @@ export default function ServiceLandingPage() {
                   <span className="font-bold text-amber-900">Z</span>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2">Uitvoering & Oplevering</h3>
-                  <p className="text-slate-600">De egaline wordt machinaal gemixt en naadloos gevloeid of gevlinderd. Na de droogtijd leveren wij de vloer spiegelglad op, klaar voor afwerking.</p>
+                  <h3 className="text-xl font-bold mb-2">Transport & Aftercare</h3>
+                  <p className="text-slate-600">We handle all international transport logistics and offer continued coaching to guarantee success in the show ring.</p>
                 </div>
               </div>
             </div>
@@ -249,7 +249,7 @@ export default function ServiceLandingPage() {
                 <h2 className="text-2xl font-bold">AI Offerte Calculator</h2>
               </div>
               <p className="text-slate-300 mb-8">
-                Bereken direct uw prijs voor {content.title}. Onze slimme calculator neemt laagdikte, materiaal en arbeid direct mee in de berekening.
+                Request a matching portfolio or price estimation for {content.title}. Our smart algorithm takes your budget, level, and discipline directly into account.
               </p>
 
               <form className="space-y-6">
@@ -266,10 +266,10 @@ export default function ServiceLandingPage() {
                 <div>
                   <label className="block text-sm font-medium text-slate-300 mb-2">Preferred Discipline</label>
                   <select className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition-all appearance-none">
-                    <option>Beton / Zandcement</option>
-                    <option>Hout</option>
-                    <option>Tegels</option>
-                    <option>Anhydriet</option>
+                    <option>Showjumping</option>
+                    <option>Hunters</option>
+                    <option>Equitation</option>
+                    <option>Dressage</option>
                   </select>
                 </div>
 
