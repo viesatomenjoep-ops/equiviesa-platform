@@ -213,76 +213,8 @@ export default function App() {
         </div>
       </Section>
 
-      {/* Blueprint Table */}
-      <Section title="De Blueprint" subtitle="Techniek in Actie">
-        <div className="overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0">
-          <table className="w-full min-w-[600px] border-collapse">
-            <thead>
-              <tr className="border-b border-blue-500/30">
-                <th className="text-left p-4 text-blue-300">Onderdeel</th>
-                <th className="text-left p-4 text-blue-300">Functionaliteit</th>
-                <th className="text-left p-4 text-blue-300">Voordeel</th>
-              </tr>
-            </thead>
-            <tbody>
-              <TableRow
-                component="Omnichannel"
-                functionality="WhatsApp, Telegram, Instagram & Messenger"
-                benefit="Altijd bereikbaar, snellere conversie"
-                delay={0.1}
-              />
-              <TableRow
-                component="Live Orders"
-                functionality="Orders doorschieten via smartphone"
-                benefit="Geen papierwerk, direct verwerkt op kantoor"
-                delay={0.2}
-              />
-              <TableRow
-                component="Customer Service"
-                functionality="AI-gedreven bots voor veelgestelde vragen"
-                benefit="Bespaart uren aan telefoonwerk per week"
-                delay={0.3}
-              />
-              <TableRow
-                component="Enter Gravity"
-                functionality="Naadloze integratie van alle systemen"
-                benefit="Eén bron van waarheid voor al uw data"
-                delay={0.4}
-              />
-            </tbody>
-          </table>
-        </div>
-      </Section>
-
-      {/* Pricing */}
-      <Section title="Het Verdienmodel" subtitle="Een Win-Win Constructie">
-        <div className="grid md:grid-cols-2 gap-8">
-          <PricingCard
-            title="Het Groei-Abonnement"
-            description="Voor een vast maandelijks bedrag krijgt u toegang tot de volledige Blueprint, inclusief updates, hosting en technische ondersteuning."
-            features={[
-              "Volledige Blueprint Toegang",
-              "Maandelijkse Updates",
-              "24/7 Technische Support",
-              "Hosting Included"
-            ]}
-          />
-          <PricingCard
-            title="Het Partnership Model"
-            description="Voor specifieke projecten of op maat gemaakte SEO-trajecten delen we de investering en de opbrengst."
-            features={[
-              "1/3 voor de operatie",
-              "1/3 voor de groei",
-              "1/3 voor de winst",
-              "Gedeelde investering"
-            ]}
-            highlight
-          />
-        </div>
-      </Section>
-
       {/* Become a Pro Member */}
-      <Section title="Become a Pro Member" subtitle="Sluit je aan bij de elite van de paardensport">
+      <Section title="Become a Pro Member" subtitle="Sluit je aan bij de elite van digitale koplopers">
         <div className="bg-gradient-to-br from-purple-900/40 to-blue-900/40 backdrop-blur-sm border border-purple-500/30 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl -ml-20 -mb-20 pointer-events-none" />
@@ -297,7 +229,7 @@ export default function App() {
             </h3>
             
             <p className="text-lg text-blue-100 max-w-2xl mx-auto mb-8 leading-relaxed">
-              Krijg toegang tot ons exclusieve investeerdersnetwerk, premium portfolio's, en geavanceerde stalmanagement tools. Met Viesa Pro til je jouw investering en management naar het allerhoogste niveau.
+              Krijg toegang tot ons exclusieve netwerk, geavanceerde blueprint-strategieën, en premium automatiseringstools. Met Viesa Pro til je jouw digitale ecosysteem en bedrijfsgroei naar het allerhoogste niveau.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -417,45 +349,3 @@ function CaseStudyItem({ title, description }: { title: string; description: str
   );
 }
 
-function TableRow({ component, functionality, benefit, delay }: { component: string; functionality: string; benefit: string; delay: number }) {
-  return (
-    <motion.tr
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      className="border-b border-blue-500/20 hover:bg-blue-900/20 transition-colors"
-    >
-      <td className="p-4">{component}</td>
-      <td className="p-4 text-blue-200">{functionality}</td>
-      <td className="p-4 text-blue-300">{benefit}</td>
-    </motion.tr>
-  );
-}
-
-function PricingCard({ title, description, features, highlight }: { title: string; description: string; features: string[]; highlight?: boolean }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      whileHover={{ scale: 1.03 }}
-      className={`rounded-3xl p-8 ${
-        highlight
-          ? 'bg-gradient-to-br from-blue-600 to-purple-600 shadow-2xl shadow-purple-500/30'
-          : 'bg-gradient-to-br from-blue-900/40 to-purple-900/40 backdrop-blur-sm border border-blue-500/30'
-      }`}
-    >
-      <h3 className="text-2xl mb-4">{title}</h3>
-      <p className="text-blue-100 mb-8">{description}</p>
-      <ul className="space-y-3">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-center gap-3">
-            <CheckCircle2 className="w-5 h-5 text-blue-300 shrink-0" />
-            <span>{feature}</span>
-          </li>
-        ))}
-      </ul>
-    </motion.div>
-  );
-}
