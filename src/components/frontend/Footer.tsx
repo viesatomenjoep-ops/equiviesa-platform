@@ -57,7 +57,7 @@ export default function Footer() {
             </a>
 
             <a 
-              href="https://www.instagram.com/nomoregrayarea36" 
+              href="https://www.instagram.com" 
               target="_blank"
               rel="noopener noreferrer"
               className="group flex flex-col items-center p-6 md:p-8 bg-white/5 border border-white/10 hover:border-accent-light hover:bg-white/10 transition-all duration-500 shadow-xl"

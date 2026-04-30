@@ -5,11 +5,11 @@ const partners = [
   { name: "#chesterfield_ltd", url: "https://www.instagram.com/chesterfield_ltd?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
   { name: "#louislegrelle", url: "https://www.instagram.com/louislegrelle?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
   { name: "#kardel_global_equine", url: "https://www.instagram.com/kardel_global_equine?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
-  { name: "#nomoregrayarea36", url: "https://www.instagram.com/nomoregrayarea36?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
-  { name: "#elsaj0hanssonn", url: "https://www.instagram.com/elsaj0hanssonn?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
-  { name: "#jrice.sporthorses", url: "https://www.instagram.com/jrice.sporthorses?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
-  { name: "#apgstables", url: "https://www.instagram.com/apgstables?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
-  { name: "#noe_benlamine", url: "https://www.instagram.com/noe_benlamine?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+  { name: "#partner1", url: "#" },
+  { name: "#partner2", url: "#" },
+  { name: "#partner3", url: "#" },
+  { name: "#partner4", url: "#" },
+  { name: "#partner5", url: "#" },
 ];
 
 export default function PartnerSlider() {
