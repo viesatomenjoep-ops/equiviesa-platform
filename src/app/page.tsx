@@ -40,11 +40,11 @@ export default function App() {
       {/* Top Navigation / Tool Selector */}
       <header className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex justify-between items-center">
         <div className="flex items-center">
-          <Link href="/" className="group flex items-center gap-3">
-            <span className="text-2xl md:text-3xl font-serif font-bold tracking-tight uppercase leading-none">
+          <Link href="/" className="group flex items-center gap-4">
+            <Image src="/logo.png" alt="Viesa Logo" width={96} height={96} className="w-20 h-20 md:w-24 md:h-24 object-contain animate-[spin_20s_linear_infinite]" />
+            <span className="text-3xl md:text-5xl font-serif font-bold tracking-tight uppercase leading-none">
               <span className="text-blue-500 group-hover:text-blue-400 transition-colors">V</span><span className="text-white">IESA</span>
             </span>
-            <Image src="/logo.png" alt="Viesa Logo" width={32} height={32} className="w-8 h-8 object-contain animate-[spin_20s_linear_infinite]" />
           </Link>
         </div>
         <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-2 py-1 shadow-xl relative">
@@ -80,16 +80,14 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
             <motion.h1
-              className="text-5xl sm:text-6xl md:text-8xl mb-6 tracking-tight font-serif font-bold"
+              className="text-5xl sm:text-6xl md:text-8xl mb-6 tracking-tight font-bold"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <div className="flex items-center justify-center gap-4">
-                <span className="text-blue-500">V</span>
-                <span className="text-white">IESA</span>
-                <Image src="/logo.png" alt="Viesa Logo" width={80} height={80} className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 object-contain animate-[spin_20s_linear_infinite]" />
-              </div>
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                VIESA
+              </span>
               <br />
               <span className="text-white">AUTOMATIONS</span>
             </motion.h1>
