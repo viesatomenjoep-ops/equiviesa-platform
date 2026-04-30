@@ -82,44 +82,44 @@ export default function App() {
 
         <div className="relative z-10 max-w-6xl mx-auto text-center mt-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <motion.h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tight font-bold notranslate"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              initial={{ opacity: 0, y: 40, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent drop-shadow-lg">
                 VIESA
               </span>
               <br />
-              <span className="text-white">AUTOMATIONS</span>
+              <span className="text-white drop-shadow-lg">AUTOMATIONS</span>
             </motion.h1>
           </motion.div>
 
           <motion.p
-            className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
+            className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto font-light"
+            initial={{ opacity: 0, y: 20, filter: 'blur(5px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             The Blueprint for Digital Dominance
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 0.7, duration: 0.8, type: 'spring', stiffness: 100 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Link href="/transformation" className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-white text-slate-950 hover:bg-slate-200 rounded-full hover:shadow-2xl hover:shadow-white/10 transition-all duration-300 flex items-center gap-2 justify-center font-bold">
+            <Link href="/transformation" className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-white text-slate-950 hover:bg-slate-200 rounded-full shadow-xl shadow-white/10 hover:shadow-2xl transition-all duration-300 flex items-center gap-2 justify-center font-bold">
               Start Your Transformation
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link href="/case-studies" className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 border border-blue-400/50 rounded-full hover:bg-blue-500/10 transition-all duration-300 flex items-center justify-center font-bold">
+            <Link href="/case-studies" className="w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 border border-blue-400/50 rounded-full hover:bg-blue-500/10 transition-all duration-300 flex items-center justify-center font-bold shadow-lg">
               View Case Studies
             </Link>
           </motion.div>
@@ -307,17 +307,23 @@ function Section({ title, subtitle, children }: { title: string; subtitle: strin
     <section ref={ref} className="relative py-20 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 40, filter: 'blur(10px)', scale: 0.95 }}
+          animate={isInView ? { opacity: 1, y: 0, filter: 'blur(0px)', scale: 1 } : {}}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent drop-shadow-lg font-bold">
             {title}
           </h2>
-          <p className="text-xl text-slate-300">{subtitle}</p>
+          <p className="text-xl text-slate-300 font-light">{subtitle}</p>
         </motion.div>
-        {children}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {children}
+        </motion.div>
       </div>
     </section>
   );
@@ -340,18 +346,18 @@ function FeatureCard({ icon, title }: { icon: React.ReactNode; title: string }) 
 function SeoFeature({ icon, title, description, delay }: { icon: React.ReactNode; title: string; description: string; delay: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay }}
-      className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start bg-gradient-to-r from-blue-900/20 to-transparent border-l-4 border-blue-500 p-6 rounded-r-xl hover:bg-blue-900/30 transition-all duration-300"
+      initial={{ opacity: 0, x: -50, filter: 'blur(5px)' }}
+      whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+      className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start bg-gradient-to-r from-blue-900/20 to-transparent border-l-4 border-blue-500 p-6 rounded-r-xl hover:bg-blue-900/40 transition-all duration-300 shadow-xl"
     >
       <div className="text-blue-400 mt-1 shrink-0">
         {icon}
       </div>
       <div>
-        <h3 className="text-xl sm:text-2xl mb-2">{title}</h3>
-        <p className="text-slate-300">{description}</p>
+        <h3 className="text-xl sm:text-2xl mb-2 font-bold">{title}</h3>
+        <p className="text-slate-300 leading-relaxed">{description}</p>
       </div>
     </motion.div>
   );

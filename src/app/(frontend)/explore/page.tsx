@@ -1,10 +1,24 @@
 'use client'
 
-import { useState } from 'react'
-import { Wand, TrendingUp, ShieldCheck, PlayCircle, Lock, ArrowRight, Search, Camera, Trophy, Dna, Calendar, FileText, CheckCircle2, Activity, FileCheck, CalendarDays, Plane, Scale, BrainCircuit } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Wand, TrendingUp, ShieldCheck, PlayCircle, Lock, ArrowRight, Search, Camera, Trophy, Dna, Calendar, FileText, CheckCircle2, Activity, FileCheck, CalendarDays, Plane, Scale, BrainCircuit, Eye } from 'lucide-react'
 import Link from 'next/link'
+import { createClient } from '@/lib/supabase/client'
 
 export default function ExploreToolsPage() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [authLoading, setAuthLoading] = useState(true)
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      setIsLoggedIn(!!user)
+      setAuthLoading(false)
+    }
+    checkAuth()
+  }, [])
+
   // Passport Scanner State
   const [passportNum, setPassportNum] = useState('')
   const [isScanning, setIsScanning] = useState(false)
@@ -107,8 +121,24 @@ export default function ExploreToolsPage() {
           </div>
 
           <div className="p-8 md:p-12 bg-gray-50 dark:bg-gray-800/50">
-            {/* Grid of Tools */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
+            {authLoading ? (
+              <div className="py-20 text-center text-gray-500">Checking authorization...</div>
+            ) : !isLoggedIn ? (
+              <div className="text-center py-16 px-6 max-w-2xl mx-auto bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-sm">
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-gray-50 text-gray-600 dark:bg-gray-900 dark:text-gray-400 text-sm font-medium border border-gray-200 dark:border-gray-700 shadow-sm mb-6">
+                  <Eye size={16} className="mr-2" />
+                  Public Access: Vault Locked
+                </div>
+                <h3 className="text-3xl font-serif font-bold text-gray-900 dark:text-white mb-4 tracking-tight">Secure Vault</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+                  To view confidential documents, live stable feeds, and syndication details, you must be logged into your VIESA account.
+                </p>
+                <Link href="/login" className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-full text-white bg-accent hover:bg-primary shadow-lg hover:scale-105 transition-all">
+                  Log in to explore tailored opportunities
+                </Link>
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
               
               {/* 1. Secure Video Room */}
               <div 
@@ -241,7 +271,8 @@ export default function ExploreToolsPage() {
                 <p className="text-xs text-gray-500 mb-4 flex-grow">Ownership docs</p>
                 <Lock size={16} className="text-gray-400 mt-auto" />
               </div>
-            </div>
+              </div>
+            )}
           </div>
         </div>
 
