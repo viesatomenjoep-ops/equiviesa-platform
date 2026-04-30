@@ -39,9 +39,11 @@ export default function EgaliserenLandingPage() {
       {/* Top Navigation */}
       <header className="fixed top-0 left-0 right-0 z-50 py-4 px-6 flex justify-center md:justify-start items-center bg-white/90 backdrop-blur-md border-b border-gray-200">
         <Link href="/egaliseren" className="group flex items-center gap-3">
-          <span className="font-serif tracking-tight uppercase leading-none text-slate-900 flex items-baseline gap-2">
-            <span className="text-2xl md:text-3xl font-bold">EGALISEREN.NL</span>
-          </span>
+          <img 
+            src="https://www.egaliseren.nl/wp-content/uploads/2023/11/egaliseren-logo-dark-cropped.png" 
+            alt="Egaliseren.nl Logo" 
+            className="h-8 md:h-10 w-auto object-contain"
+          />
         </Link>
       </header>
 
