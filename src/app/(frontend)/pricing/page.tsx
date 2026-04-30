@@ -7,6 +7,28 @@ import { Check, Star, CreditCard, ArrowRight, ShieldCheck, Zap, CheckCircle, Cro
 export default function PricingPage() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('yearly')
   const [currency, setCurrency] = useState<'EUR' | 'GBP' | 'USD'>('EUR')
+  const [selectedModules, setSelectedModules] = useState<string[]>([])
+
+  const customModules = [
+    { name: 'CRM Systeem', price: 49 },
+    { name: 'CMS (Website Manager)', price: 49 },
+    { name: 'ERP (Facturatie & Offertes)', price: 79 },
+    { name: 'AI Automations', price: 99 },
+    { name: 'Review Automatisering', price: 29 },
+    { name: 'Lead Generator Bots', price: 69 },
+    { name: 'Social Media Planning', price: 39 },
+    { name: 'Personeelsportaal', price: 49 },
+  ];
+
+  const customTotal = customModules
+    .filter(m => selectedModules.includes(m.name))
+    .reduce((sum, m) => sum + (billingCycle === 'yearly' ? Math.round(m.price * 0.83) : m.price), 0);
+
+  const toggleModule = (name: string) => {
+    setSelectedModules(prev => 
+      prev.includes(name) ? prev.filter(m => m !== name) : [...prev, name]
+    );
+  };
 
   const getPrice = (euroPrice: number) => {
     if (currency === 'GBP') return Math.round(euroPrice * 0.85).toLocaleString('en-GB')
@@ -82,34 +104,52 @@ export default function PricingPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10 mb-10">
-            {[
-              { name: 'CRM Systeem', price: 49 },
-              { name: 'CMS (Website Manager)', price: 49 },
-              { name: 'ERP (Facturatie & Offertes)', price: 79 },
-              { name: 'AI Automations', price: 99 },
-              { name: 'Review Automatisering', price: 29 },
-              { name: 'Lead Generator Bots', price: 69 },
-              { name: 'Social Media Planning', price: 39 },
-              { name: 'Personeelsportaal', price: 49 },
-            ].map((module, idx) => (
-              <div key={idx} className="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-pointer group shadow-sm hover:shadow-md">
-                <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full border border-slate-500 group-hover:border-accent flex items-center justify-center transition-colors bg-slate-800/50">
-                    <Check className="w-4 h-4 text-transparent group-hover:text-accent transition-colors" />
+            {customModules.map((module, idx) => {
+              const isSelected = selectedModules.includes(module.name);
+              return (
+                <div 
+                  key={idx} 
+                  onClick={() => toggleModule(module.name)}
+                  className={`flex items-center justify-between p-4 border rounded-xl transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md ${
+                    isSelected ? 'bg-accent/20 border-accent/50' : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`w-6 h-6 rounded-full border flex items-center justify-center transition-colors ${
+                      isSelected ? 'border-accent bg-accent text-white' : 'border-slate-500 bg-slate-800/50 text-transparent'
+                    }`}>
+                      <Check className="w-4 h-4" />
+                    </div>
+                    <span className={`font-medium transition-colors ${isSelected ? 'text-white' : 'text-slate-200'}`}>{module.name}</span>
                   </div>
-                  <span className="font-medium text-slate-200 group-hover:text-white transition-colors">{module.name}</span>
+                  <div className="flex flex-col items-end">
+                    <span className={`font-bold ${isSelected ? 'text-white' : 'text-slate-300'}`}>{symbol}{getPrice(billingCycle === 'yearly' ? Math.round(module.price * 0.83) : module.price)}</span>
+                    <span className="text-[10px] text-slate-400 font-normal">/ mo</span>
+                  </div>
                 </div>
-                <div className="flex flex-col items-end">
-                  <span className="font-bold text-white">{symbol}{getPrice(billingCycle === 'yearly' ? Math.round(module.price * 0.83) : module.price)}</span>
-                  <span className="text-[10px] text-slate-400 font-normal">/ mo</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
-          <div className="flex justify-center relative z-10 border-t border-white/10 pt-10">
-            <Link href="/register?plan=custom" className="px-10 py-4 bg-white text-slate-900 font-bold rounded-full hover:bg-slate-200 transition-colors shadow-xl hover:scale-105 duration-300 flex items-center gap-2">
-              Start Custom Plan <ArrowRight className="w-5 h-5" />
+          <div className="flex flex-col md:flex-row items-center justify-between relative z-10 border-t border-white/10 pt-8 gap-6">
+            <div>
+              <span className="text-slate-400 text-sm font-bold uppercase tracking-widest block mb-1 text-center md:text-left">Your Custom Plan Total</span>
+              <div className="flex items-baseline justify-center md:justify-start gap-2">
+                <span className="text-4xl font-serif font-bold text-white">{symbol}{getPrice(customTotal)}</span>
+                <span className="text-slate-400 font-medium">/ month</span>
+              </div>
+              {billingCycle === 'yearly' && customTotal > 0 && (
+                <p className="text-xs text-accent mt-1 font-bold text-center md:text-left">Billed annually at {symbol}{getPrice(customTotal * 12)}</p>
+              )}
+            </div>
+            
+            <Link 
+              href={`/register?plan=custom${selectedModules.length > 0 ? `&modules=${encodeURIComponent(selectedModules.join(','))}` : ''}`} 
+              className={`px-8 py-4 font-bold rounded-full transition-all duration-300 shadow-xl flex items-center gap-2 ${
+                selectedModules.length > 0 ? 'bg-accent hover:bg-blue-600 text-white hover:scale-105 hover:shadow-accent/20' : 'bg-white text-slate-900 hover:bg-slate-200'
+              }`}
+            >
+              {selectedModules.length > 0 ? 'Proceed with Custom Plan' : 'Select modules to start'} <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>
