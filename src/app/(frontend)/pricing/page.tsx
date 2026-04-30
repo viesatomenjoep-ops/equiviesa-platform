@@ -20,12 +20,9 @@ export default function PricingPage() {
     <main className="min-h-screen pt-24 pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-blue-900/80 to-slate-800 text-white">
       {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-6 animate-in fade-in slide-in-from-bottom-8 duration-700">
-        <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 uppercase tracking-tight">
+        <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-8 uppercase tracking-tight">
           Choose Your Plan
         </h1>
-        <p className="text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed mb-10">
-          From private owners to large commercial stables, we have a plan that fits your needs. Digitize your operations today.
-        </p>
 
         {/* Currency Toggle */}
         <div className="flex items-center justify-center gap-2 mb-6">
@@ -90,11 +87,15 @@ export default function PricingPage() {
           <div className="mb-8 border-b border-white/10 pb-8">
             <div className="flex items-baseline gap-1">
               <span className="text-4xl font-serif font-bold text-white">
-                {symbol} {billingCycle === 'yearly' ? getPrice(1990) : getPrice(199)}
+                {symbol} {billingCycle === 'yearly' ? getPrice(165) : getPrice(199)}
               </span>
-              <span className="text-slate-400 font-medium">/ {billingCycle === 'yearly' ? 'year' : 'month'}</span>
+              <span className="text-slate-400 font-medium">/ month</span>
             </div>
-            <p className="text-xs text-gray-400 mt-1">Excl. VAT</p>
+            {billingCycle === 'yearly' ? (
+              <p className="text-xs text-accent mt-1 font-bold">Billed annually at {symbol}{getPrice(1990)}</p>
+            ) : (
+              <p className="text-xs text-gray-400 mt-1">Excl. VAT</p>
+            )}
           </div>
 
           <div className="mb-10 flex-1 space-y-4">
@@ -134,11 +135,15 @@ export default function PricingPage() {
           <div className="mb-8 border-b border-white/10 pb-8">
             <div className="flex items-baseline gap-1">
               <span className="text-4xl font-serif font-bold text-white">
-                {symbol} {billingCycle === 'yearly' ? getPrice(3990) : getPrice(399)}
+                {symbol} {billingCycle === 'yearly' ? getPrice(330) : getPrice(399)}
               </span>
-              <span className="text-gray-300 font-medium">/ {billingCycle === 'yearly' ? 'year' : 'month'}</span>
+              <span className="text-gray-300 font-medium">/ month</span>
             </div>
-            <p className="text-xs text-gray-400 mt-1">Excl. VAT</p>
+            {billingCycle === 'yearly' ? (
+              <p className="text-xs text-accent mt-1 font-bold">Billed annually at {symbol}{getPrice(3990)}</p>
+            ) : (
+              <p className="text-xs text-gray-400 mt-1">Excl. VAT</p>
+            )}
           </div>
 
           <div className="mb-10 flex-1 space-y-4">
@@ -172,11 +177,15 @@ export default function PricingPage() {
           <div className="mb-8 border-b border-white/10 pb-8">
             <div className="flex items-baseline gap-1">
               <span className="text-4xl font-serif font-bold text-white">
-                {symbol} {billingCycle === 'yearly' ? getPrice(7990) : getPrice(799)}
+                {symbol} {billingCycle === 'yearly' ? getPrice(665) : getPrice(799)}
               </span>
-              <span className="text-gray-300 font-medium">/ {billingCycle === 'yearly' ? 'year' : 'month'}</span>
+              <span className="text-gray-300 font-medium">/ month</span>
             </div>
-            <p className="text-xs text-gray-400 mt-1">Excl. VAT</p>
+            {billingCycle === 'yearly' ? (
+              <p className="text-xs text-accent mt-1 font-bold">Billed annually at {symbol}{getPrice(7990)}</p>
+            ) : (
+              <p className="text-xs text-gray-400 mt-1">Excl. VAT</p>
+            )}
           </div>
 
           <div className="mb-10 flex-1 space-y-4">

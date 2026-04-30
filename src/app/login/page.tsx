@@ -13,12 +13,7 @@ export default function LoginHubPage() {
         <div className="absolute top-[20%] right-[10%] w-[20%] h-[20%] rounded-full bg-white/5 blur-[80px]"></div>
       </div>
 
-      {/* Return to Website Button */}
-      <div className="absolute top-8 left-8 z-50">
-        <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-full font-bold transition-all border border-white/20 shadow-sm backdrop-blur-md">
-          <span className="text-xl leading-none">&larr;</span> Return to Website
-        </Link>
-      </div>
+
 
       <div className="max-w-4xl w-full relative z-10">
         
@@ -31,7 +26,11 @@ export default function LoginHubPage() {
             </span>
           </div>
           <h1 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4 tracking-tight">Select your portal</h1>
-          <p className="text-lg text-slate-400 font-medium">Please select your login destination to continue</p>
+          <p className="text-lg text-slate-400 font-medium mb-8">Please select your login destination to continue</p>
+          
+          <Link href="/" className="inline-flex items-center gap-2 px-6 py-2.5 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white rounded-full text-sm font-bold transition-all border border-white/10 shadow-sm backdrop-blur-md">
+            <span className="text-lg leading-none">&larr;</span> Return to Website
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 max-w-3xl mx-auto gap-8">
