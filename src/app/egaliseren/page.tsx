@@ -23,8 +23,10 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function EgaliserenLandingPage() {
+  const router = useRouter();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll();
@@ -92,7 +94,21 @@ export default function EgaliserenLandingPage() {
         </Link>
 
         <div className="flex items-center gap-2 sm:gap-4">
-          <select className="bg-gray-50 border border-gray-300 text-slate-900 text-xs sm:text-sm md:text-base rounded-full focus:ring-slate-900 focus:border-slate-900 block p-2 sm:p-2.5 px-3 sm:px-4 outline-none font-medium cursor-pointer hover:bg-gray-100 transition-colors">
+          <select 
+            onChange={(e) => {
+              const val = e.target.value;
+              if (val) {
+                if (val === 'ai-scan') {
+                  router.push('/egaliseren/calculator');
+                } else if (val === 'pvc') {
+                  router.push('/egaliseren/afwerking');
+                } else {
+                  router.push(`/egaliseren/${val}`);
+                }
+              }
+            }}
+            className="bg-gray-50 border border-gray-300 text-slate-900 text-xs sm:text-sm md:text-base rounded-full focus:ring-slate-900 focus:border-slate-900 block p-2 sm:p-2.5 px-3 sm:px-4 outline-none font-medium cursor-pointer hover:bg-gray-100 transition-colors"
+          >
             <option value="">Direct regelen...</option>
             <option value="zandcement">Zandcement</option>
             <option value="anhydriet">Anhydriet</option>
