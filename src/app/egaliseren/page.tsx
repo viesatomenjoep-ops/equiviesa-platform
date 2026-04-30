@@ -210,11 +210,11 @@ export default function EgaliserenLandingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
-              { icon: <Bot className="w-6 h-6" />, title: "AI Droogtijd Calculator", link: "/egaliseren/calculator" },
-              { icon: <Ruler className="w-6 h-6" />, title: "Materiaal Calculator", link: "/egaliseren/calculator" },
-              { icon: <Globe className="w-6 h-6" />, title: "Vloerverwarming Planner", link: "/egaliseren/calculator" },
-              { icon: <CheckSquare className="w-6 h-6" />, title: "Vloer Inspectie Scan", link: "#offerte" },
-              { icon: <Smartphone className="w-6 h-6" />, title: "Live Offerte Generator", link: "/egaliseren/calculator" },
+              { icon: <Bot className="w-6 h-6" />, title: "AI Droogtijd Calculator", link: "/egaliseren/droogtijd" },
+              { icon: <Ruler className="w-6 h-6" />, title: "Materiaal Calculator", link: "/egaliseren/materiaal" },
+              { icon: <Globe className="w-6 h-6" />, title: "Vloerverwarming Planner", link: "/egaliseren/vloerverwarming-planner" },
+              { icon: <CheckSquare className="w-6 h-6" />, title: "Vloer Inspectie Scan", link: "/egaliseren/offerte" },
+              { icon: <Smartphone className="w-6 h-6" />, title: "Live Offerte Generator", link: "/egaliseren/generator" },
             ].map((link, idx) => (
               <Link href={link.link} key={idx}>
                 <motion.div
