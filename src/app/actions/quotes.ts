@@ -135,7 +135,7 @@ export async function sendQuoteEmail(quoteId: string, emailPass: string) {
       ${quote.notes ? `<p style="margin-top: 30px; font-style: italic;">Opmerkingen: ${quote.notes}</p>` : ''}
 
       <p style="margin-top: 40px; font-size: 12px; color: #666; text-align: center;">
-        Equiviesa Worldwide - Since 1995
+        Equiviesa Worldwide
       </p>
     </div>
   `

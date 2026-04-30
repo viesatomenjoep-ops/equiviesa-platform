@@ -301,7 +301,7 @@ export default function QuoteDetailPage() {
 
           {/* Footer */}
           <div className="mt-20 pt-6 border-t border-gray-200 flex justify-between items-center text-xs text-gray-400">
-            <p>Equiviesa Worldwide — Premium Sport Horses Since 1995</p>
+            <p>Equiviesa Worldwide — Premium Sport Horses</p>
             <p>kvk: 12345678 • btw: NL87654321B01</p>
           </div>
 

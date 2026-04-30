@@ -25,7 +25,7 @@ export default function Navbar() {
             </Link>
             <Link href="/" className="flex flex-col text-left justify-center shrink-0">
               <span className="text-2xl font-serif font-bold tracking-tight text-primary uppercase leading-none">Equiviesa</span>
-              <span className="text-[10px] font-bold tracking-[0.3em] text-primary/90 uppercase mt-1 self-end">Since 1995</span>
+              {/* Removed Since 1995 text */}
             </Link>
           </div>
 

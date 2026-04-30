@@ -47,7 +47,7 @@ export default function EquihubDashboard({
           </div>
           <div className="flex items-center gap-4 mb-4">
             <div style={{ transform: `rotate(${scrollY * 0.3}deg)`, transition: 'transform 0.1s ease-out' }}>
-              <Image src="/viesa-logo.png" alt="Viesa Logo" width={80} height={80} className="object-contain" />
+              <Image src="/logo.png" alt="Viesa Logo" width={80} height={80} className="object-contain" />
             </div>
             <h1 className="text-4xl md:text-5xl font-sans font-bold text-white uppercase tracking-tight">
               Viesa Stable <span className="text-white">Overview</span>
@@ -146,7 +146,7 @@ export default function EquihubDashboard({
                   </button>
                   <div className="hidden sm:flex items-center gap-2">
                     <div style={{ transform: `rotate(${scrollY * 0.3}deg)`, transition: 'transform 0.1s ease-out' }}>
-                      <Image src="/viesa-logo.png" alt="Viesa" width={24} height={24} className="object-contain invert dark:invert-0" />
+                      <Image src="/logo.png" alt="Viesa" width={24} height={24} className="object-contain invert dark:invert-0" />
                     </div>
                     <span className="text-lg font-sans font-bold text-gray-900 dark:text-white">Viesa Stable Overview</span>
                   </div>
