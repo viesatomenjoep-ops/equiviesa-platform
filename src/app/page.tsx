@@ -45,7 +45,7 @@ export default function App() {
             <ScrollLogo>
               <Image src="/logo.png" alt="Viesa Logo" width={80} height={80} className="w-10 h-10 md:w-20 md:h-20 object-contain" />
             </ScrollLogo>
-            <span className="text-xl md:text-5xl font-serif font-bold tracking-tight uppercase leading-none text-white">
+            <span className="text-lg md:text-4xl font-serif font-bold tracking-tight uppercase leading-none text-white">
               VIESA
             </span>
           </Link>
@@ -83,7 +83,7 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
             <motion.h1
-              className="text-5xl sm:text-6xl md:text-8xl mb-6 tracking-tight font-bold"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tight font-bold"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
