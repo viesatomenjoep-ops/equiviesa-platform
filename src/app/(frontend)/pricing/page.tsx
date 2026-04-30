@@ -66,14 +66,6 @@ export default function PricingPage() {
         </div>
       </div>
 
-      
-        <div className="mb-20 bg-gradient-to-r from-blue-900/20 to-slate-800/40 border border-blue-500/30 rounded-2xl p-4 md:p-6 text-center max-w-3xl mx-auto shadow-xl">
-          <h3 className="text-xl md:text-2xl font-bold text-white mb-2">💎 Exclusieve Loyaliteitsbonus</h3>
-          <p className="text-sm md:text-base text-blue-200">
-            Blijft u het eerste jaar onafgebroken lid? Dan belonen wij uw vertrouwen met <span className="font-bold text-white text-lg">30% korting</span> op uw abonnement in het gehele tweede jaar!
-          </p>
-        </div>
-
       {/* Build Your Own Plan Section */}
       <div className="max-w-4xl mx-auto mb-24 px-4 sm:px-0">
         <div className="bg-slate-800/40 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
@@ -262,6 +254,14 @@ export default function PricingPage() {
             Contact Sales
           </Link>
         </div>
+      </div>
+
+      {/* Exclusieve Loyaliteitsbonus (Moved to Bottom) */}
+      <div className="mt-8 mb-20 bg-gradient-to-r from-blue-900/20 to-slate-800/40 border border-blue-500/30 rounded-2xl p-4 md:p-6 text-center max-w-3xl mx-auto shadow-xl">
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-2">💎 Exclusieve Loyaliteitsbonus</h3>
+        <p className="text-sm md:text-base text-blue-200">
+          Blijft u het eerste jaar onafgebroken lid? Dan belonen wij uw vertrouwen met <span className="font-bold text-white text-lg">30% korting</span> op uw abonnement in het gehele tweede jaar!
+        </p>
       </div>
 
       {/* Payment Methods & Trust Section */}
