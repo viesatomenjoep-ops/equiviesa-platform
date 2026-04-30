@@ -194,13 +194,13 @@ export default function ContactPage() {
                   <p className="text-gray-600 dark:text-gray-400">0031 68305 2875</p>
                 </div>
               </a>
-              <a href="mailto:info@Viesa Automations.com" className="flex items-start group">
+              <a href="mailto:info@viesaautomations.com" className="flex items-start group">
                 <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-accent group-hover:text-white transition-colors text-accent">
                    <Mail size={20} />
                 </div>
                 <div>
                   <p className="font-medium text-gray-900 dark:text-white group-hover:text-accent transition-colors">Send an Email</p>
-                  <p className="text-gray-600 dark:text-gray-400">info@Viesa Automations.com</p>
+                  <p className="text-gray-600 dark:text-gray-400">info@viesaautomations.com</p>
                 </div>
               </a>
               <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-start group">

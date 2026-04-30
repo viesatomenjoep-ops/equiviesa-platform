@@ -3,7 +3,7 @@ import ScrollLogo from './ScrollLogo';
 
 export default function Footer() {
   const whatsappNumber = "31683052875";
-  const email = "info@Viesa Automations.com";
+  const email = "info@viesaautomations.com";
 
   return (
     <>
