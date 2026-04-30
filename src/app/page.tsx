@@ -15,6 +15,8 @@ import {
   MessageSquare,
   Crown
 } from 'lucide-react';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import MobileMenu from '@/components/frontend/MobileMenu';
 
 export default function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -32,7 +34,18 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-white overflow-x-hidden dark">
+      {/* Top Navigation / Tool Selector */}
+      <header className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 flex justify-between items-center">
+        <div className="flex items-center">
+          {/* We keep the left side empty or add a small logo if needed */}
+        </div>
+        <div className="flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-2 py-1 shadow-xl">
+          <LanguageSwitcher expandDirection="down" />
+          <MobileMenu />
+        </div>
+      </header>
+
       {/* Mouse follower gradient */}
       <div
         className="fixed inset-0 pointer-events-none z-0"

@@ -38,7 +38,7 @@ export default function MobileMenu() {
     <div className="flex items-center relative z-[120]">
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="text-primary hover:text-accent p-2 transition-colors focus:outline-none relative z-[130]" 
+        className="text-primary dark:text-white hover:text-accent p-2 transition-colors focus:outline-none relative z-[130]" 
         aria-label="Toggle menu"
       >
         {isOpen ? <X size={28} /> : <Menu size={28} />}
