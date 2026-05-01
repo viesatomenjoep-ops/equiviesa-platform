@@ -114,6 +114,7 @@ export default function EgaliserenLandingPage() {
             <option value="anhydriet">Anhydriet</option>
             <option value="vloerverwarming">Vloerverwarming</option>
             <option value="pvc">PVC / Afwerking</option>
+            <option value="hoogte-tool">Hoogte & Ondervloer Tool</option>
             <option value="ai-scan">AI Vloer Scan</option>
           </select>
           <Link href="/egaliseren/offerte" className="hidden md:inline-flex px-5 py-2.5 bg-slate-900 text-white rounded-full hover:bg-slate-800 transition-colors font-bold text-sm">
@@ -211,6 +212,7 @@ export default function EgaliserenLandingPage() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
               { icon: <Bot className="w-6 h-6" />, title: "AI Droogtijd Calculator", link: "/egaliseren/droogtijd" },
+              { icon: <Target className="w-6 h-6" />, title: "Hoogte & Ondervloer Tool", link: "/egaliseren/hoogte-tool" },
               { icon: <Ruler className="w-6 h-6" />, title: "Materiaal Calculator", link: "/egaliseren/materiaal" },
               { icon: <Globe className="w-6 h-6" />, title: "Vloerverwarming Planner", link: "/egaliseren/vloerverwarming-planner" },
               { icon: <CheckSquare className="w-6 h-6" />, title: "Vloer Inspectie Scan", link: "/egaliseren/offerte" },
