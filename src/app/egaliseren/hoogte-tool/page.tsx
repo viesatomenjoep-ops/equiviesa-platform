@@ -63,7 +63,24 @@ export default function HoogteToolPage() {
       
       if (error) {
         console.error("Supabase opslag fout:", error);
-        // Continue even if Supabase fails so the UX isn't broken for now
+      // Continue even if Supabase fails so the UX isn't broken for now
+      }
+
+      // Moneybird API Koppeling
+      // Stuur de gegevens naar onze nieuwe Moneybird route om een concept-offerte aan te maken
+      try {
+        await fetch('/api/moneybird', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: 'Website Lead (Hoogte Tool)',
+            phone: whatsapp || '',
+            description: `Egaliseren ${opp}m2 op ${ondervloer} (${dikte}mm). Inclusief ${zakken} zakken egaline en ${primerNaam}.`,
+            price: geschattePrijs
+          })
+        });
+      } catch (mbError) {
+        console.error("Moneybird fout:", mbError);
       }
       
       const calcResult = `Voor ${dikte}mm gewenste hoogte op een ${ondervloer} ondervloer heeft u ${zakken} zakken egaline (25kg) nodig.${ondervloer === 'tegel' ? ' (Inclusief +1.5mm extra voor het uitvullen van de tegelvoegen en 5% marge).' : ' (Inclusief 5% marge voor verlies).'} Voorbehandeling: ${primerNaam}. Geschatte totaalkosten (materiaal): €${geschattePrijs.toFixed(2)}.`;
