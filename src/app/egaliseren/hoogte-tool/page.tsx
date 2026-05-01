@@ -27,12 +27,27 @@ export default function HoogteToolPage() {
       const dikte = parseFloat(hoogte) || 3;
       const opp = parseFloat(oppervlakte) || 50;
       
-      // Berekening logica: 
-      // Zandcement zuigt meer, Tegel heeft primer voor niet-zuigend nodig
-      let materiaalFactor = ondervloer === 'tegel' ? 1.5 : 1.7; // kg per mm per m2
-      let totalKg = dikte * opp * materiaalFactor;
-      let zakken = Math.ceil(totalKg / 25);
-      let geschattePrijs = (zakken * 18.5) + (opp * (ondervloer === 'tegel' ? 4 : 2.5)); // Egaline + Primer
+      // Specialistische berekening:
+      // Het basisverbruik is altijd ca. 1.55 kg per m² per mm laagdikte.
+      let materiaalFactor = 1.55; 
+      
+      // Voor een tegelvloer moet je extra dikte rekenen voor het uitvullen van de voegen (meestal +1.5mm)
+      let werkelijkeDikte = ondervloer === 'tegel' ? dikte + 1.5 : dikte;
+      
+      let totalKg = werkelijkeDikte * opp * materiaalFactor;
+      
+      // Reken 5% snijverlies / verliesmarge voor de zekerheid
+      totalKg = totalKg * 1.05;
+
+      let zakken = Math.ceil(totalKg / 25); // Zakken van 25kg
+      
+      // Egaline kost bv 18.50 per zak. 
+      // Zandcement heeft een 'Zuigende Primer' nodig (ca. 2.00 per m2)
+      // Tegelvloer heeft een 'Niet-Zuigende Primer' (Hechtprimer/Epoxy) nodig (ca. 4.50 per m2)
+      let primerPrijsPerM2 = ondervloer === 'tegel' ? 4.50 : 2.00;
+      let primerNaam = ondervloer === 'tegel' ? 'Niet-Zuigende Primer (Hechtprimer)' : 'Zuigende Primer';
+
+      let geschattePrijs = (zakken * 18.50) + (opp * primerPrijsPerM2);
 
       // Save to Supabase custom table
       const { error } = await supabase.from('egaliseren_hoogte_scans').insert([
@@ -51,11 +66,11 @@ export default function HoogteToolPage() {
         // Continue even if Supabase fails so the UX isn't broken for now
       }
       
-      const calcResult = `Voor ${dikte}mm op een ${ondervloer} ondervloer heeft u ca. ${zakken} zakken egaline (25kg) nodig. Geschatte materiaalkosten incl. primer: €${geschattePrijs.toFixed(2)}.`;
+      const calcResult = `Voor ${dikte}mm gewenste hoogte op een ${ondervloer} ondervloer heeft u ${zakken} zakken egaline (25kg) nodig.${ondervloer === 'tegel' ? ' (Inclusief +1.5mm extra voor het uitvullen van de tegelvoegen en 5% marge).' : ' (Inclusief 5% marge voor verlies).'} Voorbehandeling: ${primerNaam}. Geschatte totaalkosten (materiaal): €${geschattePrijs.toFixed(2)}.`;
       setResult(calcResult);
       
       // Open WhatsApp direct met pre-filled bericht
-      const waText = `Beste Egaliseren.nl, ik heb de Hoogte & Ondervloer Tool gebruikt.\n\n*Mijn Project:*\n- Ondervloer: ${ondervloer}\n- Hoogte/Dikte: ${dikte}mm\n- Oppervlakte: ${opp}m²\n\nBerekend: ${zakken} zakken.\nKunnen we dit inplannen?`;
+      const waText = `Beste Egaliseren.nl, ik heb de Hoogte & Ondervloer Tool gebruikt.\n\n*Mijn Project:*\n- Ondervloer: ${ondervloer}\n- Gewenste Hoogte/Dikte: ${dikte}mm\n- Oppervlakte: ${opp}m²\n\nBerekend: ${zakken} zakken (incl. snijverlies) en ${primerNaam}.\nKunnen we dit inplannen?`;
       const ownerPhone = '31651641886';
       window.open(`https://wa.me/${ownerPhone}?text=${encodeURIComponent(waText)}`, '_blank');
 
